@@ -1,0 +1,2 @@
+setlocal ts=8
+

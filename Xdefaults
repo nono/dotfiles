@@ -1,0 +1,59 @@
+! urxvt & aterm
+*scrollBar:false
+*inheritPixmap:true
+*transparent:true
+*shading:60
+*tintColor:white
+*imLocale:fr_FR.UTF8
+*saveLines:5000
+URxvt*termName: rxvt
+
+! Colors
+! 0=noir, 1=rouge, 2=vert, 3=jaune, 4=bleu, 5=magenta, 6=cyan, 7=blanc
+! 0-7 pour les couleurs foncées
+! 8-15 pour les couleurs claires
+*background:black
+*foreground:White
+*color0:  #333333
+*color1:  #e5505f
+*color2:  #33ff33
+*color3:  #ffff33
+*color4:  #6666ff
+*color5:  #963c59
+*color6:  #338eaa
+*color7:  #ffffff
+*color8:  #666666
+*color9:  #ff9999
+*color10: #99ff99
+*color11: #ffff99
+*color12: #80a0ff
+*color13: #ff99ff
+*color14: #71bebe
+*color15: #ffffff
+
+! Font
+!aterm.font:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+!aterm.boldFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
+irssi.font:xft:Bitstream Vera Sans Mono:pixelsize=14
+!*font:xft:Monaco:pixelsize=14
+*font:xft:Bitstream Vera Sans Mono:pixelsize=14
+!*faceName:-*-bitstream vera sans mono-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+
+! Curseur de la souris
+!Xcursor.size:       24
+!Xcursor.theme:      whiteglass
+
+! GnuPlot
+!gnuplot*background:  white
+!gnuplot*textColor:   black
+!gnuplot*borderColor: black
+!gnuplot*axisColor:   black
+!gnuplot*line1Color:  red
+!gnuplot*line2Color:  blue
+!gnuplot*line3Color:  green
+!gnuplot*line4Color:  magenta
+!gnuplot*line5Color:  cyan
+!gnuplot*line6Color:  sienna
+!gnuplot*line7Color:  orange
+!gnuplot*line8Color:  coral
+

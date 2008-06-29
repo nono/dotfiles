@@ -1,0 +1,27 @@
+#########
+# Perso #
+#########
+Host mybook
+HostName metz
+User bruno
+Port 2222
+
+Host ror
+HostName localhost
+User ror
+Port 2200
+
+
+###############
+# LinuxFR.org #
+###############
+Host linuxfr
+HostName web.linuxfr.org
+
+
+########
+# AF83 #
+########
+Host frisket
+HostName frisket.bearstech.com
+User noumba-dev

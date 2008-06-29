@@ -1,0 +1,173 @@
+# fbpanel <profile> config file
+# see http://fbpanel.sf.net/docs.html for complete configuration guide
+
+
+Global {
+    edge = top
+    allign = left
+    margin = 0
+    widthtype = percent
+    width = 100
+    height = 26
+    transparent = false
+    tintcolor = #000000
+    alpha = 124
+    setdocktype = true
+    setpartialstrut = true
+    autohide = false
+    heightWhenHidden = 2
+}
+
+Plugin {
+    type = space
+    config {
+        size = 2
+    }
+}
+
+
+Plugin {
+    type = menu
+    config {
+        image = /usr/share/icons/Tango/32x32/actions/go-home.png
+        systemmenu {
+        }
+        separator {
+        }
+        item {
+            icon = gnome-settings
+            name = configure
+            image = /usr/share/icons/Tango/32x32/categories/package_settings.png
+            command = configure
+        }
+    }
+}
+
+
+Plugin {
+    type = space
+    config {
+        size = 7
+    }
+}
+
+
+Plugin {
+    type = launchbar
+    config {
+        button {
+            icon = terminal
+            image = /usr/share/icons/Tango/32x32/apps/terminal.png
+            tooltip = Terminal
+            action = urxvt
+        }
+        button {
+            icon = mozilla-firefox
+            tooltip = Firefox web browser
+            action = firefox
+        }
+    }
+}
+
+
+Plugin {
+    type = space
+    config {
+        size = 7
+    }
+}
+
+
+Plugin {
+    type = pager
+    config {
+        showwallpaper = true
+    }
+}
+
+
+Plugin {
+    type = icons
+    config {
+        DefaultIcon = /usr/share/fbpanel/images/default.xpm
+        application {
+            icon = gnome-terminal
+            Image = /usr/share/fbpanel/images/gnome_terminal.svg
+            ClassName = XTerm
+        }
+        application {
+            icon = gnome-terminal
+            Image = /usr/share/fbpanel/images/gnome_terminal.svg
+            ClassName = mlterm
+        }
+        application {
+            icon = gnome-terminal
+            Image = /usr/share/fbpanel/images/gnome_terminal.svg
+            ClassName = URxvt
+        }
+        application {
+            icon = gnome-emacs
+            Image = /usr/share/fbpanel/images/emacs.svg
+            ClassName = Emacs
+        }
+        application {
+            icon = mozilla-firefox
+            ClassName = Firefox-bin
+        }
+        application {
+            icon = mozilla-firefox
+            ClassName = Firefox
+        }
+    }
+}
+
+
+Plugin {
+    type = space
+    config {
+        size = 7
+    }
+}
+
+
+Plugin {
+    type = taskbar
+    expand = true
+    config {
+        ShowIconified = true
+        ShowMapped = true
+        ShowAllDesks = false
+        tooltips = true
+        IconsOnly = false
+        MaxTaskWidth = 150
+    }
+}
+
+
+Plugin {
+    type = tray
+}
+
+
+Plugin {
+    type = dclock
+    config {
+        ClockFmt = %R
+        TooltipFmt = %A %x
+        Action = orage &
+    }
+}
+
+
+Plugin {
+    type = launchbar
+    config {
+        button {
+            image = /usr/share/icons/Tango/32x32/actions/system-log-out.png
+            tooltip = Shutdown
+            action = ~/.scripts/shutdown.sh
+        }
+    }
+}
+
+

@@ -1,0 +1,18 @@
+#ifndef @FILE_H
+#define @FILE_H
+
+
+
+namespace @Dir {
+
+
+class @file {
+	public:
+
+	private:
+};
+
+
+} // namespace @Dir
+
+#endif // @FILE_H

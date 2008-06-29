@@ -1,0 +1,22 @@
+[user]
+	name = Bruno Michel
+	email = bmichel@menfin.info
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	changes = diff --name-status -r
+	staged = diff --cached
+	unstaged = diff
+	both = diff HEAD
+	oneline = log --pretty=oneline
+[diff]
+	renames = true
+[giggle]
+	compact-mode = true
+	main-window-maximized = true

@@ -1,0 +1,8 @@
+<%= `figlet -c README` %>
+<%# figlet: http://www.figlet.org %>
+
+Author: Bruno Michel <bmichel@menfin.info>
+Date: <%= Time.now.strftime("%d/%m/%y") %>
+Time: <%= Time.now.strftime("%H:%M:%S") %>
+<% directory = File.dirname(file) %>
+Project: <%= File.split(directory).last %>

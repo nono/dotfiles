@@ -1,0 +1,117 @@
+# these characters are automatically replaced with specified color
+replaces = { "[]:" = "%K$*%n"; };
+
+abstracts = {
+  # generic  
+  line_start = "%G-%g+%G- %N";
+  timestamp = "$*";
+  hilight = "%W$*%N";
+  error = "%r$*%n";
+
+  channel = "$*";
+  nick = "%_$*%_";
+  nickhost = "$*";
+  server = "%W$*%N";
+  comment = "%K[%n$*%K]%N";
+  reason = "%K(%n$*%K)%N";
+  mode = "%K[%n%_$*%_%K]%N";
+
+  # channel specific messages
+  channick_hilight = "%C$*%n";
+  chanhost_hilight = "%K(%n%c{nickhost $*}%n%K)%n";
+  channick = "$*";
+  chanhost = "%K(%n%c{nickhost $*}%n%K)%n";
+  channelhilight = "%c$*%n";
+  ban = "$*";
+
+  # messages
+  msgnick = "%B(%n%_$0$1-%_%B)%n %|";
+  ownmsgnick = "%b(%n%_$0$1-%_%b)%n %|";
+  ownnick = "%_$*%_";
+  pubmsgnick = "{msgnick $0 $1-}";
+  pubnick = "%_$*%_";
+  pubmsgmenick = "{msgnick $0 %_$1-%_%n}";
+  menick = "%Y$*%n";
+  pubmsghinick = "{msgnick $1 $0$2-}";
+  msgchannel = "%K:%n%_$*%_";
+  privmsg = "%K[%n%P$0%n%K(%n%p{nickhost $1-}%n%K)]%n ";
+  ownprivmsg = "%K[%n%rmsg%n%K(%R$1-%n%K)]%n ";
+  ownprivmsgnick = "%b(%n%_$*%_%b)%n ";
+  ownprivnick = "%_$*%_";
+  privmsgnick = "%B(%n$0$1-%B)%n ";
+
+  # actions
+  action = "%g*%n";
+  myaction = "%y*%n";
+  pubaction = "{action } %W$*%n ";
+  ownaction = "{myaction } %W$*%n ";
+  pvtaction = "%K[%n%P$0%n%K]%n {action} %_$0%_ $1- ";
+  pvtaction_query = "{action } %W$*%n ";
+
+  # notices
+  ownnotice = "%K[%n%rnotice%n%K(%R$1-%n%K)]%n ";
+  notice = "%K-%n%P$0%n%K-%n ";
+  pubnotice_channel = ":$*";
+  pvtnotice_host = "%K(%n%m$*%n%K)%n";
+  servernotice = "{notice $*}";
+
+  # ctcp
+  ownctcp = "%K[%N%r$0%n%K(%R$1-%n%K)]%n ";
+  ctcp = "%K>%n>%W>%n %g$1%_%n $2 %g$3%n %g%_$4%n %g$5%n %g%_$6%n%_";
+
+  # wallops
+  wallop = "$*: ";
+  wallop_nick = "$*";
+  wallop_action = " * $* ";
+
+  # netsplits
+  netsplit = "$*";
+  netjoin = "$*";
+
+  # /names list
+  names_nick = "%K[%n%_$0%_$1-%K]%n ";
+  names_users = "($*)";
+  names_channel = "{channel $*}";
+
+  # dcc
+  dcc = "%R$0%n $1 $3 $4 %c$5 $6 $7 $8-%n";
+  dccfile = "%_$*%_";
+
+  dccownmsg = "%K[%n%rdcc%n%K(%n%R$1-%n%K)]%n ";
+  dccownnick = "$*";
+  dccownaction = "{action $*}";
+  dccmsg = "%K[%n%G$1-%n%K(%n%gdcc%n%K)]%n ";
+  dccquerynick = "$*";
+  dccaction = " (*dcc*) $* %|";
+
+  ##
+  ## statusbar
+  ##
+
+  # default background for all statusbars. You can also give
+  # the default foreground color for statusbar items.
+  sb_background = "%w%4";
+  # background for topicbar (same default)
+  sb_topic_bg = "%w%4";
+
+  prompt = "%K(%n$*%K)%n ";
+
+  sb = "%K(%n$*%K)%n  ";
+  sbmode = "(%w+%B$*%n)";
+  sbaway = "%b(%Waway%b)%n";
+  sbservertag = ":$0 (%Bchange with ^X%n)";
+
+  # activity in statusbar
+
+  # ',' separator
+  sb_act_sep = "%n$*%n";
+  # normal text
+  sb_act_text = "%B$*%n";
+  # public message
+  #sb_act_msg = "%B$*%n";
+  sb_act_msg = "%W$*%n";
+  # hilight
+  sb_act_hilight = "%W$*%n";
+  # hilight with specified color, $0 = color, $1 = text
+  sb_act_hilight_color = "$0%W$1%n";
+};
