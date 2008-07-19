@@ -64,6 +64,7 @@ alias -g C='|colordiff'
 
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -la'
+alias less='less -R'
 alias grep='grep --color'
 alias ftp='lftp'
 alias cal='LANG=fr_FR cal -m'
@@ -76,6 +77,7 @@ alias sl=ls
 alias ai='sudo aptitude install'
 alias au='sudo aptitude update'
 alias ad='sudo aptitude dist-upgrade'
+alias as='aptitude search'
 
 # Ruby
 export PATH="/var/lib/gems/1.8/bin/:$PATH"
