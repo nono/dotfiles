@@ -8,6 +8,7 @@ export BROWSER=w3m
 export PATH=/opt/bin:$PATH
 export MANPATH=/opt/share/man:$MANPATH
 export LS_OPTIONS='--color=auto'
+export GREP_COLOR='1;37;41'
 # eval `dircolors ~/.dir_colors`
 umask 022
 

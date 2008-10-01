@@ -53,7 +53,7 @@ set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction 
 set tags+=../tags
 set shell=/bin/bash
 set wildmenu
-set wildignore+=*.o,*.so,*.a,.svn
+set wildignore+=*.o,*.so,*.a,.svn,*.pyc
 " set ballooneval
 set omnifunc=syntaxcomplete#Complete
 set cot=menuone
