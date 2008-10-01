@@ -1,0 +1,8 @@
+! ù instead of û
+keycode  30 = u U ucircumflex Ucircumflex ugrave Ugrave
+
+! No insecable space
+keycode 65 = space space space space space
+
+keycode 237 = XF86AudioMedia
+

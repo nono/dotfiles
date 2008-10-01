@@ -577,6 +577,10 @@
 -->
 
     <!-- Desktop 1 -->
+    <application name="amarokapp">
+      <desktop>1</desktop>
+      <maximized>yes</maximized>
+    </application>
     <application name="rhythmbox">
       <desktop>1</desktop>
       <maximized>yes</maximized>
@@ -601,7 +605,7 @@
     <!-- Desktop 3 -->
     <application name="codaz">
       <desktop>3</desktop>
-      <position><x>-10</x><y>-10</y></position>
+      <position><x>0</x><y>0</y></position>
     </application>
 
     <!-- Desktop 4 -->

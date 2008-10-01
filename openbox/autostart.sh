@@ -7,6 +7,7 @@ xscreensaver -no-splash &> /dev/null &
 xset -b
 numlockx on
 #unclutter &
+xmodmap ~/config/xmodmaprc
 # xmodmap -e "pointer = 1 2 3 6 7 4 5"
 # Esetroot -f ~/Documents/Wallpapers/aloof-1600x1200.jpg &
 # ~/.scripts/dlbg.sh commons
@@ -23,8 +24,8 @@ firefox &
 thunderbird &
 liferea &
 gajim &
-# exaile &
-rhythmbox &
+# rhythmbox &
+amarok &
 urxvt -name irssi -title irssi -e irssi &
 urxvt -name gruik -title gruik &
 urxvt -name codaz -title codaz &
