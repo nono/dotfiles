@@ -98,7 +98,6 @@ map <F12> :runtime! syntax/2html.vim<CR>
 " }}}
 " Autodetect filetypes {{{ "
 
-au BufRead,BufNewFile .vimperatorrc set ft=vimperator
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
@@ -119,6 +118,11 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
     \     set ft=html.templeet nospell |
     \ endif
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+
+" Merb
+au BufRead,BufNewFile *.feature set ft=feature
+au BufRead,BufNewFile public/javascripts/*.js set ft=javascript.jquery
+au BufRead,BufNewFile config/router.rb set ft=ruby.merb_router
 
 
 " }}}
