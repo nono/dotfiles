@@ -120,10 +120,12 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 
 " Merb
+" TODO : view helpers, mailers, slices, cache, exceptions, sessions
 au BufRead,BufNewFile *.feature set ft=feature
 au BufRead,BufNewFile public/javascripts/*.js set ft=javascript.jquery
 au BufRead,BufNewFile config/router.rb set ft=ruby.merb_router
 au BufRead,BufNewFile app/models/*.rb set ft=ruby.datamapper " TODO slices & namespaces
+au BufRead,BufNewFile app/controllers/*.rb set ft=ruby.merb_controller " TODO slices & namespaces
 
 
 " }}}

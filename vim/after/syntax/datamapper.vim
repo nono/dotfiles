@@ -2,7 +2,7 @@
 " Language:    Datamapper
 " Maintainer:  Bruno Michel <brmichel@free.fr>
 " Last Change: Oct 12, 2008
-" Version:     0.1
+" Version:     0.2
 " URL:         http://www.datamapper.org/
 
 if exists("b:current_syntax") && b:current_syntax =~ "datamapper"
@@ -13,6 +13,7 @@ endif
 syn case match
 
 syn keyword dmRailisms      find find_first find_all find_or_create
+syn keyword dmRailisms      attr_accessible attr_protected
 
 syn keyword dmProperty      property
 syn keyword dmAssociations  has belongs_to many_to_one
@@ -38,15 +39,15 @@ if version >= 508 || !exists("did_lisp_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink dmRailisms     Error
+  HiLink dmRailisms         Error
 
-  HiLink dmProperty     PreProc
-  HiLink dmAssociations PreProc
-  HiLink dmValidations  PreProc
-  HiLink dmCallbacks    PreProc
-  HiLink dmIs           PreProc
+  HiLink dmProperty         PreProc
+  HiLink dmAssociations     PreProc
+  HiLink dmValidations      PreProc
+  HiLink dmCallbacks        PreProc
+  HiLink dmIs               PreProc
 
-  HiLink dmCardinality  Number
+  HiLink dmCardinality      Number
 
   delcommand HiLink
 endif
