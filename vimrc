@@ -123,6 +123,7 @@ au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 au BufRead,BufNewFile *.feature set ft=feature
 au BufRead,BufNewFile public/javascripts/*.js set ft=javascript.jquery
 au BufRead,BufNewFile config/router.rb set ft=ruby.merb_router
+au BufRead,BufNewFile app/models/*.rb set ft=ruby.datamapper " TODO slices & namespaces
 
 
 " }}}
