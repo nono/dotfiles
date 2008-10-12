@@ -12,12 +12,12 @@ endif
 
 syn case match
 
-syn keyword dmRailisms      after_filter before_filter around_filter
-syn keyword dmRailisms      skip_after_filter skip_before_filter skip_filter
-syn keyword dmRailisms      url_for verify_action verify_method
-syn keyword dmRailisms      rescue_action_in_public rescue_action_locally
-syn keyword dmRailisms      filter_parameter_logging render_to_string
-syn keyword dmRailisms      redirect_to redirect_back_or_default
+syn keyword mrRailisms      after_filter before_filter around_filter
+syn keyword mrRailisms      skip_after_filter skip_before_filter skip_filter
+syn keyword mrRailisms      url_for verify_action verify_method
+syn keyword mrRailisms      rescue_action_in_public rescue_action_locally
+syn keyword mrRailisms      filter_parameter_logging render_to_string
+syn keyword mrRailisms      redirect_to redirect_back_or_default
 
 syn keyword mrFilters       after before skip_after skip_before
 syn keyword mrLayout        layout
@@ -43,7 +43,7 @@ if version >= 508 || !exists("did_lisp_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink dmRailisms         Error
+  HiLink mrRailisms         Error
 
   HiLink mrFilters          PreProc
   HiLink mrLayout           PreProc
