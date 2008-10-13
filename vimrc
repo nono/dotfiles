@@ -102,7 +102,6 @@ au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.* set ft=nginx
-au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
 au BufRead,BufNewFile *.txt set ft=creole
@@ -118,15 +117,6 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
     \     set ft=html.templeet nospell |
     \ endif
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
-
-" Merb
-au BufRead,BufNewFile *.feature set ft=feature
-au BufRead,BufNewFile public/javascripts/*.js set ft=javascript.jquery
-au BufRead,BufNewFile config/router.rb set ft=ruby.merb_router
-au BufRead,BufNewFile */app/models/*.rb set ft=ruby.datamapper
-au BufRead,BufNewFile */app/mailers/*.rb set ft=ruby.merb_mailer
-au BufRead,BufNewFile */app/controllers/*.rb set ft=ruby.merb_controller
-au BufRead,BufNewFile */app/{mailers/,}views/*.erb set ft=eruby.merb_view
 
 
 " }}}

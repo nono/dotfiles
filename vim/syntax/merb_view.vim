@@ -12,7 +12,7 @@ endif
 
 syn cluster erubyMrRegions  contains=erubyOneLiner,erubyBlock,erubyExpression,rubyInterpolation
 
-syn keyword mrRailisms      contained containedin=@erubyMrRegions form_tag
+syn keyword mrRailisms      contained containedin=@erubyMrRegions form_tag distance_of_time_in_words
 
 syn keyword mrText          contained containedin=@erubyMrRegions cycle reset_cycle
 syn keyword mrDateTime      contained containedin=@erubyMrRegions relative_date relative_date_span relative_time_span
