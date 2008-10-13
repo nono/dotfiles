@@ -27,7 +27,7 @@ syn keyword mrResponders    provides only_provides does_not_provide clear_provid
 syn keyword mrUrl           absolute_url relative_url url resource
 syn keyword mrRender        render display redirect redirect_back_or
 syn keyword mrRender        render_chunked render_deferred render_then_call
-syn keyword mrRender        run_later send_chunk send_data send_file
+syn keyword mrRender        run_later send_chunk send_data send_file send_mail
 syn keyword mrCookies       cookies set_cookie delete_cookie
 syn keyword mrContentType   content_type
 
