@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:    Merb Router
 " Maintainer:  Bruno Michel <brmichel@free.fr>
-" Last Change: Oct 7, 2008
-" Version:     0.1
+" Last Change: Oct 14, 2008
+" Version:     0.2
 " URL:         http://www.merbivore.com/
 
 if exists("b:current_syntax") && b:current_syntax =~ "merb_router"
@@ -17,6 +17,7 @@ syn keyword mrBehaviour capture default default_routes defaults defer
 syn keyword mrBehaviour defer_to fixatable full_name identify match
 syn keyword mrBehaviour name namespace options redirect register to with
 syn keyword mrResources resource resources
+syn keyword mrSlices    add_slice add_slices all_slices slice
 
 syn keyword mrOptions   :method :path :params :controller :action :id
 syn keyword mrOptions   :namespace :name_prefix :collection :member :keys
@@ -36,6 +37,7 @@ if version >= 508 || !exists("did_lisp_syntax_inits")
 
   HiLink mrBehaviour    Identifier
   HiLink mrResources    Identifier
+  HiLink mrSlices       Identifier
 
   HiLink mrOptions      Include
 

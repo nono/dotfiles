@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:    Merb Controller
 " Maintainer:  Bruno Michel <brmichel@free.fr>
-" Last Change: Oct 12, 2008
-" Version:     0.1
+" Last Change: Oct 14, 2008
+" Version:     0.2
 " URL:         http://www.merbivore.com/
 
 if exists("b:current_syntax") && b:current_syntax =~ "merb_controller"
@@ -23,6 +23,7 @@ syn keyword mrFilters       after before skip_after skip_before
 syn keyword mrLayout        layout
 syn keyword mrParamsFilter  log_params_filtered params_accessible params_protected
 syn keyword mrResponders    provides only_provides does_not_provide clear_provides reset_provides
+syn keyword mrCache         cache cache_action eager_cache
 
 syn keyword mrUrl           absolute_url relative_url url resource
 syn keyword mrRender        render display redirect redirect_back_or
@@ -30,6 +31,7 @@ syn keyword mrRender        render_chunked render_deferred render_then_call
 syn keyword mrRender        run_later send_chunk send_data send_file send_mail
 syn keyword mrCookies       cookies set_cookie delete_cookie
 syn keyword mrContentType   content_type
+syn keyword mrSlices        slice_url layout_for_slice
 
 
 " Define the default highlighting.
@@ -54,6 +56,7 @@ if version >= 508 || !exists("did_lisp_syntax_inits")
   HiLink mrRender           Keyword
   HiLink mrCookies          Keyword
   HiLink mrContentType      Keyword
+  HiLink mrSlices           Keyword
 
   delcommand HiLink
 endif
