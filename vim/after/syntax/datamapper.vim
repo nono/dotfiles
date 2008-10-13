@@ -21,7 +21,7 @@ syn keyword dmCardinality   n
 
 syn keyword dmValidations   validates_present validates_absent validates_is_accepted validates_is_confirmed
 syn keyword dmValidations   validates_format validates_length validates_with_method validates_with_block
-syn keyword dmValidations   validates_is_number validates_is_unique validates_within validates_with_method
+syn keyword dmValidations   validates_is_number validates_is_unique validates_within
 
 syn keyword dmCallbacks     before after before_class_method after_class_method
 
