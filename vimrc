@@ -86,6 +86,9 @@ noremap <S-Left> :tabprev<CR>
 noremap <S-Right> :tabnext<CR>
 noremap <S-Up> :tabnew<CR>
 
+" Ctrl-t pour ouvrir de nouveaux fichiers facilement
+map <C-t> :FuzzyFinderTextMate<CR>
+
 " Complétion
 inoremap <C-@> <C-P>
 
@@ -144,14 +147,9 @@ let g:load_doxygen_syntax = 1
 let g:SuperTabRetainCompletionType = 2
 let g:SuperTabDefaultCompletionType = "<C-P>"
 
-" SimpleFold
-nmap <unique> <silent> zf <Plug>SimpleFold_Foldsearch
-let g:SimpleFold_use_subfolds = 0
-
-" Lookup File
-let g:LookupFile_DisableDefaultMap = 1
-let g:LookupFile_FileFilter = '\.o$\|\.zip$'
-nmap <unique> <silent> <c-t> <Plug>LookupFile
+" FuzzyFinder: TextMate
+" http://github.com/jamis/fuzzyfinder_textmate/tree/master
+let g:fuzzy_match_limit = 100
 
 
 " }}}
