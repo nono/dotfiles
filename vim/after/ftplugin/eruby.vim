@@ -1,2 +1,1 @@
-inorea <buffer> == <%= %><Left><Left><Left>
-inorea <buffer> << <% -%><Left><Left><Left><Left>
+/home/nono/dev/merb.vim/after/ftplugin/eruby.vim
