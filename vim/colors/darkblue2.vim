@@ -37,6 +37,7 @@ hi ModeMsg              gui=bold
 "hi MoreMsg
 "hi NonText
 hi Normal               guibg=#233b5a guifg=#fff8dc
+hi Pmenu                guibg=#babdb6 guifg=#555753
 "hi Question
 hi Search               gui=bold guifg=#233b5a guibg=lightgoldenrod
 "hi SpecialKey

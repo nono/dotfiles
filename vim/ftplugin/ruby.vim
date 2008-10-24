@@ -11,13 +11,13 @@ inorea ###- #-------------------------------------------------------------------
 inorea bp require 'debug'; breakpoint
 
 
-inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
-inoremap <buffer> ` <C-R>=<SID>Double('`','`')<CR>
-inoremap <buffer> ' <C-R>=<SID>Double("\'","\'")<CR>
-inoremap <buffer> ( ()<Left>
-inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
-inoremap <buffer> { <C-R>=<SID>Double("{","}")<CR>
-inoremap <buffer> \| <C-R>=<SID>Double("\|","\|")<CR>
+"inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
+"inoremap <buffer> ` <C-R>=<SID>Double('`','`')<CR>
+"inoremap <buffer> ' <C-R>=<SID>Double("\'","\'")<CR>
+"inoremap <buffer> ( ()<Left>
+"inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
+"inoremap <buffer> { <C-R>=<SID>Double("{","}")<CR>
+"inoremap <buffer> \| <C-R>=<SID>Double("\|","\|")<CR>
 
 function! s:Double(left,right)
     if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
