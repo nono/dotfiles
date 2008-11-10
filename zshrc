@@ -81,26 +81,27 @@ alias ad='sudo aptitude dist-upgrade'
 alias as='aptitude search'
 
 # Ruby
-export PATH="/var/lib/gems/1.8/bin/:$PATH"
-export RUBYLIB="./lib:./ext"
-export RUBYOPT="-rubygems"
 export RI="--system -Tf ansi"
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
-alias cdgem="cd /usr/lib/ruby/gems/1.8/gems"
+
+# Gems
+export RUBYOPT="-rubygems"
+export GEM_HOME="$HOME/gem"
+export RUBYLIB="$HOME/lib:./lib:./ext"
+export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
+alias gem="gem1.8"
 
 # Rails
 alias sc=./script/console
 alias ss=./script/server
-#alias et='mate README app/ config/ db/ lib/ public/ test/ vendor/plugins &' # open current dir assuming rails
 
 # Merb
-alias m=merb
+alias m="merb -a thin"
 alias mi="merb -i"
 
 # Git
 alias gs='git status'
-
 function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }

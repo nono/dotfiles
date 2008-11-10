@@ -165,6 +165,9 @@ vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
 " Modèles pour les nouveaux fichiers
 au BufNewFile * silent :exe("0r! ~/.vim/skeleton.rb %:p " . &filetype)
 
+" Sauvegarder automatiquement les feuilles de styles
+au FocusLost *.css :up
+
 " Tags
 " set tags+=../tags
 
