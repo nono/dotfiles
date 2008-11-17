@@ -1,0 +1,1 @@
+/home/nono/dev/merb.vim/ftplugin/haml.vim
