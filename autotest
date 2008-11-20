@@ -1,0 +1,23 @@
+require 'autotest/redgreen'
+require 'autotest/timestamp'
+
+module Autotest::Notify
+  def self.notify(title, message, priority)
+    icon = (priority == 'critical') ? 'dialog-error' : 'dialog-information'
+    system "notify-send -u #{priority} -t 3000 -i #{icon} '#{title}' '#{message.inspect}'"
+  end
+
+  Autotest.add_hook :ran_command do |at|
+    green = case at.results.last
+            when /^.* (\d+) failures, (\d+) errors$/   # Test::Unit
+              ($1 == "0" and $2 == "0")
+            when /^\d+\s+examples?,\s+(\d+)\s+failure/ # RSpec
+              ($1 == "0")
+            end
+
+    title    = green ? "Tests passed" : "Tests failed"
+    message  = green ? "OK"  : at.results.last.chomp
+    priority = green ? "low" : "critical"
+    notify(title, message, priority)
+  end
+end
