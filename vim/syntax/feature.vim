@@ -38,7 +38,7 @@ syn keyword fKeywords Feature Scenario GivenScenario Given When Then And But con
 if version < 508
 	command -nargs=+ HiLink hi link <args>
 else
-	command -nargs=+ HiLink hi def link <args>
+	command! -nargs=+ HiLink hi def link <args>
 endif
 
 HiLink      fComment    Comment

@@ -1,0 +1,5 @@
+--all
+--color
+--group
+--sort-files
+--type-add=ruby=.haml

@@ -57,6 +57,9 @@ set wildignore+=*.o,*.so,*.a,.svn,*.pyc
 " set ballooneval
 set omnifunc=syntaxcomplete#Complete
 set cot=menuone
+set grepprg=ack
+set grepformat=%f:%l:%m
+set shortmess=atI
 
 
 " }}}

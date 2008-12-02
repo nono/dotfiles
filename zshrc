@@ -67,6 +67,7 @@ alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -la'
 alias less='less -R'
 alias grep='grep --color'
+alias ack='ack-grep'
 alias ftp='lftp'
 alias cal='LANG=fr_FR cal -m'
 alias minicom="TERM=xterm minicom"
@@ -90,7 +91,7 @@ export RUBYOPT="-rubygems"
 export GEM_HOME="$HOME/gem"
 export RUBYLIB="$HOME/lib:./lib:./ext"
 export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
-alias gem="gem1.8"
+alias cdgem="cd $GEM_HOME/gems"
 
 # Rails
 alias sc=./script/console

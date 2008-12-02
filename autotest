@@ -15,11 +15,11 @@ module Autotest::Notify
             when /^\d+\s+examples?,\s+(\d+)\s+failure/ # RSpec
               ($1 == "0")
             when nil
-              return at.reset
+              # at.reset
             end
 
     title    = green ? "Tests passed" : "Tests failed"
-    message  = green ? "OK"  : last.chomp
+    message  = green ? "OK"  : (last && last.chomp)
     priority = green ? "low" : "critical"
     notify(title, message, priority)
   end
