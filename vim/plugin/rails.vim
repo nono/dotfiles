@@ -1,0 +1,1 @@
+/home/nono/dev/vim-rails/plugin/rails.vim

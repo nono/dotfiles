@@ -123,6 +123,8 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
     \     set ft=html.templeet nospell |
     \ endif
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+au BufRead,BufNewFile *.haml set ft=haml " http://www.vim.org/scripts/script.php?script_id=1773
+au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript.jquery
 
 
 " }}}
