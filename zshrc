@@ -94,8 +94,8 @@ export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
 alias cdgem="cd $GEM_HOME/gems"
 
 # Rails
-alias sc=./script/console
-alias ss=./script/server
+alias sc="./script/console"
+alias ss="thin start"
 
 # Merb
 alias m="merb -a thin"
