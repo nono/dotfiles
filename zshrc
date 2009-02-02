@@ -102,6 +102,7 @@ alias m="merb -a thin"
 alias mi="merb -i"
 
 # Git
+alias g='git'
 alias gs='git status'
 function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
