@@ -160,6 +160,9 @@ let g:fuzzy_match_limit = 100
 " }}}
 " Autres {{{ "
 
+" Utilise ce navigateur pour l'aide en ligne
+let g:browser = 'firefox -new-tab'
+
 " Abréviations
 source $HOME/.vim/abbrev.vim
 

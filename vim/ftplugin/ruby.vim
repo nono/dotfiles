@@ -1,4 +1,3 @@
-setlocal keywordprg=qri\ -f\ plain
 setlocal et
 setlocal sw=2
 
@@ -9,6 +8,20 @@ inorea ##- #-----------------------------
 inorea ###- #-----------------------------------------------------------------------------
 
 inorea bp require 'debug'; breakpoint
+
+
+noremap K :call OpenRubyDoc(expand('<cword>'))<CR><CR>
+au User Rails noremap K :call OpenRailsDoc(expand('<cword>'))<CR><CR>
+
+function! OpenRubyDoc(keyword)
+	let url = 'http://apidock.com/ruby/'.a:keyword
+	exec '!'.g:browser.' '.url.' &'
+endfunction 
+
+function! OpenRailsDoc(keyword)
+	let url = 'http://apidock.com/rails/'.a:keyword
+	exec '!'.g:browser.' '.url.' &'
+endfunction 
 
 
 "inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
@@ -46,3 +59,4 @@ function! s:SpecialAbbrev(string)
 	return a:string . "\<CR>end\<Esc>kA"
     endif
 endfunction
+
