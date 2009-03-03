@@ -95,11 +95,7 @@ alias cdgem="cd $GEM_HOME/gems"
 
 # Rails
 alias sc="./script/console"
-alias ss="thin start"
-
-# Merb
-alias m="merb -a thin"
-alias mi="merb -i"
+alias ss="./script/server thin"
 
 # Git
 alias g='git'
