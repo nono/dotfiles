@@ -16,7 +16,7 @@ require 'wirble'
 Wirble.init
 Wirble.colorize
 
-# Just for Rails and Merb
+# Just for Rails
 if ENV['RAILS_ENV']
   IRB.conf[:IRB_RC] = Proc.new do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
@@ -28,12 +28,3 @@ if ENV['RAILS_ENV']
     ActiveRecord::Base.connection.select_all(query)
   end 
 end
-
-# For benchmarks
-def time(times = 1)
-  require 'benchmark'
-  ret = nil
-  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
-  ret
-end
-
