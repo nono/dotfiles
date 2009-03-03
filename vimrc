@@ -176,6 +176,9 @@ au BufNewFile * silent :exe("0r! ~/.vim/skeleton.rb %:p " . &filetype)
 " Sauvegarder automatiquement les feuilles de styles
 au FocusLost *.css :up
 
+" SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
+command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
+
 " Tags
 " set tags+=../tags
 
