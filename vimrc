@@ -7,6 +7,7 @@ filetype plugin on
 if has("gui_running")
 	colo darkblue2
 	set gfn=Inconsolata\ 13
+	"set gfn=Droid\ Sans\ Mono\ 12
 	"set gfn=Bitstream\ Vera\ Sans\ Mono\ 11
 	"set gfn=Monaco\ 11
 	set gcr=a:blinkon0

@@ -6,3 +6,4 @@ gajim/avatars/*
 gajim/gajim.pid
 gajim/logs.db
 gajim/vcards/*
+gajim/secrets

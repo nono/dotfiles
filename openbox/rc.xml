@@ -577,11 +577,7 @@
 -->
 
     <!-- Desktop 1 -->
-    <application name="amarokapp">
-      <desktop>1</desktop>
-      <maximized>yes</maximized>
-    </application>
-    <application name="rhythmbox">
+    <application name="amarok">
       <desktop>1</desktop>
       <maximized>yes</maximized>
     </application>
@@ -613,7 +609,15 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
+    <application name="Navigator">
+      <desktop>4</desktop>
+      <maximized>yes</maximized>
+    </application>
     <application class="Firefox">
+      <desktop>4</desktop>
+      <maximized>yes</maximized>
+    </application>
+    <application role="browser">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>

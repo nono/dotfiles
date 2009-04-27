@@ -1,28 +1,6 @@
-# Env
-export PS1='%~ $(git_branch)%# '
-export PS2=' > '
-export DIRSTACKSIZE=16
-export EDITOR=vim
-export PAGER=less
-export BROWSER=w3m
-export PATH=/opt/bin:$PATH
-export MANPATH=/opt/share/man:$MANPATH
-export LS_OPTIONS='--color=auto'
-export GREP_COLOR='1;37;41'
-# eval `dircolors ~/.dir_colors`
-umask 022
-
-# disable XON/XOFF flow control (^s/^q)
-stty -ixon
-
-# History
-HISTFILE=~/.zsh_hist
-HISTSIZE=5000
-SAVEHIST=1000
-
 # VI bindings
 # Use 'cat -v' to obtain the keycodes
-bindkey -v
+# bindkey -v
 bindkey "^[[2~" overwrite-mode       ## Inser
 bindkey "^[[3~" delete-char          ## Del
 bindkey "^[[7~" beginning-of-line    ## Home
@@ -33,7 +11,7 @@ bindkey "^[[A" up-line-or-search     ## up arrow for back-history-search
 bindkey "^[[B" down-line-or-search   ## down arrow for fwd-history-search
 bindkey " " magic-space              ## do history expansion on space
 
-# zsh
+# Zsh
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt RM_STAR_SILENT
@@ -54,6 +32,36 @@ compinit
 
 source /etc/zsh_command_not_found
 
+# Prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git cvs svn
+zstyle ':vcs_info:*' actionformats ' (%s:%b -> %F{5}%a%f) '
+zstyle ':vcs_info:*' formats ' (%s:%b) '
+
+precmd() { vcs_info }
+export PS1='%~${vcs_info_msg_0_}%# '
+export PS2=' > '
+
+# Env
+export DIRSTACKSIZE=16
+export EDITOR=vim
+export PAGER=less
+export BROWSER=w3m
+export PATH=/opt/bin:$PATH
+export MANPATH=/opt/share/man:$MANPATH
+export LS_OPTIONS='--color=auto'
+export GREP_COLOR='1;37;41'
+# eval `dircolors ~/.dir_colors`
+umask 022
+
+# disable XON/XOFF flow control (^s/^q)
+stty -ixon
+
+# History
+HISTFILE=~/.zsh_hist
+HISTSIZE=5000
+SAVEHIST=1000
+
 # Aliases
 alias -g L='|less'
 alias -g G='|grep'
@@ -65,12 +73,12 @@ alias -g C='|colordiff'
 
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -la'
+alias lh='ls $LS_OPTIONS -lah'
 alias less='less -R'
 alias grep='grep --color'
 alias ack='ack-grep'
 alias ftp='lftp'
-alias cal='LANG=fr_FR cal -m'
-alias minicom="TERM=xterm minicom"
+alias mplayer='mplayer -fs'
 
 alias cd..='cd ..'
 alias sl=ls
@@ -96,11 +104,17 @@ alias cdgem="cd $GEM_HOME/gems"
 # Rails
 alias sc="./script/console"
 alias ss="./script/server thin"
+alias sd="./script/dbconsole"
+alias sg="./script/generate"
 
 # Git
 alias g='git'
 alias gs='git status'
-function git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
+
+# Svn
+alias svnclear='find . -name .svn -print0 | xargs -0 rm -rf'
+alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
+
+# Android
+export PATH="$PATH:/home/nono/Desktop/android/tools"
 

@@ -11,7 +11,7 @@ numlockx on
 # xmodmap -e "pointer = 1 2 3 6 7 4 5"
 # Esetroot -f ~/Documents/Wallpapers/aloof-1600x1200.jpg &
 # ~/.scripts/dlbg.sh commons
-# ~/.scripts/random_wallpaper.rb
+~/.scripts/random_wallpaper.rb
 ~/.scripts/setlayout 0 2 2 0
 
 # D-bus
