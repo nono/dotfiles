@@ -1,3 +1,25 @@
+# Env
+export PS1='%~$(parse_git_branch)%# '
+export PS2=' > '
+export DIRSTACKSIZE=16
+export EDITOR=vim
+export PAGER=less
+export BROWSER=w3m
+export PATH=/opt/bin:$PATH
+export MANPATH=/opt/share/man:$MANPATH
+export LS_OPTIONS='--color=auto'
+export GREP_COLOR='1;37;41'
+# eval `dircolors ~/.dir_colors`
+umask 022
+
+# disable XON/XOFF flow control (^s/^q)
+stty -ixon
+
+# History
+HISTFILE=~/.zsh_hist
+HISTSIZE=5000
+SAVEHIST=1000
+
 # VI bindings
 # Use 'cat -v' to obtain the keycodes
 # bindkey -v
@@ -31,36 +53,6 @@ autoload -U compinit
 compinit
 
 source /etc/zsh_command_not_found
-
-# Prompt
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git cvs svn
-zstyle ':vcs_info:*' actionformats ' (%s:%b -> %F{5}%a%f) '
-zstyle ':vcs_info:*' formats ' (%s:%b) '
-
-precmd() { vcs_info }
-export PS1='%~${vcs_info_msg_0_}%# '
-export PS2=' > '
-
-# Env
-export DIRSTACKSIZE=16
-export EDITOR=vim
-export PAGER=less
-export BROWSER=w3m
-export PATH=/opt/bin:$PATH
-export MANPATH=/opt/share/man:$MANPATH
-export LS_OPTIONS='--color=auto'
-export GREP_COLOR='1;37;41'
-# eval `dircolors ~/.dir_colors`
-umask 022
-
-# disable XON/XOFF flow control (^s/^q)
-stty -ixon
-
-# History
-HISTFILE=~/.zsh_hist
-HISTSIZE=5000
-SAVEHIST=1000
 
 # Aliases
 alias -g L='|less'
@@ -110,6 +102,12 @@ alias sg="./script/generate"
 # Git
 alias g='git'
 alias gs='git status'
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /"
+}
 
 # Svn
 alias svnclear='find . -name .svn -print0 | xargs -0 rm -rf'
