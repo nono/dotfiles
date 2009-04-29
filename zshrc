@@ -98,6 +98,7 @@ alias sc="./script/console"
 alias ss="./script/server thin"
 alias sd="./script/dbconsole"
 alias sg="./script/generate"
+alias mi='rake db:migrate'
 
 # Git
 alias g='git'

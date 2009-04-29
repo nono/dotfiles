@@ -36,7 +36,8 @@ URxvt*termName: rxvt
 !aterm.boldFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 irssi.font:xft:Bitstream Vera Sans Mono:pixelsize=14
 !*font:xft:Monaco:pixelsize=14
-*font:xft:Bitstream Vera Sans Mono:pixelsize=14
+!*font:xft:Bitstream Vera Sans Mono:pixelsize=14
+URxvt*font:xft:Terminus
 !*faceName:-*-bitstream vera sans mono-bold-r-*-*-*-*-*-*-*-*-iso8859-1
 
 ! Curseur de la souris
