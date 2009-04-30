@@ -1,15 +1,11 @@
 require 'yaml'
 require 'irb/completion'
 
-IRB.conf[:USE_REALINE] = true
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 
 # History with readline
 HISTFILE = "~/.irb.hist"
 MAXHISTSIZE = 100
-
-# what? (gem install what_methods)
-require 'what_methods'
 
 # Wirble (gem install wirble)
 require 'wirble'
@@ -34,7 +30,9 @@ if ENV['RAILS_ENV']
   end 
 
   IRB.conf[:IRB_RC] = Proc.new do
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    Rails.logger.flush
+    Rails.logger.instance_variable_set("@log", STDOUT)
+    Rails.logger.auto_flushing = 1
     ActiveRecord::Base.instance_eval { alias :[] :find }
     define_model_find_shortcuts
   end
