@@ -1,0 +1,41 @@
+# Fonts
+Mrxvt.xft: 1
+Mrxvt.xftFont: DejaVu Sans Mono
+Mrxvt.xftSize: 10
+Mrxvt.xftAntialias: 1
+
+# Transparency
+Mrxvt.transparent: true
+Mrxvt.transparentTabbar: true
+Mrxvt.tintColor: #000000
+Mrxvt.shading: 40
+
+# Hide *bar
+Mrxvt.autohideTabbar: true
+Mrxvt.scrollBar: false
+
+# Scrolling
+Mrxvt.saveLines: 5000
+Mrxvt.scrollTtyOutputInhibit: true
+Mrxvt.scrollTtyKeypress: true
+
+# Colors
+Mrxvt.background: black
+Mrxvt.foreground: White
+Mrxvt.color0:  #333333
+Mrxvt.color1:  #e5505f
+Mrxvt.color2:  #33ff33
+Mrxvt.color3:  #ffff33
+Mrxvt.color4:  #6666ff
+Mrxvt.color5:  #963c59
+Mrxvt.color6:  #338eaa
+Mrxvt.color7:  #ffffff
+Mrxvt.color8:  #666666
+Mrxvt.color9:  #ff9999
+Mrxvt.color10: #99ff99
+Mrxvt.color11: #ffff99
+Mrxvt.color12: #80a0ff
+Mrxvt.color13: #ff99ff
+Mrxvt.color14: #71bebe
+Mrxvt.color15: #ffffff
+
