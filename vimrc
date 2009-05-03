@@ -113,6 +113,8 @@ au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
 au BufRead,BufNewFile *.txt set ft=creole
 au BufRead,BufNewFile *.rl set ft=ragel
+au BufRead,BufNewFile .mrxvtrc,mrxvtrc set ft=mrxvtrc
+au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 au BufRead,BufNewFile *.t2t set ft=txt2tags
 au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu

@@ -162,6 +162,11 @@
     <keybind key="W-KP_2">        <action name="MoveToEdgeSouth"/>     </keybind>
     <keybind key="W-KP_3">        <action name="MoveToEdgeSouthEast"/> </keybind>
 
+    <keybind key="S-W-KP_8">      <action name="GrowToEdgeNorth"/>     </keybind>
+    <keybind key="S-W-KP_4">      <action name="GrowToEdgeWest"/>      </keybind>
+    <keybind key="S-W-KP_6">      <action name="GrowToEdgeEast"/>      </keybind>
+    <keybind key="S-W-KP_2">      <action name="GrowToEdgeSouth"/>     </keybind>
+
     <keybind key="W-KP_0">        <action name="Maximize"/>            </keybind>
     <keybind key="W-KP_Decimal">  <action name="Iconify"/>             </keybind>
     <keybind key="W-KP_Enter">    <action name="ToggleDecorations"/>   </keybind>
@@ -581,6 +586,10 @@
       <desktop>1</desktop>
       <maximized>yes</maximized>
     </application>
+    <application name="exaile.py">
+      <desktop>1</desktop>
+      <maximized>yes</maximized>
+    </application>
 
     <!-- Desktop 2 -->
     <application name="gruik">
@@ -602,6 +611,14 @@
     <application name="codaz">
       <desktop>3</desktop>
       <position><x>0</x><y>0</y></position>
+      <decor>no</decor>
+    </application>
+    <application name="gvim">
+      <position><x>-0</x><y>0</y></position>
+      <maximized>Vertical</maximized>
+    </application>
+    <application name="urxvt">
+      <decor>no</decor>
     </application>
 
     <!-- Desktop 4 -->
@@ -609,15 +626,8 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
-    <application name="Navigator">
-      <desktop>4</desktop>
-      <maximized>yes</maximized>
-    </application>
-    <application class="Firefox">
-      <desktop>4</desktop>
-      <maximized>yes</maximized>
-    </application>
-    <application role="browser">
+	<!-- See http://wiki.archlinux.org/index.php/Openbox#Firefox.2FGran_Paradiso_application_rules -->
+	<application class="Firefox*">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
