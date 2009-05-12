@@ -7,6 +7,7 @@ gnome-settings-daemon &
 xscreensaver -no-splash &> /dev/null &
 xset -b
 numlockx on
+alsactl restore
 # xmodmap ~/config/xmodmaprc
 # xmodmap -e "pointer = 1 2 3 6 7 4 5"
 Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg &
