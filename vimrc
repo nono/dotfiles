@@ -126,7 +126,8 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
     \     set ft=html.templeet nospell |
     \ endif
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
-au BufRead,BufNewFile *.haml set ft=haml " http://www.vim.org/scripts/script.php?script_id=1773
+au BufRead,BufNewFile *.haml set ft=haml
+au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript.jquery
 
 
@@ -172,9 +173,6 @@ source $HOME/.vim/abbrev.vim
 " Commentaires
 vmap / :s#^#//\ #<CR>gv:s#^//\ //\ ##<CR>
 vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
-
-" Modèles pour les nouveaux fichiers
-au BufNewFile * silent :exe("0r! ~/.vim/skeleton.rb %:p " . &filetype)
 
 " Sauvegarder automatiquement les feuilles de styles
 au FocusLost *.css :up

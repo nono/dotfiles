@@ -1,1 +1,0 @@
-/home/nono/dev/merb.vim/ftplugin/feature.vim

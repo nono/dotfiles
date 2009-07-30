@@ -114,6 +114,3 @@ function parse_git_branch {
 alias svnclear='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
-# Android
-export PATH="$PATH:/home/nono/Desktop/android/tools"
-

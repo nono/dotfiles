@@ -1,0 +1,1 @@
+/home/nono/dev/vim-haml/ftplugin/sass.vim

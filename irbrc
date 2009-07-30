@@ -34,7 +34,7 @@ if ENV['RAILS_ENV']
     Rails.logger.instance_variable_set("@log", STDOUT)
     Rails.logger.auto_flushing = 1
     ActiveRecord::Base.instance_eval { alias :[] :find }
-    define_model_find_shortcuts
+    #define_model_find_shortcuts
   end
 
 end
