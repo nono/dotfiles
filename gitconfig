@@ -20,7 +20,11 @@
 	last = log -1 HEAD
 [diff]
 	renames = true
+[merge]
+	tool = meld
 [giggle]
 	compact-mode = true
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
+[branch]
+	autosetupmerge = true

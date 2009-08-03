@@ -631,6 +631,14 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
+	<application role="browser">
+      <desktop>4</desktop>
+      <maximized>yes</maximized>
+    </application>
+	<application class="Shiretoko">
+      <desktop>4</desktop>
+      <maximized>yes</maximized>
+    </application>
     <application class="Thunderbird-bin">
       <desktop>4</desktop>
       <maximized>yes</maximized>
