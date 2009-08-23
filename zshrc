@@ -20,9 +20,7 @@ HISTFILE=~/.zsh_hist
 HISTSIZE=5000
 SAVEHIST=1000
 
-# VI bindings
 # Use 'cat -v' to obtain the keycodes
-# bindkey -v
 bindkey "^[[2~" overwrite-mode       ## Inser
 bindkey "^[[3~" delete-char          ## Del
 bindkey "^[[7~" beginning-of-line    ## Home
@@ -44,11 +42,13 @@ setopt NO_BG_NICE
 setopt NO_BEEP
 setopt PROMPT_SUBST
 
+# Completion
+fpath=(~/.zsh/Completion $fpath)
 zmodload -i zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
-
+autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit
 
@@ -91,7 +91,7 @@ export RUBYOPT="-rubygems"
 export GEM_HOME="$HOME/gem"
 export RUBYLIB="$HOME/lib:./lib:./ext"
 export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
-alias cdgem="cd $GEM_HOME/gems"
+hash -d gem="$GEM_HOME/gems"
 
 # Rails
 alias sc="./script/console"
