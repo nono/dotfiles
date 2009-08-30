@@ -19,12 +19,12 @@
 	ignored = ls-files --others
 	oneline = log --pretty=oneline
 	last = log -1 HEAD
+	out = log origin/master..HEAD
 [diff]
 	renames = true
 [merge]
 	tool = meld
 [giggle]
-	compact-mode = true
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
 [branch]

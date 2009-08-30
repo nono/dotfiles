@@ -1,5 +1,5 @@
 # Env
-export PS1='%~$(parse_git_branch)%# '
+export PS1='${SSH_CONNECTION+"%n@%m:"}%~$(parse_git_branch)%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=vim

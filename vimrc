@@ -184,6 +184,8 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 " set tags+=../tags
 
 " Local
-source ~/.vimrc.local
+if filereadable(".vimrc.local")
+	source ~/.vimrc.local
+endif
 
 " }}}
