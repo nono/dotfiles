@@ -71,6 +71,7 @@ alias grep='grep --color'
 alias ack='ack-grep'
 alias ftp='lftp'
 alias mplayer='mplayer -fs'
+alias serve='thin -A file start'
 
 alias cd..='cd ..'
 alias sl=ls

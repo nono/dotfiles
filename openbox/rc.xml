@@ -582,10 +582,6 @@
 -->
 
     <!-- Desktop 1 -->
-    <application name="amarok">
-      <desktop>1</desktop>
-      <maximized>yes</maximized>
-    </application>
     <application name="exaile.py">
       <desktop>1</desktop>
       <maximized>yes</maximized>
@@ -622,7 +618,7 @@
     </application>
 
     <!-- Desktop 4 -->
-    <application name="liferea-bin">
+    <application name="liferea">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
@@ -632,10 +628,6 @@
       <maximized>yes</maximized>
     </application>
 	<application role="browser">
-      <desktop>4</desktop>
-      <maximized>yes</maximized>
-    </application>
-	<application class="Shiretoko">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>

@@ -2,6 +2,7 @@ TODO
 *.swp
 misc/*
 vim/spell/*
+vim/.netrwhist
 gajim/avatars/*
 gajim/gajim.pid
 gajim/logs.db

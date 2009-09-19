@@ -6,10 +6,9 @@ HostName metz
 User bruno
 Port 2222
 
-Host ror
-HostName localhost
-User ror
-Port 2200
+Host rubyflow
+Hostname knut.bearstech.com
+User rubyflow
 
 
 ###############
@@ -18,10 +17,30 @@ Port 2200
 Host linuxfr
 HostName web.linuxfr.org
 
+Host zobe
+HostName zobe.linuxfr.org
 
-########
-# AF83 #
-########
-Host frisket
-HostName frisket.bearstech.com
-User noumba-dev
+
+###############
+#    AF83     #
+###############
+Host sfrmusic
+HostName sfrjt-front.bearstech.com
+user sfrmusic
+
+Host upfactory
+HostName upfactory.com
+User upfactory
+
+Host footrep-test
+HostName footrep-test.af83.com
+User footrep
+
+Host footrep
+HostName footrep-dev.af83.com
+User footrep
+
+Host sfrfoot
+HostName footrep.bearstech.com
+User sfrfoot
+

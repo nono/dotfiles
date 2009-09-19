@@ -29,3 +29,5 @@
 	main-window-geometry = 0x0+0+0
 [branch]
 	autosetupmerge = true
+[push]
+	default = current
