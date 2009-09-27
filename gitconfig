@@ -17,9 +17,9 @@
 	both = diff HEAD
 	unstage = reset HEAD --
 	ignored = ls-files --others
-	oneline = log --pretty=oneline
+	oneline = log --oneline
 	last = log -1 HEAD
-	out = log origin/master..HEAD
+	out = log --oneline origin/master..HEAD
 [diff]
 	renames = true
 [merge]

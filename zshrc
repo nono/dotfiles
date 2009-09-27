@@ -80,6 +80,7 @@ alias sl=ls
 alias ai='sudo aptitude install'
 alias au='sudo aptitude update'
 alias ad='sudo aptitude dist-upgrade'
+alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
 # Ruby
@@ -112,6 +113,6 @@ function parse_git_branch {
 }
 
 # Svn
-alias svnclear='find . -name .svn -print0 | xargs -0 rm -rf'
+alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
