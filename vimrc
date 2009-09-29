@@ -108,7 +108,7 @@ map <F12> :runtime! syntax/2html.vim<CR>
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-au BufRead,BufNewFile nginx.* set ft=nginx
+au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
 au BufRead,BufNewFile *.txt set ft=creole
