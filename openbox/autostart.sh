@@ -1,13 +1,14 @@
+xprop -root -remove _NET_NUMBER_OF_DESKTOPS -remove _NET_DESKTOP_NAMES -remove _NET_CURRENT_DESKTOP
+
 # Run the system-wide support stuff
 . $GLOBALAUTOSTART
 
 # Make GTK apps look and behave how they were set up in the gnome config tools
 gnome-settings-daemon &
 # nm-applet --sm-disable &
-xscreensaver -no-splash &> /dev/null &
 xset -b
 numlockx on
-alsactl restore
+# alsactl restore
 # xmodmap ~/config/xmodmaprc
 # xmodmap -e "pointer = 1 2 3 6 7 4 5"
 Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg &

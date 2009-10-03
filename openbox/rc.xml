@@ -631,6 +631,10 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
+    <application name="gecko">
+      <desktop>4</desktop>
+      <maximized>yes</maximized>
+    </application>
     <application class="Thunderbird-bin">
       <desktop>4</desktop>
       <maximized>yes</maximized>
