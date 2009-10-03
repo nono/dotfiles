@@ -50,7 +50,7 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
-compinit
+compinit -u
 
 source /etc/zsh_command_not_found
 
