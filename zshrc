@@ -52,7 +52,9 @@ autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
 
+# Misc
 source /etc/zsh_command_not_found
+cdpath=(~ ~/dev)
 
 # Aliases
 alias -g L='|less'
@@ -101,6 +103,7 @@ alias ss="./script/server thin"
 alias sd="./script/dbconsole"
 alias sg="./script/generate"
 alias mi='rake db:migrate'
+alias -s feature=”cucumber”
 
 # Git
 alias g='git'
