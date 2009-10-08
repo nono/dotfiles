@@ -5,11 +5,9 @@ export DIRSTACKSIZE=16
 export EDITOR=vim
 export PAGER=less
 export BROWSER=w3m
-export PATH=/opt/bin:$PATH
-export MANPATH=/opt/share/man:$MANPATH
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
-# eval `dircolors ~/.dir_colors`
+cdpath=(~ ~/dev)
 umask 022
 
 # disable XON/XOFF flow control (^s/^q)
@@ -48,13 +46,12 @@ zmodload -i zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
+zstyle ':completion::complete:cd::' tag-order local-directories path-directories
 autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
 
-# Misc
 source /etc/zsh_command_not_found
-cdpath=(~ ~/dev)
 
 # Aliases
 alias -g L='|less'
