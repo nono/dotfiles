@@ -82,6 +82,9 @@ alias ad='sudo aptitude dist-upgrade'
 alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
+# Python
+export PYTHONPATH="$HOME/py:$PYTHONPATH"
+
 # Ruby
 export RI="--system -Tf ansi"
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"

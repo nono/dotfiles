@@ -18,7 +18,7 @@
 	unstage = reset HEAD --
 	ignored = ls-files --others
 	oneline = log --oneline
-	last = log -1 HEAD
+	last = log --oneline -1 HEAD
 	out = log --oneline origin/master..HEAD
 [diff]
 	renames = true

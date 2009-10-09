@@ -10,6 +10,10 @@ Host rubyflow
 Hostname knut.bearstech.com
 User rubyflow
 
+Host trollometre
+Hostname nere.bearstech.com
+User trollometre
+
 
 ###############
 # LinuxFR.org #
