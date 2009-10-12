@@ -99,7 +99,7 @@ hash -d gem="$GEM_HOME/gems"
 
 # Rails
 alias sc="./script/console"
-alias ss="./script/server thin"
+alias ss="unicorn_rails"
 alias sd="./script/dbconsole"
 alias sg="./script/generate"
 alias mi='rake db:migrate'

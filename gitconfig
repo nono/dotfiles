@@ -27,6 +27,8 @@
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
+	main-window-view = HistoryView
+	file-view-vpane-position = 523
 [branch]
 	autosetupmerge = true
 [push]
