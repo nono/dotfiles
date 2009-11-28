@@ -1,6 +1,6 @@
 ! ù instead of û
-keycode 30 = u U ucircumflex Ucircumflex ugrave Ugrave
-keycode 46 = l L l L bar bar
+keycode 30 = u U u U ugrave Ugrave ugrave Ugrave
+keycode 46 = l L l L bar bar bar bar
 
 ! No insecable space
 keycode 65 = space space space space space

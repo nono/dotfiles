@@ -71,6 +71,8 @@ alias ack='ack-grep'
 alias ftp='lftp'
 alias mplayer='mplayer -fs'
 alias serve='thin -A file start'
+alias mysql='mysql --select_limit=1000'
+alias gvim='2>/dev/null gvim'
 
 alias cd..='cd ..'
 alias sl=ls
@@ -99,7 +101,7 @@ hash -d gem="$GEM_HOME/gems"
 
 # Rails
 alias sc="./script/console"
-alias ss="unicorn_rails"
+alias ss="./script/server thin"
 alias sd="./script/dbconsole"
 alias sg="./script/generate"
 alias mi='rake db:migrate'
