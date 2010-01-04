@@ -73,6 +73,7 @@ alias mplayer='mplayer -fs'
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias gvim='2>/dev/null gvim'
+alias spotify='wine "C:\Program Files\Spotify\spotify.exe"'
 
 alias cd..='cd ..'
 alias sl=ls
@@ -83,6 +84,11 @@ alias au='sudo aptitude update'
 alias ad='sudo aptitude dist-upgrade'
 alias arm='sudo aptitude remove'
 alias as='aptitude search'
+
+# Google's Go
+export GOROOT=$HOME/go
+export GOARCH=386
+export GOOS=linux
 
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"

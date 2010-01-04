@@ -591,12 +591,12 @@
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>-10</y></position>
+      <position><x>0</x><y>-1</y></position>
     </application>
     <application name="irssi">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>-10</x><y>10</y></position>
+      <position><x>-1</x><y>0</y></position>
     </application>
     <application name="gajim.py">
       <desktop>2</desktop>

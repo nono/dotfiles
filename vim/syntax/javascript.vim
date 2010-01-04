@@ -1,0 +1,1 @@
+/home/nono/dev/vim-javascript/syntax/javascript.vim

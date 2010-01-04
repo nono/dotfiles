@@ -20,6 +20,7 @@
 	oneline = log --oneline
 	last = log --oneline -1 HEAD
 	out = log --oneline origin/master..HEAD
+	wdiff = diff --color-words
 [diff]
 	renames = true
 [merge]
@@ -32,3 +33,5 @@
 	autosetupmerge = true
 [push]
 	default = current
+[github]
+	user = nono
