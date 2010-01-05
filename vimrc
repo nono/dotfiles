@@ -109,6 +109,7 @@ au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
+au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
