@@ -89,6 +89,7 @@ alias as='aptitude search'
 export GOROOT=$HOME/go
 export GOARCH=386
 export GOOS=linux
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.8'
 
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"
