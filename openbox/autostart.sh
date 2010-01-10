@@ -18,7 +18,8 @@ Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg &
 firefox &
 thunderbird &
 liferea &
-gajim &
+#gajim &
+gwibber &
 exaile &
 urxvt -name irssi -title irssi -e irssi &
 urxvt -name gruik -title gruik &

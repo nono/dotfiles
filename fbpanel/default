@@ -66,6 +66,12 @@ Plugin {
             tooltip = Firefox web browser
             action = firefox
         }
+        button {
+            icon = spotify
+            image = /home/nono/.icons/spotify.png
+            tooltip = Spotify
+            action = wine "C:\Program Files\Spotify\spotify.exe"
+        }
     }
 }
 
@@ -169,5 +175,4 @@ Plugin {
         }
     }
 }
-
 
