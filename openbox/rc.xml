@@ -639,7 +639,7 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
-    <application class="gwibber">
+    <application name="Gwibber">
       <desktop>4</desktop>
     </application>
   </applications>
