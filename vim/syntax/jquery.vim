@@ -1,1 +1,1 @@
-/home/nono/dev/merb.vim/syntax/jquery.vim
+../../vendor/merb.vim/syntax/jquery.vim

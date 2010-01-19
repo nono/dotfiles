@@ -1,1 +1,1 @@
-/home/nono/dev/vim-markdown/syntax/markdown.vim
+../../vendor/vim-markdown/syntax/markdown.vim

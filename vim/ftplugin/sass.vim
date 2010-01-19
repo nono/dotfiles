@@ -1,1 +1,1 @@
-/home/nono/dev/vim-haml/ftplugin/sass.vim
+../../vendor/vim-haml/ftplugin/sass.vim

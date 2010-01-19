@@ -1,1 +1,1 @@
-/home/nono/dev/merb.vim/after/ftplugin/eruby.vim
+../../../vendor/merb.vim/after/ftplugin/eruby.vim

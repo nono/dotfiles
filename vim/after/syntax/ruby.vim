@@ -1,1 +1,1 @@
-/home/nono/dev/merb.vim/after/syntax/ruby.vim
+../../../vendor/merb.vim/after/syntax/ruby.vim

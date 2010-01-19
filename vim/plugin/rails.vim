@@ -1,1 +1,1 @@
-/home/nono/dev/vim-rails/plugin/rails.vim
+../../vendor/vim-rails/plugin/rails.vim

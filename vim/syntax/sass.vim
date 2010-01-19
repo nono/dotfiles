@@ -1,1 +1,1 @@
-/home/nono/dev/vim-haml/syntax/sass.vim
+../../vendor/vim-haml/syntax/sass.vim

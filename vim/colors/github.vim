@@ -1,1 +1,1 @@
-/home/nono/dev/github_vim_theme/github.vim
+../../vendor/github_vim_theme/github.vim

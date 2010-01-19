@@ -1,1 +1,1 @@
-/home/nono/dev/vim-haml/ftplugin/haml.vim
+../../vendor/vim-haml/ftplugin/haml.vim

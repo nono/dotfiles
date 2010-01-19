@@ -1,1 +1,1 @@
-/home/nono/dev/vim-haml/indent/haml.vim
+../../vendor/vim-haml/indent/haml.vim

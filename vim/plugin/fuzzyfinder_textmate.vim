@@ -1,1 +1,1 @@
-/home/nono/dev/fuzzyfinder_textmate/fuzzyfinder_textmate.vim
+../../vendor/fuzzyfinder_textmate/fuzzyfinder_textmate.vim

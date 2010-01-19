@@ -1,1 +1,1 @@
-/home/nono/dev/vim-javascript/indent/javascript.vim
+../../vendor/vim-javascript/indent/javascript.vim
