@@ -130,7 +130,7 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
-au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript.jquery
+au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
 
 " }}}
