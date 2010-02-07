@@ -107,10 +107,10 @@ export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
 hash -d gem="$GEM_HOME/gems"
 
 # Rails
-alias sc="./script/console"
-alias ss="./script/server thin"
-alias sd="./script/dbconsole"
-alias sg="./script/generate"
+alias sc="rails console"
+alias ss="rails server thin"
+alias sd="rails dbconsole"
+alias sg="rails generate"
 alias mi='rake db:migrate'
 alias -s feature=”cucumber”
 
