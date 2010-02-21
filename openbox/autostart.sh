@@ -20,7 +20,7 @@ thunderbird &
 liferea &
 #gajim &
 gwibber &
-exaile &
+#exaile &
 urxvt -name irssi -title irssi -e irssi &
 urxvt -name gruik -title gruik &
 urxvt -name codaz -title codaz &

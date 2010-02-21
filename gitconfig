@@ -21,6 +21,8 @@
 	last = log --oneline -1 HEAD
 	out = log --oneline origin/master..HEAD
 	wdiff = diff --color-words
+	info = remote -v
+	initial = "!sh -c 'git init && git add . && git ci -m \"Initial import\"'"
 [diff]
 	renames = true
 [merge]

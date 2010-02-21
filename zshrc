@@ -111,7 +111,8 @@ alias sc="rails console"
 alias ss="rails server thin"
 alias sd="rails dbconsole"
 alias sg="rails generate"
-alias mi='rake db:migrate'
+alias mi="rake db:migrate"
+alias wa="watchr spec/*.watchr"
 alias -s feature=”cucumber”
 
 # Git
