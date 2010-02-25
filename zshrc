@@ -98,6 +98,11 @@ export PYTHONPATH="$HOME/py:$PYTHONPATH"
 export RI="--system -Tf ansi"
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
+function rvm {
+  unset rvm
+  source "$HOME/.rvm/scripts/rvm"
+  rvm $*
+}
 
 # Gems
 export RUBYOPT="-rubygems"
