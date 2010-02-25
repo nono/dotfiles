@@ -83,30 +83,24 @@ chatnets = {
 
 channels = (
   { name = "#fr-clan"; chatnet = "qnet"; autojoin = "Yes"; },
-  {
-    name = "#frprivate";
-    chatnet = "qnet";
-    autojoin = "No";
-  },
-  {
-    name = "#cs-ligue";
-    chatnet = "qnet";
-    autojoin = "No";
-  },
+  { name = "#frprivate"; chatnet = "qnet"; autojoin = "No"; },
+  { name = "#cs-ligue"; chatnet = "qnet"; autojoin = "No"; },
   { name = "#flf.fr"; chatnet = "qnet"; autojoin = "No"; },
   { name = "#rab"; chatnet = "qnet"; autojoin = "No"; },
   { name = "#RaB.et"; chatnet = "qnet"; autojoin = "No"; },
   { name = "#aAa@#NoNo"; chatnet = "qnet"; autojoin = "No"; },
   { name = "#insomnia"; chatnet = "iie"; autojoin = "Yes"; },
   { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#rubyfrance"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#april"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#aprilchat"; chatnet = "geeknode"; autojoin = "Yes"; },
   { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#ResIIE"; chatnet = "iie"; autojoin = "No"; },
-  { name = "#taggle"; chatnet = "iie"; autojoin = "Yes"; },
-  { name = "#ruby"; chatnet = "iie"; autojoin = "Yes"; },
+  { name = "#taggle"; chatnet = "iie"; autojoin = "No"; },
   { name = "#lunix"; chatnet = "iie"; autojoin = "Yes"; },
-  { name = "#gentoo"; chatnet = "iie"; autojoin = "Yes"; }
+  { name = "#gentoo"; chatnet = "iie"; autojoin = "No"; }
 );
 
 aliases = {
@@ -294,7 +288,7 @@ settings = {
     bell_beeps = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     beep_when_away = "yes";
-	beep_when_window_active = "no";
+    beep_when_window_active = "no";
     term_charset = "UTF-8";
   };
   "irc/core" = { skip_motd = "yes"; };
@@ -360,11 +354,11 @@ windows = {
   };
   3 = {
     items = (
-      { 
+      {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#taggle";
-        tag = "iie";
+        name = "#april";
+        tag = "freenode";
       }
     );
   };
@@ -373,8 +367,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#gentoo";
-        tag = "iie";
+        name = "#rubyfrance";
+        tag = "freenode";
       }
     );
   };
@@ -383,24 +377,24 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#ruby";
-        tag = "iie";
+        name = "#uucpssh";
+        tag = "freenode";
       }
     );
   };
   6 = {
     items = (
-      { 
+      {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#uucpssh";
+        name = "#LinuxFr.org";
         tag = "freenode";
       }
     );
   };
   7 = {
     items = (
-      { 
+      {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#kwartoo";
@@ -410,10 +404,10 @@ windows = {
   };
   8 = {
     items = (
-      { 
+      {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#april";
+        name = "#lifehacking";
         tag = "freenode";
       }
     );
