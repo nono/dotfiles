@@ -110,6 +110,7 @@ au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
 au BufRead,BufNewFile *.mustache set ft=mustache
+au BufRead,BufNewFile Gemfile set ft=ruby
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
@@ -177,7 +178,7 @@ vmap / :s#^#//\ #<CR>gv:s#^//\ //\ ##<CR>
 vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
 
 " Sauvegarder automatiquement les feuilles de styles
-au FocusLost *.css :up
+au FocusLost *.css,*.sass :up
 
 " SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
