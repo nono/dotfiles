@@ -134,3 +134,9 @@ function parse_git_branch {
 alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
+# Vagrant
+alias va="vagrant"
+
+# Node.js
+alias nrepl="rlwrap node-repl"
+

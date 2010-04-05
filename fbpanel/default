@@ -56,10 +56,9 @@ Plugin {
     type = launchbar
     config {
         button {
-            icon = terminal
-            image = /usr/share/icons/Tango/32x32/apps/terminal.png
-            tooltip = Terminal
-            action = urxvt
+            icon = gwibber
+            tooltip = Social Broadcast messages
+            action = gwibber
         }
         button {
             icon = mozilla-firefox

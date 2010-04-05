@@ -2,7 +2,7 @@
 . $GLOBALAUTOSTART
 
 # Make GTK apps look and behave how they were set up in the gnome config tools
-gnome-settings-daemon &
+# gnome-settings-daemon &
 # nm-applet --sm-disable &
 xset -b
 numlockx on
@@ -19,7 +19,7 @@ firefox &
 thunderbird &
 liferea &
 #gajim &
-gwibber &
+gwibber-service &
 #exaile &
 urxvt -name irssi -title irssi -e irssi &
 urxvt -name gruik -title gruik &

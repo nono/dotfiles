@@ -1,54 +1,15 @@
 servers = (
   {
-    address = "localhost";
-    chatnet = "bitlbee";
-    port = "6667";
-    use_ssl = "no";
-    autoconnect = "no";
-  },
-  {
-    address = "irc.geeknode.org";
-    chatnet = "geeknode";
-    port = "6667";
-    use_ssl = "no";
-    autoconnect = "no";
-  },
-  {
     address = "chat.freenode.org";
     chatnet = "freenode";
     port = "6667";
     use_ssl = "no";
     autoconnect = "yes";
     password = "XXX";
-  },
-  {
-    address = "irc.quakenet.org";
-    chatnet = "qnet";
-    port = "6667";
-    use_ssl = "no";
-    autoconnect = "no";
-  },
-  {
-    address = "irc.iiens.net";
-    chatnet = "iie";
-    port = "7000";
-    use_ssl = "yes";
-    autoconnect = "yes";
-    no_proxy = "yes";
-  },
-  {
-    address = "irc.estu.iiens.net";
-    chatnet = "iie";
-    port = "6667";
-    use_ssl = "no";
-    autoconnect = "no";
-    no_proxy = "yes";
   }
 );
 
 chatnets = {
-  bitlbee = { type = "IRC"; };
-  geeknode = { type = "IRC"; };
   freenode = {
     type = "IRC";
     nick = "N`";
@@ -59,93 +20,35 @@ chatnets = {
     max_whois = "4";
     max_query_chans = "5";
   };
-  iie = {
-    type = "IRC";
-    nick = "N`";
-    realname = "N`";
-    max_kicks = "4";
-    max_modes = "3";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  qnet = {
-    type = "IRC";
-    nick = "_NoNo_";
-    realname = "_NoNo_";
-    max_kicks = "4";
-    max_modes = "3";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
 };
 
 channels = (
-  { name = "#fr-clan"; chatnet = "qnet"; autojoin = "Yes"; },
-  { name = "#frprivate"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#cs-ligue"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#flf.fr"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#rab"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#RaB.et"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#aAa@#NoNo"; chatnet = "qnet"; autojoin = "No"; },
-  { name = "#insomnia"; chatnet = "iie"; autojoin = "Yes"; },
+  { name = "#af83"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#bearstech"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#rubyfrance"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#ruby.fr"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#april"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#aprilchat"; chatnet = "geeknode"; autojoin = "Yes"; },
   { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#ResIIE"; chatnet = "iie"; autojoin = "No"; },
-  { name = "#taggle"; chatnet = "iie"; autojoin = "No"; },
-  { name = "#lunix"; chatnet = "iie"; autojoin = "Yes"; },
-  { name = "#gentoo"; chatnet = "iie"; autojoin = "No"; }
+  { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
   J = "join";
-  WJOIN = "join -window";
-  WQUERY = "query -window";
-  LEAVE = "part";
-  BYE = "quit";
   EXIT = "quit";
-  SIGNOFF = "quit";
-  DESCRIBE = "action";
   DATE = "time";
   HOST = "userhost";
-  LAST = "lastlog";
   SAY = "msg *";
-  WI = "whois";
-  WII = "whois $0 $0";
-  WW = "whowas";
   W = "who";
   N = "names";
   M = "msg";
   T = "topic";
   C = "clear";
-  CL = "clear";
   K = "kick";
   KB = "kickban";
-  KN = "knockout";
-  BANS = "ban";
   B = "ban";
-  MUB = "unban *";
-  UB = "unban";
-  IG = "ignore";
-  UNIG = "unignore";
-  SB = "scrollback";
-  UMODE = "mode $N";
   WC = "window close";
-  WN = "window new hide";
-  SV = "say Irssi $J ($V) - http://irssi.org/";
-  GOTO = "sb goto";
-  CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
-  UPTIME = "eval exec - expr `date +%s` - \\$F | awk '{print \"Irssi uptime: \"int(\\\\\\$1/3600/24)\"d \"int(\\\\\\$1/3600%24)\"h \"int(\\\\\\$1/60%60)\"m \"int(\\\\\\$1%60)\"s\" }'";
-  CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
-  SBAR = "STATUSBAR";
-  INVITELIST = "mode $C +I";
   Q = "QUERY";
 };
 
@@ -317,6 +220,8 @@ keyboard = (
   { key = "^[[19~"; id = "key"; data = "F8"; },
   { key = "^[[20~"; id = "key"; data = "F9"; },
   { key = "^[[21~"; id = "key"; data = "F10"; },
+  { key = "^[[30~"; id = "key"; data = "F11"; },
+  { key = "^[[31~"; id = "key"; data = "F12"; },
   { key = "F1"; id = "command"; data = "window 1"; },
   { key = "F2"; id = "command"; data = "window 2"; },
   { key = "F3"; id = "command"; data = "window 3"; },
@@ -337,8 +242,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#insomnia";
-        tag = "iie";
+        name = "#af83";
+        tag = "freenode";
       }
     );
   };
@@ -347,8 +252,8 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#lunix";
-        tag = "iie";
+        name = "#bearstech";
+        tag = "freenode";
       }
     );
   };
@@ -367,7 +272,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#rubyfrance";
+        name = "#ruby.fr";
         tag = "freenode";
       }
     );

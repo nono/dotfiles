@@ -111,7 +111,7 @@ au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
 au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.coffee set ft=coffee
-au BufRead,BufNewFile Gemfile set ft=ruby
+au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile set ft=ruby
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
@@ -132,6 +132,7 @@ au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
+au BufRead,BufNewFile *.scss set ft=css
 au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
 
