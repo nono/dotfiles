@@ -165,6 +165,9 @@ let g:SuperTabDefaultCompletionType = "<C-P>"
 " http://github.com/jamis/fuzzyfinder_textmate/tree/master
 let g:fuzzy_match_limit = 100
 
+" SQL autocomplete
+let g:ftplugin_sql_omni_key_left  = '<C-Left>'
+let g:ftplugin_sql_omni_key_right = '<C-Right>'
 
 " }}}
 " Autres {{{ "

@@ -86,10 +86,10 @@ alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
 # Google's Go
-export GOROOT=$HOME/go
-export GOARCH=386
-export GOOS=linux
-zstyle ':completion:*:(all-|)files' ignored-patterns '*.8'
+#export GOROOT=$HOME/go
+#export GOARCH=386
+#export GOOS=linux
+#zstyle ':completion:*:(all-|)files' ignored-patterns '*.8'
 
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"
@@ -117,7 +117,7 @@ alias ss="rails server thin"
 alias sd="rails dbconsole"
 alias sg="rails generate"
 alias mi="rake db:migrate"
-alias wa="watchr spec/*.watchr"
+alias sp="spec spec"
 alias -s feature=”cucumber”
 
 # Git
@@ -138,5 +138,6 @@ alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 alias va="vagrant"
 
 # Node.js
+export PATH="$HOME/.seeds/bin:$PATH"
 alias nrepl="rlwrap node-repl"
 
