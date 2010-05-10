@@ -6,6 +6,10 @@ HostName metz
 User bruno
 Port 2222
 
+Host vbox
+HostName localhost
+Port 2222
+
 Host rubyflow
 Hostname knut.bearstech.com
 User rubyflow
@@ -23,6 +27,9 @@ HostName web.linuxfr.org
 
 Host zobe
 HostName zobe.linuxfr.org
+
+Host alpha
+HostName 88.191.250.107
 
 
 ###############
@@ -48,3 +55,6 @@ Host sfrfoot
 HostName footrep.bearstech.com
 User sfrfoot
 
+Host retrospectiva
+HostName retrospectiva.af83.com
+User retrospectiva

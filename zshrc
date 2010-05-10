@@ -139,5 +139,6 @@ alias va="vagrant"
 
 # Node.js
 export PATH="$HOME/.seeds/bin:$PATH"
+export NODE_PATH="./lib"
 alias nrepl="rlwrap node-repl"
 

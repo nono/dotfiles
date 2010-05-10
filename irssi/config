@@ -28,7 +28,7 @@ channels = (
   { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#ruby.fr"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#april"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#node.js"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; }
 );
@@ -36,6 +36,7 @@ channels = (
 aliases = {
   J = "join";
   EXIT = "quit";
+  RECO = "reconnect";
   DATE = "time";
   HOST = "userhost";
   SAY = "msg *";
@@ -262,7 +263,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#april";
+        name = "#node.js";
         tag = "freenode";
       }
     );
