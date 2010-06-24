@@ -74,6 +74,8 @@ alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias gvim='2>/dev/null gvim'
 alias spotify='wine "C:\Program Files\Spotify\spotify.exe"'
+alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
+alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 
 alias cd..='cd ..'
 alias sl=ls
@@ -85,31 +87,13 @@ alias ad='sudo aptitude dist-upgrade'
 alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
-# Google's Go
-#export GOROOT=$HOME/go
-#export GOARCH=386
-#export GOOS=linux
-#zstyle ':completion:*:(all-|)files' ignored-patterns '*.8'
-
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"
 
 # Ruby
-export RI="--system -Tf ansi"
-alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
-alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
-function rvm {
-  unset rvm
-  source "$HOME/.rvm/scripts/rvm"
-  rvm $*
-}
-
-# Gems
-export RUBYOPT="-rubygems"
-export GEM_HOME="$HOME/gem"
-export RUBYLIB="$HOME/lib:./lib:./ext"
-export PATH="$HOME/bin:$GEM_HOME/bin:$PATH"
-hash -d gem="$GEM_HOME/gems"
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+export PATH="$HOME/bin:$PATH"
+hash -d gem="$(rvm gemdir)/gems"
 
 # Rails
 alias sc="rails console"
@@ -135,10 +119,6 @@ function parse_git_branch {
 alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
-# Vagrant
-alias va="vagrant"
-
 # Node.js
 export PATH="$HOME/.seeds/bin:$PATH"
 export NODE_PATH="$HOME/vendor/Mu/lib:./lib"
-
