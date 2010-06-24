@@ -28,7 +28,7 @@ channels = (
   { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#ruby.fr"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#node.js"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#node.js"; chatnet = "freenode"; autojoin = "No"; },
   { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; }
 );

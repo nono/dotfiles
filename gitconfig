@@ -33,6 +33,7 @@
 	main-window-view = HistoryView
 [branch]
 	autosetupmerge = true
+	autosetuprebase = always
 [push]
 	default = current
 [github]

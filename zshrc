@@ -119,6 +119,7 @@ alias sg="rails generate"
 alias mi="rake db:migrate"
 alias sp="spec spec"
 alias -s feature=”cucumber”
+alias notes="ack 'TODO|FIXME|XXX|HACK' --ignore-dir=tmp --ignore-dir=log"
 
 # Git
 alias g='git'
@@ -139,6 +140,5 @@ alias va="vagrant"
 
 # Node.js
 export PATH="$HOME/.seeds/bin:$PATH"
-export NODE_PATH="./lib"
-alias nrepl="rlwrap node-repl"
+export NODE_PATH="$HOME/vendor/Mu/lib:./lib"
 
