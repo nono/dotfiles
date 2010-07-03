@@ -1,11 +1,9 @@
 require 'irb/completion'
 require 'irb/ext/save-history'
 
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-
 # History with readline
 HISTFILE = "~/.irb.hist"
-MAXHISTSIZE = 100
+MAXHISTSIZE = 200
 
 # Wirble (gem install wirble)
 begin

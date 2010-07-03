@@ -93,6 +93,8 @@ export PYTHONPATH="$HOME/py:$PYTHONPATH"
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 export PATH="$HOME/bin:$PATH"
+export RUBYOPT="rubygems"
+export RUBYLIB="./lib"
 hash -d gem="$(rvm gemdir)/gems"
 
 # Rails
@@ -101,7 +103,7 @@ alias ss="rails server thin"
 alias sd="rails dbconsole"
 alias sg="rails generate"
 alias mi="rake db:migrate"
-alias sp="spec spec"
+alias sp="rspec spec"
 alias -s feature=”cucumber”
 alias notes="ack 'TODO|FIXME|XXX|HACK' --ignore-dir=tmp --ignore-dir=log"
 
