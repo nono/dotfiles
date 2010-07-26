@@ -8,7 +8,7 @@
 	interactive = auto
 [alias]
 	addrm = add -u
-	st = status
+	st = status -s
 	ci = commit
 	co = checkout
 	changes = diff --name-status -r
@@ -17,7 +17,7 @@
 	both = diff HEAD
 	unstage = reset HEAD --
 	ignored = ls-files --others
-	oneline = log --oneline
+	oneline = log --oneline --decorate
 	last = log --oneline -1 HEAD
 	out = log --oneline origin/master..HEAD
 	wdiff = diff --color-words

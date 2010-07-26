@@ -69,10 +69,9 @@ alias less='less -R'
 alias grep='grep --color'
 alias ack='ack-grep'
 alias ftp='lftp'
-alias mplayer='mplayer -fs'
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
-alias gvim='2>/dev/null gvim'
+alias mplayer='mplayer -fs'
 alias spotify='wine "C:\Program Files\Spotify\spotify.exe"'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
@@ -98,18 +97,23 @@ export RUBYLIB="./lib"
 hash -d gem="$(rvm gemdir)/gems"
 
 # Rails
-alias sc="rails console"
-alias ss="rails server thin"
-alias sd="rails dbconsole"
-alias sg="rails generate"
-alias mi="rake db:migrate"
+function rails_command {
+  local cmd=$1
+  shift
+  if [ -e script/rails ]; then
+    rails $cmd "$@"
+  else
+    script/$cmd "$@"
+  fi
+}
+function ss { rails_command "server" "thin" "$@" }
+function sc { rails_command "console" "$@" }
+function sg { rails_command "generate" "$@" }
 alias sp="rspec spec"
-alias -s feature=”cucumber”
 alias notes="ack 'TODO|FIXME|XXX|HACK' --ignore-dir=tmp --ignore-dir=log"
 
 # Git
-alias g='git'
-alias gs='git status'
+alias gs='git st'
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }

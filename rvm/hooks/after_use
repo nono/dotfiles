@@ -1,0 +1,1 @@
+hash -d gem=$rvm_ruby_gem_home/gems
