@@ -38,3 +38,5 @@
 	default = current
 [github]
 	user = nono
+[core]
+	autocrlf = input

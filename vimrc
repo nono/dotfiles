@@ -79,6 +79,10 @@ nmap <F8> :set spell!<CR>
 " Don't make a # force column zero.
 inoremap # X<BS>#
 
+" Ctrl-+ pour augmenter la taille de la police
+noremap <C-kplus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)+1)', '')<CR>
+noremap <C-kminus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)-1)', '')<CR>
+
 " Control + touches fléchées pour naviguer entre les vues
 noremap <C-Up> <C-W><Up>
 noremap <C-Down> <C-W><Down>
