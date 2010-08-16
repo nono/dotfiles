@@ -47,6 +47,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 zstyle ':completion::complete:cd::' tag-order local-directories path-directories
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.rbc'
 autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
