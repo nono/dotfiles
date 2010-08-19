@@ -34,7 +34,7 @@ _arguments -C \
 
 case $state in
 	cmds)
-		cmds=( ${${(M)${${(f)${${"$(LC_ALL=C _call_program commands rvm -h 2>/dev/null)"##*Action}%%Implementation*}/\* usage/usage}}:#* - *}/(#b)  (*[^ ]) #- (*)/$match[1]:$match[2]:l})
+		cmds=( ${${(M)${${(f)${${"$(LC_ALL=C _call_program commands rvm -h 2>/dev/null)"##*Action}%%Implementation*}/\* usage/usage}}:#* - *}/(#b)  (*[^ ]) #- (*)/$match[1]:$match[2]:l} )
 		# TODO should also complete _rvm_rubies
 		_describe -t commands 'rvm command' cmds && ret=0
 		;;
