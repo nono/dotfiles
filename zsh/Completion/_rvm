@@ -34,8 +34,8 @@ _arguments -C \
 
 case $state in
 	cmds)
-		cmds=( ${${(M)${${(f)${${"$(LC_ALL=C _call_program commands rvm -h 2>/dev/null)"##*Action}%%Implementation*}/\* usage/usage}}:#* - *}/(#b)  (*[^ ]) #- (*)/$match[1]:$match[2]:l} )
-		# TODO should also complete _rvm_rubies
+		cmds=( ${(f)"$(_call_program commands rvm help 2> /dev/null | sed -e '/^Action/,/^Implementation/!d; / - /!d; s/^\W*\(\w*\) *- /\1:/')"} )
+		cmds+=( $(rvm list strings) )
 		_describe -t commands 'rvm command' cmds && ret=0
 		;;
 	args)
@@ -48,25 +48,17 @@ case $state in
 				;;
 			gemset)
 				if (( CURRENT == 3 )); then
-					cmds=(
-					'install:install a package'
-					'uninstall:uninstall a package'
-					)
-					_describe -t commands 'rvm package command' cmds
+					_values 'gemset_commands' $(rvm gemset | sed -e '/where/!d; s/^.*[{]\(.*\)[}].*$/\1/; s/,/ /g')
 				else
-					_values -S , 'gemset' $(rvm gemset list | grep -v gemset 2>/dev/null)
+					_values -S , 'gemsets' $(rvm gemset list | grep -v gemset 2>/dev/null)
 				fi
 				ret=0
 				;;
 			package)
 				if (( CURRENT == 3 )); then
-					cmds=(
-					'install:install a package'
-					'uninstall:uninstall a package'
-					)
-					_describe -t commands 'rvm package command' cmds
+					_values 'package_commands' $(rvm package | sed -e '/Usage/!d; s/^.*[{]\(.*\)[}] [{].*$/\1/; s/,/ /g')
 				else
-					_values 'packages' readline iconv curl openssl zlib autoconf ncurses pkgconfig gettext glib mono llvm libxml2
+					_values 'packages' $(rvm package | sed -e '/Usage/!d; s/^.*[}] [{]\(.*\)[}].*$/\1/; s/,/ /g')
 				fi
 				ret=0
 				;;

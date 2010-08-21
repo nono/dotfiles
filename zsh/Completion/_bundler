@@ -9,7 +9,7 @@ _arguments -C -A "-v" -A "--version" \
 
 case $state in
 	cmds)
-		cmds=( ${${(M)${(f)"$(LC_ALL=C _call_program commands bundle help | sed -e 's/^  bundle \([^ ]*\).*# \(.*\)$/\1 - \2/')"}:#* - *}/(#b)(*[^ ]) #- (*)/$match[1]:$match[2]:l} )
+		cmds=( ${(f)"$(_call_program commands bundle help 2> /dev/null | sed -e '/ # /!d; s/^  bundle \(\w*\) .*# /\1:/')"} )
 		_describe -t commands 'bundle command' cmds && ret=0
 		;;
 	args)
