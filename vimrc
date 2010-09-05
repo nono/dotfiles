@@ -119,6 +119,7 @@ au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile set ft=ruby
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
+au BufRead,BufNewFile *.textile set ft=textile
 au BufRead,BufNewFile *.{txt,md,mkd,markdown} set ft=markdown et
 au BufRead,BufNewFile *.rl set ft=ragel
 au BufRead,BufNewFile .mrxvtrc,mrxvtrc set ft=mrxvtrc

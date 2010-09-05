@@ -175,6 +175,20 @@
     <keybind key="W-KP_Multiply"> <action name="ToggleMaximizeVert"/>  </keybind>
     <keybind key="W-KP_Divide">   <action name="ToggleMaximizeHorz"/>  </keybind>
 
+    <!-- Vim style -->
+    <keybind key="W-h">   <action name="MoveToEdgeWest"/>      </keybind>
+    <keybind key="W-j">   <action name="MoveToEdgeSouth"/>     </keybind>
+    <keybind key="W-k">   <action name="MoveToEdgeNorth"/>     </keybind>
+    <keybind key="W-l">   <action name="MoveToEdgeEast"/>      </keybind>
+
+    <keybind key="S-W-h"> <action name="GrowToEdgeWest"/>      </keybind>
+    <keybind key="S-W-j"> <action name="GrowToEdgeSouth"/>     </keybind>
+    <keybind key="S-W-k"> <action name="GrowToEdgeNorth"/>     </keybind>
+    <keybind key="S-W-l"> <action name="GrowToEdgeEast"/>      </keybind>
+
+    <keybind key="W-g">   <action name="ToggleMaximizeVert"/>  </keybind>
+    <keybind key="W-f">   <action name="ToggleMaximizeHorz"/>  </keybind>
+
     <!-- ARROWS -->
     <keybind key="W-Left">    <action name="DesktopLeft">        <dialog>no</dialog><wrap>no</wrap></action> </keybind>
     <keybind key="W-Right">   <action name="DesktopRight">       <dialog>no</dialog><wrap>no</wrap></action> </keybind>

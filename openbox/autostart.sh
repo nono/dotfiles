@@ -15,6 +15,7 @@ Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg &
 ~/.scripts/setlayout 0 2 2 0
 
 # Programs to launch at startup
+gtk-redshift -l 48.8:2.3 -t 6500:5800 &
 firefox &
 thunderbird &
 liferea &
