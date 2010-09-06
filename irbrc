@@ -36,13 +36,23 @@ def ls(obj=self)
   end
 end
 
-# Just for Rails
-if ENV['RAILS_ENV']
+# Just for Rails3
+if defined?(ActiveSupport::Notifications)
 
-  IRB.conf[:IRB_RC] = Proc.new do
-    Rails.logger.flush
-    Rails.logger.instance_variable_set("@log", STDOUT)
-    Rails.logger.auto_flushing = 1
+  $odd_or_even_queries = false
+  ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
+    $odd_or_even_queries = !$odd_or_even_queries
+    color = $odd_or_even_queries ? "\e[36m" : "\e[35m"
+    event = ActiveSupport::Notifications::Event.new(*args)
+    time = "%.1fms" % event.duration
+    name = event.payload[:name]
+    sql = event.payload[:sql].gsub("\n", " ").squeeze(" ")
+    puts " \e[1m#{color}#{name} (#{time})\e[0m #{sql}"
   end
 
+# And for Rails2
+elsif ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
+
+  require 'logger'
+  RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
 end
