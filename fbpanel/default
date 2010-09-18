@@ -1,3 +1,11 @@
+###############################################
+# This configuration file is not used anymore.
+# Now, all profiles are stored at
+#   /home/nono/.config/fbpanel.
+# Edit them instead !!! 
+###############################################
+
+
 # fbpanel <profile> config file
 # see http://fbpanel.sf.net/docs.html for complete configuration guide
 
