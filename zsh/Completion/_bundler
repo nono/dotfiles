@@ -9,13 +9,27 @@ _arguments -C -A "-v" -A "--version" \
 
 case $state in
 	cmds)
-		cmds=( ${(f)"$(_call_program commands bundle help 2> /dev/null | sed -e '/ # /!d; s/^  bundle \(\w*\) .*# /\1:/')"} )
-		_describe -t commands 'bundle command' cmds && ret=0
+		_values "bundle command" \
+			"install[Install the gems specified by the Gemfile or Gemfile.lock]" \
+			"update[Update dependencies to their latest versions]" \
+			"package[Package the .gem files required by your application]" \
+			"exec[Execute a script in the context of the current bundle]" \
+			"config[Specify and read configuration options for bundler]" \
+			"check[Determine whether the requirements for your application are installed]" \
+			"list[Show all of the gems in the current bundle]" \
+			"show[Show the source location of a particular gem in the bundle]" \
+			"console[Start an IRB session in the context of the current bundle]" \
+			"open[Open an installed gem in the editor]" \
+			"viz[Generate a visual representation of your dependencies]" \
+			"init[Generate a simple Gemfile, placed in the current directory]" \
+			"gem[Create a simple gem, suitable for development with bundler]" \
+			"help[Describe available tasks or one specific task]"
+		ret=0
 		;;
 	args)
 		case $line[1] in
 			help)
-				_values 'commands' $(bundle help | sed -e '/bundle/!d; s/.*bundle \([^ ]*\) .*/\1/' | tr '\n' ' ') && ret=0
+				_values 'commands' 'install update package exec config check list show console open viz init gem help' && ret=0
 				;;
 			install)
 				_arguments \
