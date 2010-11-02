@@ -13,7 +13,7 @@ Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
 ~/.scripts/setlayout 0 2 2 0
 
 # Programs to launch at startup
-gtk-redshift -l 48.8:2.3 -t 6500:5800 &
+gtk-redshift -l 48.8:2.3 -t 6500:5700 &
 firefox-4.0 &
 thunderbird &
 liferea &
@@ -24,4 +24,4 @@ urxvt -name gruik -title gruik &
 urxvt -name codaz -title codaz &
 
 # Programs that will run after Openbox has started
-(sleep 1 && fbpanel) &
+(sleep 3 && fbpanel) &

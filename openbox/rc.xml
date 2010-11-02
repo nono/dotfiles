@@ -655,6 +655,7 @@
     </application>
     <application class="Gwibber">
       <desktop>4</desktop>
+      <maximized>yes</maximized>
     </application>
   </applications>
 </openbox_config>

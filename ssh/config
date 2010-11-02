@@ -30,6 +30,7 @@ HostName zobe.linuxfr.org
 
 Host alpha
 HostName 88.191.250.107
+User alpha
 
 
 ###############

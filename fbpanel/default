@@ -1,11 +1,3 @@
-###############################################
-# This configuration file is not used anymore.
-# Now, all profiles are stored at
-#   /home/nono/.config/fbpanel.
-# Edit them instead !!! 
-###############################################
-
-
 # fbpanel <profile> config file
 # see http://fbpanel.sf.net/docs.html for complete configuration guide
 
@@ -24,6 +16,7 @@ Global {
     setpartialstrut = true
     autohide = false
     heightWhenHidden = 2
+	roundcorners = false
 }
 
 Plugin {
@@ -70,14 +63,15 @@ Plugin {
         }
         button {
             icon = mozilla-firefox
+            image = /home/nono/.icons/firefox.png
             tooltip = Firefox web browser
-            action = firefox
+            action = firefox-4.0
         }
         button {
             icon = spotify
             image = /home/nono/.icons/spotify.png
             tooltip = Spotify
-            action = spotify
+            action = wine "C:\Program Files\Spotify\spotify.exe"
         }
     }
 }

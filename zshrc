@@ -73,7 +73,6 @@ alias ftp='lftp'
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias mplayer='mplayer -fs'
-alias spotify='wine "C:\Program Files\Spotify\spotify.exe"'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 
