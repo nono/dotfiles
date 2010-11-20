@@ -178,7 +178,7 @@ let g:ftplugin_sql_omni_key_right = '<C-Right>'
 " Autres {{{ "
 
 " Utilise ce navigateur pour l'aide en ligne
-let g:browser = 'firefox -new-tab'
+let g:browser = 'firefox-4.0 -new-tab'
 
 " Abréviations
 source $HOME/.vim/abbrev.vim

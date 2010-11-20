@@ -1,9 +1,9 @@
 servers = (
   {
-    address = "chat.freenode.org";
+    address = "bip.menfin.info";
     chatnet = "freenode";
-    port = "6667";
-    use_ssl = "no";
+    port = "7778";
+    use_ssl = "yes";
     autoconnect = "yes";
     password = "XXX";
   }
@@ -28,7 +28,7 @@ channels = (
   { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#ruby.fr"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#node.js"; chatnet = "freenode"; autojoin = "No"; },
+  { name = "#parisjs"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; }
 );
@@ -263,7 +263,7 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#node.js";
+        name = "#parisjs";
         tag = "freenode";
       }
     );
