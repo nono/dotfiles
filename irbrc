@@ -13,6 +13,15 @@ begin
 rescue LoadError
 end
 
+# http://gist.github.com/124272
+def copy(str)
+  IO.popen('xclip -i', 'w') { |f| f << str.to_s }
+end
+
+def paste
+  `xclip -o`
+end
+
 # http://ozmm.org/posts/time_in_irb.html
 def time(times = 1)
   require 'benchmark'
