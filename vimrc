@@ -105,6 +105,9 @@ let html_use_css = 1
 let use_xhtml = 1
 map <F12> :runtime! syntax/2html.vim<CR>
 
+" Utilise ce navigateur pour l'aide en ligne
+let g:browser = 'firefox-4.0'
+
 
 " }}}
 " Autodetect filetypes {{{ "
@@ -174,11 +177,11 @@ let g:fuzzy_match_limit = 100
 let g:ftplugin_sql_omni_key_left  = '<C-Left>'
 let g:ftplugin_sql_omni_key_right = '<C-Right>'
 
+" Vim-markdown-preview
+let g:VMPhtmlreader = g:browser
+
 " }}}
 " Autres {{{ "
-
-" Utilise ce navigateur pour l'aide en ligne
-let g:browser = 'firefox-4.0 -new-tab'
 
 " Abréviations
 source $HOME/.vim/abbrev.vim
