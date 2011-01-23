@@ -113,34 +113,24 @@ let g:browser = 'firefox-4.0'
 " Autodetect filetypes {{{ "
 
 au BufRead,BufNewFile bip.conf set ft=bip
-au BufRead,BufNewFile arpalert.conf set ft=arpalert
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
-au BufRead,BufNewFile *.mustache set ft=mustache
-au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile set ft=ruby
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
+au BufRead,BufNewFile *.t2t set ft=txt2tags
 au BufRead,BufNewFile *.textile set ft=textile
 au BufRead,BufNewFile *.{txt,md,mkd,markdown} set ft=markdown et
 au BufRead,BufNewFile *.rl set ft=ragel
-au BufRead,BufNewFile .mrxvtrc,mrxvtrc set ft=mrxvtrc
 au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
-au BufRead,BufNewFile *.t2t set ft=txt2tags
-au BufRead,BufNewFile *.tmpl,*.send,*.ok,*.form,*.visu
-    \ if (version < 700) |
-	\     set ft=templeet |
-	\ elseif (getline(2) =~? "^<rss ") |
-    \     set ft=xml.templeet |
-    \ else |
-    \     set ft=html.templeet nospell |
-    \ endif
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
+au BufRead,BufNewFile *.mustache set ft=mustache
+au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
 
@@ -196,8 +186,14 @@ au FocusLost *.css,*.sass :up
 " SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
-" Tags
-" set tags+=../tags
+" Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
+function MakeScriptExecuteable()
+	if getline(1) =~ "^#!.*/bin/"
+		silent !chmod +x <afile>
+	endif
+endfunction
+
+au BufWritePost * call MakeScriptExecuteable()
 
 " Local
 if filereadable(".vimrc.local")
