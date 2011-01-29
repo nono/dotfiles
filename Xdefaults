@@ -8,9 +8,16 @@
 *saveLines:5000
 URxvt*termName: rxvt
 
+! Perl extensions for uxxvt
+URxvt.perl-ext: default,matcher,selection-autotransform
+URxvt.matcher.button: 1
+URxvt.urlLauncher: firefox-4.0
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E\\x0d/
+
 ! Colors
 ! 0=noir, 1=rouge, 2=vert, 3=jaune, 4=bleu, 5=magenta, 6=cyan, 7=blanc
-! 0-7 pour les couleurs foncées
+! 0-7 pour les couleurs foncÃ©es
 ! 8-15 pour les couleurs claires
 *background:black
 *foreground:White
@@ -32,30 +39,5 @@ URxvt*termName: rxvt
 *color15: #ffffff
 
 ! Font
-!aterm.font:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
-!aterm.boldFont:-*-terminus-medium-*-*-*-*-*-*-*-*-*-*-*
 irssi.font: xft:DejaVu Sans Mono:pixelsize=14
-!*font:xft:Monaco:pixelsize=14
 *font: xft:DejaVu Sans Mono:pixelsize=14
-!URxvt*font: xft:Terminus
-!*faceName:-*-bitstream vera sans mono-bold-r-*-*-*-*-*-*-*-*-iso8859-1
-xterm*faceName: xft:Bitsream Vera Sans Mono:pixelsize=14
-
-! Curseur de la souris
-!Xcursor.size:       24
-!Xcursor.theme:      whiteglass
-
-! GnuPlot
-!gnuplot*background:  white
-!gnuplot*textColor:   black
-!gnuplot*borderColor: black
-!gnuplot*axisColor:   black
-!gnuplot*line1Color:  red
-!gnuplot*line2Color:  blue
-!gnuplot*line3Color:  green
-!gnuplot*line4Color:  magenta
-!gnuplot*line5Color:  cyan
-!gnuplot*line6Color:  sienna
-!gnuplot*line7Color:  orange
-!gnuplot*line8Color:  coral
-
