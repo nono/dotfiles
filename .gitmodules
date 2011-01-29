@@ -22,3 +22,6 @@
 [submodule "vendor/vim-markdown-preview"]
 	path = vendor/vim-markdown-preview
 	url = https://github.com/robgleeson/vim-markdown-preview.git
+[submodule "vendor/mysqlpager"]
+	path = vendor/mysqlpager
+	url = https://github.com/romuald/mysqlpager.git
