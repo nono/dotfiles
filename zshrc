@@ -1,4 +1,5 @@
 # Env
+export PATH="$HOME/bin:$PATH"
 export PS1='${SSH_CONNECTION+"%n@%m:"}%~$(parse_git_branch)%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
@@ -57,9 +58,6 @@ source /etc/zsh_command_not_found
 # Aliases
 alias -g L='|less'
 alias -g G='|grep'
-alias -g T='|tail'
-alias -g H='|head'
-alias -g N='&>/dev/null&'
 alias -g W='|wc'
 alias -g C='|colordiff'
 
@@ -89,12 +87,12 @@ alias as='aptitude search'
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"
 
+# Node.js
+export NODE_PATH="./lib"
+
 # Ruby
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-export PATH="$HOME/bin:$PATH"
-export RUBYOPT="rubygems"
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
-hash -d gem="$(rvm gemdir)/gems"
 
 # Rails
 function rails_command {
@@ -108,9 +106,8 @@ function rails_command {
 }
 function ss { rails_command "server" "thin" "$@" }
 function sc { rails_command "console" "$@" }
-function sg { rails_command "generate" "$@" }
 alias sp="rspec spec"
-alias notes="ack 'TODO|FIXME|XXX|HACK' --ignore-dir=tmp --ignore-dir=log"
+alias notes="ack 'TODO|FIXME|XXX|HACK'"
 
 # Git
 alias gs='git st'
@@ -124,7 +121,3 @@ function parse_git_branch {
 # Svn
 alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
-
-# Node.js
-export PATH="$HOME/.seeds/bin:$PATH"
-export NODE_PATH="$HOME/vendor/Mu/lib:./lib"

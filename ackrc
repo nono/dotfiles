@@ -2,4 +2,8 @@
 --color
 --group
 --sort-files
---type-add=ruby=.haml
+--ignore-dir=log
+--ignore-dir=tmp
+--type-add=ruby=.haml,.rake
+--type-add=html=.html.erb,.html.haml
+--type-add=css=.sass,.less
