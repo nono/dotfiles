@@ -19,6 +19,7 @@ else
 endif
 
 set ai          " indente automatiquement
+set autoread    " auto-reload modified files (with no local changes)
 set bs=2        " tout supprimer avec backspace
 set dir-=.      " ne pas mettre de fichiers temporaires dans le répertoire courant
 set ek          " utiliser les touches fléchées en mode insertion
@@ -45,7 +46,6 @@ set sw=4        " les tabulations s'arrêtent toujours sur une colonne multiple d
 set ts=4        " les tabulations font 4 caractères (à l'affichage)
 set tw=0        " ne pas couper les lignes
 set title       " affiche le nom du fichier dans la barre de titre du term
-set ve=block
 set nowrap      " ne pas afficher sur plusieurs lignes les lignes trop longues
 set nospell     " pas de correction orthographique par défaut
 set spl=fr,en   " utiliser le français et l'anglais pour la correction orthographique
@@ -53,9 +53,9 @@ set sps=best,10 " afficher seulement les 10 meilleures propositions pour la corr
 set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
 set tags+=../tags
 set shell=/bin/bash
+set ve=block
 set wildmenu
 set wildignore+=*.o,*.so,*.a,*.pyc,*.rbc,*.8
-" set ballooneval
 set omnifunc=syntaxcomplete#Complete
 set cot=menuone
 set grepprg=ack
@@ -89,16 +89,16 @@ noremap <C-Down> <C-W><Down>
 noremap <C-Right> <C-W><Right>
 noremap <C-Left> <C-W><Left>
 
-" Shift + touches fléchées pour naviger entre les tabs
-noremap <S-Left> :tabprev<CR>
-noremap <S-Right> :tabnext<CR>
-noremap <S-Up> :tabnew<CR>
-
 " Ctrl-t pour ouvrir de nouveaux fichiers facilement
 map <C-t> :FuzzyFinderTextMate<CR>
 
 " Complétion
 inoremap <C-@> <C-P>
+
+" Se placer au bon endroit
+inoremap () ()<Left>
+inoremap '' ''<Left>
+inoremap "" ""<Left>
 
 " exporter en html
 let html_use_css = 1
@@ -172,6 +172,11 @@ let g:VMPhtmlreader = g:browser
 
 " }}}
 " Autres {{{ "
+
+" Show trailing white-space
+let ruby_space_errors = 1
+let c_space_errors = 1
+let javascript_space_errors = 1
 
 " Abréviations
 source $HOME/.vim/abbrev.vim
