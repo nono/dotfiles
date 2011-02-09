@@ -21,36 +21,36 @@ endif
 set ai          " indente automatiquement
 set autoread    " auto-reload modified files (with no local changes)
 set bs=2        " tout supprimer avec backspace
-set dir-=.      " ne pas mettre de fichiers temporaires dans le répertoire courant
-set ek          " utiliser les touches fléchées en mode insertion
+set dir-=.      " ne pas mettre de fichiers temporaires dans le rÃ©pertoire courant
+set ek          " utiliser les touches flÃ©chÃ©es en mode insertion
 set ff=unix     " fin de ligne au format UNIX
-set is          " recherche incrémentale
+set is          " recherche incrÃ©mentale
 set ls=2        " avoir en permanence la barre de status
-set lz          " ne pas rafraîchir l'écran pendant une macro
+set lz          " ne pas rafraÃ®chir l'Ã©cran pendant une macro
 set mouse=h     " n'utiliser la souris que dans l'aide
-set noea        " ne pas redimensionner automatiquement les vues après un découpage
-set nocp        " ne limite pas Vim aux fonctionnalités de VI
+set noea        " ne pas redimensionner automatiquement les vues aprÃ¨s un dÃ©coupage
+set nocp        " ne limite pas Vim aux fonctionnalitÃ©s de VI
 set noet        " ne pas transformer les tabs en spaces
-set nohls       " ne pas mettre en surbrillance les termes recherchés
+set nohls       " ne pas mettre en surbrillance les termes recherchÃ©s
 set noic        " tenir compte de la casse lors des recherches
-set nojs        " pas 2 espaces après '.', '?' et '!' pour la commande J(oin)
-set noml        " pas de modelines (trou de sécu dans les anciennes versions de Vim)
-set nows        " ne pas retourner au début du fichier lorsqu'une recherche atteint la fin du fichier
-set pt=<F11>    " pour coller du code sans avoir une double indentation (celle de départ + celle de Vim)
+set nojs        " pas 2 espaces aprÃ¨s '.', '?' et '!' pour la commande J(oin)
+set noml        " pas de modelines (trou de sÃ©cu dans les anciennes versions de Vim)
+set nows        " ne pas retourner au dÃ©but du fichier lorsqu'une recherche atteint la fin du fichier
+set pt=<F11>    " pour coller du code sans avoir une double indentation (celle de dÃ©part + celle de Vim)
 set si          " indentation intelligente (enfin presque)
-set ruler       " affiche la position du curseur dans la barre d'état
+set ruler       " affiche la position du curseur dans la barre d'Ã©tat
 set so=3        " toujours afficher au moins 3 lignes au-dessus et en dessous du curseur
-set siso=2      " toujours afficher au moins 2 caractères à coté du curseur
-set sm          " Afficher la parenthèse correspondante
-set sw=4        " les tabulations s'arrêtent toujours sur une colonne multiple de 4
-set ts=4        " les tabulations font 4 caractères (à l'affichage)
+set siso=2      " toujours afficher au moins 2 caractÃ¨res Ã  cotÃ© du curseur
+set sm          " Afficher la parenthÃ¨se correspondante
+set sw=4        " les tabulations s'arrÃªtent toujours sur une colonne multiple de 4
+set ts=4        " les tabulations font 4 caractÃ¨res (Ã  l'affichage)
 set tw=0        " ne pas couper les lignes
 set title       " affiche le nom du fichier dans la barre de titre du term
 set nowrap      " ne pas afficher sur plusieurs lignes les lignes trop longues
-set nospell     " pas de correction orthographique par défaut
-set spl=fr,en   " utiliser le français et l'anglais pour la correction orthographique
+set nospell     " pas de correction orthographique par dÃ©faut
+set spl=fr,en   " utiliser le franÃ§ais et l'anglais pour la correction orthographique
 set sps=best,10 " afficher seulement les 10 meilleures propositions pour la correction orthographique
-set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
+set spf=~/.vim/spell/perso.add " dictionnaire supplÃ©mentaire pour la correction orthographique
 set tags+=../tags
 set shell=/bin/bash
 set ve=block
@@ -83,7 +83,7 @@ inoremap # X<BS>#
 noremap <C-kplus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)+1)', '')<CR>
 noremap <C-kminus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)-1)', '')<CR>
 
-" Control + touches fléchées pour naviguer entre les vues
+" Control + touches flÃ©chÃ©es pour naviguer entre les vues
 noremap <C-Up> <C-W><Up>
 noremap <C-Down> <C-W><Down>
 noremap <C-Right> <C-W><Right>
@@ -92,7 +92,7 @@ noremap <C-Left> <C-W><Left>
 " Ctrl-t pour ouvrir de nouveaux fichiers facilement
 map <C-t> :FuzzyFinderTextMate<CR>
 
-" Complétion
+" ComplÃ©tion
 inoremap <C-@> <C-P>
 
 " Se placer au bon endroit
@@ -159,10 +159,6 @@ let g:load_doxygen_syntax = 1
 let g:SuperTabRetainCompletionType = 2
 let g:SuperTabDefaultCompletionType = "<C-P>"
 
-" FuzzyFinder: TextMate
-" http://github.com/jamis/fuzzyfinder_textmate/tree/master
-let g:fuzzy_match_limit = 100
-
 " SQL autocomplete
 let g:ftplugin_sql_omni_key_left  = '<C-Left>'
 let g:ftplugin_sql_omni_key_right = '<C-Right>'
@@ -178,7 +174,7 @@ let ruby_space_errors = 1
 let c_space_errors = 1
 let javascript_space_errors = 1
 
-" Abréviations
+" AbrÃ©viations
 source $HOME/.vim/abbrev.vim
 
 " Commentaires
@@ -188,7 +184,7 @@ vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
 " Sauvegarder automatiquement les feuilles de styles
 au FocusLost *.css,*.sass :up
 
-" SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
+" SudoW permet d'enregistrer un fichier mÃªme quand on n'a pas les droits dessus
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
