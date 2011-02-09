@@ -1,0 +1,1 @@
+../../vendor/vim-yard/syntax/yard.vim

@@ -166,6 +166,10 @@ let g:ftplugin_sql_omni_key_right = '<C-Right>'
 " Vim-markdown-preview
 let g:VMPhtmlreader = g:browser
 
+" Syntastic
+let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+
 " }}}
 " Autres {{{ "
 
