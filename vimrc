@@ -200,9 +200,4 @@ endfunction
 
 au BufWritePost * call MakeScriptExecuteable()
 
-" Local
-if filereadable(".vimrc.local")
-	source ~/.vimrc.local
-endif
-
 " }}}
