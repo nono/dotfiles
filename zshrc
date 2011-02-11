@@ -5,7 +5,7 @@ export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=vim
 export PAGER=less
-export BROWSER=w3m
+export BROWSER=firefox-4.0
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
 cdpath=(~ ~/dev)

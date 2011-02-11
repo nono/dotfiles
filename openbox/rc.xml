@@ -109,7 +109,7 @@
       <name>Codaz</name>
       <name>Net</name>
     </names>
-    <popupTime>500</popupTime>
+    <popupTime>300</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -612,10 +612,6 @@
       <decor>no</decor>
       <position><x>-1</x><y>0</y></position>
     </application>
-    <application name="gajim.py">
-      <desktop>2</desktop>
-      <position><x>10</x><y>10</y></position>
-    </application>
 
     <!-- Desktop 3 -->
     <application name="codaz">
@@ -636,12 +632,12 @@
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
-	<!-- See http://wiki.archlinux.org/index.php/Openbox#Firefox.2FGran_Paradiso_application_rules -->
-	<application class="Firefox*">
+    <!-- See http://wiki.archlinux.org/index.php/Openbox#Firefox.2FGran_Paradiso_application_rules -->
+    <application class="Firefox*">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
-	<application role="browser">
+    <application role="browser">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>
