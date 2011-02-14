@@ -89,9 +89,6 @@ noremap <C-Down> <C-W><Down>
 noremap <C-Right> <C-W><Right>
 noremap <C-Left> <C-W><Left>
 
-" Ctrl-t pour ouvrir de nouveaux fichiers facilement
-map <C-t> :FuzzyFinderTextMate<CR>
-
 " Complétion
 inoremap <C-@> <C-P>
 
@@ -190,6 +187,9 @@ au FocusLost *.css,*.sass :up
 
 " SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
+
+" Un petit alias pour se simplifier la vie
+command E :Explore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function MakeScriptExecuteable()
