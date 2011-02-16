@@ -1,5 +1,0 @@
-bundler (0.9.26)
-rake (0.8.7)
-rdiscount (1.6.5)
-rdoc (2.5.8)
-wirble (0.1.3)
