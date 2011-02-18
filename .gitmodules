@@ -1,0 +1,30 @@
+[submodule "vendor/github_vim_theme"]
+	path = vendor/github_vim_theme
+	url = https://github.com/nono/github_vim_theme.git
+[submodule "vendor/merb.vim"]
+	path = vendor/merb.vim
+	url = https://github.com/nono/merb.vim.git
+[submodule "vendor/mysqlpager"]
+	path = vendor/mysqlpager
+	url = https://github.com/romuald/mysqlpager.git
+[submodule "vendor/syntastic"]
+	path = vendor/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vendor/vim-haml"]
+	path = vendor/vim-haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule "vendor/vim-javascript"]
+	path = vendor/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vendor/vim-markdown"]
+	path = vendor/vim-markdown
+	url = https://github.com/hallison/vim-markdown.git
+[submodule "vendor/vim-markdown-preview"]
+	path = vendor/vim-markdown-preview
+	url = https://github.com/robgleeson/vim-markdown-preview.git
+[submodule "vendor/vim-rails"]
+	path = vendor/vim-rails
+	url = https://github.com/nono/vim-rails.git
+[submodule "vendor/vim-yard"]
+	path = vendor/vim-yard
+	url = https://github.com/postmodern/vim-yard.git
