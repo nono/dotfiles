@@ -11,10 +11,7 @@
 	st = status -s
 	ci = commit
 	co = checkout
-	changes = diff --name-status -r
 	staged = diff --cached
-	unstaged = diff
-	both = diff HEAD
 	unstage = reset HEAD --
 	ignored = ls-files --others
 	oneline = log --oneline --decorate
@@ -22,16 +19,10 @@
 	out = log --oneline origin/master..HEAD
 	wdiff = diff --color-words
 	info = remote -v
-	authors = "!git log --format='%aN <%aE>' | sort -u"
 	initial = "!sh -c 'git init && git add . && git ci -m \"Initial import\"'"
+	up = "!sh -c 'git stash && git pull && git stash pop'"
 [diff]
 	renames = true
-[merge]
-	tool = meld
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 0x0+0+0
-	main-window-view = HistoryView
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always

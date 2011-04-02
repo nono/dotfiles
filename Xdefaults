@@ -13,7 +13,7 @@ URxvt.perl-ext: default,matcher,selection-autotransform
 URxvt.matcher.button: 1
 URxvt.urlLauncher: firefox-4.0
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E\\x0d/
+URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
 
 ! Colors
 ! 0=noir, 1=rouge, 2=vert, 3=jaune, 4=bleu, 5=magenta, 6=cyan, 7=blanc
@@ -49,3 +49,5 @@ URxvt.keysym.M-C-KP_3: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=20\007
 URxvt.keysym.M-C-KP_4: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=24\007
 URxvt.keysym.M-C-KP_5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=30\007
 URxvt.keysym.M-C-KP_6: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=36\007
+
+URxvt.letterSpace: -2

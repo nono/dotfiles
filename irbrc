@@ -13,6 +13,12 @@ begin
 rescue LoadError
 end
 
+# 1.find_method {|x| x.unknown == 2 } (gem install methodfinder)
+begin
+  require 'methodfinder'
+rescue LoadError
+end
+
 # http://gist.github.com/124272
 def copy(str)
   IO.popen('xclip -i', 'w') { |f| f << str.to_s }
@@ -58,6 +64,9 @@ if defined?(ActiveSupport::Notifications)
     sql = event.payload[:sql].gsub("\n", " ").squeeze(" ")
     puts " \e[1m#{color}#{name} (#{time})\e[0m #{sql}"
   end
+
+  include Rails.application.routes.url_helpers
+  default_url_options[:host] = Rails.application.class.parent_name.downcase
 
 # And for Rails2
 elsif ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')

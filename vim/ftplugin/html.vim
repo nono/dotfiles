@@ -1,0 +1,1 @@
+:SyntasticDisable html

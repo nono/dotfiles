@@ -6,6 +6,12 @@ HostName metz
 User bruno
 Port 2222
 
+Host backup
+HostName bubulle
+User save
+IdentityFile /home/nono/.ssh/id_rsa_backup
+Compression no
+
 Host vbox
 HostName localhost
 Port 2222
@@ -23,15 +29,22 @@ User trollometre
 # LinuxFR.org #
 ###############
 Host linuxfr
-HostName web.linuxfr.org
+HostName linuxfr.org
 
 Host zobe
 HostName zobe.linuxfr.org
 
+Host prod
+HostName prod.linuxfr.org
+user linuxfr
+
 Host alpha
-HostName 88.191.250.107
+HostName alpha.linuxfr.org
 User alpha
 
+Host main
+HostName zobe.linuxfr.org
+Port 222
 
 ###############
 #    AF83     #
