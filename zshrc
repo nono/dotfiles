@@ -106,6 +106,7 @@ function rails_command {
 }
 function ss { rails_command "server" "thin" "$@" }
 function sc { rails_command "console" "$@" }
+alias be="bundle exec"
 alias sp="rspec spec"
 alias notes="ack 'TODO|FIXME|XXX|HACK'"
 

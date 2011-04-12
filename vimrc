@@ -164,8 +164,9 @@ let g:ftplugin_sql_omni_key_right = '<C-Right>'
 let g:VMPhtmlreader = g:browser
 
 " Syntastic
-let g:syntastic_auto_loc_list=1
-let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['c', 'cpp', 'sh']
 
 " }}}
 " Autres {{{ "
