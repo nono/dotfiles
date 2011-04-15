@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+# Install wkhtmltoimage and optipng
+# Usage: gen_n_projects urls.md
+
+require 'fileutils'
+
+count = 0
+
+ARGF.each do |line|
+  next unless line =~ /\* \[(.+)\]\((.+)\)/
+  title, url, count = $1, $2, count + 1
+  basename = "%02d.%s" % [count, title.tr(' ', '_')]
+  FileUtils.mkdir_p "projects/#{basename}"
+  File.open("projects/#{basename}/#{basename}.md", "w+") do |f|
+    f << <<-EOS
+!SLIDE center
+# #{title} #
+
+[ ![#{title}](#{basename}.png) ](#{url})
+EOS
+  system("wkhtml2image --width 1024 --crop-h 768 #{url} projects/#{basename}/#{basename}.png")
+  end
+end
+
+system("optipng -o5 projects/*/*.png")
+
