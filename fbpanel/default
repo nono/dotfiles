@@ -65,13 +65,14 @@ Plugin {
             icon = mozilla-firefox
             image = /home/nono/.icons/firefox.png
             tooltip = Firefox web browser
-            action = firefox-4.0
+            action = x-www-browser
         }
         button {
             icon = spotify
             image = /home/nono/.icons/spotify.png
             tooltip = Spotify
-            action = wine "C:\Program Files\Spotify\spotify.exe"
+            #action = wine "C:\Program Files\Spotify\spotify.exe"
+            action = spotify
         }
     }
 }

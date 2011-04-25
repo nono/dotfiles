@@ -9,7 +9,7 @@ setlayout 0 2 2 0
 
 # Programs to launch at startup
 gtk-redshift -l 48.8:2.3 -t 6500:5700 &
-firefox-4.0 &
+x-www-browser &
 thunderbird &
 liferea &
 urxvt -name irssi -title irssi -e irssi &

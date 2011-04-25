@@ -13,7 +13,7 @@ URxvt*termName: rxvt
 ! Perl extensions for uxxvt
 URxvt.perl-ext: default,matcher,selection-autotransform
 URxvt.matcher.button: 1
-URxvt.urlLauncher: firefox-4.0
+URxvt.urlLauncher: x-www-browser
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
 

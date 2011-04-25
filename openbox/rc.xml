@@ -605,18 +605,18 @@
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>0</x><y>-1</y></position>
+      <position><x>0</x><y>-0</y></position>
     </application>
     <application name="irssi">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>-1</x><y>0</y></position>
+      <position><x>-0</x><y>27</y></position>
     </application>
 
     <!-- Desktop 3 -->
     <application name="codaz">
       <desktop>3</desktop>
-      <position><x>0</x><y>0</y></position>
+      <position><x>0</x><y>27</y></position>
       <decor>no</decor>
     </application>
     <application name="gvim">
