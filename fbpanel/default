@@ -71,8 +71,8 @@ Plugin {
             icon = spotify
             image = /home/nono/.icons/spotify.png
             tooltip = Spotify
-            #action = wine "C:\Program Files\Spotify\spotify.exe"
-            action = spotify
+            action = wine "C:\Program Files\Spotify\spotify.exe"
+            #action = spotify
         }
     }
 }

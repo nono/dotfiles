@@ -1,9 +1,6 @@
 [submodule "vendor/github_vim_theme"]
 	path = vendor/github_vim_theme
 	url = https://github.com/nono/github_vim_theme.git
-[submodule "vendor/merb.vim"]
-	path = vendor/merb.vim
-	url = https://github.com/nono/merb.vim.git
 [submodule "vendor/mysqlpager"]
 	path = vendor/mysqlpager
 	url = https://github.com/romuald/mysqlpager.git
@@ -28,3 +25,9 @@
 [submodule "vendor/vim-yard"]
 	path = vendor/vim-yard
 	url = https://github.com/postmodern/vim-yard.git
+[submodule "vendor/jquery.vim"]
+	path = vendor/jquery.vim
+	url = https://github.com/nono/jquery.vim.git
+[submodule "vendor/vim-coffee-script"]
+	path = vendor/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git

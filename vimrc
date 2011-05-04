@@ -103,7 +103,7 @@ let use_xhtml = 1
 map <F12> :runtime! syntax/2html.vim<CR>
 
 " Utilise ce navigateur pour l'aide en ligne
-let g:browser = 'firefox-4.0'
+let g:browser = 'x-www-browser'
 
 
 " }}}
@@ -127,7 +127,7 @@ au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
 au BufRead,BufNewFile *.mustache set ft=mustache
-au BufRead,BufNewFile *.coffee set ft=coffee
+au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
 

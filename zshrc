@@ -93,19 +93,11 @@ export NODE_PATH="./lib"
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
+alias irb=pry
 
 # Rails
-function rails_command {
-  local cmd=$1
-  shift
-  if [ -e script/rails ]; then
-    rails $cmd "$@"
-  else
-    script/$cmd "$@"
-  fi
-}
-function ss { rails_command "server" "thin" "$@" }
-function sc { rails_command "console" "$@" }
+alias ss="rails server thin"
+alias sc="rails console"
 alias be="bundle exec"
 alias sp="rspec spec"
 alias notes="ack 'TODO|FIXME|XXX|HACK'"

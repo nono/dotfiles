@@ -1,1 +1,0 @@
-../../../vendor/merb.vim/after/syntax/ruby.vim
