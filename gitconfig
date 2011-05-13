@@ -21,6 +21,7 @@
 	info = remote -v
 	initial = "!sh -c 'git init && git add . && git ci -m \"Initial import\"'"
 	up = "!sh -c 'git stash && git pull && git stash pop'"
+	oumph = "commit --author=\"Benoît Sibaud <oumph@linuxfr.org>\""
 [diff]
 	renames = true
 [branch]

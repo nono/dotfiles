@@ -5,7 +5,8 @@ filetype on
 filetype indent on
 filetype plugin on
 if has("gui_running")
-	colo darkblue2
+	colo solarized
+	set bg=light
 	set gfn=Inconsolata\ 13
 	"set gfn=Droid\ Sans\ Mono\ 12
 	"set gfn=Bitstream\ Vera\ Sans\ Mono\ 11
@@ -16,6 +17,7 @@ if has("gui_running")
 	set go+=c
 else
 	colo nejnej
+	set bg=dark
 endif
 
 set ai          " indente automatiquement

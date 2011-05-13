@@ -14,12 +14,12 @@ noremap K :call OpenRubyDoc(expand('<cword>'))<CR><CR>
 au User Rails noremap K :call OpenRailsDoc(expand('<cword>'))<CR><CR>
 
 function! OpenRubyDoc(keyword)
-	let url = 'http://apidock.com/ruby/'.a:keyword
+	let url = 'http://rubydoc.info/search/stdlib/core/1.9.2?q='.a:keyword
 	exec '!'.g:browser.' '.url.' &'
 endfunction 
 
 function! OpenRailsDoc(keyword)
-	let url = 'http://apidock.com/rails/'.a:keyword
+	let url = 'http://rubydoc.info/search/docs/rails/3.0.0?q='.a:keyword
 	exec '!'.g:browser.' '.url.' &'
 endfunction 
 
