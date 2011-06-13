@@ -114,3 +114,6 @@ function parse_git_branch {
 # Svn
 alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
+
+# MongoDB
+alias start_mongo="mongod --fork --logpath /home/nono/var/log/mongo.log --dbpath /home/nono/var/data"
