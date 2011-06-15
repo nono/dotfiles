@@ -16,6 +16,10 @@ Host vbox
 HostName localhost
 Port 2222
 
+Host rubyfr
+Hostname knut.bearstech.com
+User rubyfr
+
 Host rubyflow
 Hostname knut.bearstech.com
 User rubyflow

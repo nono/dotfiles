@@ -31,3 +31,6 @@
 [submodule "vendor/vim-coffee-script"]
 	path = vendor/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vendor/vim-jade"]
+	path = vendor/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git

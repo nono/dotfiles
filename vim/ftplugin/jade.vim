@@ -1,0 +1,1 @@
+../../vendor/vim-jade/ftplugin/jade.vim

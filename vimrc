@@ -125,6 +125,7 @@ au BufRead,BufNewFile *.rl set ft=ragel
 au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+au BufRead,BufNewFile *.jade set ft=jade
 au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
