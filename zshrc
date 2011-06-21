@@ -80,9 +80,12 @@ alias sl=ls
 # Aptitude
 alias ai='sudo aptitude install'
 alias au='sudo aptitude update'
-alias ad='sudo aptitude dist-upgrade'
+alias ad='sudo aptitude safe-upgrade'
 alias arm='sudo aptitude remove'
 alias as='aptitude search'
+
+# Golang
+export GOROOT="/usr/lib/go"
 
 # Python
 export PYTHONPATH="$HOME/py:$PYTHONPATH"
