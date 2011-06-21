@@ -70,12 +70,14 @@ hi def link     goRepeat            Repeat
 syn keyword     goType              chan map bool string
 syn keyword     goSignedInts        int int8 int16 int32 int64
 syn keyword     goUnsignedInts      byte uint uint8 uint16 uint32 uint64 uintptr
-syn keyword     goFloats            float float32 float64
+syn keyword     goFloats            float32 float64
+syn keyword     goComplexes         complex64 complex128
 
 hi def link     goType              Type
 hi def link     goSignedInts        Type
 hi def link     goUnsignedInts      Type
 hi def link     goFloats            Type
+hi def link     goComplexes         Type
 
 " Treat func specially: it's a declaration at the start of a line, but a type
 " elsewhere. Order matters here.
@@ -83,7 +85,8 @@ syn match       goType              /\<func\>/
 syn match       goDeclaration       /^func\>/
 
 " Predefined functions and values
-syn keyword     goBuiltins          cap close closed convert copy len make new panic panicln print println
+syn keyword     goBuiltins          append cap close complex copy imag len
+syn keyword     goBuiltins          make new panic print println real recover
 syn keyword     goConstants         iota true false nil
 
 hi def link     goBuiltins          Keyword
@@ -92,8 +95,8 @@ hi def link     goConstants         Keyword
 " Comments; their contents
 syn keyword     goTodo              contained TODO FIXME XXX BUG
 syn cluster     goCommentGroup      contains=goTodo
-syn region      goComment           start="/\*" end="\*/" contains=@goCommentGroup
-syn region      goComment           start="//" end="$" contains=@goCommentGroup
+syn region      goComment           start="/\*" end="\*/" contains=@goCommentGroup,@Spell
+syn region      goComment           start="//" end="$" contains=@goCommentGroup,@Spell
 
 hi def link     goComment           Comment
 hi def link     goTodo              Todo
@@ -133,7 +136,7 @@ syn region      goBlock             start="{" end="}" transparent fold
 syn region      goParen             start='(' end=')' transparent
 
 " Integers
-syn match       goDecimalInt        "\<\d\+\>"
+syn match       goDecimalInt        "\<\d\+\([Ee]\d\+\)\?\>"
 syn match       goHexadecimalInt    "\<0x\x\+\>"
 syn match       goOctalInt          "\<0\o\+\>"
 syn match       goOctalError        "\<0\o*[89]\d*\>"
@@ -146,9 +149,17 @@ hi def link     Integer             Number
 " Floating point
 syn match       goFloat             "\<\d\+\.\d*\([Ee][-+]\d\+\)\?\>"
 syn match       goFloat             "\<\.\d\+\([Ee][-+]\d\+\)\?\>"
-syn match       goFloat             "\<\d\+[Ee][-+]\d\+"
+syn match       goFloat             "\<\d\+[Ee][-+]\d\+\>"
 
 hi def link     goFloat             Float
+
+" Imaginary literals
+syn match       goImaginary         "\<\d\+i\>"
+syn match       goImaginary         "\<\d\+\.\d*\([Ee][-+]\d\+\)\?i\>"
+syn match       goImaginary         "\<\.\d\+\([Ee][-+]\d\+\)\?i\>"
+syn match       goImaginary         "\<\d\+[Ee][-+]\d\+i\>"
+
+hi def link     goImaginary         Number
 
 " Spaces after "[]"
 if go_highlight_array_whitespace_error != 0
@@ -170,7 +181,7 @@ if go_highlight_extra_types != 0
   syn match goExtraType /\<bytes\.\(Buffer\)\>/
   syn match goExtraType /\<io\.\(Reader\|Writer\|ReadWriter\|ReadWriteCloser\)\>/
   syn match goExtraType /\<\(os\.Error\)\>/
-  syn match goExtraType /\<reflect\.\w*\(Type\|Value\)\>/
+  syn match goExtraType /\<reflect\.\(Kind\|Type\|Value\)\>/
   syn match goExtraType /\<unsafe\.Pointer\>/
 endif
 
@@ -186,5 +197,12 @@ endif
 
 hi def link     goExtraType         Type
 hi def link     goSpaceError        Error
+
+" Search backwards for a global declaration to start processing the syntax.
+"syn sync match goSync grouphere NONE /^\(const\|var\|type\|func\)\>/
+
+" There's a bug in the implementation of grouphere. For now, use the
+" following as a more expensive/less precise workaround.
+syn sync minlines=500
 
 let b:current_syntax = "go"
