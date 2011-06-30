@@ -49,6 +49,8 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 zstyle ':completion::complete:cd::' tag-order local-directories path-directories
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.rbc'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u

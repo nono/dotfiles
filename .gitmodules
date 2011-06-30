@@ -34,3 +34,6 @@
 [submodule "vendor/vim-jade"]
 	path = vendor/vim-jade
 	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "vendor/vim-handlebars"]
+	path = vendor/vim-handlebars
+	url = https://github.com/nono/vim-handlebars.git
