@@ -1,5 +1,6 @@
 setlocal et
 setlocal sw=2
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 vmap % "zdi<%= <C-R>z %><ESC>
 

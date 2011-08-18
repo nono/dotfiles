@@ -31,3 +31,5 @@
 	default = tracking
 [github]
 	user = nono
+[rerere]
+	enabled = 1

@@ -156,9 +156,7 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 let g:load_doxygen_syntax = 1
 
 " SuperTab
-" http://www.vim.org/scripts/script.php?script_id=182
-let g:SuperTabRetainCompletionType = 2
-let g:SuperTabDefaultCompletionType = "<C-P>"
+let g:SuperTabDefaultCompletionType = "context"
 
 " SQL autocomplete
 let g:ftplugin_sql_omni_key_left  = '<C-Left>'

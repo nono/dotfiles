@@ -37,3 +37,9 @@
 [submodule "vendor/vim-handlebars"]
 	path = vendor/vim-handlebars
 	url = https://github.com/nono/vim-handlebars.git
+[submodule "vendor/gocode"]
+	path = vendor/gocode
+	url = https://github.com/nsf/gocode
+[submodule "vendor/supertab"]
+	path = vendor/supertab
+	url = https://github.com/ervandew/supertab.git
