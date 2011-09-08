@@ -5,7 +5,7 @@ export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=vim
 export PAGER=less
-export BROWSER=firefox-4.0
+export BROWSER=firefox-trunk
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
 cdpath=(~ ~/dev)
@@ -28,6 +28,8 @@ bindkey "^[[5~" up-line-or-history   ## PageUp
 bindkey "^[[6~" down-line-or-history ## PageDown
 bindkey "^[[A" up-line-or-search     ## up arrow for back-history-search
 bindkey "^[[B" down-line-or-search   ## down arrow for fwd-history-search
+bindkey "\C-b" backward-word         ## ctrl-b
+bindkey "\C-f" forward-word          ## ctrl-f
 bindkey " " magic-space              ## do history expansion on space
 
 # Zsh
@@ -78,6 +80,11 @@ alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 
 alias cd..='cd ..'
 alias sl=ls
+
+# Change font size in urxvt
+function font {
+  echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007"
+}
 
 # Aptitude
 alias ai='sudo aptitude install'

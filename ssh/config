@@ -34,6 +34,7 @@ User trollometre
 ###############
 Host linuxfr
 HostName linuxfr.org
+User root
 
 Host zobe
 HostName zobe.linuxfr.org
@@ -50,29 +51,15 @@ Host main
 HostName zobe.linuxfr.org
 Port 222
 
-###############
-#    AF83     #
-###############
-Host sfrmusic
-HostName sfrjt-front.bearstech.com
-user sfrmusic
 
-Host upfactory
-HostName upfactory.com
-User upfactory
+##############
+#    af83    #
+##############
+Host ftv
+HostName gestion.ftv.af83.com
+User ftv-live
 
-Host footrep-test
-HostName footrep-test.af83.com
-User footrep
+Host ftv-demo
+HostName gestion.ftv-demo.af83.com
+User ftv-live
 
-Host footrep
-HostName footrep-dev.af83.com
-User footrep
-
-Host sfrfoot
-HostName footrep.bearstech.com
-User sfrfoot
-
-Host retrospectiva
-HostName retrospectiva.af83.com
-User retrospectiva

@@ -156,7 +156,7 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 let g:load_doxygen_syntax = 1
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<C-P>"
 
 " SQL autocomplete
 let g:ftplugin_sql_omni_key_left  = '<C-Left>'
