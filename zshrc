@@ -72,6 +72,7 @@ alias less='less -R'
 alias grep='grep --color'
 alias ack='ack-grep'
 alias ftp='lftp'
+alias notes="ack 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias mplayer='mplayer -fs'
@@ -105,14 +106,13 @@ export NODE_PATH="./lib"
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
+export USE_BUNDLER=try
 alias irb=pry
 
 # Rails
 alias ss="rails server thin"
 alias sc="rails console"
-alias be="bundle exec"
 alias sp="rspec spec"
-alias notes="ack 'TODO|FIXME|XXX|HACK'"
 
 # Git
 alias gs='git st'

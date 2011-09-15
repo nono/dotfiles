@@ -91,6 +91,12 @@ noremap <C-Down> <C-W><Down>
 noremap <C-Right> <C-W><Right>
 noremap <C-Left> <C-W><Left>
 
+" Alt + touches fléchées pour déplacer des lignes de code
+nnoremap <A-Down> :m+<CR>==
+nnoremap <A-Up> :m-2<CR>==
+vnoremap <A-Down> :m'>+<CR>gv=gv
+vnoremap <A-Up> :m-2<CR>gv=gv
+
 " Complétion
 inoremap <C-@> <C-P>
 
@@ -114,7 +120,7 @@ let g:browser = 'x-www-browser'
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
-au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile set ft=ruby
+au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile,Guardfile set ft=ruby
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
