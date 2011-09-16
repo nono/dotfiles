@@ -106,8 +106,8 @@ export NODE_PATH="./lib"
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
-export USE_BUNDLER=try
 alias irb=pry
+alias be="bundle exec"
 
 # Rails
 alias ss="rails server thin"
