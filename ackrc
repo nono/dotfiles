@@ -6,4 +6,4 @@
 --ignore-dir=tmp
 --type-add=ruby=.haml,.rake
 --type-add=html=.html.erb,.html.haml
---type-add=css=.sass,.less
+--type-add=css=.scss,.sass,.less

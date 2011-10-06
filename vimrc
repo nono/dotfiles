@@ -137,6 +137,7 @@ au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
 au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.handlebars,*.hbs set filetype=handlebars
+au BufRead,BufNewFile *.jst,*.ejs set filetype=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
