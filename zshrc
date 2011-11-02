@@ -5,7 +5,7 @@ export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=vim
 export PAGER=less
-export BROWSER=firefox-trunk
+export BROWSER=x-www-browser
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
 cdpath=(~ ~/dev)
@@ -106,14 +106,11 @@ export NODE_PATH="./lib"
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
-export USE_BUNDLER="try"
-alias irb="USE_BUNDLER=no pry"
 alias be="bundle exec"
 
 # Rails
-alias ss="rails server thin"
-alias sc="rails console"
-alias sp="rspec spec"
+alias rs="rails s thin"
+alias rc="rails c"
 
 # Git
 alias gs='git st'
@@ -130,3 +127,4 @@ alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
 # MongoDB
 alias start_mongo="mongod --fork --logpath /home/nono/var/log/mongo.log --dbpath /home/nono/var/data"
+alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"

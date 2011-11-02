@@ -57,11 +57,6 @@ Plugin {
     type = launchbar
     config {
         button {
-            icon = gwibber
-            tooltip = Social Broadcast messages
-            action = gwibber
-        }
-        button {
             icon = mozilla-firefox
             image = /home/nono/.icons/firefox.png
             tooltip = Firefox web browser
