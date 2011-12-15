@@ -28,7 +28,7 @@
 	autosetupmerge = true
 	autosetuprebase = always
 [push]
-	default = tracking
+	default = upstream
 [github]
 	user = nono
 [rerere]

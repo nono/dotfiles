@@ -593,10 +593,14 @@
   </application>
 
   # end of the example
+
+  <application name="first element of window's WM_CLASS property (see xprop)"
+              class="second element of window's WM_CLASS property (see xprop)"
+               role="the window's WM_WINDOW_ROLE property (see xprop)">
 -->
 
     <!-- Desktop 1 -->
-    <application name="exaile.py">
+    <application name="spotify">
       <desktop>1</desktop>
       <maximized>yes</maximized>
     </application>
@@ -605,7 +609,7 @@
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>0</x><y>0</y></position>
+      <position><x>0</x><y>-0</y></position>
     </application>
     <application name="irssi">
       <desktop>2</desktop>
@@ -628,10 +632,6 @@
     </application>
 
     <!-- Desktop 4 -->
-    <application name="liferea">
-      <desktop>4</desktop>
-      <maximized>yes</maximized>
-    </application>
     <!-- See http://wiki.archlinux.org/index.php/Openbox#Firefox.2FGran_Paradiso_application_rules -->
     <application class="Firefox*">
       <desktop>4</desktop>
@@ -650,10 +650,6 @@
       <maximized>yes</maximized>
     </application>
     <application class="Thunderbird">
-      <desktop>4</desktop>
-      <maximized>yes</maximized>
-    </application>
-    <application class="Gwibber">
       <desktop>4</desktop>
       <maximized>yes</maximized>
     </application>

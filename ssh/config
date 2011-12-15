@@ -39,6 +39,10 @@ User root
 Host zobe
 HostName zobe.linuxfr.org
 
+Host gruik
+HostName 88.191.250.172
+User root
+
 Host prod
 HostName prod.linuxfr.org
 user linuxfr
@@ -63,3 +67,6 @@ Host ftv-demo
 HostName gestion.ftv-demo.af83.com
 User ftv-live
 
+Host ftv-preprod
+HostName 95.131.139.211
+User ftpuser
