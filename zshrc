@@ -97,9 +97,6 @@ alias as='aptitude search'
 # Golang
 export GOROOT="/usr/lib/go"
 
-# Python
-export PYTHONPATH="$HOME/py:$PYTHONPATH"
-
 # Node.js
 export NODE_PATH="./lib"
 
@@ -126,5 +123,4 @@ alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
 alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
 # MongoDB
-alias start_mongo="mongod --fork --logpath /home/nono/var/log/mongo.log --dbpath /home/nono/var/data"
 alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"
