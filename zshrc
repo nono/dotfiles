@@ -106,8 +106,8 @@ export RUBYLIB="./lib"
 alias be="bundle exec"
 
 # Rails
-alias rs="rails s thin"
-alias rc="rails c"
+alias rs="./script/rails s thin"
+alias rc="./script/rails c"
 
 # Git
 alias gs='git st'

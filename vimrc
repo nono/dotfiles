@@ -179,6 +179,7 @@ let g:syntastic_disabled_filetypes = ['c', 'cpp', 'sh', 'coffee']
 
 " }}}
 " Autres {{{ "
+set rtp+=$GOROOT/misc/vim
 
 " Show trailing white-space
 let ruby_space_errors = 1
