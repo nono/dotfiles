@@ -138,6 +138,7 @@ au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
+au BufRead,BufNewFile *.go set ft=go
 
 
 " }}}
@@ -177,7 +178,6 @@ let g:syntastic_disabled_filetypes = ['c', 'cpp', 'sh', 'coffee']
 
 " }}}
 " Autres {{{ "
-set rtp+=$GOROOT/misc/vim
 
 " Show trailing white-space
 let ruby_space_errors = 1

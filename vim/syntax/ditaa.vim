@@ -9,7 +9,7 @@ syn keyword    ditaaVArrow     V
 syn match      ditaaColors     / c[0-9a-f]\{3\} /
 syn keyword    ditaaColors     cRED cBLU cGRE CPNK cBLK CYEL
 syn keyword    ditaaBullets    o
-syn match      ditaaTag        /{\(d\|s\|io\)}/
+syn match      ditaaTag        /{\(d\|s\|io\|o\|mo\|c|tr\)}/
 syn match      ditaaText       /[^{}/\\+\-=|*:^<> ]\+/
 
 hi def link    ditaaVArrow     Normal

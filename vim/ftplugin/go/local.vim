@@ -3,4 +3,4 @@ setlocal ts=8
 setlocal noet
 setlocal omnifunc=gocomplete#Complete
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-autocmd BufWritePost *.go :silent Fmt
+autocmd BufWritePost *.go :Fmt

@@ -1,0 +1,1 @@
+/usr/lib/go/misc/vim/plugin/godoc.vim
