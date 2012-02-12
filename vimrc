@@ -121,13 +121,12 @@ au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
 au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile,Guardfile set ft=ruby
-au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
 au BufRead,BufNewFile *.t2t set ft=txt2tags
 au BufRead,BufNewFile *.textile set ft=textile
-au BufRead,BufNewFile *.{txt,md,mkd,markdown} set ft=markdown et
-au BufRead,BufNewFile *.rl set ft=ragel
+au BufRead,BufNewFile *.{txt,md,mkd,markdown} set ft=markdown et tw=78
+au BufRead,BufNewFile *.ditaa set ft=ditaa
 au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
@@ -136,10 +135,9 @@ au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
 au BufRead,BufNewFile *.mustache set ft=mustache
-au BufRead,BufNewFile *.handlebars,*.hbs set filetype=handlebars
-au BufRead,BufNewFile *.jst,*.ejs set filetype=html
+au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
+au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
-au BufRead,BufNewFile */public/javascripts/*.js set ft=javascript syntax=jquery
 
 
 " }}}
