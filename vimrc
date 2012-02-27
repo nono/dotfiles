@@ -207,6 +207,11 @@ function MakeScriptExecuteable()
 	endif
 endfunction
 
+" vimbits
 au BufWritePost * call MakeScriptExecuteable()
+au BufWritePost .vimrc so ~/.vimrc
+au InsertLeave * set nopaste
+vnoremap < <gv
+vnoremap > >gv
 
 " }}}
