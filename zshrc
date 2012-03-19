@@ -96,8 +96,8 @@ alias as='aptitude search'
 
 # Golang
 export GOROOT="/usr/lib/go"
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export GOPATH="$HOME/go:$HOME/dev"
+export PATH="$HOME/go/bin:$PATH"
 
 # Node.js
 export NODE_PATH="./lib"

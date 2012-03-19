@@ -63,6 +63,8 @@ set cot=menuone
 set grepprg=ack
 set grepformat=%f:%l:%m
 set shortmess=atI
+set lcs=nbsp:␣,trail:⋅
+set list
 
 
 " }}}
@@ -139,6 +141,7 @@ au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 au BufRead,BufNewFile *.go set ft=go
+au BufRead,BufNewFile *.ics,*.ical setfiletype icalendar
 
 
 " }}}
