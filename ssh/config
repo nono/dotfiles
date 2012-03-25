@@ -70,3 +70,8 @@ User ftv-live
 Host ftv-preprod
 HostName 95.131.139.211
 User ftpuser
+
+Host ftv-front
+HostName 95.131.139.238
+User webadmin
+Port 2203

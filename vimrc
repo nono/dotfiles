@@ -63,7 +63,7 @@ set cot=menuone
 set grepprg=ack
 set grepformat=%f:%l:%m
 set shortmess=atI
-set lcs=nbsp:␣,trail:⋅
+set lcs=tab:\ \ ,nbsp:␣,trail:⋅
 set list
 
 
@@ -121,7 +121,7 @@ let g:browser = 'x-www-browser'
 
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-au BufRead,BufNewFile nginx.*,/etc/nginx/**/* set ft=nginx
+au BufRead,BufNewFile nginx.*,nginx/**/* set ft=nginx
 au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile,Guardfile set ft=ruby
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
