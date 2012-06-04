@@ -75,3 +75,7 @@ Host ftv-front
 HostName 95.131.139.238
 User webadmin
 Port 2203
+
+Host jenkins
+HostName jenkins.af83.com
+User hudson

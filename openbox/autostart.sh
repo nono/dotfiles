@@ -9,7 +9,6 @@ setlayout 0 2 2 0
 xmodmap ~/.xmodmaprc
 
 # Programs to launch at startup
-gtk-redshift -l 48.8:2.3 -t 6500:5700 &
 x-www-browser &
 thunderbird &
 urxvt -name irssi -title irssi -e irssi &
