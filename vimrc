@@ -121,7 +121,7 @@ let g:browser = 'x-www-browser'
 
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-au BufRead,BufNewFile nginx.*,nginx/**/* set ft=nginx
+au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
 au BufRead,BufNewFile Gemfile,Capfile,Vagrantfile,Guardfile set ft=ruby
 au BufRead,BufNewFile *.dc set ft=dotclear
 au BufRead,BufNewFile *.wiki set ft=moin
@@ -141,7 +141,7 @@ au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 au BufRead,BufNewFile *.go set ft=go
-au BufRead,BufNewFile *.ics,*.ical setfiletype icalendar
+au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
 
 
 " }}}
@@ -201,10 +201,10 @@ au FocusLost *.css,*.sass :up
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
 " Un petit alias pour se simplifier la vie
-command E :Explore
+command! E :Explore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
-function MakeScriptExecuteable()
+function! MakeScriptExecuteable()
 	if getline(1) =~ "^#!.*/bin/"
 		silent !chmod +x <afile>
 	endif
@@ -212,7 +212,6 @@ endfunction
 
 " vimbits
 au BufWritePost * call MakeScriptExecuteable()
-au BufWritePost .vimrc so ~/.vimrc
 au InsertLeave * set nopaste
 vnoremap < <gv
 vnoremap > >gv
