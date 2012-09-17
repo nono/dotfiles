@@ -43,9 +43,6 @@
 [submodule "vendor/supertab"]
 	path = vendor/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "vendor/vim-ruby-minitest"]
-	path = vendor/vim-ruby-minitest
-	url = https://github.com/sunaku/vim-ruby-minitest.git
 [submodule "vendor/zsh-completions"]
 	path = vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
