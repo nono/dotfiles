@@ -82,10 +82,9 @@ alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 alias cd..='cd ..'
 alias sl=ls
 
-# Change font size in urxvt
-function font {
-  echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007"
-}
+# Terms
+font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
+pretty() { pygmentize -f terminal "$1" | less -R }
 
 # Aptitude
 alias ai='sudo aptitude install'
@@ -103,6 +102,10 @@ export PATH="$HOME/go/bin:$PATH"
 # Node.js
 export NODE_PATH="./lib"
 
+# JS: grunt
+grunt_tasks() { reply=(`grunt --no-color list`) }
+compctl -K grunt_tasks grunt
+
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
 export RUBYLIB="./lib"
@@ -114,12 +117,8 @@ alias rc="./script/rails c"
 
 # Git
 alias gs='git st'
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
-}
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /"
-}
+parse_git_dirty() { [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*" }
+parse_git_branch() { git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
 
 # Svn
 alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'

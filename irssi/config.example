@@ -1,5 +1,12 @@
 servers = (
   {
+    # address = "chat.freenode.net";
+    # chatnet = "freenode";
+    # port = "7000";
+    # use_ssl = "yes";
+    # autoconnect = "yes";
+    # password = "XXX";
+
     address = "bip.menfin.info";
     chatnet = "freenode";
     port = "7778";
@@ -23,14 +30,10 @@ chatnets = {
 };
 
 channels = (
-  { name = "#af83"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#bearstech"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#kwartoo"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#ruby.fr"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#parisjs"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#uucpssh"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#lifehacking"; chatnet = "freenode"; autojoin = "Yes"; }
+  { name = "#bearstech"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#af83"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#af83-project"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -221,8 +224,8 @@ keyboard = (
   { key = "^[[19~"; id = "key"; data = "F8"; },
   { key = "^[[20~"; id = "key"; data = "F9"; },
   { key = "^[[21~"; id = "key"; data = "F10"; },
-  { key = "^[[30~"; id = "key"; data = "F11"; },
-  { key = "^[[31~"; id = "key"; data = "F12"; },
+  { key = "^[[22~"; id = "key"; data = "F11"; },
+  { key = "^[[23~"; id = "key"; data = "F12"; },
   { key = "F1"; id = "command"; data = "window 1"; },
   { key = "F2"; id = "command"; data = "window 2"; },
   { key = "F3"; id = "command"; data = "window 3"; },
@@ -243,80 +246,12 @@ windows = {
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#af83";
-        tag = "freenode";
-      }
-    );
-  };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#bearstech";
-        tag = "freenode";
-      }
-    );
-  };
-  3 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#parisjs";
-        tag = "freenode";
-      }
-    );
-  };
-  4 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#ruby.fr";
-        tag = "freenode";
-      }
-    );
-  };
-  5 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#uucpssh";
-        tag = "freenode";
-      }
-    );
-  };
-  6 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
         name = "#LinuxFr.org";
         tag = "freenode";
       }
     );
   };
-  7 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#kwartoo";
-        tag = "freenode";
-      }
-    );
-  };
-  8 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#lifehacking";
-        tag = "freenode";
-      }
-    );
-  };
 };
+
 mainwindows = { 1 = { first_line = "1"; lines = "50"; }; };
+ignores = ( { mask = "wibeartisk"; level = "ALL"; } );

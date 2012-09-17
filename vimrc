@@ -16,6 +16,7 @@ if has("gui_running")
 	set go-=m
 	set go+=c
 else
+	let g:solarized_termtrans = 1
 	colo nejnej
 	set bg=dark
 endif
@@ -136,6 +137,7 @@ au BufRead,BufNewFile *.jade set ft=jade
 au BufRead,BufNewFile *.haml set ft=haml
 au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
+au BufRead,BufNewFile *.styl set ft=css
 au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
