@@ -21,7 +21,7 @@
 	url = https://github.com/robgleeson/vim-markdown-preview.git
 [submodule "vendor/vim-rails"]
 	path = vendor/vim-rails
-	url = https://github.com/tpope/vim-rails.git
+	url = https://github.com/nono/vim-rails.git
 [submodule "vendor/vim-yard"]
 	path = vendor/vim-yard
 	url = https://github.com/postmodern/vim-yard.git
