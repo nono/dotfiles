@@ -1,0 +1,8 @@
+/home/nono/dev/*/log/* {
+	daily
+	missingok
+	rotate 3
+	copytruncate
+	compress
+	notifempty
+}
