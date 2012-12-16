@@ -101,6 +101,7 @@ export PATH="$HOME/go/bin:$PATH"
 
 # Node.js
 export NODE_PATH="./lib"
+. <(npm completion)
 
 # JS: grunt
 grunt_tasks() { reply=(`grunt --no-color list`) }
@@ -108,6 +109,7 @@ compctl -K grunt_tasks grunt
 
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
+export PATH=$PATH:$HOME/.rvm/bin
 export RUBYLIB="./lib"
 alias be="bundle exec"
 

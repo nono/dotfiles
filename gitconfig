@@ -25,6 +25,7 @@
 	oumph = "commit --author=\"Benoît Sibaud <oumph@linuxfr.org>\""
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
 [diff]
 	renames = true
 [branch]
