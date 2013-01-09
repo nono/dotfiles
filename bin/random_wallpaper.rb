@@ -7,8 +7,6 @@ COMMAND   = "Esetroot -s %s"
 
 srand
 all = Dir[DIRECTORY + "/*"]
-one = all[rand(all.size)]
-cmd = COMMAND % one
+cmd = COMMAND % all.sample
 
 system(cmd)
-

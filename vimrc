@@ -77,8 +77,6 @@ map <F3> <C-]>
 nmap <F4> :silent make<CR>:cw<CR>
 nmap <F5> :cp<CR>
 nmap <F6> :cn<CR>
-nmap <F7> :AV<CR>
-" nmap <F8> :AS<CR>
 nmap <F8> :set spell!<CR>
 
 " Don't make a # force column zero.
