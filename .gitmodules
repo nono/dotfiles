@@ -49,3 +49,6 @@
 [submodule "vendor/mozilla.vim"]
 	path = vendor/mozilla.vim
 	url = git://github.com/mozfr/mozilla.vim.git
+[submodule "vendor/vim-gitgutter"]
+	path = vendor/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
