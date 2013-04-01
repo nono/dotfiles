@@ -52,7 +52,7 @@ set title       " affiche le nom du fichier dans la barre de titre du term
 set nowrap      " ne pas afficher sur plusieurs lignes les lignes trop longues
 set nospell     " pas de correction orthographique par défaut
 set spl=fr,en   " utiliser le français et l'anglais pour la correction orthographique
-set sps=best,10 " afficher seulement les 10 meilleures propositions pour la correction orthographique
+set sps=best,3  " afficher seulement les 3 meilleures propositions pour la correction orthographique
 set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
 set tags+=../tags
 set shell=/bin/bash
@@ -137,7 +137,7 @@ au BufRead,BufNewFile *.sass set ft=sass
 au BufRead,BufNewFile *.scss set ft=scss
 au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
 au BufRead,BufNewFile *.mustache set ft=mustache
-au BufRead,BufNewFile *.{handlebars,hbs} set ft=handlebars
+au BufRead,BufNewFile *.{handlebars,hbs} set ft=html syntax=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 au BufRead,BufNewFile *.go set ft=go
