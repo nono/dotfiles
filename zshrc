@@ -102,6 +102,7 @@ export PATH="$HOME/go/bin:$PATH"
 # Node.js
 export NODE_PATH="./lib"
 . <(npm completion)
+. <(bower completion)
 
 # JS: grunt
 grunt_tasks() { reply=(`grunt --no-color list`) }
