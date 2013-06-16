@@ -1,1 +1,0 @@
-../../vendor/gocode/vim/autoload/gocomplete.vim

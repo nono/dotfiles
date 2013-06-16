@@ -1,1 +1,1 @@
-/usr/lib/go/misc/vim/ftplugin/go/import.vim
+/usr/local/go/misc/vim/ftplugin/go/import.vim

@@ -66,6 +66,7 @@ set grepformat=%f:%l:%m
 set shortmess=atI
 set lcs=tab:\ \ ,nbsp:␣,trail:⋅
 set list
+set nostartofline
 
 
 " }}}
@@ -140,7 +141,7 @@ au BufRead,BufNewFile *.mustache set ft=mustache
 au BufRead,BufNewFile *.{handlebars,hbs} set ft=html syntax=handlebars
 au BufRead,BufNewFile *.{jst,ejs} set ft=html
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
-au BufRead,BufNewFile *.go set ft=go
+au BufRead,BufNewFile *.go setlocal ft=go fenc=utf-8 ff=unix
 au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
 
 

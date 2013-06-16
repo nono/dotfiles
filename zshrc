@@ -94,19 +94,14 @@ alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
 # Golang
-export GOROOT="/usr/lib/go"
 export GOPATH="$HOME/go:$HOME/dev"
 export PATH="$HOME/go/bin:$PATH"
-[[ -s $GOROOT/misc/zsh/go ]] && source $GOROOT/misc/zsh/go
+source $(go env GOROOT)/misc/zsh/go
 
 # Node.js
 export NODE_PATH="./lib"
 . <(npm completion)
 . <(bower completion)
-
-# JS: grunt
-grunt_tasks() { reply=(`grunt --no-color list`) }
-compctl -K grunt_tasks grunt
 
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
