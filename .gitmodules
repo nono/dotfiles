@@ -52,3 +52,6 @@
 [submodule "vendor/vim-gitgutter"]
 	path = vendor/vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "vendor/yeoman-zsh-plugin"]
+	path = vendor/yeoman-zsh-plugin
+	url = https://github.com/edouard-lopez/yeoman-zsh-plugin.git
