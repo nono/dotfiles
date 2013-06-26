@@ -93,6 +93,9 @@ alias ad='sudo aptitude safe-upgrade'
 alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
+# Elixir
+export PATH="$HOME/vendor/elixir/bin:$PATH"
+
 # Golang
 export GOPATH="$HOME/go:$HOME/dev"
 export PATH="$HOME/go/bin:$PATH"

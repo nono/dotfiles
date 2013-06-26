@@ -1,0 +1,1 @@
+../../vendor/vim-elixir/syntax/elixir.vim
