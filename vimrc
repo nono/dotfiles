@@ -54,8 +54,8 @@ set wildmenu
 set wildignore+=*.o,*.so,*.a,*.pyc,*.rbc,*.8
 set omnifunc=syntaxcomplete#Complete
 set cot=menuone
-set grepprg=ack
-set grepformat=%f:%l:%m
+set grepprg=ag
+set grepformat=%f:%l:%c:%m
 set shortmess=atI
 set lcs=tab:\ \ ,nbsp:␣,trail:⋅
 set list
@@ -149,7 +149,11 @@ nnoremap <F3> :<C-u>Unite buffer file_mru bookmark<CR>
 nnoremap <F4> :<C-u>Unite file_rec/async:.<CR>
 nnoremap <F5> :<C-u>Unite grep:.<cr>
 
-if executable('ack-grep')
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack-grep')
   let g:unite_source_grep_command = 'ack-grep'
   let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
   let g:unite_source_grep_recursive_opt = ''

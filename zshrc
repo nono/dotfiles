@@ -70,9 +70,8 @@ alias ll='ls $LS_OPTIONS -la'
 alias lh='ls $LS_OPTIONS -lah'
 alias less='less -R'
 alias grep='grep --color'
-alias ack='ack-grep'
 alias ftp='lftp'
-alias notes="ack 'TODO|FIXME|XXX|HACK'"
+alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias mplayer='mplayer -fs'
