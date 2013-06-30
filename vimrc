@@ -5,8 +5,8 @@ filetype on
 filetype indent on
 filetype plugin on
 if has("gui_running")
-	colo solarized
-	set bg=light
+	colo hybrid
+	set bg=dark
 	set gfn=Inconsolata\ 13
 	set gcr=a:blinkon0
 	set go-=T
