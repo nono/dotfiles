@@ -1,0 +1,1 @@
+../../vendor/unite.vim/syntax/unite.vim

@@ -1,0 +1,1 @@
+../../vendor/unite.vim/autoload/vital.vim

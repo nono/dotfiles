@@ -140,6 +140,21 @@ au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
 " }}}
 " Plugins {{{ "
 
+" Unite
+let g:unite_enable_start_insert = 1
+let g:unite_prompt = '▶ '
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <F2> :<C-u>Unite jump<CR>
+nnoremap <F3> :<C-u>Unite buffer file_mru bookmark<CR>
+nnoremap <F4> :<C-u>Unite file_rec/async:.<CR>
+nnoremap <F5> :<C-u>Unite grep:.<cr>
+
+if executable('ack-grep')
+  let g:unite_source_grep_command = 'ack-grep'
+  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 " Increment Column :
 vnoremap <c-a> :call IncrementColumn()<cr>
 
