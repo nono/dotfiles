@@ -22,9 +22,6 @@
 [submodule "vendor/vim-rails"]
 	path = vendor/vim-rails
 	url = https://github.com/nono/vim-rails.git
-[submodule "vendor/vim-yard"]
-	path = vendor/vim-yard
-	url = https://github.com/postmodern/vim-yard.git
 [submodule "vendor/jquery.vim"]
 	path = vendor/jquery.vim
 	url = https://github.com/nono/jquery.vim.git
@@ -49,9 +46,6 @@
 [submodule "vendor/mozilla.vim"]
 	path = vendor/mozilla.vim
 	url = git://github.com/mozfr/mozilla.vim.git
-[submodule "vendor/vim-gitgutter"]
-	path = vendor/vim-gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
 [submodule "vendor/yeoman-zsh-plugin"]
 	path = vendor/yeoman-zsh-plugin
 	url = https://github.com/edouard-lopez/yeoman-zsh-plugin.git

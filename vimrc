@@ -8,15 +8,11 @@ if has("gui_running")
 	colo solarized
 	set bg=light
 	set gfn=Inconsolata\ 13
-	"set gfn=Droid\ Sans\ Mono\ 12
-	"set gfn=Bitstream\ Vera\ Sans\ Mono\ 11
-	"set gfn=Monaco\ 11
 	set gcr=a:blinkon0
 	set go-=T
 	set go-=m
 	set go+=c
 else
-	let g:solarized_termtrans = 1
 	colo nejnej
 	set bg=dark
 endif
@@ -39,7 +35,6 @@ set noic        " tenir compte de la casse lors des recherches
 set nojs        " pas 2 espaces après '.', '?' et '!' pour la commande J(oin)
 set noml        " pas de modelines (trou de sécu dans les anciennes versions de Vim)
 set nows        " ne pas retourner au début du fichier lorsqu'une recherche atteint la fin du fichier
-set pt=<F11>    " pour coller du code sans avoir une double indentation (celle de départ + celle de Vim)
 set si          " indentation intelligente (enfin presque)
 set ruler       " affiche la position du curseur dans la barre d'état
 set so=3        " toujours afficher au moins 3 lignes au-dessus et en dessous du curseur
@@ -54,8 +49,6 @@ set nospell     " pas de correction orthographique par défaut
 set spl=fr,en   " utiliser le français et l'anglais pour la correction orthographique
 set sps=best,3  " afficher seulement les 3 meilleures propositions pour la correction orthographique
 set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
-set tags+=../tags
-set shell=/bin/bash
 set ve=block
 set wildmenu
 set wildignore+=*.o,*.so,*.a,*.pyc,*.rbc,*.8
@@ -73,12 +66,10 @@ set nostartofline
 " Mappings {{{
 
 nmap <F1> K
-map <F2> <C-T>
-map <F3> <C-]>
-nmap <F4> :silent make<CR>:cw<CR>
-nmap <F5> :cp<CR>
-nmap <F6> :cn<CR>
 nmap <F8> :set spell!<CR>
+
+" pour coller du code sans avoir une double indentation (celle de départ + celle de Vim)
+set pt=<F11>
 
 " Don't make a # force column zero.
 inoremap # X<BS>#
@@ -149,17 +140,6 @@ au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
 " }}}
 " Plugins {{{ "
 
-" Alternate :
-" http://www.vim.org/scripts/script.php?script_id=31
-let g:alternateSearchPath = '../src,../include'
-let g:alternateNoDefaultAlternate = 1
-
-" LoadHeader :
-set path+=include,src
-set path+=**
-nmap <F9>  :call LoadHeader(getline("."),0)<cr>
-nmap <F10> :call LoadHeader(getline("."),1)<cr>
-
 " Increment Column :
 vnoremap <c-a> :call IncrementColumn()<cr>
 
@@ -168,10 +148,6 @@ let g:load_doxygen_syntax = 1
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-P>"
-
-" SQL autocomplete
-let g:ftplugin_sql_omni_key_left  = '<C-Left>'
-let g:ftplugin_sql_omni_key_right = '<C-Right>'
 
 " Vim-markdown-preview
 let g:VMPhtmlreader = g:browser
@@ -196,14 +172,13 @@ source $HOME/.vim/abbrev.vim
 vmap / :s#^#//\ #<CR>gv:s#^//\ //\ ##<CR>
 vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
 
-" Sauvegarder automatiquement les feuilles de styles
-au FocusLost *.css,*.sass :up
-
 " SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
-" Un petit alias pour se simplifier la vie
+" Des petits alias pour se simplifier la vie
 command! E :Explore
+command! S :Sexplore
+command! V :Vexplore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function! MakeScriptExecuteable()
