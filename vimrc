@@ -51,7 +51,7 @@ set sps=best,3  " afficher seulement les 3 meilleures propositions pour la corre
 set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
 set ve=block
 set wildmenu
-set wildignore+=*.o,*.so,*.a,*.pyc,*.rbc,*.8
+set wildignore+=*.o,*.so,*.a,*.pyc,*.8
 set omnifunc=syntaxcomplete#Complete
 set cot=menuone
 set grepprg=ag
@@ -143,11 +143,12 @@ au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
 " Unite
 let g:unite_enable_start_insert = 1
 let g:unite_prompt = '▶ '
+let g:unite_source_file_rec_ignore_pattern = '\.\%(o\|so\|a\|pdf\|png\|jpg\|gif\|ttf\|eot\|otf\|woff\|ico\|gz\|bzip2\)$'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 nnoremap <F2> :<C-u>Unite jump<CR>
 nnoremap <F3> :<C-u>Unite buffer file_mru bookmark<CR>
-nnoremap <F4> :<C-u>Unite file_rec/async:.<CR>
-nnoremap <F5> :<C-u>Unite grep:.<cr>
+nnoremap <F4> :<C-u>Unite grep:.<cr>
+nnoremap <F5> :<C-u>Unite file_rec/async:.<CR>
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
