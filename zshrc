@@ -103,7 +103,6 @@ source $(go env GOROOT)/misc/zsh/go
 # Node.js
 export NODE_PATH="./lib"
 . <(npm completion)
-. <(bower completion)
 
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
