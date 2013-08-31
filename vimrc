@@ -106,6 +106,9 @@ map <F12> :runtime! syntax/2html.vim<CR>
 " Utilise ce navigateur pour l'aide en ligne
 let g:browser = 'x-www-browser'
 
+" Open current line on GitHub
+nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs x-www-browser<CR><CR>
+
 
 " }}}
 " Autodetect filetypes {{{ "
