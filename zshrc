@@ -96,8 +96,8 @@ alias as='aptitude search'
 export PATH="$HOME/vendor/elixir/bin:$PATH"
 
 # Golang
-export GOPATH="$HOME/go:$HOME/dev"
-export PATH="$HOME/go/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 source $(go env GOROOT)/misc/zsh/go
 
 # Node.js
@@ -106,7 +106,7 @@ export NODE_PATH="./lib"
 
 # Ruby
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH="$PATH:$HOME/.rvm/bin"
 export RUBYLIB="./lib"
 alias be="bundle exec"
 
