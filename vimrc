@@ -12,6 +12,12 @@ if has("gui_running")
 	set go-=T
 	set go-=m
 	set go+=c
+	" Fix borders of fullscreen GUI
+	" let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
+	" exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
+	" 			\' > ~/.gtkrc.mine'
+	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
+	" 			\' >> ~/.gtkrc.mine'
 else
 	colo nejnej
 	set bg=dark
