@@ -16,9 +16,6 @@
 [submodule "vendor/vim-markdown"]
 	path = vendor/vim-markdown
 	url = https://github.com/nono/vim-markdown.git
-[submodule "vendor/vim-markdown-preview"]
-	path = vendor/vim-markdown-preview
-	url = https://github.com/robgleeson/vim-markdown-preview.git
 [submodule "vendor/vim-rails"]
 	path = vendor/vim-rails
 	url = https://github.com/nono/vim-rails.git
