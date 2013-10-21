@@ -1,9 +1,0 @@
-= INSTALL =
-
-git clone git://github.com/nono/dotfiles ~/dotfiles
-cd ~/dotfiles
-rake install
-
-= TODO =
-
-The config for openbox is in ~/.config/openbox, not ~/.openbox
