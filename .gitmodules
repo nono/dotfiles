@@ -13,9 +13,6 @@
 [submodule "vendor/vim-javascript"]
 	path = vendor/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vendor/vim-markdown"]
-	path = vendor/vim-markdown
-	url = https://github.com/nono/vim-markdown.git
 [submodule "vendor/vim-rails"]
 	path = vendor/vim-rails
 	url = https://github.com/nono/vim-rails.git

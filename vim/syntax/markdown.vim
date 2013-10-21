@@ -1,1 +1,0 @@
-../../vendor/vim-markdown/syntax/markdown.vim
