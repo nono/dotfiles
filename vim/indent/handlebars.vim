@@ -1,1 +1,0 @@
-../../vendor/vim-handlebars/indent/handlebars.vim

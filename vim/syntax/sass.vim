@@ -1,1 +1,0 @@
-../../vendor/vim-haml/syntax/sass.vim

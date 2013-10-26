@@ -1,1 +1,0 @@
-../../vendor/vim-handlebars/syntax/handlebars.vim

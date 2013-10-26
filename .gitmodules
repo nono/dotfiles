@@ -7,9 +7,6 @@
 [submodule "vendor/syntastic"]
 	path = vendor/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vendor/vim-haml"]
-	path = vendor/vim-haml
-	url = https://github.com/tpope/vim-haml.git
 [submodule "vendor/vim-javascript"]
 	path = vendor/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
@@ -25,9 +22,6 @@
 [submodule "vendor/vim-jade"]
 	path = vendor/vim-jade
 	url = https://github.com/digitaltoad/vim-jade.git
-[submodule "vendor/vim-handlebars"]
-	path = vendor/vim-handlebars
-	url = https://github.com/nono/vim-handlebars.git
 [submodule "vendor/gocode"]
 	path = vendor/gocode
 	url = https://github.com/nsf/gocode
