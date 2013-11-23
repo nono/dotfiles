@@ -86,18 +86,14 @@ font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
 
 # Aptitude
-alias ai='sudo aptitude install'
-alias au='sudo aptitude update'
-alias ad='sudo aptitude safe-upgrade'
-alias arm='sudo aptitude remove'
+alias ai='sudo apt-get install'
+alias au='sudo apt-get update'
+alias ad='sudo apt-get upgrade'
+alias arm='sudo apt-get remove'
 alias as='aptitude search'
 
-# Elixir
-export PATH="$HOME/vendor/elixir/bin:$PATH"
-
 # Golang
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export GOPATH="$HOME"
 source $(go env GOROOT)/misc/zsh/go
 
 # Node.js
@@ -105,8 +101,7 @@ export NODE_PATH="./lib"
 . <(npm completion)
 
 # Ruby
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && hash -d gem="$(rvm gemdir)/gems"
-export PATH="$PATH:$HOME/.rvm/bin"
+source ~/share/chruby/chruby.sh && chruby 2.1
 export RUBYLIB="./lib"
 alias be="bundle exec"
 

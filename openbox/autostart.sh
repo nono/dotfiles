@@ -4,7 +4,7 @@
 # nm-applet --sm-disable &
 xset -b
 numlockx on
-Esetroot -f ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
+Esetroot -scale ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
 setlayout 0 2 2 0
 xmodmap ~/.xmodmaprc
 

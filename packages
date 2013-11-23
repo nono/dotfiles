@@ -1,0 +1,53 @@
+# Base
+irssi
+rxvt-unicode
+silversearcher-ag
+tree
+vim-gui
+zsh
+
+# Admin
+aptitude
+etckeeper
+rdiff-backup
+
+# User
+chromium-browser
+eterm
+fbpanel
+flashplugin-installer
+fonts-inconsolata
+fonts-roboto
+fonts-yanone-kaffeesatz
+gtk-theme-switch
+libx11-dev
+mirage
+numlockx
+openbox
+qtcurve
+tango-icon-theme
+
+# Dev
+build-essential
+curl
+git
+imagemagick
+libreadline6-dev
+libssl-dev
+libxml2-dev
+libxslt-dev
+openssl
+nginx
+npm
+
+# Bases de données
+libmysql++-dev
+mysql-client
+mysql-server
+mongodb-server
+redis-server
+
+# Autres
+# http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go
+# https://github.com/postmodern/ruby-install
+# https://github.com/postmodern/chruby

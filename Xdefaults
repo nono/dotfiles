@@ -52,4 +52,4 @@ URxvt.keysym.M-C-KP_4: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=24\007
 URxvt.keysym.M-C-KP_5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=32\007
 URxvt.keysym.M-C-KP_6: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=48\007
 
-URxvt.letterSpace: -2
+URxvt.letterSpace: -1

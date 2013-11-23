@@ -7,8 +7,8 @@ Install
 ```
 git clone git://github.com/nono/dotfiles ~/dotfiles
 cd ~/dotfiles
-rake install
 ```
+And then copy/symlink the relevant files
 
 Notes
 -----
