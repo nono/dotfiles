@@ -9,6 +9,7 @@ setlayout 0 2 2 0
 xmodmap ~/.xmodmaprc
 
 # Programs to launch at startup
+sleep 2
 x-www-browser &
 thunderbird &
 urxvt -name irssi -title irssi -e irssi &
@@ -16,4 +17,4 @@ urxvt -name gruik -title gruik &
 urxvt -name codaz -title codaz &
 
 # Programs that will run after Openbox has started
-(sleep 3 && fbpanel) &
+(sleep 1 && fbpanel) &

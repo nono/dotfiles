@@ -22,10 +22,12 @@ fonts-yanone-kaffeesatz
 gtk-theme-switch
 libx11-dev
 mirage
+mplayer
 numlockx
 openbox
 qtcurve
 tango-icon-theme
+ttf-mscorefonts-installer
 
 # Dev
 build-essential
@@ -37,6 +39,7 @@ libssl-dev
 libxml2-dev
 libxslt-dev
 openssl
+optipng
 nginx
 npm
 
@@ -51,3 +54,4 @@ redis-server
 # http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go
 # https://github.com/postmodern/ruby-install
 # https://github.com/postmodern/chruby
+# https://www.spotify.com/fr/download/previews/
