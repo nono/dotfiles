@@ -15,6 +15,7 @@ rdiff-backup
 chromium-browser
 eterm
 fbpanel
+feh
 flashplugin-installer
 fonts-inconsolata
 fonts-roboto
@@ -41,7 +42,9 @@ libxslt-dev
 openssl
 optipng
 nginx
+nodejs-legacy
 npm
+python-pygments
 
 # Bases de données
 libmysql++-dev
@@ -49,6 +52,12 @@ mysql-client
 mysql-server
 mongodb-server
 redis-server
+
+# Paquets pour les langages
+# gem install bundler --pre
+# go get github.com/mattn/gom
+# go get github.com/bradfitz/goimports
+# go get github.com/nsf/gocode
 
 # Autres
 # http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go
