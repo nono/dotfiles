@@ -1,4 +1,4 @@
-! xrdb -load Xdefaults
+! xrdb -load ~/.Xdefaults
 
 ! urxvt & aterm
 *scrollBar:false
@@ -53,3 +53,12 @@ URxvt.keysym.M-C-KP_5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=32\007
 URxvt.keysym.M-C-KP_6: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=48\007
 
 URxvt.letterSpace: -1
+
+! Xft
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintmedium
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
