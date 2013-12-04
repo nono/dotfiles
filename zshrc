@@ -50,7 +50,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 zstyle ':completion::complete:cd::' tag-order local-directories path-directories
-zstyle ':completion:*:(all-|)files' ignored-patterns '*.rbc'
 zstyle ':completion:*:processes' command 'ps -au$USER'
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 autoload -U ~/.zsh/Completion/*(:t)
@@ -86,10 +85,10 @@ font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
 
 # Aptitude
-alias ai='sudo apt-get install'
-alias au='sudo apt-get update'
-alias ad='sudo apt-get upgrade'
-alias arm='sudo apt-get remove'
+alias ai='sudo aptitude install'
+alias au='sudo aptitude update'
+alias ad='sudo aptitude upgrade'
+alias arm='sudo aptitude remove'
 alias as='aptitude search'
 
 # Golang
