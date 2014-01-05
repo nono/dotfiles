@@ -36,15 +36,16 @@ build-essential
 curl
 git
 imagemagick
+libimage-exiftool-perl
 libreadline6-dev
 libssl-dev
 libxml2-dev
 libxslt-dev
-openssl
-optipng
 nginx
 nodejs-legacy
 npm
+openssl
+optipng
 python-pygments
 
 # Bases de données

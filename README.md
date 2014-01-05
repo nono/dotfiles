@@ -14,4 +14,4 @@ Notes
 -----
 
 The config for openbox is in `~/.config/openbox`, not `~/.openbox`.
-Same for fbpanel.
+Same for git and fbpanel.

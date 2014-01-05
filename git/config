@@ -38,3 +38,5 @@
 	user = nono
 [rerere]
 	enabled = 1
+[diff "exif"]
+	textconv = exiftool

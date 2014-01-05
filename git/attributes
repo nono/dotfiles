@@ -1,0 +1,10 @@
+*.png diff=exif
+*.gif diff=exif
+*.ico diff=exif
+*.xcf diff=exif
+*.jpg diff=exif
+*.jpeg diff=exif
+*.woff diff=exif
+*.ttf diff=exif
+*.otf diff=exif
+*.eot diff=exif
