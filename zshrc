@@ -73,9 +73,10 @@ alias ftp='lftp'
 alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
-#alias mplayer='mplayer -fs'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
+
+mplay() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 3 ; \mplayer -fs $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 
 alias cd..='cd ..'
 alias sl=ls
@@ -94,6 +95,7 @@ alias as='aptitude search'
 # Golang
 export GOPATH="$HOME"
 source $(go env GOROOT)/misc/zsh/go
+alias gr="go run main.go"
 
 # Node.js
 export NODE_PATH="./lib"
