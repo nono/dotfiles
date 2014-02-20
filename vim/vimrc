@@ -121,6 +121,7 @@ nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=
 
 au BufRead,BufNewFile bip.conf set ft=bip
 au BufRead,BufNewFile haproxy.cfg set ft=haproxy
+au BufRead,BufNewFile *.vcl set ft=vcl
 au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
 au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
 au BufRead,BufNewFile *.md set ft=markdown

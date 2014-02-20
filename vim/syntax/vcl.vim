@@ -1,0 +1,1 @@
+../../vendor/vim-syntax-vcl/vcl.vim

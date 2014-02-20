@@ -43,3 +43,6 @@
 [submodule "vendor/vimproc"]
 	path = vendor/vimproc
 	url = http://github.com/Shougo/vimproc
+[submodule "vendor/vim-syntax-vcl"]
+	path = vendor/vim-syntax-vcl
+	url = https://github.com/pld-linux/vim-syntax-vcl.git
