@@ -46,6 +46,7 @@ nodejs-legacy
 npm
 openssl
 optipng
+phantomjs
 python-pygments
 
 # Bases de données

@@ -40,3 +40,5 @@
 	enabled = 1
 [diff "exif"]
 	textconv = exiftool
+[grep]
+	extendRegexp = true

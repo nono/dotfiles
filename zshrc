@@ -8,7 +8,6 @@ export PAGER=less
 export BROWSER=x-www-browser
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
-cdpath=(~ ~/dev)
 umask 022
 
 # disable XON/XOFF flow control (^s/^q)
@@ -20,16 +19,13 @@ HISTSIZE=5000
 SAVEHIST=1000
 
 # Use 'cat -v' to obtain the keycodes
-bindkey "^[[2~" overwrite-mode       ## Inser
+bindkey "\C-b" backward-word         ## ctrl-b
+bindkey "\C-f" forward-word          ## ctrl-f
 bindkey "^[[3~" delete-char          ## Del
 bindkey "^[[7~" beginning-of-line    ## Home
 bindkey "^[[8~" end-of-line          ## End
-bindkey "^[[5~" up-line-or-history   ## PageUp
-bindkey "^[[6~" down-line-or-history ## PageDown
 bindkey "^[[A" up-line-or-search     ## up arrow for back-history-search
 bindkey "^[[B" down-line-or-search   ## down arrow for fwd-history-search
-bindkey "\C-b" backward-word         ## ctrl-b
-bindkey "\C-f" forward-word          ## ctrl-f
 bindkey " " magic-space              ## do history expansion on space
 
 # Zsh
@@ -62,11 +58,12 @@ source /etc/zsh_command_not_found
 alias -g L='|less'
 alias -g G='|grep'
 alias -g W='|wc'
-alias -g C='|colordiff'
 
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -la'
 alias lh='ls $LS_OPTIONS -lah'
+alias sl=ls
+alias cd..='cd ..'
 alias less='less -R'
 alias grep='grep --color'
 alias ftp='lftp'
@@ -76,12 +73,7 @@ alias mysql='mysql --select_limit=1000'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 
-mplay() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 3 ; \mplayer -fs $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
-
-alias cd..='cd ..'
-alias sl=ls
-
-# Terms
+mplay() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 3 ; mplayer -fs $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
 
@@ -95,15 +87,16 @@ alias as='aptitude search'
 # Golang
 export GOPATH="$HOME"
 source $(go env GOROOT)/misc/zsh/go
-alias gr="go run main.go"
 
 # Node.js
 export NODE_PATH="./lib"
 . <(npm completion)
 
 # Ruby
-source ~/share/chruby/chruby.sh && chruby 2.1
 export RUBYLIB="./lib"
+export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
+source ~/share/chruby/chruby.sh && chruby 2.1
+hash -d gem=$HOME/.gem/ruby/2.1.1/gems
 alias be="bundle exec"
 
 # Rails
@@ -114,10 +107,6 @@ alias rc="./script/rails c"
 alias gs='git st'
 parse_git_dirty() { [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*" }
 parse_git_branch() { git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
-
-# Svn
-alias unsvn='find . -name .svn -print0 | xargs -0 rm -rf'
-alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 
 # MongoDB
 alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"

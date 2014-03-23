@@ -1,32 +1,11 @@
 #########
 # Perso #
 #########
-Host mybook
-HostName metz
-User bruno
-Port 2222
-
 Host backup
 HostName bubulle
 User save
 IdentityFile /home/nono/.ssh/id_rsa_backup
 Compression no
-
-Host vbox
-HostName localhost
-Port 2222
-
-Host rubyfr
-Hostname knut.bearstech.com
-User rubyfr
-
-Host rubyflow
-Hostname knut.bearstech.com
-User rubyflow
-
-Host trollometre
-Hostname nere.bearstech.com
-User trollometre
 
 
 ###############
@@ -59,23 +38,6 @@ Port 222
 ##############
 #    af83    #
 ##############
-Host ftv
-HostName gestion.ftv.af83.com
-User ftv-live
-
-Host ftv-demo
-HostName gestion.ftv-demo.af83.com
-User ftv-live
-
-Host ftv-preprod
-HostName 95.131.139.211
-User ftpuser
-
-Host ftv-front
-HostName 95.131.139.238
-User webadmin
-Port 2203
-
 Host jenkins
 HostName jenkins.af83.com
 User hudson
