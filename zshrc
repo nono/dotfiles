@@ -78,11 +78,11 @@ font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
 
 # Aptitude
-alias ai='sudo aptitude install'
-alias au='sudo aptitude update'
-alias ad='sudo aptitude upgrade'
-alias arm='sudo aptitude remove'
-alias as='aptitude search'
+alias ai='sudo apt install'
+alias au='sudo apt update'
+alias ad='sudo apt upgrade'
+alias arm='sudo apt remove'
+alias as='apt search'
 
 # Golang
 export GOPATH="$HOME"
@@ -104,9 +104,10 @@ alias rs="rails s"
 alias rc="rails c"
 
 # Git
-alias gs='git st'
-parse_git_dirty() { [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*" }
-parse_git_branch() { git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
+alias g='LANG=C git'
+alias gs='g st'
+parse_git_dirty() { [[ $(g status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*" }
+parse_git_branch() { g branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
 
 # MongoDB
 alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"

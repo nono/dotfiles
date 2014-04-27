@@ -41,3 +41,6 @@ Port 222
 Host jenkins
 HostName jenkins.af83.com
 User hudson
+
+Host 10.20.40.*
+ProxyCommand ssh ecommerce@map-preprod1.bearstech.com "nc %h %p"
