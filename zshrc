@@ -1,5 +1,5 @@
 # Env
-export PATH="$HOME/bin:$PATH"
+export PATH="bin:$HOME/bin:$PATH"
 export PS1='${SSH_CONNECTION+"%n@%m:"}%~$(parse_git_branch)%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
@@ -100,8 +100,8 @@ hash -d gem=$HOME/.gem/ruby/2.1.1/gems
 alias be="bundle exec"
 
 # Rails
-alias rs="./script/rails s thin"
-alias rc="./script/rails c"
+alias rs="rails s"
+alias rc="rails c"
 
 # Git
 alias gs='git st'
