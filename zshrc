@@ -77,6 +77,20 @@ mplay() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 3 ; mplayer -fs $@ ; 
 font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
 
+# Change displays
+function videoproj {
+  xrandr --output LVDS1 --mode 1024x768 --pos 0x0
+  xrandr --output VGA1  --mode 1024x768 --pos 0x0
+}
+function one_screen {
+  xrandr --output LVDS1 --mode 1600x900 --pos 0x0
+  xrandr --output VGA1 --off
+}
+function two_screens {
+  xrandr --output LVDS1 --mode 1600x1200 --pos 0x0
+  xrandr --output VGA1 --mode 1920x1080 --right-of LVDS1
+}
+
 # Aptitude
 alias ai='sudo apt install'
 alias au='sudo apt update'
@@ -89,6 +103,7 @@ export GOPATH="$HOME"
 source $(go env GOROOT)/misc/zsh/go
 
 # Node.js
+export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="./lib"
 . <(npm completion)
 
