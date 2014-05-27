@@ -101,6 +101,7 @@ alias as='apt search'
 # Golang
 export GOPATH="$HOME"
 source $(go env GOROOT)/misc/zsh/go
+alias docker="sudo docker.io"
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
