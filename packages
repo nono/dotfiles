@@ -20,6 +20,7 @@ flashplugin-installer
 fonts-inconsolata
 fonts-roboto
 fonts-yanone-kaffeesatz
+gphoto2
 gtk-theme-switch
 libreoffice
 libx11-dev

@@ -43,4 +43,4 @@ HostName jenkins.af83.com
 User hudson
 
 Host 10.20.40.*
-ProxyCommand ssh ecommerce@map-preprod1.bearstech.com "nc %h %p"
+ProxyCommand ssh ecommerce@map-preprod1.bearstech.com "nc -q 60 %h %p"
