@@ -87,7 +87,7 @@ function one_screen {
   xrandr --output VGA1 --off
 }
 function two_screens {
-  xrandr --output LVDS1 --mode 1600x1200 --pos 0x0
+  xrandr --output LVDS1 --mode 1600x900 --pos 0x0
   xrandr --output VGA1 --mode 1920x1080 --right-of LVDS1
 }
 

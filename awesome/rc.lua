@@ -35,6 +35,8 @@ do
 end
 -- }}}
 
+awful.util.spawn_with_shell("xrandr --output VGA1 --mode 1920x1080 --right-of LVDS1")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
@@ -314,6 +316,7 @@ root.keys(globalkeys)
 -- }}}
 
 -- {{{ Rules
+local last = screen.count()
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -329,9 +332,9 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Thunderbird" },
-      properties = { tag = tags[2][1] } },
+      properties = { tag = tags[last][1] } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[2][3] } },
+      properties = { tag = tags[last][3] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
