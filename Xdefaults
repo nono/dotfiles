@@ -41,6 +41,7 @@ URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
 *color15: #ffffff
 
 ! Font
+display*font: fixed
 irssi.font: xft:DejaVu Sans Mono:pixelsize=14
 *font: xft:DejaVu Sans Mono:pixelsize=14
 
