@@ -5,6 +5,3 @@ fs=yes
 
 # Load all subs containing movie name
 autosub-match=fuzzy
-
-# Volume
-af="volume=+24"
