@@ -1,0 +1,1 @@
+../../vendor/gosu-colors/colors/bluetiful.vim

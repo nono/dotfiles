@@ -46,3 +46,6 @@
 [submodule "vendor/vim-syntax-vcl"]
 	path = vendor/vim-syntax-vcl
 	url = https://github.com/pld-linux/vim-syntax-vcl.git
+[submodule "vendor/gosu-colors"]
+	path = vendor/gosu-colors
+	url = https://github.com/mgutz/gosu-colors.git
