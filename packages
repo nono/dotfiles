@@ -58,7 +58,7 @@ mongodb-server
 redis-server
 
 # Paquets pour les langages
-# gem install bundler --pre
+# gem install bundler
 # go get github.com/mattn/gom
 # go get github.com/bradfitz/goimports
 # go get github.com/nsf/gocode
