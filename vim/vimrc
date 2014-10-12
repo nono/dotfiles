@@ -130,6 +130,7 @@ au BufRead,BufNewFile *.wiki set ft=moin
 au BufRead,BufNewFile *.t2t set ft=txt2tags
 au BufRead,BufNewFile *.textile set ft=textile
 au BufRead,BufNewFile *.txt,*.md set ft=markdown et tw=78
+au BufRead,BufNewFile *.toml set ft=toml
 au BufRead,BufNewFile *.ditaa set ft=ditaa
 au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt

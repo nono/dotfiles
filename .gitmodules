@@ -49,3 +49,6 @@
 [submodule "vendor/gosu-colors"]
 	path = vendor/gosu-colors
 	url = https://github.com/mgutz/gosu-colors.git
+[submodule "vendor/vim-toml"]
+	path = vendor/vim-toml
+	url = https://github.com/cespare/vim-toml.git
