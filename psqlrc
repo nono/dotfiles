@@ -1,0 +1,4 @@
+\timing on
+\setenv LESS -imx4F
+\x auto
+\pset null '[NULL]'
