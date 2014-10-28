@@ -135,6 +135,7 @@ au BufRead,BufNewFile *.ditaa set ft=ditaa
 au BufRead,BufNewFile Xdefaults set ft=xdefaults
 au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+au BufRead,BufNewFile *.es6 set ft=javascript
 au BufRead,BufNewFile *.jade set ft=jade
 au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
 au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2

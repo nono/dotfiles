@@ -49,3 +49,6 @@
 [submodule "vendor/vim-toml"]
 	path = vendor/vim-toml
 	url = https://github.com/cespare/vim-toml.git
+[submodule "vendor/yajs"]
+	path = vendor/yajs
+	url = https://github.com/othree/yajs.vim.git
