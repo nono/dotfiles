@@ -1,1 +1,0 @@
-../../vendor/vim-javascript/indent/javascript.vim

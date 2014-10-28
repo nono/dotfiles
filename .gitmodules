@@ -4,9 +4,6 @@
 [submodule "vendor/mysqlpager"]
 	path = vendor/mysqlpager
 	url = https://github.com/romuald/mysqlpager.git
-[submodule "vendor/vim-javascript"]
-	path = vendor/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vendor/vim-rails"]
 	path = vendor/vim-rails
 	url = https://github.com/nono/vim-rails.git
