@@ -49,3 +49,6 @@
 [submodule "vendor/yajs"]
 	path = vendor/yajs
 	url = https://github.com/othree/yajs.vim.git
+[submodule "vendor/vim-kalisi"]
+	path = vendor/vim-kalisi
+	url = https://github.com/freeo/vim-kalisi.git

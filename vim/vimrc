@@ -5,22 +5,22 @@ filetype on
 filetype indent on
 filetype plugin on
 if has("gui_running")
-	colo bluetiful
-	set bg=dark
-	set gfn=Inconsolata\ 13
-	set gcr=a:blinkon0
-	set go-=T
-	set go-=m
-	set go+=c
-	" Fix borders of fullscreen GUI
-	" let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
-	" exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
-	" 			\' > ~/.gtkrc.mine'
-	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
-	" 			\' >> ~/.gtkrc.mine'
+    colo kalisi
+    set bg=dark
+    set gfn=Inconsolata\ 13
+    set gcr=a:blinkon0
+    set go-=T
+    set go-=m
+    set go+=c
+    " Fix borders of fullscreen GUI
+    " let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
+    " exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
+    " 			\' > ~/.gtkrc.mine'
+    " exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
+    " 			\' >> ~/.gtkrc.mine'
 else
-	colo nejnej
-	set bg=dark
+    colo nejnej
+    set bg=dark
 endif
 
 set ai          " indente automatiquement
@@ -159,13 +159,13 @@ nnoremap <F4> :<C-u>Unite grep:.<cr>
 nnoremap <F5> :<C-u>Unite file_rec/async:.<CR>
 
 if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-  let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+    let g:unite_source_grep_recursive_opt = ''
 elseif executable('ack-grep')
-  let g:unite_source_grep_command = 'ack-grep'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
-  let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_command = 'ack-grep'
+    let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+    let g:unite_source_grep_recursive_opt = ''
 endif
 
 " Increment Column :
@@ -202,9 +202,9 @@ command! V :Vexplore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function! MakeScriptExecuteable()
-	if getline(1) =~ "^#!.*/bin/"
-		silent !chmod +x <afile>
-	endif
+    if getline(1) =~ "^#!.*/bin/"
+        silent !chmod +x <afile>
+    endif
 endfunction
 
 " vimbits

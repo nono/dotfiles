@@ -1,0 +1,1 @@
+../../vendor/vim-kalisi/colors/kalisi.vim
