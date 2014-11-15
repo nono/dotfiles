@@ -4,13 +4,13 @@
 # nm-applet --sm-disable &
 xset -b
 numlockx on
-Esetroot -scale /usr/share/xfce4/backdrops/xubuntu-wallpaper.png
-setlayout 0 2 2 0
 xmodmap ~/.xmodmaprc
 xrdb -load ~/.Xdefaults
+Esetroot -scale ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
+setlayout 0 2 2 0
 
 # Programs to launch at startup
-sleep 4
+sleep 2
 x-www-browser &
 thunderbird &
 urxvt -name irssi -title irssi -e irssi &
