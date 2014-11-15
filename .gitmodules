@@ -28,9 +28,6 @@
 [submodule "vendor/mozilla.vim"]
 	path = vendor/mozilla.vim
 	url = git://github.com/mozfr/mozilla.vim.git
-[submodule "vendor/yeoman-zsh-plugin"]
-	path = vendor/yeoman-zsh-plugin
-	url = https://github.com/edouard-lopez/yeoman-zsh-plugin.git
 [submodule "vendor/vim-elixir"]
 	path = vendor/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
