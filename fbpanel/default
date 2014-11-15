@@ -60,7 +60,7 @@ Plugin {
             icon = mozilla-firefox
             image = /home/nono/.icons/firefox.png
             tooltip = Firefox web browser
-            action = x-www-browser
+            action = firefox
         }
         button {
             icon = spotify

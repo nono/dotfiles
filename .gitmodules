@@ -52,3 +52,6 @@
 [submodule "vendor/vim-kalisi"]
 	path = vendor/vim-kalisi
 	url = https://github.com/freeo/vim-kalisi.git
+[submodule "vendor/vim-pandoc-syntax"]
+	path = vendor/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git

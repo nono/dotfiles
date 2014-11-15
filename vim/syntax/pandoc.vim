@@ -1,0 +1,1 @@
+../../vendor/vim-pandoc-syntax/syntax/pandoc.vim
