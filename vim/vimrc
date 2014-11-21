@@ -5,7 +5,7 @@ filetype on
 filetype indent on
 filetype plugin on
 if has("gui_running")
-    colo kalisi
+    colo bluetiful
     set bg=dark
     set gfn=Inconsolata\ 13
     set gcr=a:blinkon0
