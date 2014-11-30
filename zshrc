@@ -72,6 +72,7 @@ alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
+alias chromium=chromium-browser
 
 pop() { light-locker-settings & popcorn-time }
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
