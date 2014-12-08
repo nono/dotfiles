@@ -73,8 +73,8 @@ alias mysql='mysql --select_limit=1000'
 alias dec2hex="ruby -ne 'printf \"%d = 0x%02x\n\", \$_, \$_'"
 alias epoch2date="ruby -ne 'puts Time.at(\$_.to_i)'"
 alias chromium=chromium-browser
+alias pop=popcorn-time
 
-pop() { light-locker-settings & popcorn-time }
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft: Inconsolata:pixelsize=$1\\007" }
 pretty() { pygmentize -f terminal "$1" | less -R }
