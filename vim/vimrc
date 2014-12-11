@@ -176,6 +176,9 @@ let g:load_doxygen_syntax = 1
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-P>"
 
+" Vim-go
+let g:go_fmt_command = "goimports"
+
 " }}}
 " Autres {{{ "
 

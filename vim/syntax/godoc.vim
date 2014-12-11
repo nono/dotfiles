@@ -1,1 +1,1 @@
-/usr/local/go/misc/vim/syntax/godoc.vim
+../../vendor/vim-go/syntax/godoc.vim

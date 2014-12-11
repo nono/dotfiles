@@ -1,1 +1,0 @@
-../../../vendor/gocode/vim/ftplugin/go/gocomplete.vim

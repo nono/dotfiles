@@ -1,0 +1,1 @@
+../../vendor/vim-go/doc/vim-go.txt

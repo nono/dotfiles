@@ -1,1 +1,0 @@
-/usr/local/go/misc/vim/ftplugin/go/fmt.vim

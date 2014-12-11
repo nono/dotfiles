@@ -52,3 +52,6 @@
 [submodule "vendor/vim-pandoc-syntax"]
 	path = vendor/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule "vendor/vim-go"]
+	path = vendor/vim-go
+	url = https://github.com/fatih/vim-go.git

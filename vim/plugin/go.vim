@@ -1,0 +1,1 @@
+../../vendor/vim-go/plugin/go.vim

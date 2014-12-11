@@ -59,12 +59,12 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler
+# npm install bower
 # go get github.com/mattn/gom
-# go get github.com/bradfitz/goimports
-# go get github.com/nsf/gocode
+# :GoInstallBinaries for vim-go
 
 # Autres
-# http://blog.labix.org/2013/06/15/in-flight-deb-packages-of-go
+# https://github.com/niemeyer/godeb
 # https://github.com/postmodern/ruby-install
 # https://github.com/postmodern/chruby
 # https://www.spotify.com/fr/download/previews/
