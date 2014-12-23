@@ -154,7 +154,8 @@ Plugin {
 Plugin {
     type = dclock
     config {
-        ClockFmt = %R
+        ShowSeconds = false
+        HoursView = 24
         TooltipFmt = %A %x
         Action = orage &
     }

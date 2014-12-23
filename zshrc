@@ -97,7 +97,7 @@ function two_screens {
 alias ai='sudo apt install'
 alias au='sudo apt update'
 alias ad='sudo apt upgrade'
-alias aud='sudo apt update && sudo apt upgrade'
+alias aud='sudo apt-get autoremove && sudo apt update && sudo apt upgrade'
 alias arm='sudo apt remove'
 alias as='apt search'
 

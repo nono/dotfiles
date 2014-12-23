@@ -8,7 +8,6 @@ xmodmap ~/.xmodmaprc
 xrdb -load ~/.Xdefaults
 Esetroot -scale ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
 setlayout 0 2 2 0
-caffeine &
 
 # Programs to launch at startup
 sleep 2
