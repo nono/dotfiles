@@ -15,9 +15,9 @@ if has("gui_running")
     " Fix borders of fullscreen GUI
     " let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
     " exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
-    " 			\' > ~/.gtkrc.mine'
+    "             \' > ~/.gtkrc.mine'
     " exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
-    " 			\' >> ~/.gtkrc.mine'
+    "             \' >> ~/.gtkrc.mine'
 else
     colo nejnej
     set bg=dark
@@ -34,7 +34,6 @@ set ls=2        " avoir en permanence la barre de status
 set lz          " ne pas rafraîchir l'écran pendant une macro
 set mouse=h     " n'utiliser la souris que dans l'aide
 set noea        " ne pas redimensionner automatiquement les vues après un découpage
-set nocp        " ne limite pas Vim aux fonctionnalités de VI
 set noet        " ne pas transformer les tabs en spaces
 set nohls       " ne pas mettre en surbrillance les termes recherchés
 set noic        " tenir compte de la casse lors des recherches
@@ -71,8 +70,8 @@ set nostartofline
 " }}}
 " Mappings {{{
 
-nmap <F1> K
-nmap <F8> :set spell!<CR>
+nnoremap <F1> K
+nnoremap <F8> :set spell!<CR>
 
 " pour coller du code sans avoir une double indentation (celle de départ + celle de Vim)
 set pt=<F11>
@@ -104,14 +103,6 @@ inoremap () ()<Left>
 inoremap '' ''<Left>
 inoremap "" ""<Left>
 
-" exporter en html
-let html_use_css = 1
-let use_xhtml = 1
-map <F12> :runtime! syntax/2html.vim<CR>
-
-" Utilise ce navigateur pour l'aide en ligne
-let g:browser = 'x-www-browser'
-
 " Open current line on GitHub
 nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs x-www-browser<CR><CR>
 
@@ -119,29 +110,31 @@ nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=
 " }}}
 " Autodetect filetypes {{{ "
 
-au BufRead,BufNewFile bip.conf set ft=bip
-au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-au BufRead,BufNewFile *.vcl set ft=vcl
-au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
-au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
-au BufRead,BufNewFile *.dc set ft=dotclear
-au BufRead,BufNewFile *.wiki set ft=moin
-au BufRead,BufNewFile *.t2t set ft=txt2tags
-au BufRead,BufNewFile *.textile set ft=textile
-au BufRead,BufNewFile *.txt,*.md set ft=pandoc et tw=78
-au BufRead,BufNewFile *.toml set ft=toml
-au BufRead,BufNewFile *.ditaa set ft=ditaa
-au BufRead,BufNewFile Xdefaults set ft=xdefaults
-au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
-au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
-au BufRead,BufNewFile *.es6 set ft=javascript
-au BufRead,BufNewFile *.jade set ft=jade
-au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
-au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
-au BufRead,BufNewFile Gomfile setlocal ft=ruby
-au BufRead,BufNewFile *.go setlocal ft=go fenc=utf-8 ff=unix
-au BufRead,BufNewFile *.ex,*.exs setlocal ft=elixir
-au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
+augroup vimrc
+    au BufRead,BufNewFile bip.conf set ft=bip
+    au BufRead,BufNewFile haproxy.cfg set ft=haproxy
+    au BufRead,BufNewFile *.vcl set ft=vcl
+    au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
+    au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
+    au BufRead,BufNewFile *.dc set ft=dotclear
+    au BufRead,BufNewFile *.wiki set ft=moin
+    au BufRead,BufNewFile *.t2t set ft=txt2tags
+    au BufRead,BufNewFile *.textile set ft=textile
+    au BufRead,BufNewFile *.txt,*.md set ft=pandoc et tw=78
+    au BufRead,BufNewFile *.toml set ft=toml
+    au BufRead,BufNewFile *.ditaa set ft=ditaa
+    au BufRead,BufNewFile Xdefaults set ft=xdefaults
+    au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
+    au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+    au BufRead,BufNewFile *.es6 set ft=javascript
+    au BufRead,BufNewFile *.jade set ft=jade
+    au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
+    au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
+    au BufRead,BufNewFile Gomfile setlocal ft=ruby
+    au BufRead,BufNewFile *.go setlocal ft=go fenc=utf-8 ff=unix
+    au BufRead,BufNewFile *.ex,*.exs setlocal ft=elixir
+    au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
+augroup END
 
 
 " }}}
@@ -182,6 +175,9 @@ let g:go_fmt_command = "goimports"
 " }}}
 " Autres {{{ "
 
+" Utilise ce navigateur pour l'aide en ligne
+let g:browser = 'x-www-browser'
+
 " Show trailing white-space
 let ruby_space_errors = 1
 let c_space_errors = 1
@@ -211,7 +207,6 @@ endfunction
 
 " vimbits
 au BufWritePost * call MakeScriptExecuteable()
-au InsertLeave * set nopaste
 vnoremap < <gv
 vnoremap > >gv
 
