@@ -112,8 +112,8 @@ export NODE_PATH="./lib"
 # Ruby
 export RUBYLIB="./ext:./lib"
 export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
-source ~/share/chruby/chruby.sh && chruby 2.1
-hash -d gem=$HOME/.gem/ruby/2.1.2/gems
+source ~/share/chruby/chruby.sh && chruby 2.2
+hash -d gem=$HOME/.gem/ruby/2.2.0/gems
 alias be="bundle exec"
 
 # Rails
