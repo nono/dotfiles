@@ -37,6 +37,7 @@ build-essential
 curl
 git
 imagemagick
+jq
 libimage-exiftool-perl
 libreadline6-dev
 libssl-dev
@@ -56,6 +57,9 @@ mysql-client
 mysql-server
 mongodb-server
 redis-server
+
+# Neovim
+# https://github.com/neovim/neovim/wiki/Installing
 
 # Paquets pour les langages
 # gem install bundler

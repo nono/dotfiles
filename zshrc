@@ -123,6 +123,7 @@ alias rc="rails c"
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g st'
+alias gg='g grep'
 parse_git_dirty() { [[ $(g status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*" }
 parse_git_branch() { g branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
 
