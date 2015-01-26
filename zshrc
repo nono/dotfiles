@@ -39,8 +39,8 @@ setopt NO_BG_NICE
 setopt NO_BEEP
 setopt PROMPT_SUBST
 
-# Completion
-fpath=(~/.zsh/Completion $fpath)
+# Completion & prompt
+fpath=(~/.zsh/Completion ~/.zsh/functions $fpath)
 zmodload -i zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
@@ -51,6 +51,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
 autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
+autoload -U promptinit && promptinit
+PURE_GIT_PULL=0
+prompt pure
+
 
 source /etc/zsh_command_not_found
 
