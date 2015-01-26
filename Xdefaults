@@ -2,13 +2,9 @@
 
 ! urxvt & aterm
 *scrollBar:false
-*inheritPixmap:true
-*transparent:true
-*shading:60
-*tintColor:white
+*transparent:false
 *imLocale:fr_FR.UTF8
 *saveLines:5000
-URxvt*termName: rxvt
 
 ! Perl extensions for uxxvt
 URxvt.perl-ext: default,matcher,selection-autotransform
@@ -21,37 +17,71 @@ URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
 ! 0=noir, 1=rouge, 2=vert, 3=jaune, 4=bleu, 5=magenta, 6=cyan, 7=blanc
 ! 0-7 pour les couleurs foncées
 ! 8-15 pour les couleurs claires
-*background:black
-*foreground:White
-*color0:  #333333
-*color1:  #e5505f
-*color2:  #33ff33
-*color3:  #ffff33
-*color4:  #6666ff
-*color5:  #963c59
-*color6:  #338eaa
-*color7:  #ffffff
-*color8:  #666666
-*color9:  #ff9999
-*color10: #99ff99
-*color11: #ffff99
-*color12: #80a0ff
-*color13: #ff99ff
-*color14: #71bebe
-*color15: #ffffff
+
+! Base16 Bright
+! Scheme: Chris Kempson (http://chriskempson.com)
+! https://github.com/chriskempson/base16-xresources
+
+#define base00 #000000
+#define base01 #303030
+#define base02 #505050
+#define base03 #b0b0b0
+#define base04 #d0d0d0
+#define base05 #e0e0e0
+#define base06 #f5f5f5
+#define base07 #ffffff
+#define base08 #fb0120
+#define base09 #fc6d24
+#define base0A #fda331
+#define base0B #a1c659
+#define base0C #76c7b7
+#define base0D #6fb3d2
+#define base0E #d381c3
+#define base0F #be643c
+
+*.foreground:  base05
+*.background:  base00
+*.cursorColor: base05
+
+*.color0:      base00
+*.color1:      base08
+*.color2:      base0B
+*.color3:      base0A
+*.color4:      base0D
+*.color5:      base0E
+*.color6:      base0C
+*.color7:      base05
+
+*.color8:      base03
+*.color9:      base08
+*.color10:     base0B
+*.color11:     base0A
+*.color12:     base0D
+*.color13:     base0E
+*.color14:     base0C
+*.color15:     base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16: base09
+*.color17: base0F
+*.color18: base01
+*.color19: base02
+*.color20: base04
+*.color21: base06
 
 ! Font
 display*font: fixed
-irssi.font: xft:DejaVu Sans Mono:pixelsize=14
-*font: xft:DejaVu Sans Mono:pixelsize=14
+*font: xft:Droid Sans Mono:pixelsize=14
 
-URxvt.keysym.M-C-KP_0: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=12\007
-URxvt.keysym.M-C-KP_1: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=14\007
-URxvt.keysym.M-C-KP_2: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=16\007
-URxvt.keysym.M-C-KP_3: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=20\007
-URxvt.keysym.M-C-KP_4: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=24\007
-URxvt.keysym.M-C-KP_5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=32\007
-URxvt.keysym.M-C-KP_6: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=48\007
+URxvt.keysym.M-C-KP_0: command:\033]710;xft:Droid Sans Mono:pixelsize=12\007
+URxvt.keysym.M-C-KP_1: command:\033]710;xft:Droid Sans Mono:pixelsize=14\007
+URxvt.keysym.M-C-KP_2: command:\033]710;xft:Droid Sans Mono:pixelsize=16\007
+URxvt.keysym.M-C-KP_3: command:\033]710;xft:Droid Sans Mono:pixelsize=20\007
+URxvt.keysym.M-C-KP_4: command:\033]710;xft:Droid Sans Mono:pixelsize=24\007
+URxvt.keysym.M-C-KP_5: command:\033]710;xft:Droid Sans Mono:pixelsize=32\007
+URxvt.keysym.M-C-KP_6: command:\033]710;xft:Droid Sans Mono:pixelsize=48\007
+
 
 URxvt.letterSpace: -1
 
