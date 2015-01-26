@@ -55,7 +55,7 @@ autoload -U promptinit && promptinit
 PURE_GIT_PULL=0
 prompt pure
 
-
+source ~/config/zsh/base16-bright.dark.sh
 source /etc/zsh_command_not_found
 
 # Aliases
