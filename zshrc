@@ -1,6 +1,6 @@
 # Env
 export PATH="$HOME/bin:$PATH"
-export PS1='${SSH_CONNECTION+"%n@%m:"}%~$(parse_git_branch)%# '
+export PS1='${SSH_CONNECTION+"%n@%m:"}%~%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=vim
@@ -52,8 +52,8 @@ autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
 autoload -U promptinit && promptinit
-PURE_GIT_PULL=0
-prompt pure
+export DEFAULT_USER=nono
+prompt agnoster
 
 source ~/config/zsh/base16-bright.dark.sh
 source /etc/zsh_command_not_found
@@ -128,8 +128,6 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g st'
 alias gg='g grep'
-parse_git_dirty() { [[ $(g status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*" }
-parse_git_branch() { g branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)] /" }
 
 # MongoDB
 alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"

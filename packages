@@ -35,7 +35,6 @@ ttf-mscorefonts-installer
 # Dev
 build-essential
 curl
-fonts-powerline
 git
 imagemagick
 jq
@@ -56,6 +55,9 @@ mysql-client
 mysql-server
 mongodb-server
 redis-server
+
+# Powerline fonts
+# https://github.com/powerline/fonts
 
 # Neovim
 # https://github.com/neovim/neovim/wiki/Installing
