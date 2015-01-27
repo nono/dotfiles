@@ -72,21 +72,22 @@ statusbar = {
 
     # treated "normally", you could change the time/user name to whatever
     time = "{sb $Z}";
-    user = "{sb $cumode$N{sbmode $usermode}{sbaway $A}}";
+    user = "%4{sb {sbnickmode $cumode}%9$N%9{sbmode $usermode} %b%0{sbaway $A}}";
 
     # treated specially .. window is printed with non-empty windows,
     # window_empty is printed with empty windows
-    window = "{sb $winref:$itemname{sbmode $M}}";
-    window_empty = "{sb $winref{sbservertag $tag}}";
+    window = "{sb $tag/$itemname{sbmode $M}} %C%n ";
+    window_empty = "{sb {sbservertag $tag}}";
     prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
     topic = " $topic";
     topic_empty = " Irssi v$J - http://irssi.org/help/";
 
     # all of these treated specially, they're only displayed when needed
-    lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
-    more = "--- more ---";
+    # Powerline
+    lag = "{sb %r%w%1 ⌚ $0 %r%0%n}";
+    act = "{sb %y%0%n%3 %F$0%F %n}";
+    more = "%c%0%n%6 more ⬇ %c%0%n";
   };
 
   # there's two type of statusbars. root statusbars are either at the top
@@ -118,6 +119,8 @@ statusbar = {
         act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        otr = { };
+        usercount = { };
       };
     };
 
@@ -182,6 +185,8 @@ settings = {
     actlist_sort = "refnum";
   };
   "fe-common/core" = {
+    theme = "solarized-powerline";
+    hilight_color = "%R";
     autocreate_own_query = "yes";
     use_status_window = "no";
     use_msgs_window = "no";
@@ -191,7 +196,6 @@ settings = {
     hide_text_style = "no";
     show_nickmode = "yes";
     completion_auto = "no";
-    theme = "clean";
     bell_beeps = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     beep_when_away = "yes";

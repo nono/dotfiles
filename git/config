@@ -7,8 +7,6 @@
 	branch = auto
 	interactive = auto
 [alias]
-	addrm = add -u
-	st = status -s
 	ci = commit
 	co = checkout
 	staged = diff --cached

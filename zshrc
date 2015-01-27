@@ -126,7 +126,7 @@ alias rc="rails c"
 
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
-alias gs='g st'
+alias gs='g status -s'
 alias gg='g grep'
 
 # MongoDB
