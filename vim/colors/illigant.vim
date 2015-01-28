@@ -1,1 +1,0 @@
-../../vendor/gosu-colors/colors/illigant.vim

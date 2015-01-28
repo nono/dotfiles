@@ -1,11 +1,45 @@
+" Plugins {{{ "
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+" Common
+Plug 'bling/vim-airline'
+Plug 'ervandew/supertab'
+" Filetype
+Plug 'tpope/vim-bundler'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-lang/vim-elixir'
+Plug 'digitaltoad/vim-jade'
+Plug 'nono/jquery.vim'
+Plug 'fatih/vim-go'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+" Colors
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'mgutz/gosu-colors'
+call plug#end()
+
+" Increment Column :
+vnoremap <c-a> :call IncrementColumn()<cr>
+
+" Matchit
+runtime! macros/matchit.vim
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<C-P>"
+
+" Vim-go
+let g:go_fmt_command = "goimports"
+
+" }}}
 " Options globales {{{
 
 syntax on
 filetype on
 filetype plugin indent on
 if has("gui_running")
-	colo bluetiful
 	set bg=dark
+	colo bluetiful
 	set gfn=Inconsolata\ for\ Powerline\ 13
 	set gcr=a:blinkon0
 	set go=acegit
@@ -16,8 +50,9 @@ if has("gui_running")
 	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
 	"             \' >> ~/.gtkrc.mine'
 else
-	colo base16
+	let base16colorspace=256
 	set bg=dark
+	colo base16-bright
 endif
 
 set autoindent
@@ -126,21 +161,6 @@ augroup vimrc
 	au BufRead,BufNewFile *.ex,*.exs set ft=elixir
 augroup END
 
-
-" }}}
-" Plugins {{{ "
-
-" Increment Column :
-vnoremap <c-a> :call IncrementColumn()<cr>
-
-" Matchit
-runtime! macros/matchit.vim
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<C-P>"
-
-" Vim-go
-let g:go_fmt_command = "goimports"
 
 " }}}
 " Misc {{{ "

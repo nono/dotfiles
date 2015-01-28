@@ -1,1 +1,0 @@
-../../vendor/jquery.vim/syntax/jquery.vim

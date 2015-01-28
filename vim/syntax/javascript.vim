@@ -1,1 +1,0 @@
-../../vendor/yajs/syntax/javascript.vim

@@ -1,4 +1,4 @@
 *.swp
 /irssi/config*
-/vim/spell/*
+/vim/plugged
 /vim/.netrwhist

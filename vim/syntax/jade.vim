@@ -1,1 +1,0 @@
-../../vendor/vim-jade/syntax/jade.vim

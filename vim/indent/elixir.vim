@@ -1,1 +1,0 @@
-../../vendor/vim-elixir/indent/elixir.vim

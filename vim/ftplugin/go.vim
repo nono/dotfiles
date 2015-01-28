@@ -1,1 +1,0 @@
-../../vendor/vim-go/ftplugin/go.vim
