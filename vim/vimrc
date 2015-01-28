@@ -5,14 +5,21 @@ call plug#begin('~/.vim/plugged')
 " Common
 Plug 'bling/vim-airline'
 Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
 " Filetype
-Plug 'tpope/vim-bundler'
-Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-lang/vim-elixir'
-Plug 'digitaltoad/vim-jade'
-Plug 'nono/jquery.vim'
-Plug 'fatih/vim-go'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'tpope/vim-haml', { 'for': 'ruby' }
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
+Plug 'nono/jquery.vim', { 'for': 'javascript' }
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'evanmiller/nginx-vim-syntax', { 'for': 'nginx' }
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
+Plug 'wavded/vim-stylus', { 'for': 'styl' }
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
@@ -25,11 +32,12 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 " Matchit
 runtime! macros/matchit.vim
 
-" SuperTab
+" Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
-
-" Vim-go
 let g:go_fmt_command = "goimports"
+let g:airline_powerline_fonts = 1
+let g:html5_rdfa_attributes_complete = 0
+let g:vim_json_syntax_conceal = 0
 
 " }}}
 " Options globales {{{
@@ -67,6 +75,7 @@ set formatoptions+=j    " Delete comment character when joining commented lines
 set grepformat=%f:%l:%c:%m
 set grepprg=ag
 set incsearch
+set iskeyword+=-
 set laststatus=2        " Always show the statusbar
 set lazyredraw
 set list
@@ -126,11 +135,6 @@ noremap <C-Left> <C-W><Left>
 " Completion
 inoremap <C-@> <C-P>
 
-" Insert inside pairs
-inoremap () ()<Left>
-inoremap '' ''<Left>
-inoremap "" ""<Left>
-
 " Open current line on GitHub
 nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs x-www-browser<CR><CR>
 
@@ -141,7 +145,6 @@ nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=
 augroup vimrc
 	au BufRead,BufNewFile bip.conf set ft=bip
 	au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-	au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
 	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
 	au BufRead,BufNewFile *.dc set ft=dotclear
 	au BufRead,BufNewFile *.wiki set ft=moin
@@ -153,12 +156,7 @@ augroup vimrc
 	au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 	au BufRead,BufNewFile *.es6 set ft=javascript
-	au BufRead,BufNewFile *.jade set ft=jade
-	au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
-	au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
 	au BufRead,BufNewFile Gomfile set ft=ruby
-	au BufRead,BufNewFile *.go set ft=go fenc=utf-8
-	au BufRead,BufNewFile *.ex,*.exs set ft=elixir
 augroup END
 
 
