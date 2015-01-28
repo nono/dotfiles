@@ -28,12 +28,6 @@
 [submodule "vendor/vim-elixir"]
 	path = vendor/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "vendor/unite.vim"]
-	path = vendor/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
-[submodule "vendor/vimproc"]
-	path = vendor/vimproc
-	url = http://github.com/Shougo/vimproc
 [submodule "vendor/gosu-colors"]
 	path = vendor/gosu-colors
 	url = https://github.com/mgutz/gosu-colors.git

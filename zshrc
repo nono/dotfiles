@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$PATH"
 export PS1='${SSH_CONNECTION+"%n@%m:"}%~%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export BROWSER=x-www-browser
 export LS_OPTIONS='--color=auto'
@@ -70,6 +70,7 @@ alias sl=ls
 alias cd..='cd ..'
 alias less='less -R'
 alias grep='grep --color'
+alias vim=nvim
 alias ftp='lftp'
 alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'

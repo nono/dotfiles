@@ -1,1 +1,0 @@
-../../vendor/unite.vim/doc/unite.txt
