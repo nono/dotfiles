@@ -1,6 +1,3 @@
-[submodule "vendor/github_vim_theme"]
-	path = vendor/github_vim_theme
-	url = https://github.com/nono/github_vim_theme.git
 [submodule "vendor/mysqlpager"]
 	path = vendor/mysqlpager
 	url = https://github.com/romuald/mysqlpager.git
@@ -37,15 +34,9 @@
 [submodule "vendor/vimproc"]
 	path = vendor/vimproc
 	url = http://github.com/Shougo/vimproc
-[submodule "vendor/vim-syntax-vcl"]
-	path = vendor/vim-syntax-vcl
-	url = https://github.com/pld-linux/vim-syntax-vcl.git
 [submodule "vendor/gosu-colors"]
 	path = vendor/gosu-colors
 	url = https://github.com/mgutz/gosu-colors.git
-[submodule "vendor/vim-toml"]
-	path = vendor/vim-toml
-	url = https://github.com/cespare/vim-toml.git
 [submodule "vendor/yajs"]
 	path = vendor/yajs
 	url = https://github.com/othree/yajs.vim.git

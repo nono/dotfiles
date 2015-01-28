@@ -1,5 +1,3 @@
-" Abbréviations
-
 iab fcihier fichier
 iab fcihiers fichiers
 iab meme même

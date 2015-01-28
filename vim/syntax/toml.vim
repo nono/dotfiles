@@ -1,1 +1,0 @@
-../../vendor/vim-toml/syntax/toml.vim

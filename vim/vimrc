@@ -1,70 +1,72 @@
 " Options globales {{{
 
-syntax on       " active la coloration syntaxique
+syntax on
 filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 if has("gui_running")
-    colo bluetiful
-    set bg=dark
-    set gfn=Inconsolata\ 13
-    set gcr=a:blinkon0
-    set go-=T
-    set go-=m
-    set go+=c
-    " Fix borders of fullscreen GUI
-    " let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
-    " exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
-    "             \' > ~/.gtkrc.mine'
-    " exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
-    "             \' >> ~/.gtkrc.mine'
+	colo bluetiful
+	set bg=dark
+	set gfn=Inconsolata\ for\ Powerline\ 13
+	set gcr=a:blinkon0
+	set go=acegit
+	" Fix borders of fullscreen GUI
+	" let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
+	" exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
+	"             \' > ~/.gtkrc.mine'
+	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
+	"             \' >> ~/.gtkrc.mine'
 else
-    colo nejnej
-    set bg=dark
+	colo base16
+	set bg=dark
 endif
 
-set ai          " indente automatiquement
-set autoread    " auto-reload modified files (with no local changes)
-set bs=2        " tout supprimer avec backspace
-set dir-=.      " ne pas mettre de fichiers temporaires dans le répertoire courant
-set ek          " utiliser les touches fléchées en mode insertion
-set ff=unix     " fin de ligne au format UNIX
-set is          " recherche incrémentale
-set ls=2        " avoir en permanence la barre de status
-set lz          " ne pas rafraîchir l'écran pendant une macro
-set mouse=h     " n'utiliser la souris que dans l'aide
-set noea        " ne pas redimensionner automatiquement les vues après un découpage
-set noet        " ne pas transformer les tabs en spaces
-set nohls       " ne pas mettre en surbrillance les termes recherchés
-set noic        " tenir compte de la casse lors des recherches
-set nojs        " pas 2 espaces après '.', '?' et '!' pour la commande J(oin)
-set noml        " pas de modelines (trou de sécu dans les anciennes versions de Vim)
-set nows        " ne pas retourner au début du fichier lorsqu'une recherche atteint la fin du fichier
-set si          " indentation intelligente (enfin presque)
-set ruler       " affiche la position du curseur dans la barre d'état
-set so=3        " toujours afficher au moins 3 lignes au-dessus et en dessous du curseur
-set siso=2      " toujours afficher au moins 2 caractères à coté du curseur
-set sm          " Afficher la parenthèse correspondante
-set sw=4        " les tabulations s'arrêtent toujours sur une colonne multiple de 4
-set ts=4        " les tabulations font 4 caractères (à l'affichage)
-set tw=0        " ne pas couper les lignes
-set title       " affiche le nom du fichier dans la barre de titre du term
-set nowrap      " ne pas afficher sur plusieurs lignes les lignes trop longues
-set nospell     " pas de correction orthographique par défaut
-set spl=fr,en   " utiliser le français et l'anglais pour la correction orthographique
-set sps=best,3  " afficher seulement les 3 meilleures propositions pour la correction orthographique
-set spf=~/.vim/spell/perso.add " dictionnaire supplémentaire pour la correction orthographique
-set ve=block
-set wildmenu
-set wildignore+=*.o,*.so,*.a,*.pyc,*.8
-set omnifunc=syntaxcomplete#Complete
-set cot=menuone
-set grepprg=ag
+set autoindent
+set autoread            " Auto-reload modified files (with no local changes)
+set backspace=indent,eol,start
+set complete-=i
+set completeopt=menuone
+set dir-=.              " Don't put temporary files in current directory
+set encoding=utf-8
+set fileformat=unix
+set formatoptions+=j    " Delete comment character when joining commented lines
 set grepformat=%f:%l:%c:%m
-set shortmess=atI
-set lcs=tab:\ \ ,nbsp:␣,trail:⋅
+set grepprg=ag
+set incsearch
+set laststatus=2        " Always show the statusbar
+set lazyredraw
 set list
+set listchars=tab:\ \ ,nbsp:␣,trail:⋅
+set noequalalways
+set noexpandtab
+set nohlsearch
+set noignorecase
+set nojoinspaces
+set nospell
 set nostartofline
+set nowrap
+set nowrapscan
+set nrformats-=octal
+set omnifunc=syntaxcomplete#Complete
+set pastetoggle=<F11>
+set ruler
+set scrolloff=3
+set shiftwidth=0
+set shortmess=atI
+set showcmd
+set showmatch
+set sidescrolloff=5
+set smartindent
+set smarttab
+set spelllang=fr,en
+set spellsuggest=best,3
+set tabstop=4
+set textwidth=0
+set title
+set ttimeout
+set ttimeoutlen=100
+set virtualedit=block
+set wildignore+=*.o,*.so,*.a,*.pyc,*.8
+set wildmenu
 
 
 " }}}
@@ -73,32 +75,24 @@ set nostartofline
 nnoremap <F1> K
 nnoremap <F8> :set spell!<CR>
 
-" pour coller du code sans avoir une double indentation (celle de départ + celle de Vim)
-set pt=<F11>
 
 " Don't make a # force column zero.
 inoremap # X<BS>#
 
-" Ctrl-+ pour augmenter la taille de la police
+" Ctrl-+ to increase font size
 noremap <C-kplus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)+1)', '')<CR>
 noremap <C-kminus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)-1)', '')<CR>
 
-" Control + touches fléchées pour naviguer entre les vues
+" Navigate between views with Ctrl + arrows
 noremap <C-Up> <C-W><Up>
 noremap <C-Down> <C-W><Down>
 noremap <C-Right> <C-W><Right>
 noremap <C-Left> <C-W><Left>
 
-" Alt + touches fléchées pour déplacer des lignes de code
-nnoremap <A-Down> :m+<CR>==
-nnoremap <A-Up> :m-2<CR>==
-vnoremap <A-Down> :m'>+<CR>gv=gv
-vnoremap <A-Up> :m-2<CR>gv=gv
-
-" Complétion
+" Completion
 inoremap <C-@> <C-P>
 
-" Se placer au bon endroit
+" Insert inside pairs
 inoremap () ()<Left>
 inoremap '' ''<Left>
 inoremap "" ""<Left>
@@ -111,29 +105,26 @@ nnoremap <F9> :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=
 " Autodetect filetypes {{{ "
 
 augroup vimrc
-    au BufRead,BufNewFile bip.conf set ft=bip
-    au BufRead,BufNewFile haproxy.cfg set ft=haproxy
-    au BufRead,BufNewFile *.vcl set ft=vcl
-    au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
-    au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
-    au BufRead,BufNewFile *.dc set ft=dotclear
-    au BufRead,BufNewFile *.wiki set ft=moin
-    au BufRead,BufNewFile *.t2t set ft=txt2tags
-    au BufRead,BufNewFile *.textile set ft=textile
-    au BufRead,BufNewFile *.txt,*.md set ft=pandoc et tw=78
-    au BufRead,BufNewFile *.toml set ft=toml
-    au BufRead,BufNewFile *.ditaa set ft=ditaa
-    au BufRead,BufNewFile Xdefaults set ft=xdefaults
-    au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
-    au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
-    au BufRead,BufNewFile *.es6 set ft=javascript
-    au BufRead,BufNewFile *.jade set ft=jade
-    au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
-    au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
-    au BufRead,BufNewFile Gomfile setlocal ft=ruby
-    au BufRead,BufNewFile *.go setlocal ft=go fenc=utf-8 ff=unix
-    au BufRead,BufNewFile *.ex,*.exs setlocal ft=elixir
-    au BufRead,BufNewFile *.ics,*.ical set ft=icalendar
+	au BufRead,BufNewFile bip.conf set ft=bip
+	au BufRead,BufNewFile haproxy.cfg set ft=haproxy
+	au BufRead,BufNewFile nginx.*,**/sites-available/*,**/sites-enabled/*,/etc/nginx/* set ft=nginx
+	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
+	au BufRead,BufNewFile *.dc set ft=dotclear
+	au BufRead,BufNewFile *.wiki set ft=moin
+	au BufRead,BufNewFile *.t2t set ft=txt2tags
+	au BufRead,BufNewFile *.textile set ft=textile
+	au BufRead,BufNewFile *.txt,*.md set ft=pandoc et tw=78
+	au BufRead,BufNewFile *.ditaa set ft=ditaa
+	au BufRead,BufNewFile Xdefaults set ft=xdefaults
+	au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
+	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
+	au BufRead,BufNewFile *.es6 set ft=javascript
+	au BufRead,BufNewFile *.jade set ft=jade
+	au BufRead,BufNewFile *.styl set ft=css et ts=2 sw=2
+	au BufRead,BufNewFile *.coffee,Cakefile set ft=coffee et ts=2 sw=2
+	au BufRead,BufNewFile Gomfile set ft=ruby
+	au BufRead,BufNewFile *.go set ft=go fenc=utf-8
+	au BufRead,BufNewFile *.ex,*.exs set ft=elixir
 augroup END
 
 
@@ -150,21 +141,15 @@ nnoremap <F3> :<C-u>Unite buffer file_mru bookmark<CR>
 nnoremap <F4> :<C-u>Unite grep:.<cr>
 nnoremap <F5> :<C-u>Unite file_rec/async:.<CR>
 
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-    let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack-grep')
-    let g:unite_source_grep_command = 'ack-grep'
-    let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
-    let g:unite_source_grep_recursive_opt = ''
-endif
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+let g:unite_source_grep_recursive_opt = ''
 
 " Increment Column :
 vnoremap <c-a> :call IncrementColumn()<cr>
 
-" Doxygen
-let g:load_doxygen_syntax = 1
+" Matchit
+runtime! macros/matchit.vim
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<C-P>"
@@ -173,9 +158,8 @@ let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:go_fmt_command = "goimports"
 
 " }}}
-" Autres {{{ "
+" Misc {{{ "
 
-" Utilise ce navigateur pour l'aide en ligne
 let g:browser = 'x-www-browser'
 
 " Show trailing white-space
@@ -183,26 +167,25 @@ let ruby_space_errors = 1
 let c_space_errors = 1
 let javascript_space_errors = 1
 
-" Abréviations
 source $HOME/.vim/abbrev.vim
 
-" Commentaires
+" Comments
 vmap / :s#^#//\ #<CR>gv:s#^//\ //\ ##<CR>
 vmap # :s/^/#\ /<CR>gv:s/^#\ #\ //<CR>
 
-" SudoW permet d'enregistrer un fichier même quand on n'a pas les droits dessus
+" SudoW command to save a file as root
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
-" Des petits alias pour se simplifier la vie
+" Some aliases
 command! E :Explore
 command! S :Sexplore
 command! V :Vexplore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function! MakeScriptExecuteable()
-    if getline(1) =~ "^#!.*/bin/"
-        silent !chmod +x <afile>
-    endif
+	if getline(1) =~ "^#!.*/bin/"
+		silent !chmod +x <afile>
+	endif
 endfunction
 
 " vimbits
