@@ -1,39 +1,6 @@
 [submodule "vendor/mysqlpager"]
 	path = vendor/mysqlpager
 	url = https://github.com/romuald/mysqlpager.git
-[submodule "vendor/vim-rails"]
-	path = vendor/vim-rails
-	url = https://github.com/nono/vim-rails.git
-[submodule "vendor/jquery.vim"]
-	path = vendor/jquery.vim
-	url = https://github.com/nono/jquery.vim.git
-[submodule "vendor/vim-coffee-script"]
-	path = vendor/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vendor/vim-jade"]
-	path = vendor/vim-jade
-	url = https://github.com/digitaltoad/vim-jade.git
-[submodule "vendor/gocode"]
-	path = vendor/gocode
-	url = https://github.com/nsf/gocode
-[submodule "vendor/supertab"]
-	path = vendor/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "vendor/zsh-completions"]
 	path = vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "vendor/vim-elixir"]
-	path = vendor/vim-elixir
-	url = https://github.com/elixir-lang/vim-elixir.git
-[submodule "vendor/gosu-colors"]
-	path = vendor/gosu-colors
-	url = https://github.com/mgutz/gosu-colors.git
-[submodule "vendor/yajs"]
-	path = vendor/yajs
-	url = https://github.com/othree/yajs.vim.git
-[submodule "vendor/vim-pandoc-syntax"]
-	path = vendor/vim-pandoc-syntax
-	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
-[submodule "vendor/vim-go"]
-	path = vendor/vim-go
-	url = https://github.com/fatih/vim-go.git
