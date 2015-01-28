@@ -1,1 +1,0 @@
-../../vendor/syntastic/plugin/syntastic.vim

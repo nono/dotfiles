@@ -22,9 +22,6 @@
 [submodule "vendor/zsh-completions"]
 	path = vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "vendor/mozilla.vim"]
-	path = vendor/mozilla.vim
-	url = git://github.com/mozfr/mozilla.vim.git
 [submodule "vendor/vim-elixir"]
 	path = vendor/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git

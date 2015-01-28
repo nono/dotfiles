@@ -1,1 +1,0 @@
-../../vendor/syntastic/doc/syntastic.txt

@@ -46,7 +46,6 @@ set nostartofline
 set nowrap
 set nowrapscan
 set nrformats-=octal
-set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F11>
 set ruler
 set scrolloff=3
