@@ -623,6 +623,10 @@
       <position><x>0</x><y>26</y></position>
       <decor>no</decor>
     </application>
+    <application name="nvim">
+      <position><x>-0</x><y>0</y></position>
+      <maximized>Vertical</maximized>
+    </application>
     <application name="gvim">
       <position><x>-0</x><y>0</y></position>
       <maximized>Vertical</maximized>
