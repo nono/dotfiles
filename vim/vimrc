@@ -18,6 +18,7 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'nono/jquery.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'evanmiller/nginx-vim-syntax', { 'for': 'nginx' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }

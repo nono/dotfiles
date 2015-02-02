@@ -334,6 +334,8 @@ awful.rules.rules = {
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[last][1] } },
     { rule = { class = "Firefox" },
+      properties = { tag = tags[last][2] } },
+    { rule = { class = "nvim" },
       properties = { tag = tags[last][3] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
@@ -378,6 +380,7 @@ awful.util.spawn_with_shell("xset -b")
 awful.util.spawn_with_shell("numlockx on")
 awful.util.spawn_with_shell("xmodmap ~/.xmodmaprc")
 awful.util.spawn_with_shell("xrdb -load ~/.Xdefaults")
+awful.util.spawn_with_shell("urxvt -name nvim -title nvim")
 awful.util.spawn_with_shell("thunderbird")
 awful.util.spawn_with_shell("firefox")
 -- }}}
