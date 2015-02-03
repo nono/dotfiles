@@ -48,6 +48,7 @@ openssl
 optipng
 phantomjs
 python-pygments
+xsel
 
 # Bases de données
 libmysql++-dev
