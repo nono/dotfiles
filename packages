@@ -48,6 +48,7 @@ openssl
 optipng
 phantomjs
 python-pygments
+shellcheck
 xsel
 
 # Bases de données
@@ -67,7 +68,7 @@ redis-server
 # https://iojs.org/
 
 # Paquets pour les langages
-# gem install bundler
+# gem install bundler rubocop
 # npm install bower
 # go get github.com/mattn/gom
 # :GoInstallBinaries for vim-go

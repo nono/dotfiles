@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
+Plug 'benekastah/neomake', { 'on': 'Neomake' }
 " Filetype
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
@@ -164,6 +165,8 @@ augroup vimrc
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 	au BufRead,BufNewFile *.es6 set ft=javascript
 	au BufRead,BufNewFile Gomfile set ft=ruby
+
+	au BufWritePost *.c,*.js,*.jsx,*.rb,*.sh Neomake
 augroup END
 
 
