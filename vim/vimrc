@@ -36,6 +36,14 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 " Matchit
 runtime! macros/matchit.vim
 
+" Neomake
+let g:neomake_javascript_jsx6hint_maker = {
+    \ 'exe': 'jsxhint',
+    \ 'args': ['--verbose', '--jsx-only', '--harmony'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jsx6hint']
+
 " Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:go_fmt_command = "goimports"
@@ -65,6 +73,7 @@ else
 	let base16colorspace=256
 	set bg=dark
 	colo base16-bright
+	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 
 set autoindent
