@@ -380,7 +380,6 @@ awful.util.spawn_with_shell("xset -b")
 awful.util.spawn_with_shell("numlockx on")
 awful.util.spawn_with_shell("xmodmap ~/.xmodmaprc")
 awful.util.spawn_with_shell("xrdb -load ~/.Xdefaults")
-awful.util.spawn_with_shell("urxvt -name nvim -title nvim")
 awful.util.spawn_with_shell("thunderbird")
 awful.util.spawn_with_shell("firefox")
 -- }}}
