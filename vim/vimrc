@@ -23,7 +23,7 @@ Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'evanmiller/nginx-vim-syntax', { 'for': 'nginx' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
-Plug 'wavded/vim-stylus', { 'for': 'styl' }
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'

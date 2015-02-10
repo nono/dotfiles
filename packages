@@ -69,7 +69,7 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install bower
+# npm install -g bower jsxhint
 # go get github.com/mattn/gom
 # :GoInstallBinaries for vim-go
 
