@@ -17,7 +17,6 @@
 	out = log --oneline origin/master..HEAD
 	wdiff = diff --color-words
 	info = remote -v
-	url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'	
 	rank = shortlog -sn --no-merges
 	setup = "!sh -c 'git init && touch .gitignore && git add . && git ci -m \"Initial import\"'"
 	up = "!sh -c 'git stash && git pull && git stash pop'"
