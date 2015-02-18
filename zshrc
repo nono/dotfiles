@@ -53,7 +53,7 @@ autoload -U compinit
 compinit -u
 autoload -U promptinit && promptinit
 export DEFAULT_USER=nono
-prompt agnoster
+prompt unpure
 
 source ~/config/zsh/base16-bright.dark.sh
 source /etc/zsh_command_not_found
