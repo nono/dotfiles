@@ -71,19 +71,27 @@ abstracts = {
 ## statusbar
 ##
 
-# default backround for "default" statusbar group
-    sb_default_bg = "%0";
-# background for prompt / input line
-    sb_prompt_bg = "%n";
-# background for info statusbar
-    sb_info_bg = "%n";
-    sb = "%K[%n$0-%K]%n  ";
-    sbmode = "(%W+%n$0-)%n";
-    sbaway = " (%rzZzZ%n)%n";
-    sbservertag = ":$0 %W(%nchange with ^X%W)%n";
+    sb_background = "%k%6";
+    sb_topic_bg = "%K%7";
+    sb_window_bg = "%k%7";
+
+    # default backround for "default" statusbar group
+    sb_default_bg = "%Y%7";
+    # background for prompt / input line
+    sb_prompt_bg = "%w";
+    # background for info statusbar
+    sb_info_bg = "%8";
+
+    # This controls each part of a statusbar, including the outer brackets of adv_windowlist
+    sb = " $* ";
+    # The mode is next to your NICK and the channel
+    sbmode = "%w %C+$*%w %n";
+    sbaway = "%c%w%6 zZzZ %c%0";
+    sbservertag = "$0 %b(change with ^X)%n";
+    sbnickmode = "$0";
 
 
-## dccstats.pl
+    ## dccstats.pl
     sb_dccstat = "{sb $0-}";
     sb_ds_short = "$0%G:%n$1%Y@%n$2kB/s%G:%n$4%G:%n$3";
     sb_ds_short_waiting = "$0%G:%n$1 $2 $3 waiting";
@@ -91,17 +99,26 @@ abstracts = {
     sb_ds_normal_waiting = "$0 $1: '$2' $3 $4 $5 waiting";
     sb_ds_separator = ", ";
 
-    sb_act_sep = "%w$*";
-# normal text
-    sb_act_text = "%n$*";
-# public message
-    sb_act_msg = "%g$*";
-# hilight
-    sb_act_hilight = "%Y$*";
-# hilight with specified color, $0 = color, $1 = text
-    sb_act_hilight_color = "$0$1-%n";
+    sb_act_sep = "%Y+";
+    # normal text
+    sb_act_text = "%w$*";
+    # public message
+    sb_act_msg = "%k$*";
+    # hilight
+    sb_act_hilight = "%M%_$*%_";
+    # hilight with specified color, $0 = color, $1 = text
+    sb_act_hilight_color = "%r$1-";
 
 
+    # text at the beginning of statusbars. sb-item already puts
+    # space there,so we don't use anything by default.
+    sbstart = "";
+    # text at the end of statusbars. Use space so that it's never
+    # used for anything.
+    sbend = "%n";
+
+    topicsbstart = "{sbstart $*}";
+    topicsbend = "{sbend $*}";
 };
 formats = {
     "fe-common/core" = {

@@ -185,7 +185,7 @@ settings = {
     actlist_sort = "refnum";
   };
   "fe-common/core" = {
-    theme = "solarized-powerline";
+    theme = "molokai";
     hilight_color = "%R";
     autocreate_own_query = "yes";
     use_status_window = "no";
