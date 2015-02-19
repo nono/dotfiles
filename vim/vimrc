@@ -148,10 +148,10 @@ noremap <C-kplus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)
 noremap <C-kminus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)-1)', '')<CR>
 
 " Navigate between views with Ctrl + arrows
-map Od <C-Left>
-map Ob <C-Down>
-map Oa <C-Up>
-map Oc <C-Right>
+map Ïd <C-Left>
+map Ïb <C-Down>
+map Ïa <C-Up>
+map Ïc <C-Right>
 noremap <C-Left> <C-W><Left>
 noremap <C-Down> <C-W><Down>
 noremap <C-Up> <C-W><Up>
