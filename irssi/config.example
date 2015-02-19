@@ -72,7 +72,7 @@ statusbar = {
 
     # treated "normally", you could change the time/user name to whatever
     time = "{sb $Z}";
-    user = "%4{sb {sbnickmode $cumode}%9$N%9{sbmode $usermode} %b%0{sbaway $A}}";
+    user = "%4{sb {sbnickmode $cumode}$N{sbmode $usermode} %b%7{sbaway $A}}";
 
     # treated specially .. window is printed with non-empty windows,
     # window_empty is printed with empty windows
@@ -85,9 +85,9 @@ statusbar = {
 
     # all of these treated specially, they're only displayed when needed
     # Powerline
-    lag = "{sb %r%w%1 ⌚ $0 %r%0%n}";
-    act = "{sb %y%0%n%3 %F$0%F %n}";
-    more = "%c%0%n%6 more ⬇ %c%0%n";
+    lag = "{sb %r%w%1 ⌚ $0 %r%7%n}";
+    act = "{sb %g%7%n%2 %F$0%F %n}";
+    more = "%c%7%n%6 more ⬇ %c%7%n";
   };
 
   # there's two type of statusbars. root statusbars are either at the top
@@ -185,7 +185,7 @@ settings = {
     actlist_sort = "refnum";
   };
   "fe-common/core" = {
-    theme = "molokai";
+    theme = "base16";
     hilight_color = "%R";
     autocreate_own_query = "yes";
     use_status_window = "no";
