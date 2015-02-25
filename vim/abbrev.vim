@@ -1,3 +1,4 @@
+cabbrev qw :wq
 iab fcihier fichier
 iab fcihiers fichiers
 iab meme même
