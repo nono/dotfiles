@@ -190,6 +190,7 @@ augroup END
 
 let g:browser = 'x-www-browser'
 let g:netrw_liststyle=1
+let g:load_doxygen_syntax=1
 
 " Show trailing white-space
 let ruby_space_errors = 1

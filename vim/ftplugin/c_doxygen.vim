@@ -6,4 +6,3 @@ inorea <buffer> @w @warning
 
 hi link doxygenBrief Comment
 hi link doxygenSpecialOnelineDesc Comment
-
