@@ -24,7 +24,11 @@ prompt_unpure_git_dirty() {
 	# check if it's dirty
 	command test -n "$(git status --porcelain --ignore-submodules -unormal)"
 
-	(($? == 0)) && echo '*'
+	(($? == 0)) && echo -n '*'
+
+	n=$(git rev-list origin/$(git rev-parse --abbrev-ref HEAD)...HEAD | wc -l)
+	(($n == 1)) && echo -n " ↑"
+	(($n > 1)) && echo -n " $n↑"
 }
 
 prompt_unpure_preexec() {
