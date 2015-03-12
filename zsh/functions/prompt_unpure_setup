@@ -26,7 +26,7 @@ prompt_unpure_git_dirty() {
 
 	(($? == 0)) && echo -n '*'
 
-	n=$(git rev-list origin/$(git rev-parse --abbrev-ref HEAD)...HEAD | wc -l)
+	n=$(git rev-list origin/$(git rev-parse --abbrev-ref HEAD)...HEAD 2>/dev/null | wc -l)
 	(($n == 1)) && echo -n " ↑"
 	(($n > 1)) && echo -n " $n↑"
 }
