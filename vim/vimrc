@@ -10,6 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary',    { 'on': '<Plug>Commentary' }
 Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
 Plug 'benekastah/neomake',      { 'on': 'Neomake' }
+Plug 'chrisbra/vim-diff-enhanced'
 " Typing help
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'

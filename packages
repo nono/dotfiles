@@ -65,7 +65,7 @@ redis-server
 # https://github.com/neovim/neovim/wiki/Installing
 
 # Io.js
-# https://iojs.org/
+# https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#installing-io-js
 
 # Paquets pour les langages
 # gem install bundler rubocop
