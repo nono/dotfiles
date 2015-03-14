@@ -67,6 +67,9 @@ redis-server
 # Io.js
 # https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#installing-io-js
 
+# Elixir
+# http://elixir-lang.org/install.html#unix-%28and-unix-like%29
+
 # Paquets pour les langages
 # gem install bundler rubocop
 # npm install -g bower jsxhint
