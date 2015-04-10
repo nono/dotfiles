@@ -1,4 +1,5 @@
 # Base
+dstat
 irssi
 rxvt-unicode-256color
 silversearcher-ag
@@ -7,7 +8,6 @@ vim-gui
 zsh
 
 # Admin
-aptitude
 etckeeper
 rdiff-backup
 
@@ -46,7 +46,6 @@ libxslt-dev
 nginx
 openssl
 optipng
-phantomjs
 python-pygments
 shellcheck
 xsel
@@ -62,7 +61,7 @@ redis-server
 # https://github.com/powerline/fonts
 
 # Neovim
-# https://github.com/neovim/neovim/wiki/Installing
+# https://github.com/neovim/neovim/wiki/Installing-Neovim
 
 # Io.js
 # https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#installing-io-js
