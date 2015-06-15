@@ -71,6 +71,7 @@ alias cd..='cd ..'
 alias less='less -R'
 alias grep='grep --color'
 alias v=nvim
+alias o=xdg-open
 alias ftp='lftp'
 alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
@@ -79,7 +80,7 @@ alias chromium=chromium-browser
 alias pop=popcorn-time
 
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
-font() { echo -ne "\\033]710;xft:Inconsolata for Powerline:pixelsize=$1\\007" }
+font() { echo -ne "\\033]710;xft:Droid Sans Mono for Powerline:pixelsize=$1\\007" }
 
 # Colored manpages
 man() {

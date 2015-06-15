@@ -375,11 +375,23 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 -- {{{ Autostart
-awful.util.spawn_with_shell("awsetbg ~/Documents/Images/cc-wallpaper-wide.png")
-awful.util.spawn_with_shell("xset -b")
-awful.util.spawn_with_shell("numlockx on")
-awful.util.spawn_with_shell("xmodmap ~/.xmodmaprc")
-awful.util.spawn_with_shell("xrdb -load ~/.Xdefaults")
-awful.util.spawn_with_shell("thunderbird")
-awful.util.spawn_with_shell("firefox")
+-- https://awesome.naquadah.org/wiki/Autostart#Simple_way
+
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+    findme = cmd:sub(0, firstspace-1)
+  end
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
+run_once("nm-applet")
+run_once("xset -b")
+run_once("numlockx on")
+run_once("xmodmap ~/.xmodmaprc")
+run_once("xrdb -load ~/.Xdefaults")
+run_once("awsetbg ~/Documents/Images/cc-wallpaper-wide.png")
+run_once("thunderbird")
+run_once("firefox")
 -- }}}
