@@ -90,6 +90,7 @@ endif
 set autoindent
 set autoread            " Auto-reload modified files (with no local changes)
 set backspace=indent,eol,start
+set clipboard=unnamed
 set complete-=i
 set completeopt=menuone
 set dir-=.              " Don't put temporary files in current directory
