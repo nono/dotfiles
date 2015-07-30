@@ -42,14 +42,6 @@ call plug#end()
 " Matchit
 runtime! macros/matchit.vim
 
-" Neomake
-let g:neomake_javascript_jsx6hint_maker = {
-    \ 'exe': 'jsxhint',
-    \ 'args': ['--verbose', '--jsx-only', '--harmony'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_javascript_enabled_makers = ['jsx6hint']
-
 " Mappings
 vnoremap <c-a> :call IncrementColumn()<cr>
 vmap <Enter> <Plug>(EasyAlign)
@@ -200,7 +192,7 @@ augroup vimrc
 	au BufRead,BufNewFile *.es6 set ft=javascript
 	au BufRead,BufNewFile Gomfile set ft=ruby
 
-	au BufWritePost *.c,*.js,*.jsx,*.rb,*.sh Neomake
+	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
 augroup END
 
 

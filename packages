@@ -35,6 +35,7 @@ ttf-mscorefonts-installer
 # Dev
 build-essential
 curl
+docker.io
 git
 imagemagick
 jq
@@ -71,7 +72,7 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g bower jsxhint
+# npm install -g eslint
 # go get github.com/mattn/gom
 # :GoInstallBinaries for vim-go
 
