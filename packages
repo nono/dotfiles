@@ -13,7 +13,6 @@ rdiff-backup
 
 # User
 chromium-browser
-eterm
 fbpanel
 feh
 flashplugin-installer
@@ -23,7 +22,6 @@ fonts-yanone-kaffeesatz
 gphoto2
 gtk-theme-switch
 libreoffice
-libx11-dev
 mirage
 mpv
 numlockx
@@ -35,13 +33,13 @@ ttf-mscorefonts-installer
 # Dev
 build-essential
 curl
-docker.io
 git
 imagemagick
 jq
 libimage-exiftool-perl
 libreadline6-dev
 libssl-dev
+libx11-dev
 libxml2-dev
 libxslt-dev
 nginx
@@ -55,8 +53,10 @@ xsel
 libmysql++-dev
 mysql-client
 mysql-server
-mongodb-server
 redis-server
+
+# Docker
+# http://docs.docker.com/installation/ubuntulinux/
 
 # Powerline fonts
 # https://github.com/powerline/fonts
@@ -72,8 +72,7 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g eslint
-# go get github.com/mattn/gom
+# npm install -g eslint coffeescript
 # :GoInstallBinaries for vim-go
 
 # Autres

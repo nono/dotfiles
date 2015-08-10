@@ -78,6 +78,7 @@ alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
 alias pop=popcorn-time
+alias ps42='ps -eo pid,wchan:42,cmd'
 
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft:Droid Sans Mono for Powerline:pixelsize=$1\\007" }
