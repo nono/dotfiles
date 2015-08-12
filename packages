@@ -72,7 +72,7 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g eslint coffeescript
+# npm install -g eslint coffeelint coffee-script
 # :GoInstallBinaries for vim-go
 
 # Autres
