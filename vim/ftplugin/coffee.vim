@@ -1,1 +1,1 @@
-setl et sw=2 ts=2
+setl et sw=4 ts=4

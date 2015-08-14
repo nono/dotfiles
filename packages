@@ -42,6 +42,9 @@ libssl-dev
 libx11-dev
 libxml2-dev
 libxslt-dev
+nodejs-dev
+nodejs-legacy
+npm
 nginx
 openssl
 optipng
@@ -63,12 +66,6 @@ redis-server
 
 # Neovim
 # https://github.com/neovim/neovim/wiki/Installing-Neovim
-
-# Io.js
-# https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories#installing-io-js
-
-# Elixir
-# http://elixir-lang.org/install.html#unix-%28and-unix-like%29
 
 # Paquets pour les langages
 # gem install bundler rubocop
