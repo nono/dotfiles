@@ -77,7 +77,7 @@ alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
-alias pop=popcorn-time
+alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias ps42='ps -eo pid,wchan:42,cmd'
 alias ssh='TERM=rxvt-unicode ssh'
 
@@ -124,6 +124,7 @@ export GOPATH="$HOME"
 # Node.js
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="./lib"
+export NODE_ENV=development
 . <(npm completion)
 
 # Ruby
@@ -141,9 +142,6 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gg='g grep'
-
-# MongoDB
-alias mongogen="mongo --eval 'a=[]; for(var i=0;i<10;i++) a.push(ObjectId()); a.join(\"\\n\")'"
 
 # Path
 export PATH="bin:$PATH"
