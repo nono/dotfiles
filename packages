@@ -42,8 +42,6 @@ libssl-dev
 libx11-dev
 libxml2-dev
 libxslt-dev
-nodejs-dev
-nodejs-legacy
 npm
 nginx
 openssl
@@ -57,6 +55,9 @@ libmysql++-dev
 mysql-client
 mysql-server
 redis-server
+
+# NVM
+# https://github.com/creationix/nvm
 
 # Docker
 # http://docs.docker.com/installation/ubuntulinux/

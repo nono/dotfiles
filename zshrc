@@ -125,6 +125,8 @@ export GOPATH="$HOME"
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="./lib"
 export NODE_ENV=development
+export NVM_DIR="/home/nono/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 . <(npm completion)
 
 # Ruby
