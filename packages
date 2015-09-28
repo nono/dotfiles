@@ -73,6 +73,9 @@ redis-server
 # npm install -g eslint coffeelint coffee-script
 # :GoInstallBinaries for vim-go
 
+# Diff-highlight
+# cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
+
 # Autres
 # https://github.com/niemeyer/godeb
 # https://github.com/postmodern/ruby-install

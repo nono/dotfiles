@@ -19,6 +19,8 @@ HISTSIZE=5000
 SAVEHIST=1000
 
 # Use 'cat -v' to obtain the keycodes
+bindkey "^[[1;5D" backward-word      ## ctrl-right
+bindkey "^[[1;5C" forward-word       ## ctrl-left
 bindkey "\C-b" backward-word         ## ctrl-b
 bindkey "\C-f" forward-word          ## ctrl-f
 bindkey "^[[3~" delete-char          ## Del
@@ -27,6 +29,7 @@ bindkey "^[[8~" end-of-line          ## End
 bindkey "^[[A" up-line-or-search     ## up arrow for back-history-search
 bindkey "^[[B" down-line-or-search   ## down arrow for fwd-history-search
 bindkey " " magic-space              ## do history expansion on space
+
 
 # Zsh
 setopt AUTO_PUSHD
@@ -83,6 +86,7 @@ alias ssh='TERM=rxvt-unicode ssh'
 
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft:Droid Sans Mono for Powerline:pixelsize=$1\\007" }
+rule () { printf "%$(tput cols)s\n" | tr " " "-" }
 
 # Colored manpages
 man() {
@@ -94,6 +98,15 @@ man() {
   LESS_TERMCAP_ue=$'\E[0m' \
   LESS_TERMCAP_us=$'\E[04;38;5;146m' \
   man "$@"
+}
+
+# For git diff
+strip_diff_leading_symbols() {
+  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
+  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
+    sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
+    sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
+    sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
 # Change displays
@@ -144,6 +157,7 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gg='g grep'
+gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less -r }
 
 # Path
 export PATH="bin:$PATH"

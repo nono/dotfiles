@@ -84,6 +84,8 @@ URxvt.keysym.M-C-KP_6: command:\033]710;xft:Droid Sans Mono for Powerline:pixels
 
 
 URxvt.letterSpace: -1
+URxvt.keysym.C-Right: \033[1;5C
+URxvt.keysym.C-Left: \033[1;5D
 
 ! Xft
 Xft.autohint: 0
