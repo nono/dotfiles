@@ -71,7 +71,7 @@ alias ll='ls $LS_OPTIONS -la'
 alias lh='ls $LS_OPTIONS -lah'
 alias sl=ls
 alias cd..='cd ..'
-alias less='less -R'
+alias less='less -RXFS'
 alias grep='grep --color'
 alias v=nvim
 alias o=xdg-open
@@ -157,7 +157,7 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gg='g grep'
-gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less -r }
+gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Path
 export PATH="bin:$PATH"
