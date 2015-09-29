@@ -149,18 +149,18 @@ vnoremap > >gv
 
 " Navigate between views with Ctrl + arrows
 if has("nvim")
-	map Ïd <C-W><Left>
-	map Ïb <C-W><Down>
-	map Ïa <C-W><Up>
-	map Ïc <C-W><Right>
-	inoremap Ïd <C-\><C-n><C-W><Left>
-	inoremap Ïb <C-\><C-n><C-W><Down>
-	inoremap Ïa <C-\><C-n><C-W><Up>
-	inoremap Ïc <C-\><C-n><C-W><Right>
-	tnoremap Ïd <C-\><C-n><C-w><Left>
-	tnoremap Ïb <C-\><C-n><C-w><Down>
-	tnoremap Ïa <C-\><C-n><C-w><Up>
-	tnoremap Ïc <C-\><C-n><C-w><Right>
+	map <C-Left> <C-W><Left>
+	map <C-Down> <C-W><Down>
+	map <C-Up> <C-W><Up>
+	map <C-Right> <C-W><Right>
+	inoremap <C-Left> <C-\><C-n><C-W><Left>
+	inoremap <C-Down> <C-\><C-n><C-W><Down>
+	inoremap <C-Up> <C-\><C-n><C-W><Up>
+	inoremap <C-Right> <C-\><C-n><C-W><Right>
+	tnoremap <C-Left> <C-\><C-n><C-w><Left>
+	tnoremap <C-Down> <C-\><C-n><C-w><Down>
+	tnoremap <C-Up> <C-\><C-n><C-w><Up>
+	tnoremap <C-Right> <C-\><C-n><C-w><Right>
 	tnoremap <Esc> <C-\><C-n>           " Terminal (Neovim only)
 else
 	map Od <C-W><Left>
