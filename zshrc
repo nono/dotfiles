@@ -156,7 +156,7 @@ alias rc="rails c"
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
-alias gg='g grep'
+alias gg='g grep --color'
 alias gp='g pull upstream master'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
