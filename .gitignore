@@ -1,4 +1,5 @@
 *.swp
 /irssi/config*
 /vim/plugged
+/vim/shada
 /vim/.netrwhist

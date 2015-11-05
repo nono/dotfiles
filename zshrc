@@ -81,6 +81,7 @@ alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
 alias pop='~/.Popcorn-Time/Popcorn-Time'
+alias strem='~/src/stremio/Stremio.sh'
 alias ps42='ps -eo pid,wchan:42,cmd'
 alias ssh='TERM=rxvt-unicode ssh'
 
