@@ -97,6 +97,7 @@ set laststatus=2        " Always show the statusbar
 set lazyredraw
 set list
 set listchars=tab:\ \ ,nbsp:␣,trail:⋅
+set mouse=nvi
 set noequalalways
 set noexpandtab
 set nohlsearch

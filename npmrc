@@ -1,2 +1,3 @@
-prefix = /home/nono
-init.license = MIT
+prefix=/home/nono
+init.license=MIT
+save-exact=true
