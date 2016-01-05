@@ -4,7 +4,6 @@
 Host backup
 HostName bubulle
 User save
-IdentityFile /home/nono/.ssh/id_rsa_backup
 Compression no
 
 
@@ -17,6 +16,7 @@ User root
 
 Host zobe
 HostName zobe.linuxfr.org
+User root
 
 Host gruik
 HostName 88.191.250.172
@@ -33,14 +33,3 @@ User alpha
 Host main
 HostName zobe.linuxfr.org
 Port 222
-
-
-##############
-#    af83    #
-##############
-Host jenkins
-HostName jenkins.af83.com
-User hudson
-
-Host 10.20.40.*
-ProxyCommand ssh ecommerce@map-preprod1.bearstech.com "nc -q 60 %h %p"
