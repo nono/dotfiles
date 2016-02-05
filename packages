@@ -70,15 +70,15 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g eslint coffeelint coffee-script
+# npm install -g eslint coffeelint coffee-script elm elm-oracle
 # :GoInstallBinaries for vim-go
 
 # Diff-highlight
 # cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Autres
+# https://github.com/avh4/elm-format
 # https://github.com/niemeyer/godeb
 # https://github.com/postmodern/ruby-install
 # https://github.com/postmodern/chruby
 # https://www.spotify.com/fr/download/previews/
-# https://popcorntime.io/
