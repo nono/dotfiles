@@ -39,3 +39,5 @@
 	textconv = exiftool
 [grep]
 	extendRegexp = true
+[core]
+	excludesfile = /home/nono/.gitignore
