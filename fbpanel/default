@@ -30,7 +30,7 @@ Plugin {
 Plugin {
     type = menu
     config {
-        image = /usr/share/icons/Tango/32x32/actions/go-home.png
+        image = /usr/share/icons/elementary-xfce/categories/32/applications-other.png
         systemmenu {
         }
         separator {
@@ -58,13 +58,13 @@ Plugin {
     config {
         button {
             icon = mozilla-firefox
-            image = /home/nono/.icons/firefox.png
+            image = /usr/share/icons/elementary-xfce/apps/32/firefox.png
             tooltip = Firefox web browser
             action = firefox
         }
         button {
             icon = spotify
-            image = /home/nono/.icons/spotify.png
+            image = /usr/share/spotify/icons/spotify-linux-32.png
             tooltip = Spotify
             action = spotify
         }
@@ -166,7 +166,7 @@ Plugin {
     type = launchbar
     config {
         button {
-            image = /usr/share/icons/Tango/32x32/actions/system-log-out.png
+            image = /usr/share/icons/elementary-xfce/actions/32/system-shutdown.png
             tooltip = Shutdown
             action = ~/bin/shutdown.sh
         }
