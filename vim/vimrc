@@ -50,6 +50,8 @@ vmap / <Plug>Commentary
 
 " Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0
 let g:go_fmt_command = "goimports"
 let g:airline_powerline_fonts = 1
 let g:html5_rdfa_attributes_complete = 0
