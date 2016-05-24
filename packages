@@ -4,7 +4,7 @@ irssi
 rxvt-unicode-256color
 silversearcher-ag
 tree
-vim-gui
+vim-gtk3
 zsh
 zsh-syntax-highlighting
 
@@ -16,11 +16,10 @@ rdiff-backup
 chromium-browser
 fbpanel
 feh
-flashplugin-installer
 fonts-inconsolata
+fonts-lato
 fonts-roboto
 fonts-yanone-kaffeesatz
-gphoto2
 gtk-theme-switch
 libreoffice
 mirage
@@ -28,7 +27,6 @@ mpv
 numlockx
 openbox
 qtcurve
-tango-icon-theme
 ttf-mscorefonts-installer
 
 # Dev
@@ -36,18 +34,17 @@ build-essential
 curl
 git
 imagemagick
-jq
 libimage-exiftool-perl
 libreadline6-dev
 libssl-dev
 libx11-dev
 libxml2-dev
 libxslt-dev
-npm
 nginx
 openssl
 optipng
 python-pygments
+ruby-dev
 shellcheck
 xsel
 
@@ -60,6 +57,9 @@ redis-server
 # NVM
 # https://github.com/creationix/nvm
 
+# Elixir
+# http://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw
+
 # Docker
 # http://docs.docker.com/installation/ubuntulinux/
 
@@ -71,7 +71,8 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g eslint coffeelint coffee-script elm elm-oracle
+# npm install -g standard eslint coffeelint coffee-script elm elm-oracle
+# :PlugInstall in neovim
 # :GoInstallBinaries for vim-go
 
 # Diff-highlight
@@ -79,9 +80,6 @@ redis-server
 
 # Autres
 # https://github.com/avh4/elm-format
-# https://github.com/niemeyer/godeb
-# https://github.com/postmodern/ruby-install
-# https://github.com/postmodern/chruby
 # https://www.spotify.com/fr/download/previews/
 # https://github.com/horst3180/Arc-theme
 # http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466

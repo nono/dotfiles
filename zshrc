@@ -21,8 +21,6 @@ SAVEHIST=1000
 # Use 'cat -v' to obtain the keycodes
 bindkey "^[[1;5D" backward-word      ## ctrl-right
 bindkey "^[[1;5C" forward-word       ## ctrl-left
-bindkey "\C-b" backward-word         ## ctrl-b
-bindkey "\C-f" forward-word          ## ctrl-f
 bindkey "^[[3~" delete-char          ## Del
 bindkey "^[[7~" beginning-of-line    ## Home
 bindkey "^[[8~" end-of-line          ## End
@@ -82,9 +80,7 @@ alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
 alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias strem='~/src/stremio/Stremio.sh'
-alias ps42='ps -eo pid,wchan:42,cmd'
 alias ssh='TERM=rxvt-unicode ssh'
-alias meteo='curl -4 http://wttr.in/'
 
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft:Droid Sans Mono for Powerline:pixelsize=$1\\007" }
@@ -112,20 +108,6 @@ strip_diff_leading_symbols() {
     sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
-# Change displays
-function videoproj {
-  xrandr --output LVDS1 --mode 1024x768 --pos 0x0
-  xrandr --output VGA1  --mode 1024x768 --pos 0x0
-}
-function one_screen {
-  xrandr --output LVDS1 --mode 1600x900 --pos 0x0
-  xrandr --output VGA1 --off
-}
-function two_screens {
-  xrandr --output LVDS1 --mode 1600x900 --pos 0x0
-  xrandr --output VGA1 --mode 1920x1080 --right-of LVDS1
-}
-
 # Aptitude
 alias ai='sudo apt install'
 alias au='sudo apt update'
@@ -148,8 +130,8 @@ export NVM_DIR="/home/nono/.nvm"
 # Ruby
 export RUBYLIB="./ext:./lib"
 export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
-source ~/share/chruby/chruby.sh && chruby 2.2
-hash -d gem=$HOME/.gem/ruby/2.2.0/gems
+export GEM_HOME=$HOME/.gem
+hash -d gem=$GEM_HOME
 alias be="bundle exec"
 
 # Rails
