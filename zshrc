@@ -156,6 +156,9 @@ alias be="bundle exec"
 alias rs="rails s"
 alias rc="rails c"
 
+# Elixir
+alias ips='iex -S mix phoenix.server'
+
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
@@ -165,3 +168,5 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Path
 export PATH="bin:$PATH"
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

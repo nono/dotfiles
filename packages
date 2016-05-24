@@ -6,6 +6,7 @@ silversearcher-ag
 tree
 vim-gui
 zsh
+zsh-syntax-highlighting
 
 # Admin
 etckeeper
