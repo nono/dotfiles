@@ -13,6 +13,7 @@ etckeeper
 rdiff-backup
 
 # User
+caffeine
 chromium-browser
 fbpanel
 feh
@@ -71,7 +72,7 @@ redis-server
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g standard eslint coffeelint coffee-script elm elm-oracle
+# npm install -g standard eslint coffeelint coffee-script elm elm-oracle npm-check
 # :PlugInstall in neovim
 # :GoInstallBinaries for vim-go
 
