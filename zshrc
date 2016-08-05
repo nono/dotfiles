@@ -1,5 +1,4 @@
 # Env
-export PATH="$HOME/bin:$PATH"
 export PS1='${SSH_CONNECTION+"%n@%m:"}%~%# '
 export PS2=' > '
 export DIRSTACKSIZE=16
@@ -109,7 +108,7 @@ strip_diff_leading_symbols() {
     sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
-# Aptitude
+# Apt
 alias ai='sudo apt install'
 alias au='sudo apt update'
 alias ad='sudo apt upgrade'
@@ -119,6 +118,7 @@ alias as='apt search'
 
 # Golang
 export GOPATH="$HOME"
+hash -d github="$GOPATH/src/github.com"
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
@@ -132,6 +132,7 @@ export NVM_DIR="/home/nono/.nvm"
 export RUBYLIB="./ext:./lib"
 export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
 export GEM_HOME=$HOME/.gem
+export PATH="$GEM_HOME/bin:$PATH"
 hash -d gem=$GEM_HOME
 alias be="bundle exec"
 
@@ -150,6 +151,6 @@ alias gp='g pull upstream master'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Path
-export PATH="bin:$GEM_HOME/bin:$PATH"
+export PATH="bin:$HOME/bin:$PATH"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
