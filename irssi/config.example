@@ -51,11 +51,17 @@ chatnets = {
 
 channels = (
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#af83-project"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#cozycloud"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#team"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#taverne"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; }
+  { name = "#veille"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#tech"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#client"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#back"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#front"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#infra"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#headsup"; chatnet = "cozy"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -279,17 +285,6 @@ windows = {
   };
 
   2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#af83-project";
-        tag = "freenode";
-      }
-    );
-  };
-
-  3 = {
     items = (
       {
         type = "CHANNEL";
