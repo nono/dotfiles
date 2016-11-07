@@ -34,6 +34,7 @@ ttf-mscorefonts-installer
 build-essential
 curl
 git
+golang-1.7
 imagemagick
 libimage-exiftool-perl
 libreadline6-dev

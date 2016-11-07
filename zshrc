@@ -117,7 +117,9 @@ alias arm='sudo apt remove'
 alias as='apt search'
 
 # Golang
+export GOROOT="/usr/lib/go-1.7"
 export GOPATH="$HOME"
+export PATH="$GOROOT/bin:$PATH"
 hash -d github="$GOPATH/src/github.com"
 
 # Node.js
