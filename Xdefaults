@@ -90,9 +90,9 @@ URxvt.keysym.C-Up: \033[1;5A
 URxvt.keysym.C-Right: \033[1;5C
 
 ! Xft
-Xft.autohint: 0
+Xft.autohint: 1
 Xft.antialias: 1
-Xft.hinting: true
+Xft.hinting: false
 Xft.hintstyle: hintmedium
 Xft.dpi: 96
 Xft.rgba: rgb
