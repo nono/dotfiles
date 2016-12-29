@@ -1,4 +1,5 @@
 *.swp
+/bundle/cache
 /irssi/config*
 /vim/plugged
 /vim/shada
