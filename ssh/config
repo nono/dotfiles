@@ -33,3 +33,12 @@ User alpha
 Host main
 HostName zobe.linuxfr.org
 Port 222
+
+
+########
+# Cozy #
+########
+Host bounce
+HostName bounce.cozycloud.cc
+ForwardAgent yes
+Port 223

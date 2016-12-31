@@ -4,7 +4,7 @@ export PS2=' > '
 export DIRSTACKSIZE=16
 export EDITOR=nvim
 export PAGER=less
-export BROWSER=x-www-browser
+export BROWSER=firefox
 export LS_OPTIONS='--color=auto'
 export GREP_COLOR='1;37;41'
 umask 022
@@ -120,7 +120,6 @@ alias as='apt search'
 export GOROOT="/usr/lib/go-1.7"
 export GOPATH="$HOME"
 export PATH="$GOROOT/bin:$PATH"
-hash -d github="$GOPATH/src/github.com"
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
@@ -142,15 +141,15 @@ alias be="bundle exec"
 alias rs="rails s"
 alias rc="rails c"
 
-# Elixir
-alias ips='iex -S mix phoenix.server'
-
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gg='g grep --color'
-alias gp='g pull upstream master'
+alias gp='g pull upstream master --rebase'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
+
+# Cozy
+hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 
 # Path
 export PATH="bin:$HOME/bin:$PATH"
