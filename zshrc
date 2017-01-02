@@ -118,8 +118,8 @@ alias as='apt search'
 
 # Golang
 export GOROOT="/usr/lib/go-1.7"
-export GOPATH="$HOME"
-export PATH="$GOROOT/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
