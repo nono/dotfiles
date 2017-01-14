@@ -64,6 +64,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#neomake#enabled = 0
 let g:html5_rdfa_attributes_complete = 0
 let g:vim_json_syntax_conceal = 0
+let g:rustfmt_autosave = 1
 
 
 """"" Options globales

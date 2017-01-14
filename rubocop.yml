@@ -10,9 +10,6 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
 
-Style/TrailingComma:
-  EnforcedStyleForMultiline: comma
-
 Metrics/AbcSize:
   Max: 50
 

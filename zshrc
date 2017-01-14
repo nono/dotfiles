@@ -116,6 +116,9 @@ alias aud='sudo apt-get autoremove && sudo apt update && sudo apt upgrade'
 alias arm='sudo apt remove'
 alias as='apt search'
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Golang
 export GOROOT="/usr/lib/go-1.7"
 export GOPATH="$HOME/go"
