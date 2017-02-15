@@ -27,6 +27,7 @@ Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
 Plug 'tpope/vim-haml',                 { 'for': 'ruby' }
 Plug 'othree/html5.vim',               { 'for': 'html' }
 Plug 'othree/yajs.vim',                { 'for': 'javascript' }
+Plug 'othree/es.next.syntax.vim',      { 'for': 'javascript' }
 Plug 'nono/jquery.vim',                { 'for': 'javascript' }
 Plug 'mxw/vim-jsx',                    { 'for': 'javascript' }
 Plug 'elzr/vim-json',                  { 'for': 'json' }

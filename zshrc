@@ -112,7 +112,7 @@ strip_diff_leading_symbols() {
 alias ai='sudo apt install'
 alias au='sudo apt update'
 alias ad='sudo apt upgrade'
-alias aud='sudo apt-get autoremove && sudo apt update && sudo apt upgrade'
+alias aud='sudo apt-get autoremove --purge && sudo apt update && sudo apt upgrade'
 alias arm='sudo apt remove'
 alias as='apt search'
 
@@ -153,6 +153,7 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Cozy
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
+export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 
 # Path
 export PATH="bin:$HOME/bin:$PATH"
