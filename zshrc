@@ -154,6 +154,9 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 # Cozy
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
+export COZY_DESKTOP_DIR=tmp
+alias couch_stop='sudo systemctl stop docker-couchdb'
+alias couch_start='sudo systemctl start docker-couchdb'
 
 # Path
 export PATH="bin:$HOME/bin:$PATH"
