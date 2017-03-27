@@ -56,12 +56,10 @@ channels = (
   { name = "#taverne"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#veille"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#tech"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#client"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#apps"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#back"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#front"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#infra"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#headsup"; chatnet = "cozy"; autojoin = "Yes"; }
+  { name = "#platform"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#infra"; chatnet = "cozy"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -256,8 +254,8 @@ keyboard = (
   { key = "^[[19~"; id = "key"; data = "F8"; },
   { key = "^[[20~"; id = "key"; data = "F9"; },
   { key = "^[[21~"; id = "key"; data = "F10"; },
-  { key = "^[[22~"; id = "key"; data = "F11"; },
-  { key = "^[[23~"; id = "key"; data = "F12"; },
+  { key = "^[[23~"; id = "key"; data = "F11"; },
+  { key = "^[[24~"; id = "key"; data = "F12"; },
   { key = "F1"; id = "command"; data = "window 1"; },
   { key = "F2"; id = "command"; data = "window 2"; },
   { key = "F3"; id = "command"; data = "window 3"; },

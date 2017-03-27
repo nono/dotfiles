@@ -204,6 +204,7 @@ augroup vimrc
 	au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 	au BufRead,BufNewFile *.es6 set ft=javascript
+	au BufRead,BufNewFile manifest.webapp set ft=json
 	au BufRead,BufNewFile Gomfile set ft=ruby
 
 	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
