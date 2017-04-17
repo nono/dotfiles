@@ -33,7 +33,7 @@ Plug 'mxw/vim-jsx',                    { 'for': 'javascript' }
 Plug 'elzr/vim-json',                  { 'for': 'json' }
 Plug 'groenewege/vim-less',            { 'for': 'less' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
-Plug 'z0rc/nginx-vim-syntax',          { 'for': 'nginx' }
+Plug 'chr4/nginx.vim',                 { 'for': 'nginx' }
 Plug 'vim-pandoc/vim-pandoc-syntax',   { 'for': 'pandoc' }
 Plug 'digitaltoad/vim-pug',            { 'for': ['jade', 'pug'] }
 Plug 'rust-lang/rust.vim',             { 'for': 'rust' }

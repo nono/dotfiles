@@ -56,9 +56,8 @@ channels = (
   { name = "#taverne"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#veille"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#apps"; chatnet = "cozy"; autojoin = "Yes"; },
+  { name = "#desktop"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#back"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#platform"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#infra"; chatnet = "cozy"; autojoin = "Yes"; }
 );
 

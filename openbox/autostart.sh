@@ -6,7 +6,7 @@ xset -b
 numlockx on
 xmodmap ~/.xmodmaprc
 xrdb -load ~/.Xdefaults
-Esetroot -scale ~/Documents/Wallpapers/vladstudio_frog_1600x1200.jpg
+Esetroot -scale ~/Documents/Wallpapers/some_light_reading.jpg
 setlayout 0 2 2 0
 
 # Programs to launch at startup
