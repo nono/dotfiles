@@ -14,8 +14,8 @@ stty -ixon
 
 # History
 HISTFILE=~/.zsh_hist
-HISTSIZE=5000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=3000
 
 # Use 'cat -v' to obtain the keycodes
 bindkey "^[[1;5D" backward-word      ## ctrl-right

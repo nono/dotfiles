@@ -191,6 +191,8 @@ endif
 """"" Autodetect filetypes
 
 augroup vimrc
+	au FocusGained * :echotime
+
 	au BufRead,BufNewFile bip.conf set ft=bip
 	au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
