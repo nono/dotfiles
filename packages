@@ -34,7 +34,7 @@ ttf-mscorefonts-installer
 build-essential
 curl
 git
-golang-1.7
+golang-1.8
 httpie
 imagemagick
 libimage-exiftool-perl

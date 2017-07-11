@@ -120,7 +120,7 @@ alias as='apt search'
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang
-export GOROOT="/usr/lib/go-1.7"
+export GOROOT="/usr/lib/go-1.8"
 export GOPATH="$HOME/go"
 export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
 
