@@ -60,7 +60,7 @@ source /etc/zsh_command_not_found
 
 # Aliases
 alias -g L='|less'
-alias -g G='|grep'
+alias -g G='|rg'
 alias -g W='|wc'
 
 alias ls='ls $LS_OPTIONS'
@@ -73,12 +73,12 @@ alias grep='grep --color'
 alias v=nvim
 alias o=xdg-open
 alias ftp='lftp'
+alias pw='diceware -d _ -n 5 -s 5'
 alias notes="ag 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
 alias pop='~/.Popcorn-Time/Popcorn-Time'
-alias strem='~/src/stremio/Stremio.sh'
 alias ssh='TERM=rxvt-unicode ssh'
 alias vagrant="TERM=rxvt-unicode vagrant"
 

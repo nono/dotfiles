@@ -33,6 +33,7 @@ ttf-mscorefonts-installer
 # Dev
 build-essential
 curl
+docker.io
 git
 golang-1.8
 httpie
@@ -63,14 +64,14 @@ redis-server
 # Elixir
 # http://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw
 
-# Docker
-# http://docs.docker.com/installation/ubuntulinux/
-
 # Powerline fonts
 # https://github.com/powerline/fonts
 
 # Neovim
 # https://github.com/neovim/neovim/wiki/Installing-Neovim
+
+# Ripgrep
+# https://github.com/BurntSushi/ripgrep
 
 # Paquets pour les langages
 # gem install bundler rubocop
