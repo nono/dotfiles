@@ -63,6 +63,12 @@ Plugin {
             action = firefox
         }
         button {
+            icon = mozilla-firefox-dev
+            image = /home/nono/.local/share/umake/web/firefox-dev/browser/icons/mozicon128.png
+            tooltip = Firefox Developer Edition
+            action = /home/nono/.local/share/umake/web/firefox-dev/firefox
+        }
+        button {
             icon = spotify
             image = /usr/share/spotify/icons/spotify-linux-32.png
             tooltip = Spotify

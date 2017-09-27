@@ -5,6 +5,7 @@ rxvt-unicode-256color
 silversearcher-ag
 tree
 vim-gtk3
+xsel
 zsh
 zsh-syntax-highlighting
 
@@ -50,13 +51,14 @@ optipng
 python-pygments
 ruby-dev
 shellcheck
-xsel
+ubuntu-make # -> firefox-dev, rust, go, nodejs, vscode, android-sdk
 
 # Bases de données
 libmysql++-dev
 mysql-client
 mysql-server
 redis-server
+
 
 # NVM
 # https://github.com/creationix/nvm
@@ -83,6 +85,7 @@ redis-server
 # cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Autres
+# https://github.com/apriendeau/go-testcolorize
 # https://github.com/avh4/elm-format
 # https://www.spotify.com/fr/download/previews/
 # https://github.com/horst3180/Arc-theme

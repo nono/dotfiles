@@ -72,6 +72,7 @@ alias less='less -RXFS'
 alias grep='grep --color'
 alias v=nvim
 alias o=xdg-open
+alias beep='mpv /usr/share/sounds/freedesktop/stereo/complete.oga'
 alias ftp='lftp'
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="ag 'TODO|FIXME|XXX|HACK'"
