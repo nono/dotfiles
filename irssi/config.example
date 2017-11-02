@@ -54,11 +54,7 @@ channels = (
   { name = "#cozycloud"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#team"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#taverne"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#veille"; chatnet = "cozy"; autojoin = "Yes"; },
   { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#desktop"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#back"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#infra"; chatnet = "cozy"; autojoin = "Yes"; }
 );
 
 aliases = {

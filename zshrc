@@ -151,6 +151,7 @@ alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gg='g grep --color'
 alias gp='g pull upstream master --rebase'
+alias gu='g push upstream && g push'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Cozy
