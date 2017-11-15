@@ -36,7 +36,7 @@ build-essential
 curl
 docker.io
 git
-golang-1.8
+golang-1.9
 httpie
 imagemagick
 libimage-exiftool-perl
@@ -51,7 +51,7 @@ optipng
 python-pygments
 ruby-dev
 shellcheck
-ubuntu-make # -> firefox-dev, rust, go, nodejs, vscode, android-sdk
+ubuntu-make # -> firefox-dev, rust, nodejs, vscode, android-sdk
 
 # Bases de données
 libmysql++-dev
@@ -59,9 +59,6 @@ mysql-client
 mysql-server
 redis-server
 
-
-# NVM
-# https://github.com/creationix/nvm
 
 # Elixir
 # http://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw
@@ -89,4 +86,5 @@ redis-server
 # https://github.com/avh4/elm-format
 # https://www.spotify.com/fr/download/previews/
 # https://github.com/horst3180/Arc-theme
+# https://github.com/horst3180/arc-firefox-theme
 # http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466
