@@ -147,6 +147,7 @@ set wildmenu
 
 nnoremap <F1> K
 nnoremap <F8> :set spell!<CR>
+nnoremap Q A
 
 " Don't make a # force column zero.
 inoremap # X<BS>#
@@ -176,6 +177,7 @@ if has("nvim")
 	tnoremap <C-Up> <C-\><C-n><C-w><Up>
 	tnoremap <C-Right> <C-\><C-n><C-w><Right>
 	tnoremap <Esc> <C-\><C-n>           " Terminal (Neovim only)
+	au FocusGained * :echotime
 else
 	map Od <C-W><Left>
 	map Ob <C-W><Down>
@@ -191,8 +193,6 @@ endif
 """"" Autodetect filetypes
 
 augroup vimrc
-	au FocusGained * :echotime
-
 	au BufRead,BufNewFile bip.conf set ft=bip
 	au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
