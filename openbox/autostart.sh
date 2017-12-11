@@ -19,6 +19,7 @@ urxvt -name codaz1 -title codaz1 &
 urxvt -name codaz2 -title codaz2 &
 urxvt -name codaz3 -title codaz3 &
 urxvt -name nvim   -title nvim   &
+docker start cozy-stack-couch &
 
 # Programs that will run after Openbox has started
 (sleep 1 && fbpanel) &

@@ -1,0 +1,49 @@
+#compdef cozy-stack
+
+_arguments \
+  '1: :->level1' \
+  '2: :->level2' \
+  '3: :_files'
+case $state in
+  level1)
+    case $words[1] in
+      cozy-stack)
+        _arguments '1: :(apps bug completion config doc files fixer help instances konnectors serve settings status version)'
+      ;;
+      *)
+        _arguments '*: :_files'
+      ;;
+    esac
+  ;;
+  level2)
+    case $words[2] in
+      instances)
+        _arguments '2: :(add clean client-oauth debug destroy export fsck import ls refresh-token-oauth set-disk-quota show token-app token-cli token-oauth update)'
+      ;;
+      konnectors)
+        _arguments '2: :(install ls run show uninstall update)'
+      ;;
+      apps)
+        _arguments '2: :(install ls show uninstall update)'
+      ;;
+      config)
+        _arguments '2: :(passwd print)'
+      ;;
+      doc)
+        _arguments '2: :(man markdown)'
+      ;;
+      files)
+        _arguments '2: :(exec import)'
+      ;;
+      fixer)
+        _arguments '2: :(accounts-orphans albums-created-at jobs md5 mime onboardings redis)'
+      ;;
+      *)
+        _arguments '*: :_files'
+      ;;
+    esac
+  ;;
+  *)
+    _arguments '*: :_files'
+  ;;
+esac

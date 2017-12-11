@@ -636,7 +636,7 @@
     <application name="nvim">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>-0</x><y>0</y></position>
+      <position><x>726</x><y>26</y></position>
       <maximized>Vertical</maximized>
     </application>
     <application name="gvim">
