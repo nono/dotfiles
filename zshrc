@@ -85,7 +85,7 @@ alias vagrant="TERM=rxvt-unicode vagrant"
 
 mkcd() { mkdir "$1" && cd "$1" }
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
-font() { echo -ne "\\033]710;xft:Droid Sans Mono for Powerline:pixelsize=$1\\007" }
+font() { echo -ne "\\033]710;xft:Fira Code:pixelsize=$1\\007" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
 json() { cat $@ | python -m json.tool }
 

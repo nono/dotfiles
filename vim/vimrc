@@ -76,7 +76,7 @@ filetype plugin indent on
 if has("gui_running")
 	set bg=dark
 	colo OceanicNext
-	set gfn=Inconsolata\ for\ Powerline\ 13
+	set gfn=Fira\ Code\ 12
 	set gcr=a:blinkon0
 	set go=acegit
 	" Fix borders of fullscreen GUI

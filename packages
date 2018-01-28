@@ -35,6 +35,8 @@ ttf-mscorefonts-installer
 build-essential
 curl
 docker.io
+fonts-firacode
+fonts-powerline
 git
 golang-1.9
 httpie
@@ -62,9 +64,6 @@ redis-server
 
 # Elixir
 # http://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw
-
-# Powerline fonts
-# https://github.com/powerline/fonts
 
 # Neovim
 # https://github.com/neovim/neovim/wiki/Installing-Neovim

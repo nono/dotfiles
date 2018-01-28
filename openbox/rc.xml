@@ -625,12 +625,12 @@
     </application>
     <application name="codaz2">
       <desktop>3</desktop>
-      <position><x>0</x><y>440</y></position>
+      <position><x>0</x><y>464</y></position>
       <decor>no</decor>
     </application>
     <application name="codaz3">
       <desktop>3</desktop>
-      <position><x>0</x><y>854</y></position>
+      <position><x>0</x><y>902</y></position>
       <decor>no</decor>
     </application>
     <application name="nvim">
