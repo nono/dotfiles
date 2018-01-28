@@ -13,6 +13,7 @@ umask 022
 stty -ixon
 
 # History
+setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_hist
 HISTSIZE=10000
 SAVEHIST=3000
@@ -160,7 +161,7 @@ export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/
 export COZY_DESKTOP_DIR=tmp
 alias couch_stop='sudo systemctl stop docker-couchdb'
 alias couch_start='sudo systemctl start docker-couchdb'
-alias create_cozy_tools='cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:alpha'
+alias create_cozy_tools='cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev'
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")

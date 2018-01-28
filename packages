@@ -2,7 +2,6 @@
 dstat
 irssi
 rxvt-unicode-256color
-silversearcher-ag
 tree
 vim-gtk3
 xsel
@@ -18,9 +17,9 @@ chromium-browser
 diceware
 fbpanel
 feh
-fonts-inconsolata
+firefox
+fonts-emojione
 fonts-lato
-fonts-roboto
 fonts-yanone-kaffeesatz
 gtk-theme-switch
 libreoffice
@@ -29,6 +28,7 @@ mpv
 numlockx
 openbox
 qtcurve
+thunderbird
 ttf-mscorefonts-installer
 
 # Dev
@@ -53,7 +53,7 @@ optipng
 python-pygments
 ruby-dev
 shellcheck
-ubuntu-make # -> firefox-dev, rust, nodejs, vscode, android-sdk
+ubuntu-make # -> firefox-dev, rust, nodejs
 
 # Bases de données
 libmysql++-dev
@@ -87,3 +87,6 @@ redis-server
 # https://github.com/horst3180/Arc-theme
 # https://github.com/horst3180/arc-firefox-theme
 # http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466
+
+# Librem
+# https://forums.puri.sm/t/byd-touchpad-multi-touch-support/915

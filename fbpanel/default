@@ -64,9 +64,15 @@ Plugin {
         }
         button {
             icon = mozilla-firefox-dev
-            image = /home/nono/.local/share/umake/web/firefox-dev/browser/icons/mozicon128.png
+            image = /home/nono/.local/share/umake/web/firefox-dev/browser/chrome/icons/default/default64.png
             tooltip = Firefox Developer Edition
             action = /home/nono/.local/share/umake/web/firefox-dev/firefox
+        }
+        button {
+            icon = thunderbird
+            image = /usr/share/icons/elementary-xfce/apps/32/thunderbird.png
+            tooltip = Thunderbird
+            action = thunderbird
         }
         button {
             icon = spotify
