@@ -26,7 +26,7 @@ _rg() {
     '--column[show column numbers]'
     '(-A -B -C --after-context --before-context --context)'{-C+,--context=}'[specify lines to show before and after each match]:number of lines'
     '--context-separator=[specify string used to separate non-continuous context lines in output]:separator'
-    '(-c --count)'{-c,--count}'[only show count of matches for each file]'
+    '(-c --count --passthrough --passthru)'{-c,--count}'[only show count of matches for each file]'
     '--debug[show debug messages]'
     '--dfa-size-limit=[specify upper size limit of generated DFA]:DFA size'
     '(-E --encoding)'{-E+,--encoding=}'[specify text encoding of files to search]: :_rg_encodings'
@@ -45,6 +45,7 @@ _rg() {
     '--ignore-file=[specify additional ignore file]:file:_files'
     '(-v --invert-match)'{-v,--invert-match}'[invert matching]'
     '(-n -N --line-number --no-line-number)'{-n,--line-number}'[show line numbers]'
+    '(-N --no-line-number)--line-number-width=[specify width of displayed line number]:number of columns'
     '(-w -x --line-regexp --word-regexp)'{-x,--line-regexp}'[only show matches surrounded by line boundaries]'
     '(-M --max-columns)'{-M+,--max-columns=}'[specify max length of lines to print]:number of bytes'
     '(-m --max-count)'{-m+,--max-count=}'[specify max number of matches per file]:number of matches'
@@ -53,6 +54,7 @@ _rg() {
     '(--mmap --no-mmap)--mmap[search using memory maps when possible]'
     '(-H --with-filename --no-filename)--no-filename[suppress all file names]'
     "(-p --heading --pretty --vimgrep)--no-heading[don't group matches by file name]"
+    "--no-config[don't load configuration files]"
     "(--no-ignore-parent)--no-ignore[don't respect ignore files]"
     "--no-ignore-parent[don't respect ignore files in parent directories]"
     "--no-ignore-vcs[don't respect version control ignore files]"
@@ -60,13 +62,15 @@ _rg() {
     '--no-messages[suppress all error messages]'
     "(--mmap --no-mmap)--no-mmap[don't search using memory maps]"
     '(-0 --null)'{-0,--null}'[print NUL byte after file names]'
-    '(-o --only-matching -r --replace)'{-o,--only-matching}'[show only matching part of each line]'
+    '(-o -r --only-matching --passthrough --passthru --replace)'{-o,--only-matching}'[show only matching part of each line]'
+    '(-c -o -r --count --only-matching --passthrough --replace)--passthru[show both matching and non-matching lines]'
+    '!(-c -o -r --count --only-matching --passthru --replace)--passthrough'
     '--path-separator=[specify path separator to use when printing file names]:separator'
     '(-p --heading --no-heading --pretty --vimgrep)'{-p,--pretty}'[alias for --color=always --heading -n]'
     '(-q --quiet)'{-q,--quiet}'[suppress normal output]'
     '--regex-size-limit=[specify upper size limit of compiled regex]:regex size'
     '(1 -f --file)*'{-e+,--regexp=}'[specify pattern]:pattern'
-    '(-o --only-matching -r --replace)'{-r+,--replace=}'[specify string used to replace matches]:replace string'
+    '(-c -o -r --count --only-matching --passthrough --passthru --replace)'{-r+,--replace=}'[specify string used to replace matches]:replace string'
     '(-i -s -S --ignore-case --case-sensitive --smart-case)'{-S,--smart-case}'[search case-insensitively if the pattern is all lowercase]'
     '(-j --threads)--sort-files[sort results by file path (disables parallelism)]'
     '(-a --text)'{-a,--text}'[search binary files as if they were text]'
@@ -84,6 +88,7 @@ _rg() {
     '(-w -x --line-regexp --word-regexp)'{-w,--word-regexp}'[only show matches surrounded by word boundaries]'
     '(-e -f --file --files --regexp --type-list)1: :_rg_pattern'
     '(--type-list)*:file:_files'
+    '(-z --search-zip)'{-z,--search-zip}'[search in compressed files]'
   )
 
   [[ ${_RG_COMPLETE_LIST_ARGS:-} == (1|t*|y*) ]] && {
