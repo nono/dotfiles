@@ -76,7 +76,7 @@ alias o=xdg-open
 alias beep='mpv /usr/share/sounds/freedesktop/stereo/complete.oga'
 alias ftp='lftp'
 alias pw='diceware -d _ -n 5 -s 5'
-alias notes="ag 'TODO|FIXME|XXX|HACK'"
+alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias chromium=chromium-browser
