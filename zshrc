@@ -126,9 +126,8 @@ strip_diff_leading_symbols() {
 }
 
 # Golang
-export GOROOT="/usr/lib/go-1.9"
 export GOPATH="$HOME/go"
-export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
@@ -167,6 +166,3 @@ cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
 }
-
-# Path
-export PATH="bin:$HOME/bin:$PATH"

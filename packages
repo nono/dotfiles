@@ -39,7 +39,6 @@ docker.io
 fonts-firacode
 fonts-powerline
 git
-golang-1.9
 httpie
 imagemagick
 libimage-exiftool-perl
@@ -65,6 +64,8 @@ redis-server
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
 elm-format
+go-1.10
+mailhog
 nix-zsh-completions
 ripgrep
 
