@@ -41,7 +41,7 @@ setopt NO_BEEP
 setopt PROMPT_SUBST
 
 # Completion & prompt
-fpath=(~/.zsh/Completion ~/.zsh/functions $fpath)
+fpath=(~/.zsh/Completion ~/.zsh/functions ~/.nix-profile/share/zsh/site-functions $fpath)
 zmodload -i zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
@@ -49,7 +49,6 @@ zstyle ':completion::complete:*' cache-path ~/.zsh/cache
 zstyle ':completion::complete:cd::' tag-order local-directories path-directories
 zstyle ':completion:*:processes' command 'ps -au$USER'
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
-autoload -U ~/.zsh/Completion/*(:t)
 autoload -U compinit
 compinit -u
 autoload -U promptinit && promptinit
@@ -64,6 +63,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.nix-profile/etc/profile.d/nix.sh
 alias ni='nix-env -i'
 alias ns='nix search'
+alias nrm='nix-env -e'
 
 # Apt
 alias ai='sudo apt install'

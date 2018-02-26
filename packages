@@ -65,6 +65,7 @@ redis-server
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
 elm-format
+nix-zsh-completions
 ripgrep
 
 
