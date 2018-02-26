@@ -58,6 +58,20 @@ prompt unpure
 
 source ~/config/zsh/base16-bright.dark.sh
 source /etc/zsh_command_not_found
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Nix
+source ~/.nix-profile/etc/profile.d/nix.sh
+alias ni='nix-env -i'
+alias ns='nix search'
+
+# Apt
+alias ai='sudo apt install'
+alias au='sudo apt update'
+alias ad='sudo apt upgrade'
+alias aud='sudo apt-get autoremove --purge && sudo apt update && sudo apt upgrade'
+alias arm='sudo apt remove'
+alias as='apt search'
 
 # Aliases
 alias -g L='|less'
@@ -111,17 +125,6 @@ strip_diff_leading_symbols() {
     sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
-# Apt
-alias ai='sudo apt install'
-alias au='sudo apt update'
-alias ad='sudo apt upgrade'
-alias aud='sudo apt-get autoremove --purge && sudo apt update && sudo apt upgrade'
-alias arm='sudo apt remove'
-alias as='apt search'
-
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Golang
 export GOROOT="/usr/lib/go-1.9"
 export GOPATH="$HOME/go"
@@ -159,8 +162,6 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias couch_stop='sudo systemctl stop docker-couchdb'
-alias couch_start='sudo systemctl start docker-couchdb'
 alias create_cozy_tools='cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev'
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
@@ -169,5 +170,3 @@ cozy_token() {
 
 # Path
 export PATH="bin:$HOME/bin:$PATH"
-
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

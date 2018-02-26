@@ -25,6 +25,7 @@ gtk-theme-switch
 libreoffice
 mirage
 mpv
+numix-gtk-theme
 numlockx
 openbox
 qtcurve
@@ -53,7 +54,6 @@ optipng
 python-pygments
 ruby-dev
 shellcheck
-ubuntu-make # -> firefox-dev, rust, nodejs
 
 # Bases de données
 libmysql++-dev
@@ -62,14 +62,14 @@ mysql-server
 redis-server
 
 
-# Elixir
-# http://elixir-lang.org/install.html#compiling-from-source-unix-and-mingw
+# Nix
+# https://nixos.org/nix/manual/#ch-installing-binary
+elm-format
+ripgrep
+
 
 # Neovim
 # https://github.com/neovim/neovim/wiki/Installing-Neovim
-
-# Ripgrep
-# https://github.com/BurntSushi/ripgrep
 
 # Paquets pour les langages
 # gem install bundler rubocop
@@ -82,11 +82,7 @@ redis-server
 
 # Autres
 # https://github.com/apriendeau/go-testcolorize
-# https://github.com/avh4/elm-format
 # https://www.spotify.com/fr/download/previews/
-# https://github.com/horst3180/Arc-theme
-# https://github.com/horst3180/arc-firefox-theme
-# http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466
 
 # Librem
 # https://forums.puri.sm/t/byd-touchpad-multi-touch-support/915
