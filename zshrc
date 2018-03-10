@@ -93,10 +93,8 @@ alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
-alias chromium=chromium-browser
 alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias ssh='TERM=rxvt-unicode ssh'
-alias vagrant="TERM=rxvt-unicode vagrant"
 
 mkcd() { mkdir "$1" && cd "$1" }
 mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
@@ -161,8 +159,9 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias create_cozy_tools='cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev'
+alias create_cozy_tools="cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev"
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
 }
+alias remove_cozy_test="cozy-stack instances ls | grep sharing_test | awk '{ print $1 }' | xargs -n1 cozy-stack instances rm --force"

@@ -1,6 +1,7 @@
 # Base
 dstat
 irssi
+neovim
 rxvt-unicode-256color
 tree
 vim-gtk3
@@ -21,6 +22,7 @@ firefox
 fonts-emojione
 fonts-lato
 fonts-yanone-kaffeesatz
+gmrun
 gtk-theme-switch
 libreoffice
 mirage
@@ -69,9 +71,6 @@ mailhog
 nix-zsh-completions
 ripgrep
 
-
-# Neovim
-# https://github.com/neovim/neovim/wiki/Installing-Neovim
 
 # Paquets pour les langages
 # gem install bundler rubocop

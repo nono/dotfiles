@@ -178,7 +178,7 @@ if has("nvim")
 	tnoremap <C-Up> <C-\><C-n><C-w><Up>
 	tnoremap <C-Right> <C-\><C-n><C-w><Right>
 	tnoremap <Esc> <C-\><C-n>           " Terminal (Neovim only)
-	au FocusGained * :echotime
+	au FocusGained * :checktime
 else
 	map Od <C-W><Left>
 	map Ob <C-W><Down>
