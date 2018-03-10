@@ -3,6 +3,7 @@ dstat
 irssi
 neovim
 rxvt-unicode-256color
+tilix
 tree
 vim-gtk3
 xsel
@@ -65,11 +66,14 @@ redis-server
 
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
+# https://github.com/guibou/nixGL
 elm-format
+kitty
 go-1.10
 mailhog
 nix-zsh-completions
 ripgrep
+termite # ln -s ~/.nix-profile/share/terminfo ~/.terminfo
 
 
 # Paquets pour les langages
