@@ -1,6 +1,3 @@
-# Tilix
-[ $TILIX_ID ] && source /etc/profile.d/vte.sh
-
 # Env
 export PS1='${SSH_CONNECTION+"%n@%m:"}%~%# '
 export PS2=' > '
