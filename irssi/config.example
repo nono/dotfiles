@@ -1,14 +1,5 @@
 servers = (
   {
-    address = "bip.menfin.info";
-    chatnet = "cozy";
-    port = "7778";
-    use_ssl = "yes";
-    autoconnect = "yes";
-    password = "XXX";
-  },
-
-  {
     # address = "chat.freenode.net";
     # chatnet = "freenode";
     # port = "7000";
@@ -36,25 +27,11 @@ chatnets = {
     max_whois = "4";
     max_query_chans = "6";
   };
-
-  cozy = {
-    type = "IRC";
-    nick = "N`";
-    realname = "bruno";
-    max_kicks = "4";
-    max_modes = "3";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "6";
-  };
 };
 
 channels = (
   { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#cozycloud"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#team"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#taverne"; chatnet = "cozy"; autojoin = "Yes"; },
-  { name = "#github"; chatnet = "cozy"; autojoin = "Yes"; },
 );
 
 aliases = {
