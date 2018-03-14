@@ -13,8 +13,12 @@ setlayout 0 2 2 0
 sleep 2
 x-www-browser &
 thunderbird &
+
 urxvt -name irssi  -title irssi  &
+urxvt -name config -title config &
 urxvt -name gruik  -title gruik  &
+urxvt -name full   -title full   &
+
 urxvt -name codaz1 -title codaz1 &
 urxvt -name codaz2 -title codaz2 &
 urxvt -name codaz3 -title codaz3 &
