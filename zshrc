@@ -5,8 +5,6 @@ export DIRSTACKSIZE=16
 export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
-export LS_OPTIONS='--color=auto'
-export GREP_COLOR='1;37;41'
 umask 022
 
 # disable XON/XOFF flow control (^s/^q)
@@ -55,9 +53,14 @@ autoload -U promptinit && promptinit
 export DEFAULT_USER=nono
 prompt unpure
 
+# Add some colors
 source ~/config/zsh/base16-bright.dark.sh
 source /etc/zsh_command_not_found
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Automatically list files after cd
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ exa; }
 
 # Nix
 source ~/.nix-profile/etc/profile.d/nix.sh
@@ -78,13 +81,10 @@ alias -g L='|less'
 alias -g G='|rg'
 alias -g W='|wc'
 
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -la'
-alias lh='ls $LS_OPTIONS -lah'
-alias sl=ls
-alias cd..='cd ..'
+alias ls='exa'
+alias ll='exa -la --git'
+alias tree='exa -T'
 alias less='less -RXFS'
-alias grep='grep --color'
 alias v=nvim
 alias o=xdg-open
 alias beep='mpv /usr/share/sounds/freedesktop/stereo/complete.oga'
@@ -97,10 +97,8 @@ alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias ssh='TERM=rxvt-unicode ssh'
 
 mkcd() { mkdir "$1" && cd "$1" }
-mp() { xrandr --output DVI-I-1 --mode 1920x1080 ; sleep 2 ; mpv $@ ; xrandr --output DVI-I-1 --mode 2560x1440 }
 font() { echo -ne "\\033]710;xft:Fira Code:pixelsize=$1\\007" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
-json() { cat $@ | python -m json.tool }
 
 # Colored manpages
 man() {
@@ -157,6 +155,7 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Cozy
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
+alias sta="cd ~stack"
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 export COZY_DESKTOP_DIR=tmp
 alias create_cozy_tools="cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev"

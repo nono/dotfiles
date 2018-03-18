@@ -3,7 +3,6 @@ dstat
 irssi
 neovim
 rxvt-unicode-256color
-tree
 vim-gtk3
 xsel
 zsh
@@ -65,7 +64,9 @@ redis-server
 
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
+fd
 elm-format
+exa
 go-1.10
 mailhog
 nix-zsh-completions
