@@ -70,7 +70,9 @@ exa
 go-1.10
 mailhog
 nix-zsh-completions
+oblogout-unstable
 ripgrep
+tokei
 
 
 # Paquets pour les langages

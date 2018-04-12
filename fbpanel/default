@@ -180,7 +180,7 @@ Plugin {
         button {
             image = /usr/share/icons/elementary-xfce/actions/32/system-shutdown.png
             tooltip = Shutdown
-            action = ~/bin/shutdown.sh
+            action = oblogout
         }
     }
 }
