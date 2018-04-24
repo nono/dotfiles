@@ -83,7 +83,7 @@ alias -g W='|wc'
 
 alias ls='exa'
 alias ll='exa -la --git'
-alias tree='exa -T'
+alias lt='exa -laT'
 alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
@@ -151,16 +151,18 @@ alias gs='g status -s'
 alias gg='g grep --color'
 alias gp='g pull upstream master --rebase'
 alias gu='g push upstream && g push'
+alias gpf='g push --force-with-lease'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
 # Cozy
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 alias sta="cd ~stack"
+alias cs=cozy-stack
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias create_cozy_tools="cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev"
+alias create_cozy_tools="cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect,contacts --email bruno@cozycloud.cc --locale fr --public-name Bruno --settings context:dev"
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
 }
-alias remove_cozy_test="cozy-stack instances ls | grep sharing_test | awk '{ print $1 }' | xargs -n1 cozy-stack instances rm --force"
+alias remove_cozy_test="cozy-stack instances ls | grep sharing_test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
