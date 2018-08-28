@@ -66,7 +66,6 @@ redis-server
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
 fd
-elm-format
 exa
 go-1.10
 mailhog
@@ -78,7 +77,7 @@ tokei
 
 # Paquets pour les langages
 # gem install bundler rubocop
-# npm install -g prettier standard eslint elm elm-oracle yarn
+# npm install -g prettier yarn
 # :PlugInstall in neovim
 # :GoInstallBinaries for vim-go
 
