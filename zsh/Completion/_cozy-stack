@@ -8,7 +8,7 @@ case $state in
   level1)
     case $words[1] in
       cozy-stack)
-        _arguments '1: :(apps bug completion config doc files fixer help instances konnectors serve settings status version)'
+        _arguments '1: :(apps bug completion config doc files fixer help instances jobs konnectors serve settings status triggers version)'
       ;;
       *)
         _arguments '*: :_files'
@@ -17,17 +17,11 @@ case $state in
   ;;
   level2)
     case $words[2] in
-      instances)
-        _arguments '2: :(add clean client-oauth debug destroy export fsck import ls refresh-token-oauth set-disk-quota show token-app token-cli token-oauth update)'
-      ;;
-      konnectors)
-        _arguments '2: :(install ls run show uninstall update)'
-      ;;
       apps)
         _arguments '2: :(install ls show uninstall update)'
       ;;
       config)
-        _arguments '2: :(passwd print)'
+        _arguments '2: :(decrypt-creds gen-keys passwd print)'
       ;;
       doc)
         _arguments '2: :(man markdown)'
@@ -36,7 +30,19 @@ case $state in
         _arguments '2: :(exec import)'
       ;;
       fixer)
-        _arguments '2: :(accounts-orphans albums-created-at jobs md5 mime onboardings redis)'
+        _arguments '2: :(accounts-orphans albums-created-at jobs md5 mime onboardings redis thumbnails)'
+      ;;
+      triggers)
+        _arguments '2: :(launch ls show-from-app)'
+      ;;
+      instances)
+        _arguments '2: :(add clean client-oauth debug destroy export fsck import ls modify refresh-token-oauth set-disk-quota show token-app token-cli token-konnector token-oauth update)'
+      ;;
+      jobs)
+        _arguments '2: :(run)'
+      ;;
+      konnectors)
+        _arguments '2: :(install ls run show uninstall update)'
       ;;
       *)
         _arguments '*: :_files'
