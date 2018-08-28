@@ -83,7 +83,7 @@ URxvt.keysym.M-C-KP_5: command:\033]710;xft:Fira Code:pixelsize=32\007
 URxvt.keysym.M-C-KP_6: command:\033]710;xft:Fira Code:pixelsize=48\007
 
 
-URxvt.letterSpace: -1
+! URxvt.letterSpace: -1
 URxvt.keysym.C-Left: \033[1;5D
 URxvt.keysym.C-Down: \033[1;5B
 URxvt.keysym.C-Up: \033[1;5A
@@ -92,7 +92,7 @@ URxvt.keysym.C-Right: \033[1;5C
 ! Xft
 Xft.autohint: 1
 Xft.antialias: 1
-Xft.hinting: false
+Xft.hinting: true
 Xft.hintstyle: hintmedium
 Xft.dpi: 96
 Xft.rgba: rgb
