@@ -153,6 +153,9 @@ alias gu='g push upstream && g push'
 alias gpf='g push --force-with-lease'
 gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 
+# Ansible
+# ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
+
 # Cozy
 hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
 alias sta="cd ~stack"
