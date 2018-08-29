@@ -30,6 +30,7 @@ Plug 'othree/yajs.vim',                { 'for': 'javascript' }
 Plug 'othree/es.next.syntax.vim',      { 'for': 'javascript' }
 Plug 'nono/jquery.vim',                { 'for': 'javascript' }
 Plug 'mxw/vim-jsx',                    { 'for': 'javascript' }
+Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json'] }
 Plug 'elzr/vim-json',                  { 'for': 'json' }
 Plug 'groenewege/vim-less',            { 'for': 'less' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
@@ -67,6 +68,7 @@ let g:airline#extensions#neomake#enabled = 0
 let g:html5_rdfa_attributes_complete = 0
 let g:vim_json_syntax_conceal = 0
 let g:rustfmt_autosave = 1
+let g:prettier#autoformat = 0
 
 
 """"" Options globales
@@ -210,6 +212,7 @@ augroup vimrc
 	au BufRead,BufNewFile manifest.webapp set ft=json
 	au BufRead,BufNewFile Gomfile set ft=ruby
 
+	au BufWritePre *.css,*.scss,*.json Prettier
 	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
 augroup END
 
