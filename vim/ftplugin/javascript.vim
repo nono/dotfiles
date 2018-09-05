@@ -1,5 +1,5 @@
-setlocal et
-setlocal sw=2 ts=2
-autocmd User Rails/**/*.js set sw=2
+setlocal et sw=2 ts=2
 
-noremap K :exec '!'.g:browser.' http://api.jquery.com/'.expand('<cword>').' &'<CR><CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_rename()<CR>

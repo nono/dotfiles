@@ -5,7 +5,9 @@ call plug#begin('~/.vim/plugged')
 " Common
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " Commands
+Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary',    { 'on': '<Plug>Commentary' }
 Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
@@ -14,16 +16,13 @@ Plug 'chrisbra/vim-diff-enhanced'
 " Typing help
 Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-endwise', { 'for': ['ruby', 'elixir', 'sh', 'zsh', 'vim', 'lua', 'c', 'cpp'] }
+Plug 'tpope/vim-endwise', { 'for': ['ruby', 'sh', 'zsh', 'vim', 'lua', 'c', 'cpp'] }
 Plug 'tpope/vim-surround'
 " Filetype
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'hail2u/vim-css3-syntax',         { 'for': 'css' }
-Plug 'elixir-lang/vim-elixir',         { 'for': 'elixir' }
 Plug 'elmcast/elm-vim',                { 'for': 'elm' }
-Plug 'vim-erlang/vim-erlang-runtime',  { 'for': 'erlang' }
-Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
 Plug 'tpope/vim-haml',                 { 'for': 'ruby' }
 Plug 'othree/html5.vim',               { 'for': 'html' }
 Plug 'othree/yajs.vim',                { 'for': 'javascript' }
@@ -37,13 +36,10 @@ Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'LnL7/vim-nix',                   { 'for': 'nix' }
 Plug 'chr4/nginx.vim',                 { 'for': 'nginx' }
 Plug 'vim-pandoc/vim-pandoc-syntax',   { 'for': 'pandoc' }
-Plug 'digitaltoad/vim-pug',            { 'for': ['jade', 'pug'] }
 Plug 'rust-lang/rust.vim',             { 'for': 'rust' }
 Plug 'wavded/vim-stylus',              { 'for': 'stylus' }
 " Colors
-Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
-Plug 'mgutz/gosu-colors'
 Plug 'mhartington/oceanic-next'
 call plug#end()
 
@@ -57,6 +53,8 @@ vmap / <Plug>Commentary
 
 " Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#num_processes=1
 let g:elm_format_autosave = 1
 let g:elm_setup_keybindings = 0
 let g:go_fmt_command = "goimports"
@@ -69,6 +67,14 @@ let g:html5_rdfa_attributes_complete = 0
 let g:vim_json_syntax_conceal = 0
 let g:rustfmt_autosave = 1
 let g:prettier#autoformat = 0
+
+" LSP
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'ruby': ['solargraph', 'stdio'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
 
 
 """"" Options globales
@@ -106,7 +112,7 @@ set encoding=utf-8
 set fileformat=unix
 set formatoptions+=j    " Delete comment character when joining commented lines
 set grepformat=%f:%l:%c:%m
-set grepprg=ag
+set grepprg=rg\ --vimgrep
 set incsearch
 set iskeyword+=-
 set laststatus=2        " Always show the statusbar

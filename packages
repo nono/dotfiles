@@ -67,7 +67,7 @@ redis-server
 # https://nixos.org/nix/manual/#ch-installing-binary
 fd
 exa
-go-1.10
+go
 mailhog
 nix-zsh-completions
 oblogout-unstable
@@ -76,8 +76,8 @@ tokei
 
 
 # Paquets pour les langages
-# gem install bundler rubocop
-# npm install -g prettier yarn
+# gem install bundler rubocop solargraph
+# npm install -g prettier yarn javascript-typescript-langserver
 # :PlugInstall in neovim
 # :GoInstallBinaries for vim-go
 

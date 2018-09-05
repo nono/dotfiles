@@ -1,2 +1,0 @@
-setlocal ts=8
-

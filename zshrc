@@ -67,6 +67,7 @@ source ~/.nix-profile/etc/profile.d/nix.sh
 alias ni='nix-env -i'
 alias ns='nix search'
 alias nrm='nix-env -e'
+alias nu='nix-channel --update && nix-env -u --dry-run && echo "Run nix-env -u"'
 
 # Apt
 alias ai='sudo apt install'
