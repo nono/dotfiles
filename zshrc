@@ -122,6 +122,9 @@ strip_diff_leading_symbols() {
     sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Golang
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"

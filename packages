@@ -75,6 +75,12 @@ ripgrep
 tokei
 
 
+# Rust
+# https://www.rust-lang.org/en-US/install.html (ou rustup update)
+# rustup install nightly
+# rustup component add rls-preview rust-analysis rust-src
+# rustup component add clippy-preview --toolchain=nightly
+
 # Paquets pour les langages
 # gem install bundler rubocop solargraph
 # npm install -g prettier yarn javascript-typescript-langserver
