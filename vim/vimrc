@@ -19,25 +19,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'sh', 'zsh', 'vim', 'lua', 'c', 'cpp'] }
 Plug 'tpope/vim-surround'
 " Filetype
-Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
-Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
-Plug 'hail2u/vim-css3-syntax',         { 'for': 'css' }
-Plug 'elmcast/elm-vim',                { 'for': 'elm' }
-Plug 'tpope/vim-haml',                 { 'for': 'ruby' }
-Plug 'othree/html5.vim',               { 'for': 'html' }
-Plug 'othree/yajs.vim',                { 'for': 'javascript' }
-Plug 'othree/es.next.syntax.vim',      { 'for': 'javascript' }
-Plug 'nono/jquery.vim',                { 'for': 'javascript' }
-Plug 'mxw/vim-jsx',                    { 'for': 'javascript' }
-Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json'] }
-Plug 'elzr/vim-json',                  { 'for': 'json' }
-Plug 'groenewege/vim-less',            { 'for': 'less' }
+Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go',                   { 'for': 'go' }
-Plug 'LnL7/vim-nix',                   { 'for': 'nix' }
-Plug 'chr4/nginx.vim',                 { 'for': 'nginx' }
-Plug 'vim-pandoc/vim-pandoc-syntax',   { 'for': 'pandoc' }
-Plug 'rust-lang/rust.vim',             { 'for': 'rust' }
-Plug 'wavded/vim-stylus',              { 'for': 'stylus' }
+Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
+Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json'] }
 " Colors
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
@@ -50,25 +35,16 @@ runtime! macros/matchit.vim
 vnoremap <c-a> :call IncrementColumn()<cr>
 vmap <Enter> <Plug>(EasyAlign)
 vmap / <Plug>Commentary
+noremap <c-t> :FZF<cr>
 
 " Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#num_processes=1
-let g:elm_format_autosave = 1
-let g:elm_setup_keybindings = 0
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_metalinter_autosave = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#neomake#enabled = 0
-let g:html5_rdfa_attributes_complete = 0
 let g:vim_json_syntax_conceal = 0
-let g:rustfmt_autosave = 1
 let g:prettier#autoformat = 0
-
-" LSP
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
@@ -203,20 +179,14 @@ endif
 
 augroup vimrc
 	au BufRead,BufNewFile bip.conf set ft=bip
-	au BufRead,BufNewFile haproxy.cfg set ft=haproxy
 	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
 	au BufRead,BufNewFile *.dc set ft=dotclear
-	au BufRead,BufNewFile *.wiki set ft=moin
-	au BufRead,BufNewFile *.t2t set ft=txt2tags
-	au BufRead,BufNewFile *.textile set ft=textile
-	au BufRead,BufNewFile *.txt,*.md set ft=pandoc et tw=78
+	au BufRead,BufNewFile *.txt,*.md,*.mdx set ft=markdown
 	au BufRead,BufNewFile *.ditaa set ft=ditaa
 	au BufRead,BufNewFile Xdefaults set ft=xdefaults
 	au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
-	au BufRead,BufNewFile *.es6 set ft=javascript
-	au BufRead,BufNewFile manifest.webapp set ft=json
-	au BufRead,BufNewFile Gomfile set ft=ruby
+	au BufRead,BufNewFile manifest.webapp,manifest.konnector set ft=json
 
 	au BufWritePre *.css,*.scss,*.json Prettier
 	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
