@@ -62,6 +62,10 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ exa; }
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 # Nix
 source ~/.nix-profile/etc/profile.d/nix.sh
 alias ni='nix-env -i'

@@ -7,6 +7,7 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " Commands
+Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary',    { 'on': '<Plug>Commentary' }
