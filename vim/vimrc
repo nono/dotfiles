@@ -23,6 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
+Plug 'JulesWang/css.vim',              { 'for': ['css', 'scss'] }
 Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json'] }
 " Colors
 Plug 'chriskempson/base16-vim'
@@ -41,7 +42,7 @@ noremap <c-t> :FZF<cr>
 " Config
 let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#num_processes=1
+let g:deoplete#num_processes = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#neomake#enabled = 0
 let g:vim_json_syntax_conceal = 0

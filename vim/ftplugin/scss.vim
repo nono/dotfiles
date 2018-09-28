@@ -1,1 +1,1 @@
-setlocal et sw=2 ts=2 tw=2
+setlocal et sw=2 ts=2 tw=2 iskeyword+=-
