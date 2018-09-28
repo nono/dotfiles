@@ -170,7 +170,7 @@ alias sta="cd ~stack"
 alias cs=cozy-stack
 export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias create_cozy_tools="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps drive,photos,settings,collect,contacts --email bruno@cozycloud.cc --locale fr --public-name Bruno --context-name dev"
+alias create_cozy_tools="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --dev --passphrase cozy --apps home,store,drive,photos,settings,contacts --email bruno@cozycloud.cc --locale fr --public-name Bruno --context-name dev"
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
