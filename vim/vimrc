@@ -25,6 +25,7 @@ Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 Plug 'JulesWang/css.vim',              { 'for': ['css', 'scss'] }
 Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json'] }
+Plug 'vim-scripts/TLA',                { 'for': 'tla' }
 " Colors
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
@@ -185,6 +186,7 @@ augroup vimrc
 	au BufRead,BufNewFile *.dc set ft=dotclear
 	au BufRead,BufNewFile *.txt,*.md,*.mdx set ft=markdown
 	au BufRead,BufNewFile *.ditaa set ft=ditaa
+	au BufRead,BufNewFile *.gv set ft=dot
 	au BufRead,BufNewFile Xdefaults set ft=xdefaults
 	au BufRead,BufNewFile README,INSTALL,ChangeLog set ft=txt
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
