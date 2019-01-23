@@ -2,6 +2,7 @@
 dstat
 irssi
 neovim
+ripgrep
 rxvt-unicode-256color
 vim-gtk3
 xsel
@@ -71,8 +72,8 @@ go
 mailhog
 nix-zsh-completions
 oblogout-unstable
-ripgrep
 tokei
+watchexec
 
 
 # Rust

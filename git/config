@@ -9,20 +9,18 @@
 [alias]
 	ci = commit
 	co = checkout
+	bs = branch --sort=-committerdate
 	staged = diff --cached
 	unstage = reset HEAD --
 	ignored = ls-files --others
 	oneline = log --oneline --decorate
 	last = log --oneline -1 HEAD
-	out = "!sh -c 'git log --oneline origin/$(git rev-parse --abbrev-ref HEAD)..HEAD'"
 	wdiff = diff --color-words
 	info = remote -v
-	rank = shortlog -sn --no-merges
 	setup = "!sh -c 'git init && touch .gitignore && git add . && git ci -m \"Initial import\"'"
 	oumph = "commit --author=\"Benoît Sibaud <oumph@linuxfr.org>\""
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
-	latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
 [diff]
 	renames = true
 [branch]
