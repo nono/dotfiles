@@ -93,7 +93,6 @@ alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
 alias wx='watchexec -r'
-alias beep='mpv /usr/share/sounds/freedesktop/stereo/complete.oga'
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
@@ -132,11 +131,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Golang
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
+alias gr='go run .'
+alias doc='go doc'
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="./lib"
-export NODE_ENV=development
 export NVM_DIR="/home/nono/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
