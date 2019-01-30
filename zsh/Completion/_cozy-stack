@@ -8,7 +8,7 @@ case $state in
   level1)
     case $words[1] in
       cozy-stack)
-        _arguments '1: :(apps bug completion config doc files fixer help instances jobs konnectors serve settings status triggers version)'
+        _arguments '1: :(apps bug completion config doc files fixer help instances jobs konnectors serve settings status swift triggers version)'
       ;;
       *)
         _arguments '*: :_files'
@@ -17,32 +17,35 @@ case $state in
   ;;
   level2)
     case $words[2] in
-      apps)
-        _arguments '2: :(install ls show uninstall update)'
-      ;;
-      config)
-        _arguments '2: :(decrypt-creds gen-keys passwd print)'
-      ;;
-      doc)
-        _arguments '2: :(man markdown)'
-      ;;
-      files)
-        _arguments '2: :(exec import)'
-      ;;
-      fixer)
-        _arguments '2: :(accounts-orphans albums-created-at jobs md5 mime onboardings redis thumbnails)'
-      ;;
-      triggers)
-        _arguments '2: :(launch ls show-from-app)'
-      ;;
-      instances)
-        _arguments '2: :(add clean client-oauth debug destroy export fsck import ls modify refresh-token-oauth set-disk-quota show token-app token-cli token-konnector token-oauth update)'
-      ;;
       jobs)
         _arguments '2: :(run)'
       ;;
       konnectors)
         _arguments '2: :(install ls run show uninstall update)'
+      ;;
+      swift)
+        _arguments '2: :(get ls ls-layouts put rm)'
+      ;;
+      apps)
+        _arguments '2: :(install ls show uninstall update versions)'
+      ;;
+      config)
+        _arguments '2: :(decrypt-creds decrypt-data encrypt-creds encrypt-data gen-keys insert-asset ls-assets ls-contexts passwd print rm-asset)'
+      ;;
+      doc)
+        _arguments '2: :(man markdown)'
+      ;;
+      files)
+        _arguments '2: :(exec import usage)'
+      ;;
+      fixer)
+        _arguments '2: :(albums-created-at contact-emails jobs link-app md5 mime onboardings redis thumbnails)'
+      ;;
+      instances)
+        _arguments '2: :(add auth-mode client-oauth debug destroy export find-oauth-client fsck import ls modify refresh-token-oauth set-disk-quota set-passphrase show show-app-version show-db-prefix show-swift-prefix token-app token-cli token-konnector token-oauth update)'
+      ;;
+      triggers)
+        _arguments '2: :(launch ls show-from-app)'
       ;;
       *)
         _arguments '*: :_files'
