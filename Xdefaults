@@ -7,11 +7,10 @@
 *saveLines:5000
 
 ! Perl extensions for uxxvt
-URxvt.perl-ext: default,matcher,selection-autotransform
+URxvt.perl-ext: default,matcher
 URxvt.matcher.button: 1
 URxvt.urlLauncher: x-www-browser
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-URxvt.selection-autotransform.0: s/^([^:[:space:]]+):(\\d+):?$/+$2 \\Q$1\\E/
 
 ! Colors
 ! 0=noir, 1=rouge, 2=vert, 3=jaune, 4=bleu, 5=magenta, 6=cyan, 7=blanc
