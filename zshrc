@@ -132,7 +132,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 alias gr='go run .'
-alias doc='go doc'
+alias doc='GODOCC_STYLE=fruity godocc'
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"

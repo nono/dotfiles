@@ -72,6 +72,10 @@ oblogout-unstable
 tokei
 watchexec
 
+# Go
+# https://github.com/apriendeau/go-testcolorize
+# https://github.com/inancgumus/godocc
+
 # Nodejs
 # https://github.com/creationix/nvm ou https://www.notionjs.com/
 
@@ -91,7 +95,6 @@ watchexec
 # cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Autres
-# https://github.com/apriendeau/go-testcolorize
 # https://www.spotify.com/fr/download/previews/
 
 # Librem
