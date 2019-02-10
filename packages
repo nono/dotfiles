@@ -25,7 +25,6 @@ fonts-yanone-kaffeesatz
 gmrun
 gtk-theme-switch
 libreoffice
-mirage
 mpv
 numix-gtk-theme
 numlockx
@@ -35,14 +34,12 @@ thunderbird
 ttf-mscorefonts-installer
 
 # Dev
-ansible
 build-essential
 curl
 docker.io
 fonts-firacode
 fonts-powerline
 git
-httpie
 imagemagick
 libimage-exiftool-perl
 libreadline6-dev
@@ -75,6 +72,8 @@ oblogout-unstable
 tokei
 watchexec
 
+# Nodejs
+# https://github.com/creationix/nvm ou https://www.notionjs.com/
 
 # Rust
 # https://www.rust-lang.org/en-US/install.html (ou rustup update)
@@ -84,7 +83,7 @@ watchexec
 
 # Paquets pour les langages
 # gem install bundler rubocop solargraph
-# npm install -g prettier yarn javascript-typescript-langserver
+# npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin
 # :PlugInstall in neovim
 # :GoInstallBinaries for vim-go
 
