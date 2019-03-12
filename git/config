@@ -17,6 +17,7 @@
 	last = log --oneline -1 HEAD
 	wdiff = diff --color-words
 	info = remote -v
+	cleanup="!sh -c 'git branch --merged | grep -v master | xargs git branch -D'"
 	setup = "!sh -c 'git init && touch .gitignore && git add . && git ci -m \"Initial import\"'"
 	oumph = "commit --author=\"Benoît Sibaud <oumph@linuxfr.org>\""
 	amend = commit --amend --reuse-message=HEAD

@@ -52,6 +52,7 @@ openssl
 optipng
 python-pygments
 ruby-dev
+ruby-bundler
 shellcheck
 
 # Bases de données
