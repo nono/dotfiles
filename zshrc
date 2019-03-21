@@ -176,6 +176,3 @@ cozy_token() {
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
 }
 alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
-
-# Path
-export PATH="bin:$PATH"
