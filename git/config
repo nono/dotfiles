@@ -14,6 +14,7 @@
 	unstage = reset HEAD --
 	ignored = ls-files --others
 	oneline = log --oneline --decorate
+	lg = log --oneline --decorate --graph --all -32
 	last = log --oneline -1 HEAD
 	wdiff = diff --color-words
 	info = remote -v
