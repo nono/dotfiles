@@ -77,8 +77,8 @@ if has("gui_running")
 	"             \' >> ~/.gtkrc.mine'
 else
 	let base16colorspace=256
-	set bg=dark
-	colo base16-bright
+	set bg=light
+	colo base16-one-light
 	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 

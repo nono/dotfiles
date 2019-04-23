@@ -54,7 +54,7 @@ export DEFAULT_USER=nono
 prompt unpure
 
 # Add some colors
-source ~/config/zsh/base16-bright.dark.sh
+source ~/config/zsh/base16-one-light.sh
 source /etc/zsh_command_not_found
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -132,7 +132,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 alias gr='go run .'
-alias doc='GODOCC_STYLE=fruity godocc'
+alias doc='GODOCC_STYLE=pygments godocc'
 
 # Node.js
 export PATH="node_modules/.bin:$PATH"

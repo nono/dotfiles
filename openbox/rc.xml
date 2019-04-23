@@ -637,7 +637,7 @@
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>990</y></position>
+      <position><x>10</x><y>991</y></position>
     </application>
 	<application name="full">
       <desktop>2</desktop>
@@ -660,7 +660,7 @@
     <application name="codaz3">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>990</y></position>
+      <position><x>10</x><y>991</y></position>
     </application>
     <application name="nvim">
       <desktop>3</desktop>
