@@ -45,3 +45,6 @@ ForwardAgent yes
 
 Host librem
 ForwardAgent yes
+
+Host mbp
+User cozycloud
