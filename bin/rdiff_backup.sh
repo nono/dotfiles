@@ -52,6 +52,7 @@ rdiff-backup \
 	--exclude $SRC/.npm \
 	--exclude $SRC/.nv \
 	--exclude $SRC/.nvm \
+	--exclude $SRC/.password-store \
 	--exclude $SRC/.Popcorn-Time \
 	--exclude $SRC/.thumbnails \
 	--exclude $SRC/.thunderbird \
