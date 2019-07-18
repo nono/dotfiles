@@ -165,10 +165,9 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 # ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
 
 # Cozy
-hash -d stack="$GOPATH/src/github.com/cozy/cozy-stack"
-alias sta="cd ~stack"
+alias sta="cd ~/cc/stack"
 alias cs=cozy-stack
-export COZY_FS_URL=file://localhost/home/nono/go/src/github.com/cozy/cozy-stack/storage
+export COZY_FS_URL=file://localhost/home/cc/stack/storage
 export COZY_DESKTOP_DIR=tmp
 alias cct="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --passphrase cozy --apps home,store,drive,photos,settings,contacts --email bruno@cozy.tools --locale fr --public-name Bruno --context-name dev"
 cozy_token() {
