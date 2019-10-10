@@ -25,6 +25,7 @@
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 [diff]
 	renames = true
+	noprefix = true
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
