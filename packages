@@ -41,12 +41,16 @@ fonts-firacode
 fonts-powerline
 git
 imagemagick
+libevent-dev
+libgmp-dev
 libimage-exiftool-perl
 libreadline6-dev
 libssl-dev
 libx11-dev
 libxml2-dev
 libxslt-dev
+libyaml-dev
+libz-dev
 nginx
 openssl
 optipng
@@ -84,6 +88,9 @@ watchexec
 # rustup install nightly
 # rustup component add rls-preview rust-analysis rust-src
 # rustup component add clippy-preview --toolchain=nightly
+
+# Crystal
+# https://crystal-lang.org/install/on_ubuntu/
 
 # Paquets pour les langages
 # gem install bundler rubocop solargraph
