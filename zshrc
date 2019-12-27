@@ -175,3 +175,6 @@ cozy_token() {
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
 }
 alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
+alias tunnel_couch_int="ssh -L 5981:ha-couch-int.service.consul-dev:5984 bounce"
+alias tunnel_couch_stg="ssh -L 5982:ha-couch-stg.service.consul:5984 bounce"
+alias tunnel_couch_prod="ssh -L 5983:ha-couch-prod.service.consul:5984 bounce"
