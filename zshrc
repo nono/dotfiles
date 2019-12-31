@@ -164,15 +164,24 @@ gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
 # Ansible
 # ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
 
+# Crystal
+alias cr="crystal run"
+alias csp="crystal spec"
+alias sb="shards build"
+alias si="shards install"
+alias sup="shards update"
+
 # Cozy
+alias des="cd ~/cc/desktop/crystal"
 alias sta="cd ~/cc/stack"
 alias cs=cozy-stack
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias cct="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --passphrase cozy --apps home,store,drive,photos,settings,contacts --email bruno@cozy.tools --locale fr --public-name Bruno --context-name dev"
+alias cct="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --passphrase cozy --apps home,store,drive,photos,settings,contacts,notes --email bruno@cozy.tools --locale fr --public-name Bruno --context-name dev"
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
+  echo "TOKEN is available as \$TOKEN: $TOKEN (and \$CLIENT_ID for the client id)"
 }
 alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
 alias tunnel_couch_int="ssh -L 5981:ha-couch-int.service.consul-dev:5984 bounce"
