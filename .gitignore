@@ -1,5 +1,6 @@
 *.swp
 /bundle/cache
+/icons/ROX
 /irssi/away.log
 /irssi/config*
 /vim/plugged
