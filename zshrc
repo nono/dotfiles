@@ -13,8 +13,8 @@ stty -ixon
 # History
 setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_hist
-HISTSIZE=10000
-SAVEHIST=3000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # Use 'cat -v' to obtain the keycodes
 bindkey "^[[1;5D" backward-word      ## ctrl-right
