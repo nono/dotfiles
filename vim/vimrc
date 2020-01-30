@@ -185,6 +185,7 @@ endif
 augroup vimrc
 	au BufRead,BufNewFile bip.conf set ft=bip
 	au BufRead,BufNewFile Capfile,Vagrantfile,Guardfile set ft=ruby
+	au BufRead,BufNewFile *.ecr set ft=html
 	au BufRead,BufNewFile *.dc set ft=dotclear
 	au BufRead,BufNewFile *.mjml set ft=xml
 	au BufRead,BufNewFile *.txt,*.md,*.mdx,*.cozy-note set ft=markdown
