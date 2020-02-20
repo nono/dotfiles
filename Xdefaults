@@ -84,8 +84,7 @@ URxvt.keysym.M-C-KP_4: command:\033]710;xft:Fira Code:pixelsize=24\007
 URxvt.keysym.M-C-KP_5: command:\033]710;xft:Fira Code:pixelsize=32\007
 URxvt.keysym.M-C-KP_6: command:\033]710;xft:Fira Code:pixelsize=48\007
 
-
-! URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 URxvt.keysym.C-Left: \033[1;5D
 URxvt.keysym.C-Down: \033[1;5B
 URxvt.keysym.C-Up: \033[1;5A

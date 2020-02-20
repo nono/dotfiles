@@ -632,18 +632,18 @@
     <application name="config">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>514</y></position>
+      <position><x>10</x><y>504</y></position>
     </application>
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>991</y></position>
+      <position><x>10</x><y>970</y></position>
     </application>
 	<application name="full">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>747</x><y>38</y></position>
-	  <size><width>1803</width><height>1390</height></size>
+      <position><x>745</x><y>38</y></position>
+	  <size><width>1804</width><height>1391</height></size>
     </application>
 
     <!-- Desktop 3 -->
@@ -655,18 +655,18 @@
     <application name="codaz2">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>514</y></position>
+      <position><x>10</x><y>504</y></position>
     </application>
     <application name="codaz3">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>991</y></position>
+      <position><x>10</x><y>970</y></position>
     </application>
     <application name="nvim">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>747</x><y>38</y></position>
-	  <size><width>1803</width><height>1390</height></size>
+      <position><x>745</x><y>38</y></position>
+	  <size><width>1804</width><height>1391</height></size>
     </application>
     <application name="gvim">
       <position><x>-0</x><y>0</y></position>
