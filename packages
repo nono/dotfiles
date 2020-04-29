@@ -84,10 +84,9 @@ watchexec
 # https://github.com/creationix/nvm ou https://www.notionjs.com/
 
 # Rust
-# https://www.rust-lang.org/en-US/install.html (ou rustup update)
-# rustup install nightly
-# rustup component add rls-preview rust-analysis rust-src
-# rustup component add clippy-preview --toolchain=nightly
+# https://www.rust-lang.org/en-US/install.html (ou rustup self update && rustup update)
+# rustup install stable
+# rustup component add rust-analysis rust-src
 
 # Crystal
 # https://crystal-lang.org/install/on_ubuntu/
