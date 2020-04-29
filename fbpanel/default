@@ -58,7 +58,7 @@ Plugin {
     config {
         button {
             icon = mozilla-firefox
-            image = /usr/share/icons/elementary-xfce/apps/32/firefox.png
+            image = /usr/share/app-install/icons/firefox.png
             tooltip = Firefox web browser
             action = firefox
         }
@@ -70,7 +70,7 @@ Plugin {
         }
         button {
             icon = thunderbird
-            image = /usr/share/icons/elementary-xfce/apps/32/thunderbird.png
+            image = /usr/share/app-install/icons/thunderbird.png
             tooltip = Thunderbird
             action = thunderbird
         }

@@ -632,12 +632,12 @@
     <application name="config">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>504</y></position>
+      <position><x>10</x><y>515</y></position>
     </application>
     <application name="gruik">
       <desktop>2</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>970</y></position>
+      <position><x>10</x><y>992</y></position>
     </application>
 	<application name="full">
       <desktop>2</desktop>
@@ -655,12 +655,12 @@
     <application name="codaz2">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>504</y></position>
+      <position><x>10</x><y>515</y></position>
     </application>
     <application name="codaz3">
       <desktop>3</desktop>
       <decor>no</decor>
-      <position><x>10</x><y>970</y></position>
+      <position><x>10</x><y>992</y></position>
     </application>
     <application name="nvim">
       <desktop>3</desktop>
