@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 " Colors
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
 " Common
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
@@ -63,9 +64,9 @@ let g:LanguageClient_serverCommands = {
 syntax on
 filetype on
 filetype plugin indent on
+set bg=dark
+colo nord
 if has("gui_running")
-	set bg=dark
-	colo OceanicNext
 	set gfn=Fira\ Code\ 12
 	set gcr=a:blinkon0
 	set go=acegit
@@ -76,9 +77,7 @@ if has("gui_running")
 	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
 	"             \' >> ~/.gtkrc.mine'
 else
-	let base16colorspace=256
-	set bg=light
-	colo base16-one-light
+	hi Comment ctermfg=32
 	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 

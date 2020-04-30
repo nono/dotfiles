@@ -25,6 +25,7 @@ fonts-yanone-kaffeesatz
 gmrun
 gtk-theme-switch
 libreoffice
+lxappearance
 mpv
 numix-gtk-theme
 numlockx
@@ -99,6 +100,11 @@ watchexec
 
 # Diff-highlight
 # cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
+
+# Theme
+# https://www.nordtheme.com/
+# https://addons.mozilla.org/fr/firefox/addon/nordtheme/
+# https://www.deviantart.com/niivu/art/Nord-Dock-Icons-837539862
 
 # Autres
 # https://www.spotify.com/fr/download/previews/
