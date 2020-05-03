@@ -29,6 +29,7 @@ Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 Plug 'JulesWang/css.vim',              { 'for': ['css', 'scss'] }
 Plug 'prettier/vim-prettier',          { 'for': ['javascript', 'css', 'scss', 'json', 'markdown'] }
+Plug 'nono/lezer.vim',                 { 'for': 'lezer' }
 Plug 'vim-scripts/TLA',                { 'for': 'tla' }
 " polyglot can cause issues if not plugged last
 Plug 'sheerun/vim-polyglot'
