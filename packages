@@ -93,7 +93,7 @@ watchexec
 # https://crystal-lang.org/install/on_ubuntu/
 
 # Paquets pour les langages
-# gem install bundler rubocop solargraph
+# gem install bundler rubocop
 # npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin
 # :PlugInstall in neovim
 # :GoInstallBinaries for vim-go

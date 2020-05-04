@@ -65,9 +65,9 @@ let g:LanguageClient_serverCommands = {
 syntax on
 filetype on
 filetype plugin indent on
-set bg=dark
-colo nord
 if has("gui_running")
+	set bg=dark
+	colo OceanicNext
 	set gfn=Fira\ Code\ 12
 	set gcr=a:blinkon0
 	set go=acegit
@@ -78,7 +78,9 @@ if has("gui_running")
 	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
 	"             \' >> ~/.gtkrc.mine'
 else
-	hi Comment ctermfg=32
+	let base16colorspace=256
+	set bg=light
+	colo base16-one-light
 	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 

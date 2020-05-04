@@ -30,7 +30,7 @@ Plugin {
 Plugin {
     type = menu
     config {
-		image = /home/nono/config/icons/system.png
+        image = /home/nono/config/icons/system.png
         systemmenu {
         }
         separator {
@@ -38,7 +38,7 @@ Plugin {
         item {
             icon = gnome-settings
             name = configure
-			image = /home/nono/config/icons/preferences.png
+            image = /home/nono/config/icons/preferences.png
             command = configure
         }
     }
