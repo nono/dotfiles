@@ -43,3 +43,6 @@
 	extendRegexp = true
 [core]
 	excludesfile = /home/nono/.gitignore
+	pager = delta --light
+[interactive]
+    diffFilter = delta --color-only

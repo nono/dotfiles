@@ -68,7 +68,8 @@ redis-server
 
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
-fd
+delta
+du-dust
 exa
 go
 mailhog

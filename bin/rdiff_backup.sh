@@ -19,7 +19,6 @@ rdiff-backup \
 	--exclude $SRC/Desktop \
 	--exclude $SRC/Documents/af83 \
 	--exclude $SRC/Documents/Audio \
-	--exclude $SRC/Documents/Cozy \
 	--exclude $SRC/Documents/Calibre \
 	--exclude $SRC/Documents/Ebooks \
 	--exclude $SRC/go \
