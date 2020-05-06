@@ -92,7 +92,7 @@ alias lt='exa -laT'
 alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
-alias wx='watchexec -r'
+alias m=make
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
@@ -145,7 +145,6 @@ export RUBYLIB="./ext:./lib"
 export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
 export GEM_HOME=$HOME/.gem
 export PATH="$GEM_HOME/bin:$PATH"
-hash -d gem=$GEM_HOME
 alias be="bundle exec"
 
 # Rails
@@ -155,24 +154,19 @@ alias rc="rails c"
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
+alias gd='g diff'
 alias gg='g grep --color'
 alias gp='g pull upstream master --rebase'
 alias gu='g push upstream && g push'
 alias gpf='g push --force-with-lease'
-gd() { g diff --color $@ | diff-highlight | strip_diff_leading_symbols | less }
+
+# Gleam
+alias gl=gleam
 
 # Ansible
 # ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
 
-# Crystal
-alias cr="crystal run"
-alias csp="crystal spec"
-alias sb="shards build"
-alias si="shards install"
-alias sup="shards update"
-
 # Cozy
-alias des="cd ~/cc/desktop/crystal"
 alias sta="cd ~/cc/stack"
 alias cs=cozy-stack
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
