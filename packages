@@ -33,6 +33,8 @@ openbox
 qtcurve
 thunderbird
 ttf-mscorefonts-installer
+wmctrl
+xdotool
 
 # Dev
 build-essential

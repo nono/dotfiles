@@ -11,8 +11,7 @@ setlayout 0 2 2 0
 
 # Programs to launch at startup
 sleep 2
-x-www-browser &
-thunderbird &
+firefox &
 
 urxvt -name irssi  -title irssi  &
 urxvt -name config -title config &
