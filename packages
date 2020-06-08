@@ -70,6 +70,8 @@ redis-server
 
 # Nix
 # https://nixos.org/nix/manual/#ch-installing-binary
+alloy5
+bat
 delta
 du-dust
 exa
@@ -79,6 +81,7 @@ nix-zsh-completions
 oblogout-unstable
 tokei
 watchexec
+zig
 
 # Go
 # https://github.com/apriendeau/go-testcolorize

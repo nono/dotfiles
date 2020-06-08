@@ -99,6 +99,7 @@ alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
 alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias ssh='TERM=rxvt-unicode ssh'
+alias bat='TERM=xterm bat --theme=base16'
 
 mkcd() { mkdir "$1" && cd "$1" }
 font() { echo -ne "\\033]710;xft:Fira Code:pixelsize=$1\\007" }
@@ -124,6 +125,9 @@ strip_diff_leading_symbols() {
     sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
     sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
 }
+
+# Alloy
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"

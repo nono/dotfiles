@@ -9,7 +9,6 @@
 [alias]
 	ci = commit
 	co = checkout
-	bs = branch --sort=-committerdate
 	staged = diff --cached
 	unstage = reset HEAD --
 	ignored = ls-files --others
@@ -29,6 +28,7 @@
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
+	sort = -committerdate
 [push]
 	default = current
 [rebase]
@@ -45,4 +45,4 @@
 	excludesfile = /home/nono/.gitignore
 	pager = delta --light
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --light
