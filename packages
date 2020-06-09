@@ -88,15 +88,12 @@ zig
 # https://github.com/inancgumus/godocc
 
 # Nodejs
-# https://github.com/creationix/nvm ou https://www.notionjs.com/
+# https://github.com/nvm-sh/nvm
 
 # Rust
 # https://www.rust-lang.org/en-US/install.html (ou rustup self update && rustup update)
 # rustup install stable
 # rustup component add rust-analysis rust-src
-
-# Crystal
-# https://crystal-lang.org/install/on_ubuntu/
 
 # Paquets pour les langages
 # gem install bundler rubocop
