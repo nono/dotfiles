@@ -172,6 +172,7 @@ alias gl=gleam
 
 # Cozy
 alias sta="cd ~/cc/stack"
+alias des="cd ~/cc/desktop/experiments/in-memory"
 alias cs=cozy-stack
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
 export COZY_DESKTOP_DIR=tmp

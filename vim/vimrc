@@ -47,6 +47,7 @@ noremap <c-t> :FZF<cr>
 
 " Config
 let g:polyglot_disabled = ['go']
+let g:neoformat_only_msg_on_error = 1
 let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:deoplete#enable_at_startup = 1
 let g:airline_powerline_fonts = 1
@@ -131,7 +132,7 @@ set title
 set ttimeout
 set ttimeoutlen=100
 set virtualedit=block
-set wildignore+=*.o,*.so,*.a,*.pyc,*.8
+set wildignore+=*.o,*.so,*.a,*.pyc,*.8,*.bs.js
 set wildmenu
 
 
@@ -198,7 +199,7 @@ augroup vimrc
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 	au BufRead,BufNewFile manifest.webapp,manifest.konnector set ft=json
 
-	au BufWritePre *.cr,*.css,*.scss,*.gleam,*.rs undojoin | Neoformat
+	au BufWritePre *.cr,*.css,*.scss,*.gleam,*.rs,*.re,*.rei undojoin | Neoformat
 	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
 augroup END
 
