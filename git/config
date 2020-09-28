@@ -46,3 +46,7 @@
 	pager = delta --light
 [interactive]
     diffFilter = delta --color-only --light
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
