@@ -101,7 +101,7 @@ alias pop='~/.Popcorn-Time/Popcorn-Time'
 alias ssh='TERM=rxvt-unicode ssh'
 alias bat='TERM=xterm bat --theme=base16'
 
-mkcd() { mkdir "$1" && cd "$1" }
+mkcd() { mkdir -p "$1" && cd "$1" }
 font() { echo -ne "\\033]710;xft:Fira Code:pixelsize=$1\\007" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
 
@@ -159,9 +159,7 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gd='g diff'
-alias gg='g grep --color'
-alias gp='g pull upstream master --rebase'
-alias gu='g push upstream && g push'
+alias gp='g pull upstream $(git default-branch) --rebase'
 alias gpf='g push --force-with-lease'
 
 # Gleam

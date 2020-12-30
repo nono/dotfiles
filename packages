@@ -16,6 +16,7 @@ rdiff-backup
 # User
 chromium-browser
 diceware
+eog
 fbpanel
 feh
 firefox
@@ -43,6 +44,7 @@ docker.io
 fonts-firacode
 fonts-powerline
 git
+hexyl
 imagemagick
 libevent-dev
 libgmp-dev
