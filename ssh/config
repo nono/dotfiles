@@ -43,6 +43,11 @@ HostName bounce-02.cozycloud.cc
 RequestTTY yes
 ForwardAgent yes
 
+Host bounce-maif
+HostName bounce-maif.cozycloud.cc
+RequestTTY yes
+ForwardAgent yes
+
 Host librem
 ForwardAgent yes
 

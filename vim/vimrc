@@ -15,6 +15,7 @@ Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary',    { 'on': '<Plug>Commentary' }
 Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
 Plug 'benekastah/neomake',      { 'on': 'Neomake' }
@@ -142,6 +143,9 @@ set wildmenu
 nnoremap <F1> K
 nnoremap <F8> :set spell!<CR>
 nnoremap Q A
+
+" Do not show stupid q: window
+nnoremap q: :q
 
 " Don't make a # force column zero.
 inoremap # X<BS>#

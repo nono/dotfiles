@@ -159,8 +159,9 @@ alias rc="rails c"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gd='g diff'
-alias gp='g pull upstream $(git default-branch) --rebase'
+alias gp='g pull origin $(git default-branch) --rebase'
 alias gpf='g push --force-with-lease'
+alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
 
 # Gleam
 alias gl=gleam
