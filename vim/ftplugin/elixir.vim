@@ -11,3 +11,6 @@ let b:did_ftplugin = 1
 setlocal comments=:#
 setlocal commentstring=#\ %s
 setlocal sw=2 sts=2 et iskeyword+=!,?
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>

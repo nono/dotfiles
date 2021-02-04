@@ -97,6 +97,9 @@ zig
 # rustup install stable
 # rustup component add rust-analysis rust-src
 
+# Elixir
+# https://github.com/elixir-lsp/elixir-ls/releases
+
 # Paquets pour les langages
 # gem install bundler rubocop
 # npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin

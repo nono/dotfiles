@@ -56,6 +56,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#neomake#enabled = 0
 let g:vim_json_syntax_conceal = 0
 let g:LanguageClient_serverCommands = {
+    \ 'elixir': ['~/bin/elixir-ls/language_server.sh'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'ruby': ['solargraph', 'stdio'],
