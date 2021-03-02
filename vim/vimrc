@@ -205,7 +205,7 @@ augroup vimrc
 	au BufRead,BufNewFile ~/.vim/doc/*.txt set ft=help nospell
 	au BufRead,BufNewFile manifest.webapp,manifest.konnector set ft=json
 
-	au BufWritePre *.cr,*.css,*.scss,*.gleam,*.rs,*.re,*.rei undojoin | Neoformat
+	au BufWritePre *.cr,*.css,*.gleam,*.rs,*.re,*.rei undojoin | Neoformat
 	au BufWritePost *.c,*.js,*.coffee,*.rb,*.sh Neomake
 augroup END
 

@@ -185,3 +185,4 @@ alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }
 alias tunnel_couch_int="ssh -L 5981:ha-couch-int.service.consul-dev:5984 bounce"
 alias tunnel_couch_stg="ssh -L 5982:ha-couch-stg.service.consul:5984 bounce"
 alias tunnel_couch_prod="ssh -L 5983:ha-couch-prod.service.consul:5984 bounce"
+alias tunnel_couch_maif="ssh -L 5980:ha-couch-01.maif.cozycloud.cc:5984 bounce-maif"
