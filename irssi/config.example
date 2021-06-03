@@ -1,25 +1,18 @@
 servers = (
   {
-    # address = "chat.freenode.net";
-    # chatnet = "freenode";
-    # port = "7000";
-    # use_ssl = "yes";
-    # autoconnect = "yes";
-    # password = "XXX";
-
-    address = "bip.menfin.info";
-    chatnet = "freenode";
-    port = "7778";
+    address = "irc.libera.chat";
+    chatnet = "libera";
+    port = "6697";
     use_ssl = "yes";
     autoconnect = "yes";
-    password = "XXX";
-  }
+    # password = "XXX";
+ }
 );
 
 chatnets = {
-  freenode = {
+  libera = {
     type = "IRC";
-    nick = "N`";
+    nick = "NoNo";
     realname = "NoNo";
     max_kicks = "4";
     max_modes = "3";
@@ -30,8 +23,8 @@ chatnets = {
 };
 
 channels = (
-  { name = "#LinuxFr.org"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#cozycloud"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#LinuxFr.org"; chatnet = "libera"; autojoin = "Yes"; },
+  { name = "#cozycloud"; chatnet = "libera"; autojoin = "Yes"; },
 );
 
 aliases = {
@@ -194,7 +187,6 @@ settings = {
     hide_text_style = "no";
     show_nickmode = "yes";
     completion_auto = "no";
-    bell_beeps = "yes";
     beep_msg_level = "MSGS DCC DCCMSGS HILIGHT";
     beep_when_away = "yes";
     beep_when_window_active = "no";
@@ -249,7 +241,7 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#LinuxFr.org";
-        tag = "freenode";
+        tag = "libera";
       }
     );
   };
@@ -260,7 +252,7 @@ windows = {
         type = "CHANNEL";
         chat_type = "IRC";
         name = "#cozycloud";
-        tag = "freenode";
+        tag = "libera";
       }
     );
   };

@@ -91,7 +91,7 @@ zig
 # https://github.com/inancgumus/godocc
 
 # Nodejs
-# https://github.com/nvm-sh/nvm
+# https://github.com/nvm-sh/nvm or https://volta.sh/
 
 # Rust
 # https://www.rust-lang.org/en-US/install.html (ou rustup self update && rustup update)
