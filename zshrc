@@ -171,14 +171,14 @@ alias gl=gleam
 
 # Cozy
 alias sta="cd ~/cc/stack"
-alias des="cd ~/cc/desktop/experiments/in-memory"
 alias cs=cozy-stack
+alias csls="cozy-stack instances ls --fields=domain,context,prefix"
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
 export COZY_DESKTOP_DIR=tmp
-alias cct="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.tools:8080 --passphrase cozy --apps home,store,drive,photos,settings,contacts,notes --email bruno@cozy.tools --locale fr --public-name Bruno --context-name dev"
+alias cct="COZY_ADMIN_TIMEOUT=5m cozy-stack instances add cozy.localhost:8080 --passphrase cozy --apps home,store,drive,photos,settings,contacts,notes --email isabelle@cozy.tools --locale fr --public-name Isabelle --context-name dev"
 cozy_token() {
-  export CLIENT_ID=$(cozy-stack instances client-oauth cozy.tools:8080 http://localhost/ cli github.com/cozy/cozy-stack)
-  export TOKEN=$(cozy-stack instances token-oauth cozy.tools:8080 $CLIENT_ID "$@")
+  export CLIENT_ID=$(cozy-stack instances client-oauth cozy.localhost:8080 http://localhost/ cli github.com/cozy/cozy-stack)
+  export TOKEN=$(cozy-stack instances token-oauth cozy.localhost:8080 $CLIENT_ID "$@")
   echo "TOKEN is available as \$TOKEN: $TOKEN (and \$CLIENT_ID for the client id)"
 }
 alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
