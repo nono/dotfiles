@@ -2,6 +2,7 @@
 
 " vim-plug
 call plug#begin('~/.vim/plugged')
+let g:polyglot_disabled = ['go']
 " Colors
 Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
@@ -48,7 +49,6 @@ vmap / <Plug>Commentary
 noremap <c-t> :FZF<cr>
 
 " Config
-let g:polyglot_disabled = ['go']
 let g:neoformat_only_msg_on_error = 1
 let g:SuperTabDefaultCompletionType = "<C-P>"
 let g:deoplete#enable_at_startup = 1
