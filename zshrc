@@ -170,6 +170,7 @@ alias gl=gleam
 # ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
 
 # Cozy
+alias ng="cd ~/cc/desktop/ng"
 alias sta="cd ~/cc/stack"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"

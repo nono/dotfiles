@@ -48,6 +48,11 @@ HostName bounce-maif.cozycloud.cc
 RequestTTY yes
 ForwardAgent yes
 
+Host salt-lab
+HostName salt-lab.cozycloud.cc
+RequestTTY yes
+ForwardAgent yes
+
 Host librem
 ForwardAgent yes
 
