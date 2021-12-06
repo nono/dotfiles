@@ -28,4 +28,3 @@ MailHog &
 
 # Programs that will run after Openbox has started
 (sleep 1 && fbpanel) &
-(sleep 3600 && /home/nono/save/rdiff_backup.sh) &

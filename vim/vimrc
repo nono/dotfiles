@@ -107,6 +107,7 @@ set formatoptions+=j    " Delete comment character when joining commented lines
 set grepformat=%f:%l:%c:%m
 set grepprg=rg\ --vimgrep
 set incsearch
+set inccommand=nosplit
 set iskeyword+=-
 set laststatus=2        " Always show the statusbar
 set lazyredraw

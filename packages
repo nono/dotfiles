@@ -41,6 +41,7 @@ xdotool
 build-essential
 curl
 docker.io
+elixir
 fonts-firacode
 fonts-powerline
 git
