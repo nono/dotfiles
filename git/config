@@ -44,10 +44,14 @@
 	extendRegexp = true
 [core]
 	excludesfile = /home/nono/.gitignore
-	pager = delta --light
+	pager = delta
 [interactive]
-    diffFilter = delta --color-only --light
+    diffFilter = delta --color-only
 [init]
 	defaultBranch = main
 [fetch]
 	prune = true
+[include]
+	path = ~/config/delta/themes.gitconfig
+[delta]
+	features = woolly-mammoth

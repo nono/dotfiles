@@ -1,0 +1,67 @@
+{
+    "child": {
+        "child1": {
+            "child1": {
+                "directory": "",
+                "height": 454,
+                "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "type": "Terminal",
+                "uuid": "28262b40-803e-4243-b766-3359b9c61cd5",
+                "width": 727
+            },
+            "child2": {
+                "child1": {
+                    "directory": "",
+                    "height": 445,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "8debdd43-05e9-45d5-bcc9-18ee32c09f9d",
+                    "width": 727
+                },
+                "child2": {
+                    "directory": "",
+                    "height": 444,
+                    "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "uuid": "e61c708b-acab-4b61-a963-18df13e9a019",
+                    "width": 727
+                },
+                "orientation": 1,
+                "position": 33,
+                "ratio": 0.5,
+                "type": "Paned"
+            },
+            "orientation": 1,
+            "position": 33,
+            "ratio": 0.337546468401486999,
+            "type": "Paned"
+        },
+        "child2": {
+            "directory": "",
+            "height": 1345,
+            "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "type": "Terminal",
+            "uuid": "c55403fd-537b-4a2f-9d9f-1cc11c56c18d",
+            "width": 1816
+        },
+        "orientation": 0,
+        "position": 28,
+        "ratio": 0.285770440251572333,
+        "type": "Paned"
+    },
+    "height": 1345,
+    "name": "stack",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "2fd6e347-774f-4a89-810f-4a520dea8a44",
+    "version": "1.0",
+    "width": 2544
+}

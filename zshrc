@@ -17,13 +17,14 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 # Use 'cat -v' to obtain the keycodes
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "$key[Up]" up-line-or-beginning-search
+bindkey "$key[Down]" down-line-or-beginning-search
 bindkey "^[[1;5D" backward-word      ## ctrl-right
 bindkey "^[[1;5C" forward-word       ## ctrl-left
-bindkey "^[[3~" delete-char          ## Del
-bindkey "^[[7~" beginning-of-line    ## Home
-bindkey "^[[8~" end-of-line          ## End
-bindkey "^[[A" up-line-or-search     ## up arrow for back-history-search
-bindkey "^[[B" down-line-or-search   ## down arrow for fwd-history-search
 bindkey " " magic-space              ## do history expansion on space
 
 
@@ -54,7 +55,7 @@ export DEFAULT_USER=nono
 prompt unpure
 
 # Add some colors
-source ~/config/zsh/base16-one-light.sh
+# source ~/config/zsh/base16-one-light.sh
 source /etc/zsh_command_not_found
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -63,15 +64,9 @@ autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ exa; }
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'
-
-# Nix
-source ~/.nix-profile/etc/profile.d/nix.sh
-alias ni='nix-env -i'
-alias ns='nix search'
-alias nrm='nix-env -e'
-alias nu='nix-channel --update && nix-env -u --dry-run && echo "Run nix-env -u"'
 
 # Apt
 alias ai='sudo apt install'
@@ -87,7 +82,7 @@ alias -g G='|rg'
 alias -g W='|wc'
 
 alias ls='exa'
-alias ll='exa -la --git'
+alias ll='exa -la'
 alias lt='exa -laT'
 alias less='less -RXFS'
 alias v=nvim
@@ -97,12 +92,9 @@ alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
-alias pop='~/.Popcorn-Time/Popcorn-Time'
-alias ssh='TERM=rxvt-unicode ssh'
-alias bat='TERM=xterm bat --theme=base16'
+alias bat='bat --theme=base16'
 
 mkcd() { mkdir -p "$1" && cd "$1" }
-font() { echo -ne "\\033]710;xft:Fira Code:pixelsize=$1\\007" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
 
 # Colored manpages
@@ -129,20 +121,16 @@ strip_diff_leading_symbols() {
 # Alloy
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Golang
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$HOME/vendor/go/bin:$PATH"
 alias gr='go run .'
 alias doc='GODOCC_STYLE=pygments godocc'
 
 # Node.js
-export PATH="node_modules/.bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="node_modules/.bin:$VOLTA_HOME/bin:$PATH"
 export NODE_PATH="./lib"
-export NVM_DIR="/home/nono/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Ruby
 export RUBYLIB="./ext:./lib"
@@ -150,10 +138,6 @@ export NOKOGIRI_USE_SYSTEM_LIBRARIES="true"
 export GEM_HOME=$HOME/.gem
 export PATH="$GEM_HOME/bin:$PATH"
 alias be="bundle exec"
-
-# Rails
-alias rs="rails s"
-alias rc="rails c"
 
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
@@ -165,9 +149,6 @@ alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(b
 
 # Gleam
 alias gl=gleam
-
-# Ansible
-# ansible-playbook nginx.yml --check --diff -i inventory -l prod.linuxfr.org
 
 # Cozy
 alias ng="cd ~/cc/desktop/ng"

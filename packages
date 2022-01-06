@@ -1,39 +1,33 @@
 # Base
 dstat
-irssi
+exa
+fzf
 neovim
 ripgrep
+tilix
 rxvt-unicode-256color
 vim-gtk3
 xsel
 zsh
 zsh-syntax-highlighting
 
-# Admin
-rdiff-backup
-
 # User
 chromium-browser
 diceware
 eog
-fbpanel
-feh
 firefox
 fonts-emojione
 fonts-inter
 fonts-lato
 fonts-yanone-kaffeesatz
-gmrun
-gtk-theme-switch
+gnome-tweaks
 libreoffice
-lxappearance
 mpv
-numix-gtk-theme
 numlockx
-openbox
-qtcurve
+spotify
 thunderbird
 ttf-mscorefonts-installer
+vlc
 wmctrl
 xdotool
 
@@ -41,7 +35,6 @@ xdotool
 build-essential
 curl
 docker.io
-elixir
 fonts-firacode
 fonts-powerline
 git
@@ -56,68 +49,44 @@ libxml2-dev
 libxslt-dev
 libyaml-dev
 libz-dev
-nginx
 openssl
 optipng
-python-pygments
+redis-server
 ruby-dev
 shellcheck
 
-# Bases de données
-libmysql++-dev
-mysql-client
-mysql-server
-redis-server
-
-
-# Nix
-# https://nixos.org/nix/manual/#ch-installing-binary
-alloy5
-bat
-delta
-du-dust
-exa
-go
-mailhog
-nix-zsh-completions
-oblogout-unstable
-tokei
-watchexec
-zig
+# Manual
+https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
+https://github.com/dandavison/delta#installation
+https://github.com/mailhog/MailHog#installation
+https://github.com/XAMPPRocky/tokei#installation
+https://github.com/watchexec/watchexec#install
 
 # Go
-# https://github.com/apriendeau/go-testcolorize
-# https://github.com/inancgumus/godocc
+https://go.dev/dl/
+https://github.com/apriendeau/go-testcolorize
+https://github.com/inancgumus/godocc
 
 # Nodejs
-# https://github.com/nvm-sh/nvm or https://volta.sh/
-
-# Rust
-# https://www.rust-lang.org/en-US/install.html (ou rustup self update && rustup update)
-# rustup install stable
-# rustup component add rust-analysis rust-src
+https://github.com/nvm-sh/nvm or https://volta.sh/
 
 # Elixir
-# https://github.com/elixir-lsp/elixir-ls/releases
+https://github.com/elixir-lsp/elixir-ls/releases
 
 # Paquets pour les langages
-# gem install bundler rubocop
-# npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin jwt-cli
-# :PlugInstall in neovim
-# :GoInstallBinaries for vim-go
+gem install bundler rubocop
+npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin jwt-cli
+:PlugInstall in neovim
+:GoInstallBinaries for vim-go
 
 # Diff-highlight
-# cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
+cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Theme
-# https://www.nordtheme.com/
-# https://addons.mozilla.org/fr/firefox/addon/nordtheme/
-# https://www.deviantart.com/niivu/art/Nord-Dock-Icons-837539862
-
-# Autres
-# https://curlie.io/
-# https://nolanlawson.com/2020/05/02/customizing-fonts-in-firefox-on-linux/
-# https://www.spotify.com/fr/download/previews/
+https://www.nordtheme.com/
+https://addons.mozilla.org/fr/firefox/addon/nordtheme/
+https://www.deviantart.com/niivu/art/Nord-Dock-Icons-837539862
+https://nolanlawson.com/2020/05/02/customizing-fonts-in-firefox-on-linux/
 
 # Librem
-# https://forums.puri.sm/t/byd-touchpad-multi-touch-support/915
+https://forums.puri.sm/t/byd-touchpad-multi-touch-support/915
