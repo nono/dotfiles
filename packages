@@ -1,7 +1,10 @@
 # Base
+age
+diceware
 dstat
 exa
 fzf
+ncdu
 neovim
 ripgrep
 tilix
@@ -11,9 +14,8 @@ xsel
 zsh
 zsh-syntax-highlighting
 
-# User
+# Apps
 chromium-browser
-diceware
 eog
 firefox
 fonts-emojione
@@ -39,6 +41,7 @@ fonts-firacode
 fonts-powerline
 git
 imagemagick
+jq
 libevent-dev
 libgmp-dev
 libimage-exiftool-perl
@@ -71,6 +74,7 @@ https://github.com/inancgumus/godocc
 https://github.com/nvm-sh/nvm or https://volta.sh/
 
 # Elixir
+https://elixir-lang.org/install.html
 https://github.com/elixir-lsp/elixir-ls/releases
 
 # Paquets pour les langages
