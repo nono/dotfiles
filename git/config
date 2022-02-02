@@ -19,7 +19,7 @@
 	info = remote -v
 	default-branch = "!sh -c 'git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/'"
 	cleanup = "!sh -c 'git branch --merged | grep -v $(git default-branch) | xargs git branch -D'"
-	setup = "!sh -c 'git init && && git ci --allow-empty -m \"Initial import\"'"
+	setup = "!sh -c 'git init && git ci --allow-empty -m \"Initial import\"'"
 	oumph = "commit --author=\"Benoît Sibaud <oumph@linuxfr.org>\""
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git

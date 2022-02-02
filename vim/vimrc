@@ -4,7 +4,6 @@
 call plug#begin('~/.vim/plugged')
 let g:polyglot_disabled = ['go']
 " Colors
-Plug 'chriskempson/base16-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
 " Common
@@ -31,6 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'runoshun/vim-alloy',             { 'for': 'alloy' }
 Plug 'gleam-lang/gleam.vim',           { 'for': 'gleam' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
+Plug 'fladson/vim-kitty',              { 'for': 'kitty' }
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 Plug 'JulesWang/css.vim',              { 'for': ['css', 'scss'] }
 Plug 'nono/lezer.vim',                 { 'for': 'lezer' }
@@ -88,11 +88,8 @@ if has("gui_running")
 	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
 	"             \' >> ~/.gtkrc.mine'
 else
-	let base16colorspace=256
 	set bg=dark
 	colo nord
-	" set bg=light
-	" colo base16-one-light
 	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 

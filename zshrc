@@ -55,7 +55,6 @@ export DEFAULT_USER=nono
 prompt unpure
 
 # Add some colors
-# source ~/config/zsh/base16-one-light.sh
 source /etc/zsh_command_not_found
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -93,7 +92,6 @@ alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
-alias bat='bat --theme=base16'
 
 mkcd() { mkdir -p "$1" && cd "$1" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
@@ -126,7 +124,7 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/vendor/go/bin:$PATH"
 alias gr='go run .'
-alias doc='GODOCC_STYLE=pygments godocc'
+alias doc='GODOCC_STYLE=native godocc'
 
 # Node.js
 export VOLTA_HOME="$HOME/.volta"

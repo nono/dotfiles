@@ -4,10 +4,10 @@ diceware
 dstat
 exa
 fzf
+kitty
 ncdu
 neovim
 ripgrep
-tilix
 rxvt-unicode-256color
 vim-gtk3
 xsel
@@ -68,6 +68,7 @@ https://github.com/watchexec/watchexec#install
 # Go
 https://go.dev/dl/
 https://github.com/apriendeau/go-testcolorize
+https://github.com/kyoh86/richgo
 https://github.com/inancgumus/godocc
 
 # Nodejs
