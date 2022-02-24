@@ -22,6 +22,7 @@ fonts-emojione
 fonts-inter
 fonts-lato
 fonts-yanone-kaffeesatz
+gimp
 gnome-tweaks
 libreoffice
 mpv
@@ -41,6 +42,7 @@ fonts-firacode
 fonts-powerline
 git
 imagemagick
+jo
 jq
 libevent-dev
 libgmp-dev
@@ -77,6 +79,9 @@ https://github.com/nvm-sh/nvm or https://volta.sh/
 # Elixir
 https://elixir-lang.org/install.html
 https://github.com/elixir-lsp/elixir-ls/releases
+
+# Gleam
+https://gleam.run/getting-started/
 
 # Paquets pour les langages
 gem install bundler rubocop

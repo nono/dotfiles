@@ -92,6 +92,7 @@ alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
 alias mysql='mysql --select_limit=1000'
+alias ssh='TERM=xterm ssh'
 
 mkcd() { mkdir -p "$1" && cd "$1" }
 rule() { printf "%$(tput cols)s\n" | tr " " "-" }
