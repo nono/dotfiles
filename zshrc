@@ -153,6 +153,7 @@ alias gl=gleam
 # Cozy
 alias ng="cd ~/cc/desktop/ng"
 alias sta="cd ~/cc/stack"
+alias nua="cd ~/cc/nuagerie"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage

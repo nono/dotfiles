@@ -39,7 +39,7 @@ Port 222
 # Cozy #
 ########
 Host bounce
-HostName bounce-02.cozycloud.cc
+HostName bounce.cozycloud.cc
 RequestTTY yes
 ForwardAgent yes
 
