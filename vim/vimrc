@@ -9,6 +9,7 @@ Plug 'arcticicestudio/nord-vim'
 " Common
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 " Commands
 Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
@@ -47,6 +48,11 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 vmap <Enter> <Plug>(EasyAlign)
 vmap / <Plug>Commentary
 noremap <c-t> :FZF<cr>
+let g:kitty_navigator_no_mappings = 1
+nnoremap <silent> <C-Left> :KittyNavigateLeft<cr>
+nnoremap <silent> <C-Down> :KittyNavigateDown<cr>
+nnoremap <silent> <C-Up> :KittyNavigateUp<cr>
+nnoremap <silent> <C-Right> :KittyNavigateRight<cr>
 
 " Config
 let g:neoformat_only_msg_on_error = 1
@@ -169,19 +175,7 @@ vnoremap > >gv
 
 " Navigate between views with Ctrl + arrows
 if has("nvim")
-	map <C-Left> <C-W><Left>
-	map <C-Down> <C-W><Down>
-	map <C-Up> <C-W><Up>
-	map <C-Right> <C-W><Right>
-	inoremap <C-Left> <C-\><C-n><C-W><Left>
-	inoremap <C-Down> <C-\><C-n><C-W><Down>
-	inoremap <C-Up> <C-\><C-n><C-W><Up>
-	inoremap <C-Right> <C-\><C-n><C-W><Right>
-	tnoremap <C-Left> <C-\><C-n><C-w><Left>
-	tnoremap <C-Down> <C-\><C-n><C-w><Down>
-	tnoremap <C-Up> <C-\><C-n><C-w><Up>
-	tnoremap <C-Right> <C-\><C-n><C-w><Right>
-	tnoremap <Esc> <C-\><C-n>           " Terminal (Neovim only)
+	" Done with vim-kitty-navigator
 	au FocusGained * :checktime
 else
 	map Od <C-W><Left>

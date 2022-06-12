@@ -39,6 +39,7 @@ xdotool
 build-essential
 curl
 docker.io
+entr
 fonts-firacode
 fonts-powerline
 git
@@ -66,7 +67,6 @@ https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
 https://github.com/dandavison/delta#installation
 https://github.com/mailhog/MailHog#installation
 https://github.com/XAMPPRocky/tokei#installation
-https://github.com/watchexec/watchexec#install
 
 # Go
 https://go.dev/dl/
