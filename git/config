@@ -1,6 +1,7 @@
 [user]
 	name = Bruno Michel
 	email = bmichel@menfin.info
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDUOkv5/dLDm3FS6AiQWlCpaXEQFKgMBJwwwr+OMhE0cxYU+EmmTjLHxnHJRC7WRzuO7CcvhqlnWvtrHjrdOVVFzv+KfT+bP0Czv2ZUZJ7eNSjJ1zTuXXxvAbugTASUNV329Wz7pleONFO/65LjdoQLkTm97NDXUWA4sDh+6oIfA217fsmuXIs/BQqjCqp42O4j7b7eM/00pASHLo1WJiKXzaQJ96NOzTS+japBLBer2rIjJMGYbh5xTD/gbFPvs7l5JeTia/cdpHfHCJgiZxy9oJfX6291qFh549toICmldCK5+LcuR1Fl+FfH99XFI0zCXj/e0kZ/tknpTXFngtCIENyHGochC5U5U10LGID8pqHUIpxnybCHI9Pp/F1pJsI8tEeb2rNmqlAyy5yMx5z1eGJn1N0G7ufdrEtrbL5CdvYZw0mq2fKmGyoc21/YYVywVM4vH3KqVfFcTbMDhs25WgDZnX9F+vNEwv2synH7caJZGVe9JmQoC0aCJ34jMevbo8O1de/jgXijcn6oHwEZinCrGW7D6jN6Oy2WKMP8zC6ODWd+3qZ7N8V5gV5p0qLvpaxoS+MgWEGEwxfOStTvcZ4Jdto68aGmRCGHtCcCmjkNebWpeZNrq5kw530LaO/nOrrNnr9Lpd4zT2yzr95Zxx+O4mLmoKaylNAwDJE63Q==
 [color]
 	status = auto
 	diff = auto
@@ -55,3 +56,9 @@
 	path = ~/config/delta/themes.gitconfig
 [delta]
 	features = woolly-mammoth
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/nono/.ssh/allowed_signers
