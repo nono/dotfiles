@@ -6,6 +6,7 @@ let g:polyglot_disabled = ['go']
 " Colors
 Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
+Plug 'EdenEast/nightfox.nvim'
 " Common
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
@@ -28,6 +29,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'sh', 'zsh', 'vim', 'lua', 'c', 'cpp'] }
 Plug 'tpope/vim-surround'
 " Filetype
+Plug 'terrastruct/d2-vim'
 Plug 'runoshun/vim-alloy',             { 'for': 'alloy' }
 Plug 'gleam-lang/gleam.vim',           { 'for': 'gleam' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
@@ -95,7 +97,7 @@ if has("gui_running")
 	"             \' >> ~/.gtkrc.mine'
 else
 	set bg=dark
-	colo nord
+	colo nightfox
 	au BufEnter,CursorHold,CursorHoldI * silent! checktime
 endif
 
