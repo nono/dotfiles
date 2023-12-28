@@ -17,7 +17,6 @@ Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary',    { 'on': '<Plug>Commentary' }
 Plug 'junegunn/vim-easy-align', { 'on': '<Plug>(EasyAlign)' }
 Plug 'benekastah/neomake',      { 'on': 'Neomake' }
@@ -216,6 +215,7 @@ augroup END
 
 let g:browser = 'x-www-browser'
 let g:netrw_liststyle=1
+let g:netrw_maxfilenamelen=36
 let g:load_doxygen_syntax=1
 
 " Show trailing white-space

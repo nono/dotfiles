@@ -156,6 +156,7 @@ alias nua="cd ~/cc/nuagerie"
 alias ddp="cd ~/cc/dedup"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"
+export COZY_COUCHDB_URL=http://admin:password@localhost:5984
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
 export COZY_DESKTOP_DIR=tmp
 cozy_token() {
