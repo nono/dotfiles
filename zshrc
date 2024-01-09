@@ -146,8 +146,8 @@ alias gp='g pull origin $(git default-branch) --rebase'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
 
-# Gleam
-alias gl=gleam
+# Elixir
+export PATH="$HOME/vendor/elixir/bin:$PATH"
 
 # Cozy
 alias ng="cd ~/cc/desktop/ng"

@@ -5,11 +5,8 @@ dstat
 duf
 exa
 kitty
-ncdu
 neovim
 ripgrep
-rxvt-unicode-256color
-vim-gtk3
 xsel
 zsh
 zsh-syntax-highlighting
@@ -43,7 +40,6 @@ fonts-firacode
 fonts-powerline
 git
 imagemagick
-jo
 jq
 libevent-dev
 libgmp-dev
@@ -62,7 +58,6 @@ ruby-dev
 shellcheck
 
 # Manual
-https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages
 https://github.com/dandavison/delta#installation
 https://github.com/mailhog/MailHog#installation
 https://github.com/XAMPPRocky/tokei#installation
@@ -70,7 +65,6 @@ https://github.com/XAMPPRocky/tokei#installation
 # Go
 https://go.dev/dl/
 https://github.com/apriendeau/go-testcolorize
-https://github.com/kyoh86/richgo
 https://github.com/inancgumus/godocc
 
 # Nodejs
@@ -79,9 +73,6 @@ https://github.com/nvm-sh/nvm or https://volta.sh/
 # Elixir
 https://elixir-lang.org/install.html
 https://github.com/elixir-lsp/elixir-ls/releases
-
-# Gleam
-https://gleam.run/getting-started/
 
 # Paquets pour les langages
 gem install bundler rubocop
@@ -97,6 +88,3 @@ https://www.nordtheme.com/
 https://addons.mozilla.org/fr/firefox/addon/nordtheme/
 https://www.deviantart.com/niivu/art/Nord-Dock-Icons-837539862
 https://nolanlawson.com/2020/05/02/customizing-fonts-in-firefox-on-linux/
-
-# Librem
-https://forums.puri.sm/t/byd-touchpad-multi-touch-support/915
