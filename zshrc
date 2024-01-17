@@ -90,11 +90,9 @@ alias m=make
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
-alias mysql='mysql --select_limit=1000'
 alias ssh='TERM=xterm ssh'
 
 mkcd() { mkdir -p "$1" && cd "$1" }
-rule() { printf "%$(tput cols)s\n" | tr " " "-" }
 
 # Colored manpages
 man() {
@@ -150,7 +148,6 @@ alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(b
 export PATH="$HOME/vendor/elixir/bin:$PATH"
 
 # Cozy
-alias ng="cd ~/cc/desktop/ng"
 alias sta="cd ~/cc/stack"
 alias nua="cd ~/cc/nuagerie"
 alias ddp="cd ~/cc/dedup"
@@ -168,4 +165,3 @@ alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }
 alias tunnel_couch_int="ssh -L 5981:ha-couch-int.service.consul-dev:5984 bounce"
 alias tunnel_couch_stg="ssh -L 5982:ha-couch-stg.service.consul:5984 bounce"
 alias tunnel_couch_prod="ssh -L 5983:ha-couch-prod.service.consul:5984 bounce"
-alias tunnel_couch_maif="ssh -L 5980:ha-couch-01.maif.cozycloud.cc:5984 bounce-maif"
