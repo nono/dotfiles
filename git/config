@@ -55,7 +55,6 @@
 	defaultBranch = main
 [fetch]
 	prune = true
-	fsckobjects = =
 [include]
 	path = ~/config/delta/themes.gitconfig
 [delta]
@@ -67,10 +66,6 @@
 [gpg "ssh"]
 	allowedSignersFile = /home/nono/.ssh/allowed_signers
 [merge]
-	conflictstyle = zdiff3
-[transfer]
-	fsckobjects = =
-[receive]
-	fsckObjects = =
+	conflictstyle = diff3
 [log]
 	date = iso
