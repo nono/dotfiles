@@ -27,14 +27,17 @@
 [diff]
 	renames = true
 	noprefix = true
+	algorithm = histogram
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
 	sort = -committerdate
 [push]
 	default = current
+	autosetupremote = true
 [rebase]
 	autostash = true
+	autosquash = true
 [github]
 	user = nono
 [rerere]
@@ -52,6 +55,7 @@
 	defaultBranch = main
 [fetch]
 	prune = true
+	fsckobjects = =
 [include]
 	path = ~/config/delta/themes.gitconfig
 [delta]
@@ -62,3 +66,11 @@
 	format = ssh
 [gpg "ssh"]
 	allowedSignersFile = /home/nono/.ssh/allowed_signers
+[merge]
+	conflictstyle = zdiff3
+[transfer]
+	fsckobjects = =
+[receive]
+	fsckObjects = =
+[log]
+	date = iso

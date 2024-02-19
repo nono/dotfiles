@@ -140,7 +140,7 @@ alias be="bundle exec"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gd='g diff'
-alias gp='g pull origin $(git default-branch) --rebase'
+alias gp='g pull origin $(git default-branch)'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
 
@@ -151,6 +151,7 @@ export PATH="$HOME/vendor/elixir/bin:$PATH"
 alias sta="cd ~/cc/stack"
 alias nua="cd ~/cc/nuagerie"
 alias ddp="cd ~/cc/dedup"
+alias too="cd ~/cc/toolbox"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"
 export COZY_COUCHDB_URL=http://admin:password@localhost:5984
