@@ -11,7 +11,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'prabirshrestha/vim-lsp'
 " Commands
 Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim',    { 'do': ':UpdateRemotePlugins' }
@@ -68,14 +68,22 @@ let g:easy_align_delimiters = {
     \     'delimiter_align': 'l',
     \     'ignore_groups':   ['!Comment'] }
     \ }
-let g:LanguageClient_serverCommands = {
-    \ 'elixir': ['~/bin/elixir-ls/language_server.sh'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'rust': ['~/.cargo/bin/ra_lsp_server'],
-    \ }
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_document_highlight_enabled = 0
 
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 """"" Options globales
 

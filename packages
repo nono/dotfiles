@@ -72,10 +72,10 @@ https://github.com/nvm-sh/nvm or https://volta.sh/
 
 # Elixir
 https://elixir-lang.org/install.html
-https://github.com/elixir-lsp/elixir-ls/releases
+https://github.com/elixir-lsp/elixir-ls
 
 # Paquets pour les langages
-gem install bundler rubocop
+gem install bundler rubocop solargraph
 npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin jwt-cli
 :PlugInstall in neovim
 :GoInstallBinaries for vim-go

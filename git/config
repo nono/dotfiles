@@ -38,6 +38,8 @@
 	sort = -committerdate
 [log]
 	date = iso
+[tag]
+	sort = version:refname
 [fetch]
 	prune = true
 [pull]
