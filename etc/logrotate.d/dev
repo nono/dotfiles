@@ -1,8 +1,0 @@
-/home/nono/dev/*/log/*.log {
-	daily
-	missingok
-	rotate 3
-	copytruncate
-	compress
-	notifempty
-}
