@@ -152,6 +152,7 @@ alias sta="cd ~/cc/stack"
 alias nua="cd ~/cc/nuagerie"
 alias ddp="cd ~/cc/dedup"
 alias too="cd ~/cc/toolbox"
+alias ndb="cd ~/cc/nextdb"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"
 export COZY_COUCHDB_URL=http://admin:password@localhost:5984
