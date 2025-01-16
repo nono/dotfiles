@@ -28,8 +28,6 @@ spotify
 thunderbird
 ttf-mscorefonts-installer
 vlc
-wmctrl
-xdotool
 
 # Dev
 build-essential
@@ -58,6 +56,9 @@ ruby-dev
 shellcheck
 
 # Manual
+https://zed.dev/download
+https://github.com/jdx/mise
+https://eza.rocks/
 https://github.com/dandavison/delta#installation
 https://github.com/mailhog/MailHog#installation
 https://github.com/XAMPPRocky/tokei#installation
@@ -66,13 +67,6 @@ https://github.com/XAMPPRocky/tokei#installation
 https://go.dev/dl/
 https://github.com/apriendeau/go-testcolorize
 https://github.com/inancgumus/godocc
-
-# Nodejs
-https://github.com/nvm-sh/nvm or https://volta.sh/
-
-# Elixir
-https://elixir-lang.org/install.html
-https://github.com/elixir-lsp/elixir-ls
 
 # Paquets pour les langages
 gem install bundler rubocop solargraph
@@ -85,6 +79,5 @@ cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Theme
 https://www.nordtheme.com/
-https://addons.mozilla.org/fr/firefox/addon/nordtheme/
 https://www.deviantart.com/niivu/art/Nord-Dock-Icons-837539862
 https://nolanlawson.com/2020/05/02/customizing-fonts-in-firefox-on-linux/

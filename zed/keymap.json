@@ -1,0 +1,32 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Dock || Terminal || Editor || ProjectPanel",
+    "bindings": {
+      "ctrl-left": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-right": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-up": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-down": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "/": "editor::ToggleComments"
+    }
+  },
+
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "²": "workspace::NewCenterTerminal"
+    }
+  }
+]

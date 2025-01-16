@@ -87,6 +87,7 @@ alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
 alias m=make
+alias gj='cd ~/vendor/Grayjay.Desktop-linux-x64-v2 && ./Grayjay'
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
