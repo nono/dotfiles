@@ -1,0 +1,16 @@
+[tools]
+# https://github.com/jdx/usage/issues/222
+usage = { version = "latest", matching = "musl" }
+slsa-verifier = "latest"
+cosign = "latest"
+cargo-binstall = "latest"
+difftastic = "latest"
+eza = "latest"
+rust = "latest"
+tokei = "latest"
+ruby = "latest"
+python = "latest"
+node = "latest"
+
+[settings]
+activate_aggressive = true

@@ -26,7 +26,17 @@
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      "²": "workspace::NewCenterTerminal"
+      "²": "workspace::NewCenterTerminal",
+      // "alt-t": "workspace::NewTerminal",
+      // "alt-s": "task::Spawn",
+      "alt-p": "project_panel::ToggleFocus"
+    }
+  },
+
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "alt-p": "workspace::ToggleLeftDock"
     }
   }
 ]

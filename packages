@@ -33,7 +33,6 @@ vlc
 build-essential
 curl
 docker.io
-entr
 fonts-firacode
 fonts-powerline
 git
@@ -52,16 +51,17 @@ libz-dev
 openssl
 optipng
 redis-server
-ruby-dev
 shellcheck
+
+# Mise
+https://mise.jdx.dev/installing-mise.html#apt
+mise use -g usage cosign slsa-verifier cargo-binstall
+mise use -g rust eza difftastic tokei
+mise use -g ruby node python ruby
 
 # Manual
 https://zed.dev/download
-https://github.com/jdx/mise
-https://eza.rocks/
-https://github.com/dandavison/delta#installation
 https://github.com/mailhog/MailHog#installation
-https://github.com/XAMPPRocky/tokei#installation
 
 # Go
 https://go.dev/dl/
@@ -70,12 +70,9 @@ https://github.com/inancgumus/godocc
 
 # Paquets pour les langages
 gem install bundler rubocop solargraph
-npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin jwt-cli
+npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin
 :PlugInstall in neovim
 :GoInstallBinaries for vim-go
-
-# Diff-highlight
-cd ~/bin && ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight .
 
 # Theme
 https://www.nordtheme.com/

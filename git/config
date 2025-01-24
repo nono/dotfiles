@@ -17,9 +17,7 @@
 	staged = diff --cached
 	unstage = reset HEAD --
 	ignored = ls-files --others
-	oneline = log --oneline --decorate
-	lg = log --oneline --decorate --graph --all -32
-	last = log --oneline -1 HEAD
+	last = log -1 HEAD
 	wdiff = diff --color-words
 	info = remote -v
 	default-branch = "!sh -c 'git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/'"
@@ -55,13 +53,6 @@
 	textconv = exiftool
 [core]
 	excludesfile = /home/nono/.gitignore
-	pager = delta
-[interactive]
-    diffFilter = delta --color-only
-[include]
-	path = ~/config/delta/themes.gitconfig
-[delta]
-	features = woolly-mammoth
 [grep]
 	extendRegexp = true
 [commit]

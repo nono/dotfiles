@@ -1,3 +1,4 @@
 .lexical
+.mise.local.toml
 npm-debug.log
 yarn-error.log

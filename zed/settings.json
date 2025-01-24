@@ -14,6 +14,10 @@
     },
     "version": "2"
   },
+  "terminal": {
+    "dock": "left",
+    "copy_on_select": true
+  },
   "theme": "Nord",
   "vim_mode": true,
   "ui_font_size": 16,

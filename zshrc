@@ -60,7 +60,10 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Automatically list files after cd
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ exa; }
+add-zsh-hook -Uz chpwd (){ eza; }
+
+# mise
+eval "$(mise activate zsh --shims)"
 
 # fzf
 source ~/.fzf/shell/key-bindings.zsh
@@ -80,9 +83,9 @@ alias -g L='|less'
 alias -g G='|rg'
 alias -g W='|wc'
 
-alias ls='exa'
-alias ll='exa -la'
-alias lt='exa -laT'
+alias ls='eza'
+alias ll='eza -la'
+alias lt='eza -laT'
 alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
@@ -140,13 +143,11 @@ alias be="bundle exec"
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
-alias gd='g diff'
+alias gd='g -c diff.external=difft diff'
+alias gl='g -c diff.external=difft log -p --ext-diff'
 alias gp='g pull origin $(git default-branch)'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
-
-# Elixir
-export PATH="$HOME/vendor/elixir/bin:$PATH"
 
 # Cozy
 alias sta="cd ~/cc/stack"
