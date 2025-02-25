@@ -25,6 +25,8 @@
 	setup = "!sh -c 'git init && git ci --allow-empty -m \"Initial commit\"'"
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+[help]
+	autocorrect = prompt
 [diff]
 	renames = true
 	noprefix = true
@@ -33,17 +35,22 @@
 	autosetupmerge = true
 	autosetuprebase = always
 	sort = -committerdate
+[column]
+	ui = auto
 [log]
 	date = iso
 [tag]
 	sort = version:refname
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 [pull]
 	rebase = true
 [push]
-	default = current
+	default = simple
 	autosetupremote = true
+	followTags = true
 [rebase]
 	autostash = true
 	autosquash = true
