@@ -9,10 +9,10 @@
   {
     "context": "Dock || Terminal || Editor || ProjectPanel",
     "bindings": {
-      "ctrl-left": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-right": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-up": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-down": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-left": "workspace::ActivatePaneLeft",
+      "ctrl-right": "workspace::ActivatePaneRight",
+      "ctrl-up": "workspace::ActivatePaneUp",
+      "ctrl-down": "workspace::ActivatePaneDown"
     }
   },
 

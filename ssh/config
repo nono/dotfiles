@@ -6,10 +6,10 @@ HostName bounce.cozycloud.cc
 RequestTTY yes
 ForwardAgent yes
 
-Host bounce-maif
-HostName bounce-maif.cozycloud.cc
-RequestTTY yes
+Host *.int.cozycloud.cc
+User nono
 ForwardAgent yes
+ProxyJump bounce.cozycloud.cc
 
 Host salt-lab
 HostName salt-lab.cozycloud.cc
