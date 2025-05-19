@@ -1,16 +1,18 @@
 [tools]
-# https://github.com/jdx/usage/issues/222
-usage = { version = "latest", matching = "musl" }
+usage = "latest"
 slsa-verifier = "latest"
 cosign = "latest"
 cargo-binstall = "latest"
 difftastic = "latest"
 eza = "latest"
-rust = "latest"
 tokei = "latest"
+rust = "latest"
 ruby = "latest"
 python = "latest"
 node = "latest"
+uv = "latest"
+"pipx:llm" = "latest"
 
 [settings]
 activate_aggressive = true
+idiomatic_version_file_enable_tools = ["node"]

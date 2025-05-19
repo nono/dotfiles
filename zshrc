@@ -62,6 +62,9 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ eza; }
 
+# local stuff (not in git), like LLM tokens
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 # mise
 eval "$(mise activate zsh --shims)"
 
@@ -90,7 +93,6 @@ alias less='less -RXFS'
 alias v=nvim
 alias o=xdg-open
 alias m=make
-alias gj='cd ~/vendor/Grayjay.Desktop-linux-x64-v2 && ./Grayjay'
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
@@ -110,18 +112,6 @@ man() {
   man "$@"
 }
 
-# For git diff
-strip_diff_leading_symbols() {
-  color_code_regex="(\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])"
-  sed -r "s/^($color_code_regex)diff --git .*$//g" | \
-    sed -r "s/^($color_code_regex)index .*$/\n\1$(rule)/g" | \
-    sed -r "s/^($color_code_regex)\+\+\+(.*)$/\1+++\5\n\1$(rule)\x1B\[m/g" |\
-    sed -r "s/^($color_code_regex)[\+\-]/\1 /g"
-}
-
-# Alloy
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
 # Golang
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/vendor/go/bin:$PATH"
@@ -129,8 +119,7 @@ alias gr='go run .'
 alias doc='GODOCC_STYLE=native godocc'
 
 # Node.js
-export VOLTA_HOME="$HOME/.volta"
-export PATH="node_modules/.bin:$VOLTA_HOME/bin:$PATH"
+export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="./lib"
 
 # Ruby
@@ -144,7 +133,6 @@ alias be="bundle exec"
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
 alias gd='g -c diff.external=difft diff'
-alias gl='g -c diff.external=difft log -p --ext-diff'
 alias gp='g pull origin $(git default-branch)'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
@@ -152,14 +140,10 @@ alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(b
 # Cozy
 alias sta="cd ~/cc/stack"
 alias nua="cd ~/cc/nuagerie"
-alias ddp="cd ~/cc/dedup"
-alias too="cd ~/cc/toolbox"
-alias ndb="cd ~/cc/nextdb"
 alias cs=cozy-stack
 alias csls="cozy-stack instances ls --fields=domain,context,prefix"
 export COZY_COUCHDB_URL=http://admin:password@localhost:5984
 export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
-export COZY_DESKTOP_DIR=tmp
 cozy_token() {
   export CLIENT_ID=$(cozy-stack instances client-oauth cozy.localhost:8080 http://localhost/ cli github.com/cozy/cozy-stack)
   export TOKEN=$(cozy-stack instances token-oauth cozy.localhost:8080 $CLIENT_ID "$@")

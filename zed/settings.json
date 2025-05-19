@@ -4,6 +4,31 @@
 
   // AI
   "assistant": {
+    "default_profile": "ask",
+    "profiles": {
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "move_path": true,
+          "copy_path": true,
+          "edit_file": true,
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true,
+          "create_directory": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
