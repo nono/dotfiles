@@ -8,10 +8,9 @@ eza = "latest"
 tokei = "latest"
 rust = "latest"
 ruby = "latest"
-python = "latest"
 node = "latest"
+python = "latest"
 uv = "latest"
-"pipx:llm" = "latest"
 
 [settings]
 activate_aggressive = true
