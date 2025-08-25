@@ -38,6 +38,7 @@ fonts-powerline
 git
 imagemagick
 jq
+libbz2-dev
 libevent-dev
 libgmp-dev
 libimage-exiftool-perl
