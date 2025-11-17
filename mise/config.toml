@@ -12,6 +12,7 @@ node = "latest"
 python = "latest"
 uv = "latest"
 go = "latest"
+bat = "latest"
 
 [settings]
 activate_aggressive = true

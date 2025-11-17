@@ -3,7 +3,7 @@
   "vim_mode": true,
 
   // AI
-  "assistant": {
+  "agent": {
     "default_profile": "ask",
     "profiles": {
       "ask": {
@@ -31,18 +31,19 @@
     },
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking"
-    },
-    "version": "2"
+      "model": "claude-sonnet-4"
+    }
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "none"
   },
 
   // Visual
   "theme": "Nord",
   "ui_font_size": 16,
   "buffer_font_size": 16,
+  "buffer_font_family": "Fira Code",
+  "buffer_line_height": { "custom": 1.5 },
   "cursor_blink": false,
   "terminal": {
     "dock": "left",

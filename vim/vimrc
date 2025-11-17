@@ -206,6 +206,7 @@ augroup vimrc
 	au BufRead,BufNewFile *.ecr set ft=html
 	au BufRead,BufNewFile *.dc set ft=dotclear
 	au BufRead,BufNewFile *.mjml set ft=xml
+	au BufRead,BufNewFile *.sls set ft=yaml
 	au BufRead,BufNewFile *.txt,*.md,*.mdx,*.cozy-note set ft=markdown
 	au BufRead,BufNewFile *.ditaa set ft=ditaa
 	au BufRead,BufNewFile *.gv set ft=dot

@@ -114,6 +114,7 @@ man() {
 
 # Golang
 export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 alias gr='go run .'
 alias doc='GODOCC_STYLE=native godocc'
 
