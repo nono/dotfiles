@@ -172,10 +172,6 @@ nnoremap q: :q
 " Don't make a # force column zero.
 inoremap # X<BS>#
 
-" Ctrl-+ to increase font size
-noremap <C-kplus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)+1)', '')<CR>
-noremap <C-kminus> :let &guifont=substitute(&guifont, '\d\+', '\=eval(submatch(0)-1)', '')<CR>
-
 " Completion
 inoremap <C-@> <C-P>
 
@@ -224,7 +220,7 @@ augroup END
 
 let g:browser = 'x-www-browser'
 let g:netrw_liststyle=1
-let g:netrw_maxfilenamelen=36
+let g:netrw_maxfilenamelen=48
 let g:load_doxygen_syntax=1
 
 " Show trailing white-space
@@ -236,11 +232,6 @@ source $HOME/.vim/abbrev.vim
 
 " SudoW command to save a file as root
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
-
-" Some aliases
-command! E :Explore
-command! S :Sexplore
-command! V :Vexplore
 
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function! MakeScriptExecuteable()

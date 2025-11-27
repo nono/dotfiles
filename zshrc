@@ -112,9 +112,11 @@ man() {
   man "$@"
 }
 
+# Claude Code
+export PATH="$HOME/.local/bin:$PATH"
+
 # Golang
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$(go env GOBIN)/bin:$PATH"
 alias gr='go run .'
 alias doc='GODOCC_STYLE=native godocc'
 
