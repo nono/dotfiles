@@ -1,1 +1,0 @@
-../vendor/mysqlpager/mypager.pl

@@ -1,6 +1,3 @@
-[submodule "vendor/mysqlpager"]
-	path = vendor/mysqlpager
-	url = https://github.com/romuald/mysqlpager.git
 [submodule "vendor/zsh-completions"]
 	path = vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git

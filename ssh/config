@@ -1,6 +1,3 @@
-########
-# Cozy #
-########
 Host bounce
 HostName bounce.cozycloud.cc
 RequestTTY yes
@@ -10,14 +7,3 @@ Host *.int.cozycloud.cc
 User nono
 ForwardAgent yes
 ProxyJump bounce.cozycloud.cc
-
-Host salt-lab
-HostName salt-lab.cozycloud.cc
-RequestTTY yes
-ForwardAgent yes
-
-Host librem
-ForwardAgent yes
-
-Host mbp
-User cozycloud

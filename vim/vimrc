@@ -233,6 +233,10 @@ source $HOME/.vim/abbrev.vim
 " SudoW command to save a file as root
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
+" Some aliases
+command! E :Explore
+command! S :Sexplore
+
 " Automatically give executable permissions if file begins with #! and contains '/bin/' in the path
 function! MakeScriptExecuteable()
 	if getline(1) =~ "^#!.*/bin/"

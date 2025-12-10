@@ -35,6 +35,7 @@ curl
 docker.io
 fonts-firacode
 fonts-powerline
+gettext
 git
 imagemagick
 jq

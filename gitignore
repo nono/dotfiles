@@ -1,4 +1,5 @@
 .lexical
 .mise.local.toml
+**/.claude/settings.local.json
 npm-debug.log
 yarn-error.log
