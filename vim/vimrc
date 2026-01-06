@@ -10,7 +10,6 @@ Plug 'EdenEast/nightfox.nvim'
 " Common
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-vinegar'
-Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 Plug 'prabirshrestha/vim-lsp'
 " Commands
 Plug 'junegunn/fzf',            { 'dir': '~/.fzf', 'do': './install --all' }
@@ -32,7 +31,6 @@ Plug 'terrastruct/d2-vim'
 Plug 'runoshun/vim-alloy',             { 'for': 'alloy' }
 Plug 'gleam-lang/gleam.vim',           { 'for': 'gleam' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
-Plug 'fladson/vim-kitty',              { 'for': 'kitty' }
 Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 Plug 'JulesWang/css.vim',              { 'for': ['css', 'scss'] }
 Plug 'nono/lezer.vim',                 { 'for': 'lezer' }
@@ -49,11 +47,6 @@ vnoremap <c-a> :call IncrementColumn()<cr>
 vmap <Enter> <Plug>(EasyAlign)
 vmap / <Plug>Commentary
 noremap <c-t> :FZF<cr>
-let g:kitty_navigator_no_mappings = 1
-nnoremap <silent> <C-Left> :KittyNavigateLeft<cr>
-nnoremap <silent> <C-Down> :KittyNavigateDown<cr>
-nnoremap <silent> <C-Up> :KittyNavigateUp<cr>
-nnoremap <silent> <C-Right> :KittyNavigateRight<cr>
 
 " Config
 let g:neoformat_only_msg_on_error = 1
@@ -90,23 +83,10 @@ augroup END
 syntax on
 filetype on
 filetype plugin indent on
-if has("gui_running")
-	set bg=dark
-	colo OceanicNext
-	set gfn=Fira\ Code\ 12
-	set gcr=a:blinkon0
-	set go=acegit
-	" Fix borders of fullscreen GUI
-	" let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
-	" exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
-	"             \' > ~/.gtkrc.mine'
-	" exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
-	"             \' >> ~/.gtkrc.mine'
-else
-	set bg=dark
-	colo nightfox
-	au BufEnter,CursorHold,CursorHoldI * silent! checktime
-endif
+
+set bg=dark
+colo nightfox
+au BufEnter,CursorHold,CursorHoldI * silent! checktime
 
 set autoindent
 set autoread            " Auto-reload modified files (with no local changes)

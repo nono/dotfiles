@@ -15,7 +15,7 @@ Notes
 -----
 
 The config for neovim is in `~/.config/nvim`, not `~/.nvim`.
-Same for git and kitty.
+Same for git, mise and ghostty.
 
 There is a config file to start MailHog with systemd:
 
