@@ -13,6 +13,8 @@ python = "latest"
 uv = "latest"
 go = "latest"
 bat = "latest"
+"cargo:tealdeer" = "latest"
+"pipx:lizard" = "latest"
 
 [settings]
 activate_aggressive = true

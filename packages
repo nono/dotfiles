@@ -2,29 +2,21 @@
 age
 diceware
 dstat
-duf
-exa
-kitty
+ghostty
 neovim
 ripgrep
-xsel
 zsh
 zsh-syntax-highlighting
 
 # Apps
 chromium-browser
-eog
 firefox
 fonts-emojione
 fonts-inter
 fonts-lato
 fonts-yanone-kaffeesatz
 gimp
-gnome-tweaks
 libreoffice
-mpv
-numlockx
-spotify
 thunderbird
 ttf-mscorefonts-installer
 vlc
@@ -52,14 +44,15 @@ libyaml-dev
 libz-dev
 openssl
 optipng
-redis-server
 shellcheck
+
+# Incus
+https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/
 
 # Mise
 https://mise.jdx.dev/installing-mise.html#apt
 
 # Go
-https://go.dev/dl/
 https://github.com/mailhog/MailHog#installation
 https://github.com/apriendeau/go-testcolorize
 https://github.com/inancgumus/godocc

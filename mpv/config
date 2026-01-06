@@ -1,7 +1,0 @@
-# Write your default config options here!
-
-# Start in fullscreen mode by default
-fs=yes
-
-# Load all subs containing movie name
-sub-auto=fuzzy

@@ -67,6 +67,8 @@ add-zsh-hook -Uz chpwd (){ eza; }
 
 # mise
 eval "$(mise activate zsh --shims)"
+alias mx="mise exec"
+alias mr="mise run"
 
 # fzf
 source ~/.fzf/shell/key-bindings.zsh
@@ -96,7 +98,6 @@ alias m=make
 alias pw='diceware -d _ -n 5 -s 5'
 alias notes="rg 'TODO|FIXME|XXX|HACK'"
 alias serve='thin -A file start'
-alias ssh='TERM=xterm ssh'
 
 mkcd() { mkdir -p "$1" && cd "$1" }
 
