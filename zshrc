@@ -55,7 +55,7 @@ export DEFAULT_USER=nono
 prompt unpure
 
 # Add some colors
-source /etc/zsh_command_not_found
+[ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Automatically list files after cd
@@ -115,6 +115,8 @@ man() {
 
 # Claude Code
 export PATH="$HOME/.local/bin:$PATH"
+alias dev="incus exec dev -- su --login nono"
+alias ossa="incus exec ossa -- su --login nono"
 
 # Golang
 export PATH="$GOPATH/bin:$(go env GOBIN)/bin:$PATH"

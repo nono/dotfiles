@@ -3,3 +3,4 @@ cursor-style=bar
 cursor-style-blink=false
 shell-integration-features = no-cursor
 window-decoration=none
+keybind = shift+enter=text:\x1b\r
