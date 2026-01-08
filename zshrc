@@ -115,6 +115,7 @@ man() {
 
 # Claude Code
 export PATH="$HOME/.local/bin:$PATH"
+alias plan="claude --permission-mode plan"
 alias dev="incus exec dev -- su --login nono"
 alias ossa="incus exec ossa -- su --login nono"
 
