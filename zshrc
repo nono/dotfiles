@@ -117,7 +117,10 @@ man() {
 export PATH="$HOME/.local/bin:$PATH"
 alias plan="claude --permission-mode plan"
 alias dev="incus exec dev -- su --login nono"
+alias devroot="incus exec dev -- /bin/bash"
 alias ossa="incus exec ossa -- su --login nono"
+alias ossaroot="incus exec ossa -- /bin/bash"
+alias linagora="incus console linagora --type=vga"
 
 # Golang
 export PATH="$GOPATH/bin:$(go env GOBIN)/bin:$PATH"

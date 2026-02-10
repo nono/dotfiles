@@ -7,3 +7,7 @@ Host *.int.cozycloud.cc
 User nono
 ForwardAgent yes
 ProxyJump bounce.cozycloud.cc
+
+Host argus
+HostName 54.36.8.183
+User linagora
