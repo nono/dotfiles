@@ -71,9 +71,7 @@ alias mx="mise exec"
 alias mr="mise run"
 
 # fzf
-source ~/.fzf/shell/key-bindings.zsh
-source ~/.fzf/shell/completion.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # Apt
 alias ai='sudo apt install'
@@ -113,9 +111,8 @@ man() {
   man "$@"
 }
 
-# Claude Code
+# Coding agents
 export PATH="$HOME/.local/bin:$PATH"
-alias plan="claude --permission-mode plan"
 alias dev="incus exec dev -- su --login nono"
 alias devroot="incus exec dev -- /bin/bash"
 alias ossa="incus exec ossa -- su --login nono"
