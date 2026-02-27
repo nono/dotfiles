@@ -120,7 +120,7 @@ alias ossaroot="incus exec ossa -- /bin/bash"
 alias linagora="incus console linagora --type=vga"
 
 # Golang
-export PATH="$GOPATH/bin:$(go env GOBIN)/bin:$PATH"
+export PATH="$GOPATH/bin:$(go env GOBIN):$PATH"
 alias gr='go run .'
 alias doc='GODOCC_STYLE=native godocc'
 
