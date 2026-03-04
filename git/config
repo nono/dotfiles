@@ -62,9 +62,3 @@
 	excludesfile = /home/nono/.gitignore
 [grep]
 	extendRegexp = true
-[commit]
-	gpgsign = true
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	allowedSignersFile = /home/nono/.ssh/allowed_signers
