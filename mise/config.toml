@@ -3,7 +3,6 @@ usage = "latest"
 slsa-verifier = "latest"
 cosign = "latest"
 cargo-binstall = "latest"
-difftastic = "latest"
 eza = "latest"
 tokei = "latest"
 rust = "latest"
@@ -16,7 +15,11 @@ fzf = "latest"
 bat = "latest"
 "cargo:tealdeer" = "latest"
 "pipx:lizard" = "latest"
+difftastic = "0.64.0"
 
 [settings]
 activate_aggressive = true
 idiomatic_version_file_enable_tools = ["node"]
+
+[settings.ruby]
+compile = false

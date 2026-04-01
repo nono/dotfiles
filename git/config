@@ -25,6 +25,9 @@
 	setup = "!sh -c 'git init && git ci --allow-empty -m \"Initial commit\"'"
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	wa = worktree add
+	wr = worktree remove
+	wl = worktree list
 [help]
 	autocorrect = prompt
 [diff]

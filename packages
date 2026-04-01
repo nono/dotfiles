@@ -5,6 +5,7 @@ dstat
 ghostty
 neovim
 ripgrep
+socat
 zsh
 zsh-syntax-highlighting
 

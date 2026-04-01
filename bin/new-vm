@@ -1,0 +1,152 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <vm-name>" >&2
+    exit 1
+fi
+
+NAME="$1"
+
+echo "==> Creating VM '$NAME'..."
+incus init images:ubuntu/25.10/desktop "$NAME" --vm \
+    --config limits.cpu=8 \
+    --config limits.memory=12GiB
+incus config device override "$NAME" root size=30GiB
+
+echo "==> Starting VM '$NAME'..."
+incus start "$NAME"
+
+echo "==> Waiting for VM agent..."
+while ! incus exec "$NAME" -- true 2>/dev/null; do
+    sleep 2
+done
+
+echo "==> Waiting for cloud-init to finish..."
+incus exec "$NAME" -- cloud-init status --wait
+
+echo "==> Installing packages (this may take a while)..."
+incus exec "$NAME" -- bash -s << 'ROOT_EOF'
+set -euo pipefail
+
+# Ensure curl and add-apt-repository are available
+apt-get update -y
+apt-get install -y curl software-properties-common
+
+# Add Niri PPAs
+add-apt-repository -y ppa:avengemedia/danklinux
+add-apt-repository -y ppa:avengemedia/dms
+
+# Add mise APT repository
+install -dm 755 /etc/apt/keyrings
+curl -fSs https://mise.jdx.dev/gpg-key.pub | tee /etc/apt/keyrings/mise-archive-keyring.asc > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.jdx.dev/deb stable main" \
+    | tee /etc/apt/sources.list.d/mise.list
+
+apt-get update -y
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    mise \
+    niri \
+    dms \
+    ghostty \
+    neovim \
+    ripgrep \
+    socat \
+    zsh \
+    zsh-syntax-highlighting \
+    chromium-browser \
+    firefox \
+    fonts-emojione \
+    fonts-inter \
+    fonts-lato \
+    build-essential \
+    curl \
+    docker.io \
+    fonts-firacode \
+    fonts-powerline \
+    gettext \
+    git \
+    imagemagick \
+    jq \
+    libbz2-dev \
+    libevent-dev \
+    libgmp-dev \
+    libimage-exiftool-perl \
+    libreadline6-dev \
+    libssl-dev \
+    libx11-dev \
+    libxml2-dev \
+    libxslt-dev \
+    libyaml-dev \
+    libz-dev \
+    openssl \
+    optipng \
+    shellcheck
+
+# Set zsh as the default shell for the ubuntu user
+chsh -s /usr/bin/zsh ubuntu
+
+# Set Niri as the default session for the ubuntu user in GDM
+mkdir -p /var/lib/AccountsService/users
+cat > /var/lib/AccountsService/users/ubuntu << 'ACCOUNTS_EOF'
+[User]
+Session=niri
+XSession=niri
+ACCOUNTS_EOF
+ROOT_EOF
+
+echo "==> Setting up user environment..."
+TMPSCRIPT=$(mktemp /tmp/incus_user_setup_XXXXXX.sh)
+trap "rm -f $TMPSCRIPT" EXIT
+
+cat > "$TMPSCRIPT" << 'USER_EOF'
+#!/bin/bash
+set -euo pipefail
+
+# Clone dotfiles with submodules
+git clone --recurse-submodules https://github.com/nono/dotfiles.git ~/dotfiles
+
+# Create ~/.config in case some subdirs don't exist yet
+mkdir -p ~/.config
+
+# Create symlinks
+ln -s ~/dotfiles/ghostty ~/.config/ghostty
+ln -s ~/dotfiles/vim ~/.config/nvim
+ln -s ~/dotfiles/mise ~/.config/mise
+ln -s ~/dotfiles/git ~/.config/git
+ln -s ~/dotfiles/gitignore ~/.gitignore
+ln -s ~/dotfiles/zsh ~/.zsh
+ln -s ~/dotfiles/zshrc ~/.zshrc
+
+# Install mise tools (reads from ~/.config/mise/config.toml via symlink)
+mise install
+
+# Install Claude Code (after mise so Node is available)
+curl -fsSL https://claude.ai/install.sh | bash
+USER_EOF
+
+incus file push "$TMPSCRIPT" "$NAME/tmp/user_setup.sh"
+incus exec "$NAME" -- chmod +x /tmp/user_setup.sh
+incus exec "$NAME" -- su -s /bin/bash --login ubuntu -c /tmp/user_setup.sh
+
+echo ""
+echo "==> VM '$NAME' is ready!"
+echo ""
+echo "Next optional/manual steps:"
+echo ""
+echo "1. Shared folder (devfolder) — add the device to the VM:"
+echo "   incus config device add $NAME ${NAME}folder disk source=/home/nono/dev path=/home/ubuntu/dev"
+echo ""
+echo "2. Add an entry to /etc/hosts (as root on the host):"
+echo "   Get the VM IP with: incus list $NAME"
+echo "   Then add a line like: 10.x.x.x  $NAME"
+echo ""
+echo "3. Add these aliases to your ~/.zshrc:"
+echo "   alias ${NAME}=\"incus exec ${NAME} -- su --login ubuntu\""
+echo "   alias ${NAME}root=\"incus exec ${NAME} -- /bin/bash\""
+echo "   alias ${NAME}x=\"incus console ${NAME} --type=vga\""
+echo ""
+echo "4. Install neovim plugins and Claude Code skills"
+echo ""
+echo "==> Opening VGA console..."
+incus console "$NAME" --type=vga

@@ -115,8 +115,13 @@ man() {
 export PATH="$HOME/.local/bin:$PATH"
 alias dev="incus exec dev -- su --login nono"
 alias devroot="incus exec dev -- /bin/bash"
+alias deck="incus exec deck -- su --login ubuntu"
+alias deckroot="incus exec deck -- /bin/bash"
+alias deckx="incus console deck --type=vga"
 alias ossa="incus exec ossa -- su --login nono"
 alias ossaroot="incus exec ossa -- /bin/bash"
+alias lng="incus exec linagora -- su --login ubuntu"
+alias lngroot="incus exec linagora -- /bin/bash"
 alias linagora="incus console linagora --type=vga"
 
 # Golang

@@ -5,3 +5,7 @@ cursor-style-blink=false
 shell-integration-features = no-cursor
 window-decoration=none
 keybind = shift+enter=text:\x1b\r
+# Needs ghostty 1.3.0:
+# notify-on-command-finish = unfocused
+# notify-on-command-finish-action = no-bell,notify
+# notify-on-command-finish-after = 30s
