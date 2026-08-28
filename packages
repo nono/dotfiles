@@ -6,11 +6,13 @@ ghostty
 neovim
 ripgrep
 socat
+wl-clipboard
 zsh
 zsh-syntax-highlighting
 
 # Apps
 chromium-browser
+easyeffects
 firefox
 fonts-emojione
 fonts-inter
@@ -47,6 +49,9 @@ openssl
 optipng
 shellcheck
 
+# Dank Material Shell
+https://danklinux.com/docs/dankmaterialshell/installation/#ubuntu
+
 # Incus
 https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/
 
@@ -54,7 +59,6 @@ https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/
 https://mise.jdx.dev/installing-mise.html#apt
 
 # Go
-https://github.com/mailhog/MailHog#installation
 https://github.com/apriendeau/go-testcolorize
 https://github.com/inancgumus/godocc
 https://github.com/RadhiFadlillah/sqldiagram
@@ -64,6 +68,9 @@ gem install rubocop solargraph
 npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin
 :PlugInstall in neovim
 :GoInstallBinaries for vim-go
+
+# Codiff
+https://github.com/nkzw-tech/codiff
 
 # Claude Code
 https://code.claude.com/docs/en/quickstart

@@ -113,19 +113,12 @@ man() {
 
 # Coding agents
 export PATH="$HOME/.local/bin:$PATH"
+alias c="claude"
 alias dev="incus exec dev -- su --login nono"
 alias devroot="incus exec dev -- /bin/bash"
-alias deck="incus exec deck -- su --login ubuntu"
-alias deckroot="incus exec deck -- /bin/bash"
-alias deckx="incus console deck --type=vga"
-alias ossa="incus exec ossa -- su --login nono"
-alias ossaroot="incus exec ossa -- /bin/bash"
-alias lng="incus exec linagora -- su --login ubuntu"
-alias lngroot="incus exec linagora -- /bin/bash"
-alias linagora="incus console linagora --type=vga"
 
 # Golang
-export PATH="$GOPATH/bin:$(go env GOBIN):$PATH"
+export PATH="$(go env GOPATH)/bin:$(go env GOBIN):$PATH"
 alias gr='go run .'
 alias doc='GODOCC_STYLE=native godocc'
 
@@ -147,20 +140,3 @@ alias gd='g -c diff.external=difft diff'
 alias gp='g pull origin $(git default-branch)'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'
-
-# Cozy
-alias sta="cd ~/cc/stack"
-alias nua="cd ~/cc/nuagerie"
-alias cs=cozy-stack
-alias csls="cozy-stack instances ls --fields=domain,context,prefix"
-export COZY_COUCHDB_URL=http://admin:password@localhost:5984
-export COZY_FS_URL=file://localhost/home/nono/cc/stack/storage
-cozy_token() {
-  export CLIENT_ID=$(cozy-stack instances client-oauth cozy.localhost:8080 http://localhost/ cli github.com/cozy/cozy-stack)
-  export TOKEN=$(cozy-stack instances token-oauth cozy.localhost:8080 $CLIENT_ID "$@")
-  echo "TOKEN is available as \$TOKEN: $TOKEN (and \$CLIENT_ID for the client id)"
-}
-alias remove_cozy_test="cozy-stack instances ls | grep test | awk '{ print \$1 }' | xargs -n1 cozy-stack instances rm --force"
-alias tunnel_couch_int="ssh -L 5981:ha-couch-int.service.consul-dev:5984 bounce"
-alias tunnel_couch_stg="ssh -L 5982:ha-couch-stg.service.consul:5984 bounce"
-alias tunnel_couch_prod="ssh -L 5983:ha-couch-prod.service.consul:5984 bounce"

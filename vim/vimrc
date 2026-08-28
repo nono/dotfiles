@@ -119,7 +119,6 @@ set nostartofline
 set nowrap
 set nowrapscan
 set nrformats-=octal
-set pastetoggle=<F11>
 set ruler
 set scrolloff=3
 set shiftwidth=0

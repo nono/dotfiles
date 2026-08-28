@@ -10,11 +10,10 @@ ruby = "latest"
 node = "latest"
 python = "latest"
 uv = "latest"
-go = "latest"
+go = "1.26.5"
 fzf = "latest"
 bat = "latest"
 "cargo:tealdeer" = "latest"
-"pipx:lizard" = "latest"
 difftastic = "0.64.0"
 
 [settings]
