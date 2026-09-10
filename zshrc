@@ -136,7 +136,7 @@ alias be="bundle exec"
 # Git
 alias g='LANGUAGE=C.UTF-8 git'
 alias gs='g status -s'
-alias gd='g -c diff.external=difft diff'
-alias gp='g pull origin $(git default-branch)'
+alias gd='g -c core.pager="hunk pager" diff'
+alias gp='g pull origin main'
 alias gpf='g push --force-with-lease'
 alias gri='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) $(basename $(git symbolic-ref refs/remotes/origin/HEAD)))'

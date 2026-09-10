@@ -28,6 +28,7 @@ vlc
 build-essential
 curl
 docker.io
+docker-buildx
 fonts-firacode
 fonts-powerline
 gettext
@@ -68,9 +69,6 @@ gem install rubocop solargraph
 npm install -g prettier yarn javascript-typescript-langserver vscode-css-languageserver-bin
 :PlugInstall in neovim
 :GoInstallBinaries for vim-go
-
-# Codiff
-https://github.com/nkzw-tech/codiff
 
 # Claude Code
 https://code.claude.com/docs/en/quickstart

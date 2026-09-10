@@ -10,6 +10,8 @@
 	diff = auto
 	branch = auto
 	interactive = auto
+[core]
+	excludesfile = /home/nono/.gitignore
 [alias]
 	ci = commit
 	co = checkout
@@ -17,22 +19,23 @@
 	unstage = reset HEAD --
 	ignored = ls-files --others
 	last = log -1 HEAD
-	wdiff = diff --color-words
 	info = remote -v
-	default-branch = "!sh -c 'git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/'"
-	cleanup = "!sh -c 'git branch --merged | grep -v $(git default-branch) | xargs git branch -D'"
 	setup = "!sh -c 'git init && git ci --allow-empty -m \"Initial commit\"'"
 	amend = commit --amend --reuse-message=HEAD
 	serve = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
 	wa = worktree add
 	wr = worktree remove
 	wl = worktree list
+[pager]
+	staged = hunk pager
 [help]
 	autocorrect = prompt
 [diff]
 	renames = true
 	noprefix = true
 	algorithm = histogram
+[diff "exif"]
+	textconv = exiftool
 [branch]
 	autosetupmerge = true
 	autosetuprebase = always
@@ -58,9 +61,5 @@
 	autosquash = true
 [rerere]
 	enabled = 1
-[diff "exif"]
-	textconv = exiftool
-[core]
-	excludesfile = /home/nono/.gitignore
 [grep]
 	extendRegexp = true
