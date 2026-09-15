@@ -7,3 +7,4 @@ https://blog.fsck.com/2026/05/01/adversarial-review/
 https://gist.github.com/geoffreylitt/a29df1b5f9865506e8952488eac3d524 (explain-diff)
 https://medium.com/@benoit.leveque/i-built-a-passive-english-coach-into-my-ai-coding-assistant-heres-how-f2846600340a
 https://slaptijack.com/articles/how-to-use-ai-coding-agents-without-losing-engineering-judgment.html (small diff for bug fix)
+https://agent-browser.dev/skills

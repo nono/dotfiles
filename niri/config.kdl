@@ -76,7 +76,17 @@ input {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
+
+output "eDP-1" {
+    mode "1920x1080"
+    scale 1
+    position x=0 y=0
+}
+output "DP-1" {
+    mode "5120x2880"
+    scale 1.5
+    position x=1920 y=0
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -249,8 +259,6 @@ recent-windows {
     binds {
         Alt+Tab         { next-window scope="output"; }
         Alt+Shift+Tab   { previous-window scope="output"; }
-        Alt+grave       { next-window filter="app-id"; }
-        Alt+Shift+grave { previous-window filter="app-id"; }
     }
 }
 
@@ -264,5 +272,4 @@ include optional=true "dms/colors.kdl"
 include optional=true "dms/layout.kdl"
 include optional=true "dms/alttab.kdl"
 include optional=true "dms/binds.kdl"
-include optional=true "dms/outputs.kdl"
 include optional=true "dms/cursor.kdl"

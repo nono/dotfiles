@@ -73,7 +73,7 @@ after the plan is approved, so a rejected plan leaves no directory behind.
 ## 3. Plan
 
 Read the code the story touches before writing a line of the plan. Use
-`superpowers:writing-plans`.
+`superpowers:writing-plans`. Don't forget to think about the edge cases.
 
 The plan states: the change, file by file; what proves it works (which tests, new or
 existing); and what you deliberately leave out. Name the risks you found in the code,

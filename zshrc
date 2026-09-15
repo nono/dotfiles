@@ -60,7 +60,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Automatically list files after cd
 autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ eza; }
+add-zsh-hook -Uz chpwd (){ [[ -o interactive ]] && eza; }
 
 # local stuff (not in git), like LLM tokens
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

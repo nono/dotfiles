@@ -20,6 +20,10 @@
 
 ## Shell and File Writing
 
-- Never use heredocs to write files; the shell flattens them. Use the Write/Edit tools instead.
+- Never use heredocs to write files; the shell flattens them, or hangs until the command is killed. Use the Write/Edit tools instead, and `git commit -F <file>` for a multi-line commit message.
 
 - Always use absolute paths in Bash commands; do not rely on the current working directory persisting between calls.
+
+- If a tool that is not installed can help, ask me to install it. Give the `apt` or `mise` command. Do not install it yourself.
+
+- Do not write a shell script of more than 100 lines. Use a better language, such as Go. More lines of code are acceptable: static typing, tooling and tests make the work easier and faster.
