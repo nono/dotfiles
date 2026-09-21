@@ -17,6 +17,8 @@ glow = "latest"
 tokei = "latest"
 sqlc = "1.30.0"
 gh = "latest"
+"npm:markdownlint-cli2" = "latest"
+"pypi:check-jsonschema" = "latest"
 
 [settings]
 activate_aggressive = true

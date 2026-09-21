@@ -37,6 +37,7 @@ unfocused-split-fill = #44464f
 
 # Tab configuration
 gtk-titlebar = false
+scrollbar = never
 
 # Shell integration
 shell-integration = detect
