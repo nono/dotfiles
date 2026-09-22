@@ -166,7 +166,8 @@ Do not run `pr-review`. Human review arrives days later, in another session.
 ## 9. Report
 
 Three lines: the PR URL, what CodeRabbit changed, and anything left for the human — a
-finding you dropped, a test you could not run, scope you cut.
+finding you dropped, a test you could not run, scope you cut. When the fix changes what
+the grid shows, the third line also offers `grid-video sc-NNNN`.
 
 ## Red flags
 
