@@ -47,9 +47,10 @@ digraph grid_video {
 - Never destroy or recreate the VM. Never run `gridlab stack reset` without asking first.
 - Never write in a worktree. Write only under `~/ts/videos/<branch dir>/`.
 - `GHCR_TOKEN` stays in the environment: never print it, never pass it as a flag.
-- Absolute paths in every command. Set once, then use them quoted in every block:
-  `W=<worktree path>` and `D=/home/nono/ts/videos/<branch dir>`, where `<branch dir>` is
-  the branch name with every `/` replaced by `-`.
+- Absolute paths in every command. The harness keeps no shell variables between calls: the first two
+  lines of every Bash call that uses them are `W=<worktree path>` and
+  `D=/home/nono/ts/videos/<branch dir>`, where `<branch dir>` is the branch name with every `/`
+  replaced by `-`.
 - No other work while a run is in progress.
 
 ## 1. Read the story
@@ -80,18 +81,21 @@ exists. None: stop, and show the line that fits the branch's state:
 Then, in the worktree `W`:
 
 ```sh
+W=<worktree path>
 git -C "$W" fetch origin main
 git -C "$W" merge-base origin/main HEAD          # the base
 git -C "$W" diff --quiet <base>; echo $?        # 0: the working tree equals the base
 git -C "$W" ls-files --others --exclude-standard
 ```
 
-Both empty: stop, "the working tree equals the merge base: the fix is merged or not
-written; both halves would be the same". A dirty tree is allowed; the card says so.
+Exit 0 and no untracked file: stop, "the working tree equals the merge base: the fix is
+merged or not written; both halves would be the same". A dirty tree is allowed; the card
+says so.
 
 ## 3. Read the fix, write the hypothesis
 
 ```sh
+W=<worktree path>
 git -C "$W" diff --stat <base>
 git -C "$W" diff <base> -- ':!*_test.go'
 git -C "$W" diff <base> -- '*_test.go'
@@ -115,14 +119,24 @@ or "drop it".
 
 ## 4. Compose the scenario
 
-`mkdir -p "$D"`, then write `$D/scenario.json` with the Write tool. Rules:
+```sh
+D=/home/nono/ts/videos/<branch dir>
+mkdir -p "$D"
+```
+
+Then write `$D/scenario.json` with the Write tool. Rules:
 
 - **World and fleet.** Default: the lab world and its ten robots (no `world`, no
   `agents_csv`). A subset when the trigger is one robot's behaviour or contention
   between a few (the story says one robot, wait, path, blocked, lifty):
-  `gridlab world subset --agents adam,rose --out "$D"`, then in the scenario
-  `"world": {"file": "world.json", "id": "WorkBox BER2 (imported)"}` and
-  `"agents_csv": "agents.csv"`. Nothing else is derived: another layout, more than ten
+
+  ```sh
+  D=/home/nono/ts/videos/<branch dir>
+  gridlab world subset --agents <ids> --out "$D"
+  ```
+
+  Then in the scenario `"world": {"file": "world.json", "id": "WorkBox BER2 (imported)"}`
+  and `"agents_csv": "agents.csv"`. Nothing else is derived: another layout, more than ten
   robots, moved stations or totes stop with a question; the operator supplies that
   world file and CSV, and the scenario names them.
 - **Totes.** From the world's `totes[]`:
@@ -161,8 +175,10 @@ or "drop it".
 ## 5. Check
 
 ```sh
+W=<worktree path>
+D=/home/nono/ts/videos/<branch dir>
 gridlab scenario validate "$D/scenario.json"
-gridlab run --dry-run --worktree "$W"
+gridlab run --dry-run --worktree "${W:?}"
 ```
 
 A scenario error is your mistake: fix the file and check again, at most three rounds,
@@ -187,24 +203,33 @@ dry run      <the dry-run block, verbatim>
 files        $D/scenario.json [world.json agents.csv]
 wall time    recordings at most 2 × (settle + max) = <n> min (<before runs to max | stops on stall>);
              plus 5 to 20 min of builds, resets and encoding
-stop line    kill -INT "$(cat /home/nono/ts/videos/run.lock)"
+stop line    flock -n /home/nono/ts/videos/run.lock true || kill -INT "$(cat /home/nono/ts/videos/run.lock)"
 ```
 
 ## 7. Start detached, watch the log
 
-Right before the start, re-read `git -C "$W" branch --show-current`, `git -C "$W" rev-parse HEAD`
-and `git -C "$W" status --porcelain`. Any difference from the card's branch, HEAD or dirty
-state: back to step 5. Then:
+Right before the start, re-read:
 
 ```sh
+W=<worktree path>
+git -C "$W" branch --show-current
+git -C "$W" rev-parse HEAD
+git -C "$W" status --porcelain
+```
+
+Any difference from the card's branch, HEAD or dirty state: back to step 5. Then:
+
+```sh
+W=<worktree path>
+D=/home/nono/ts/videos/<branch dir>
 rm -f "$D/run.exit" "$D/run.offset"
-cd "$D" && setsid nohup sh -c \
+( cd "${D:?}" && setsid nohup sh -c \
   'gridlab run --worktree "$1" > run.log 2>&1; echo $? > run.exit.tmp; mv run.exit.tmp run.exit' \
-  sh "$W" > /dev/null 2>&1 &
+  sh "${W:?}" ) > /dev/null 2>&1 &
 ```
 
 Tell the operator: the log is `$D/run.log`; the stop line is
-`kill -INT "$(cat /home/nono/ts/videos/run.lock)"`.
+`flock -n /home/nono/ts/videos/run.lock true || kill -INT "$(cat /home/nono/ts/videos/run.lock)"`.
 
 Then one `Monitor` (load it with `ToolSearch` when absent), `timeout_ms` 1800000, description
 `gridlab run sc-NNNN`:
@@ -233,7 +258,8 @@ Read `$D/run.exit`, then the phase markers of `$D/run.log` in order: `== guest b
 
 | exit | last marker | class | action |
 |---|---|---|---|
-| 2 | none | refused before the lab | show the tail, stop |
+| 2 | any | refused before the lab | show the tail, stop |
+| 1 | none | failed before the lab (git, lock file) | show the tail, stop |
 | 1 | `== guest binary`, no `building` | guest binary push failed | show the tail, stop |
 | 1 | `building`, no `== before side` | build failed | show the tail, stop |
 | 1 | `== <side> side`, no `<side>: … recorded` | reset or guest failed | see below |
@@ -260,11 +286,17 @@ is evidence for the verdict, not a failure.
 The mp4 is the last line of `$D/run.log`.
 
 ```sh
+D=/home/nono/ts/videos/<branch dir>
 ffprobe -v error -show_entries format=duration:stream=width,height -of csv=p=0 <mp4>
 cat "$D/raw/before-label.txt" "$D/raw/after-label.txt"
 ```
 
-Frames, under `$D/frames/` (`mkdir -p "$D/frames"` first):
+Frames, under `$D/frames/`; `<mp4 base>` is the mp4 file name without `.mp4`:
+
+```sh
+D=/home/nono/ts/videos/<branch dir>
+mkdir -p "$D/frames"
+```
 
 - The divergence frame. Each side's `orders` map becomes a list of
   `(t − t_start, order, status)` sorted by time. Walk the two lists together. The first
@@ -281,11 +313,13 @@ View both with `Read`; describe each in one line per half.
 ```
 <mp4 path>  <width>x<height>, <duration> s
 labels      before main:latest | after <branch dir> <sha7>
-before      <recorded> s; ORD-1 COMPLETED at 96 s; ORD-2 INSUFFICIENT_STOCK, stalled; timed out no; 1 confirmation
-after       <recorded> s; ORD-1 COMPLETED at 95 s; ORD-2 COMPLETED at 158 s; timed out no; 2 confirmations
+before      <t_end − t_start> s; ORD-1 COMPLETED at 96 s; ORD-2 INSUFFICIENT_STOCK, stalled;
+            timed out no; 1 confirmation
+after       <t_end − t_start> s; ORD-1 COMPLETED at 95 s; ORD-2 COMPLETED at 158 s; timed out no;
+            2 confirmations
 images      metascheduler gridlab/metascheduler-main:<sha12>, …
-frames      D/frames/<name>-<T>s.png: <one line per half>
-            D/frames/<name>-sheet.png: <one line per half>
+frames      $D/frames/<name>-<T>s.png: <one line per half>
+            $D/frames/<name>-sheet.png: <one line per half>
 verdict     before showed the bug: yes | no | not established — <evidence>
             after showed the fix:  yes | no | not established — <evidence>
 ```
@@ -304,4 +338,4 @@ video a human should watch. Post nothing to Shortcut or to a PR.
 - Treating exit 0 as a verdict before the manifest checks.
 - A "yes" verdict on a motion observable without a frame that shows it.
 - `gridlab stack reset`, `vm destroy` or `vm create` without the operator's word.
-- Writing anything outside `D`.
+- Writing anything outside `$D`.
