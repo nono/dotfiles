@@ -47,8 +47,9 @@ digraph grid_video {
 - Never destroy or recreate the VM. Never run `gridlab stack reset` without asking first.
 - Never write in a worktree. Write only under `~/ts/videos/<branch dir>/`.
 - `GHCR_TOKEN` stays in the environment: never print it, never pass it as a flag.
-- Absolute paths in every command. `D` below is `/home/nono/ts/videos/<branch dir>`,
-  where `<branch dir>` is the branch name with every `/` replaced by `-`.
+- Absolute paths in every command. Set once, then use them quoted in every block:
+  `W=<worktree path>` and `D=/home/nono/ts/videos/<branch dir>`, where `<branch dir>` is
+  the branch name with every `/` replaced by `-`.
 - No other work while a run is in progress.
 
 ## 1. Read the story
@@ -79,10 +80,10 @@ exists. None: stop, and show the line that fits the branch's state:
 Then, in the worktree `W`:
 
 ```sh
-git -C W fetch origin main
-git -C W merge-base origin/main HEAD          # the base
-git -C W diff --quiet <base>; echo $?        # 0: the working tree equals the base
-git -C W ls-files --others --exclude-standard
+git -C "$W" fetch origin main
+git -C "$W" merge-base origin/main HEAD          # the base
+git -C "$W" diff --quiet <base>; echo $?        # 0: the working tree equals the base
+git -C "$W" ls-files --others --exclude-standard
 ```
 
 Both empty: stop, "the working tree equals the merge base: the fix is merged or not
@@ -91,9 +92,10 @@ written; both halves would be the same". A dirty tree is allowed; the card says 
 ## 3. Read the fix, write the hypothesis
 
 ```sh
-git -C W diff --stat <base>
-git -C W diff <base> -- ':!*_test.go'
-git -C W diff <base> -- '*_test.go'
+git -C "$W" diff --stat <base>
+git -C "$W" diff <base> -- ':!*_test.go'
+git -C "$W" diff <base> -- '*_test.go'
+git -C "$W" ls-files --others --exclude-standard
 ```
 
 Read the untracked files under a service directory too: the build includes them. The
@@ -113,12 +115,12 @@ or "drop it".
 
 ## 4. Compose the scenario
 
-`mkdir -p D`, then write `D/scenario.json` with the Write tool. Rules:
+`mkdir -p "$D"`, then write `$D/scenario.json` with the Write tool. Rules:
 
 - **World and fleet.** Default: the lab world and its ten robots (no `world`, no
   `agents_csv`). A subset when the trigger is one robot's behaviour or contention
   between a few (the story says one robot, wait, path, blocked, lifty):
-  `gridlab world subset --agents adam,rose --out D`, then in the scenario
+  `gridlab world subset --agents adam,rose --out "$D"`, then in the scenario
   `"world": {"file": "world.json", "id": "WorkBox BER2 (imported)"}` and
   `"agents_csv": "agents.csv"`. Nothing else is derived: another layout, more than ten
   robots, moved stations or totes stop with a question; the operator supplies that
@@ -159,8 +161,8 @@ or "drop it".
 ## 5. Check
 
 ```sh
-gridlab scenario validate D/scenario.json
-gridlab run --dry-run --worktree W
+gridlab scenario validate "$D/scenario.json"
+gridlab run --dry-run --worktree "$W"
 ```
 
 A scenario error is your mistake: fix the file and check again, at most three rounds,
@@ -182,7 +184,7 @@ scenario     world WorkBox BER2 (imported), fleet <ten lab robots | subset adam,
              orders SC-NNNN-ORD-1 PS1: SKU-1 x2 | SC-NNNN-ORD-2 PS1: SKU-1 x4 (short by 2, on purpose)
              timing operator 5 s, settle 20 s, max 240 s
 dry run      <the dry-run block, verbatim>
-files        D/scenario.json [world.json agents.csv]
+files        $D/scenario.json [world.json agents.csv]
 wall time    recordings at most 2 × (settle + max) = <n> min (<before runs to max | stops on stall>);
              plus 5 to 20 min of builds, resets and encoding
 stop line    kill -INT "$(cat /home/nono/ts/videos/run.lock)"
@@ -190,31 +192,33 @@ stop line    kill -INT "$(cat /home/nono/ts/videos/run.lock)"
 
 ## 7. Start detached, watch the log
 
-Right before the start, re-read `git -C W branch --show-current`, `git -C W rev-parse HEAD`
-and `git -C W status --porcelain`. Any difference from the card's branch, HEAD or dirty
+Right before the start, re-read `git -C "$W" branch --show-current`, `git -C "$W" rev-parse HEAD`
+and `git -C "$W" status --porcelain`. Any difference from the card's branch, HEAD or dirty
 state: back to step 5. Then:
 
 ```sh
-rm -f D/run.exit D/run.offset
-cd D && setsid nohup sh -c \
+rm -f "$D/run.exit" "$D/run.offset"
+cd "$D" && setsid nohup sh -c \
   'gridlab run --worktree "$1" > run.log 2>&1; echo $? > run.exit.tmp; mv run.exit.tmp run.exit' \
-  sh "W" > /dev/null 2>&1 &
+  sh "$W" > /dev/null 2>&1 &
 ```
 
-Tell the operator: the log is `D/run.log`; the stop line is
+Tell the operator: the log is `$D/run.log`; the stop line is
 `kill -INT "$(cat /home/nono/ts/videos/run.lock)"`.
 
-Then one `Monitor`, `timeout_ms` 1800000, description `gridlab run sc-NNNN`:
+Then one `Monitor` (load it with `ToolSearch` when absent), `timeout_ms` 1800000, description
+`gridlab run sc-NNNN`:
 
 ```sh
 D=/home/nono/ts/videos/<branch dir>
 PAT='^== |^building |^warning:|recorded,|FAIL|refused|gridlab:|interrupted|timed out|killing|\.mp4$'
 n=$(cat "$D/run.offset" 2>/dev/null || echo 0)
 until [ -f "$D/run.exit" ]; do
-  sleep 10; m=$(wc -l < "$D/run.log")
+  sleep 10; m=$(wc -l < "$D/run.log" 2>/dev/null || echo 0)
   [ "$m" -gt "$n" ] && sed -n "$((n+1)),${m}p" "$D/run.log" | grep -E "$PAT"; n=$m; echo "$n" > "$D/run.offset"
 done
-m=$(wc -l < "$D/run.log"); sed -n "$((n+1)),${m}p" "$D/run.log" | grep -E "$PAT"; echo "exit $(cat "$D/run.exit")"
+m=$(wc -l < "$D/run.log" 2>/dev/null || echo 0)
+sed -n "$((n+1)),${m}p" "$D/run.log" | grep -E "$PAT"; echo "exit $(cat "$D/run.exit")"
 ```
 
 Expiry without an `exit` line: arm it again; the offset file keeps old lines out. Do
@@ -223,7 +227,7 @@ the flag added after `run`.
 
 ## 8. Classify the outcome
 
-Read `D/run.exit`, then the phase markers of `D/run.log` in order: `== guest binary`,
+Read `$D/run.exit`, then the phase markers of `$D/run.log` in order: `== guest binary`,
 `building`, `== before side`, `before: … recorded`, `== after side`,
 `after: … recorded`, the `.mp4` line.
 
@@ -233,19 +237,19 @@ Read `D/run.exit`, then the phase markers of `D/run.log` in order: `== guest bin
 | 1 | `== guest binary`, no `building` | guest binary push failed | show the tail, stop |
 | 1 | `building`, no `== before side` | build failed | show the tail, stop |
 | 1 | `== <side> side`, no `<side>: … recorded` | reset or guest failed | see below |
-| 1 | both `recorded`, no `.mp4` line | encode failed | `gridlab encode --dir D` once |
+| 1 | both `recorded`, no `.mp4` line | encode failed | `gridlab encode --dir "$D"` once |
 | 130 | any | interrupted | see below |
 | 0 | `.mp4` line | complete | manifest checks, then the report |
 
-Reset or guest failed: show the manifest summary when `D/raw/<side>.json` exists and the
+Reset or guest failed: show the manifest summary when `$D/raw/<side>.json` exists and the
 last 30 lines of the log, then ask: retry with `--skip-build` (images kept, about 5 min),
-edit the scenario (back to step 6), stop. Encode failed: `gridlab encode --dir D` once,
+edit the scenario (back to step 6), stop. Encode failed: `gridlab encode --dir "$D"` once,
 then the report, or the tail when it fails again. Interrupted: report the phase reached;
 a manifest with `aborted` true exists only when a recording was under way; after an
 interrupted reset run `gridlab stack status` and, when a check fails, ask before
 `gridlab stack reset`. `refused: another run holds …`: show its pid and stop.
 
-**Manifest checks**, exit 0: for each side, `D/raw/<side>.json` has `aborted` false. A
+**Manifest checks**, exit 0: for each side, `$D/raw/<side>.json` has `aborted` false. A
 side with `timed_out` true, every order `PENDING` for the whole recording and zero
 confirmations is the known one-off stall: the run is inconclusive; say so, skip the
 verdict, offer one retry with `--skip-build`. Any other `timed_out` or `stalled` value
@@ -253,24 +257,24 @@ is evidence for the verdict, not a failure.
 
 ## 9. Report
 
-The mp4 is the last line of `D/run.log`.
+The mp4 is the last line of `$D/run.log`.
 
 ```sh
 ffprobe -v error -show_entries format=duration:stream=width,height -of csv=p=0 <mp4>
-cat D/raw/before-label.txt D/raw/after-label.txt
+cat "$D/raw/before-label.txt" "$D/raw/after-label.txt"
 ```
 
-Frames, under `D/frames/`:
+Frames, under `$D/frames/` (`mkdir -p "$D/frames"` first):
 
 - The divergence frame. Each side's `orders` map becomes a list of
   `(t − t_start, order, status)` sorted by time. Walk the two lists together. The first
   pair that differs in order or status, or whose times differ by more than 10 s, gives
   T = the earlier time + 3 s; a list that ends first counts as a difference at the other
   list's next event; no difference gives T = 10 s; clamp T to the duration minus 1 s.
-  `ffmpeg -v error -ss <T> -i <mp4> -frames:v 1 D/frames/<mp4 base>-<T>s.png`.
+  `ffmpeg -v error -ss <T> -i <mp4> -frames:v 1 "$D/frames/<mp4 base>-<T>s.png"`.
 - The contact sheet. `step` = max(20, ceil(duration / 12)), `rows` = ceil(duration / step):
   `ffmpeg -v error -i <mp4> -vf "fps=1/<step>,scale=1280:-1,tile=1x<rows>" -frames:v 1
-  D/frames/<mp4 base>-sheet.png`.
+  "$D/frames/<mp4 base>-sheet.png"`.
 
 View both with `Read`; describe each in one line per half.
 
