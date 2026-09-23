@@ -71,9 +71,9 @@ report, they never edit.
 
 | Agent | How to run | Model |
 | --- | --- | --- |
-| A | `Agent`, `subagent_type: adversarial-reviewer` | Fable, low effort (set in the agent definition — pass no `model`) |
-| B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-5.6-sol`, medium reasoning effort |
-| C | `Agent`, `subagent_type: general-purpose` | `model: "opus"` — skip on a PR someone else opened (step 1) |
+| A | `Agent`, `subagent_type: adversarial-reviewer` | Opus, medium effort (set in the agent definition — pass no `model`) |
+| B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-6-sol`, medium reasoning effort |
+| C | `Agent`, `subagent_type: adversarial-nitpicker` | Opus, low effort (set in the agent definition — pass no `model`) — skip on a PR someone else opened (step 1) |
 
 A and B get **identical** prompts, because "only one agent found it" carries
 information only when both had the same job. Their models differ on purpose: three
@@ -88,7 +88,7 @@ Write the prompt to `<scratchpad>/review-b-prompt.md`, then start this in the
 background, in the same message as the two `Agent` calls:
 
 ```sh
-codex exec --model gpt-5.6-sol -c model_reasoning_effort=medium \
+codex exec --model gpt-6-sol -c model_reasoning_effort=medium \
   --sandbox read-only -C <repo root> \
   -o <scratchpad>/review-b.md - < <scratchpad>/review-b-prompt.md
 ```
@@ -260,7 +260,7 @@ is not this change's to fix. `partly introduced` stays in the levels.
 
 Name the models once, at the top:
 
-> A = Fable low · B = gpt-5.6-sol medium · C = Opus (low)
+> A = Opus medium · B = gpt-6-sol medium · C = Opus low
 
 When C was skipped, write `C = skipped (PR by <author>)`.
 

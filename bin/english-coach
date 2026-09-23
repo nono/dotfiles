@@ -1,0 +1,105 @@
+#!/bin/bash
+# Weekly English coach: analyses the prompts you typed to Claude Code and
+# reports the recurring mistakes.
+set -euo pipefail
+
+HISTORY="$HOME/.claude/history.jsonl"
+ARCHIVE="$HOME/.local/share/english-coach/archive.jsonl"
+REPORT_DIR="$HOME/Documents/english-coach"
+DAYS=7
+
+dry_run=false
+archive_only=false
+for arg in "$@"; do
+    case "$arg" in
+        --dry-run) dry_run=true ;;
+        --archive-only) archive_only=true ;;
+        *) echo "Usage: $0 [--dry-run] [--archive-only]" >&2; exit 1 ;;
+    esac
+done
+
+# --- 1. Archive -----------------------------------------------------------
+# ~/.claude/history.jsonl is rotated by Claude Code, so keep our own copy.
+mkdir -p "$(dirname "$ARCHIVE")"
+touch "$ARCHIVE"
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+cat "$ARCHIVE" "$HISTORY" | jq -c 'unique_by([.timestamp, .sessionId, .display]) | .[]' --slurp > "$tmp"
+mv "$tmp" "$ARCHIVE"
+
+$archive_only && exit 0
+
+# --- 2. Extract -----------------------------------------------------------
+cutoff=$(( ($(date +%s) - DAYS * 86400) * 1000 ))
+prompts=$(jq -r --argjson cutoff "$cutoff" '
+    select(.timestamp >= $cutoff)
+    | .display
+    | select((startswith("/") or startswith("!")) | not)
+    | gsub("\\[Pasted text #\\d+ \\+\\d+ lines\\]"; "[pasted]")
+    | gsub("\\s+"; " ")
+    | select((split(" ") | length) > 1)
+' "$ARCHIVE" | nl -w3 -s'. ')
+
+if [ -z "$prompts" ]; then
+    echo "No prompts in the last $DAYS days, nothing to coach." >&2
+    exit 0
+fi
+
+# --- 3. Analyse -----------------------------------------------------------
+read -r -d '' instructions << 'PROMPT' || true
+Below are the messages a French developer typed to an AI coding assistant this
+week. Coach his written English.
+
+Judge only the English: grammar, verb tenses, articles, prepositions, plurals,
+word order, false friends, French interference, unidiomatic phrasing.
+
+Ignore entirely: code, file paths, identifiers, command names, terseness,
+missing capitals or final punctuation, technical correctness, and anything
+inside [pasted].
+
+Write at most one page of markdown:
+
+## Patterns
+The recurring mistakes, most frequent first. For each: a one-line name, how
+many times it occurred, one real quote from below, and the corrected version.
+Skip anything that happened once unless it is badly wrong.
+
+## What went well
+Two or three sentences. Be specific and honest; say nothing if there is nothing.
+
+## This week
+One single thing to focus on, phrased as a rule he can apply while typing.
+
+Be blunt. No praise, no filler, no preamble. If the English is already good,
+say so in two lines and stop.
+
+--- messages ---
+PROMPT
+
+report=$(printf '%s\n%s\n' "$instructions" "$prompts" | claude -p --allowed-tools '')
+
+# --- 4. Deliver -----------------------------------------------------------
+mkdir -p "$REPORT_DIR"
+week=$(date +%G-W%V)
+report_file="$REPORT_DIR/$week.md"
+
+if $dry_run; then
+    echo "$report"
+    exit 0
+fi
+
+printf '%s\n' "$report" > "$report_file"
+echo "Report written to $report_file"
+
+# The notification carries the week's single focus, so it is worth something
+# even when the report is never opened. A missing notification daemon must not
+# fail the run: the file is what matters.
+focus=$(printf '%s\n' "$report" | awk '/^## This week/ {flag=1; next} /^## / {flag=0} flag' | grep -v '^$')
+notify-send \
+    --app-name="English coach" \
+    --icon=accessories-dictionary \
+    --expire-time=0 \
+    "English coach - week $week" \
+    "${focus}
+
+$report_file" || echo "notify-send failed" >&2

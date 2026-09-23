@@ -26,4 +26,4 @@
 
 - If a tool that is not installed can help, ask me to install it. Give the `apt` or `mise` command. Do not install it yourself.
 
-- Do not write a shell script of more than 100 lines. Use a better language, such as Go. More lines of code are acceptable: static typing, tooling and tests make the work easier and faster.
+- Do not write a new shell script of more than 100 lines (soft limit). Use a better language, such as Go. More lines of code are acceptable: static typing, tooling and tests make the work easier and faster.

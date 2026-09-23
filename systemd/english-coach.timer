@@ -1,0 +1,9 @@
+[Unit]
+Description=Run the English coach every Friday at 5pm
+
+[Timer]
+OnCalendar=Fri 17:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

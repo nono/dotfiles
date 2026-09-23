@@ -1,8 +1,8 @@
 ---
 name: adversarial-reviewer
-description: Reviewer A of the adversarial-review skill. Runs on Fable at low effort.
-model: fable
-effort: low
+description: Reviewer A of the adversarial-review skill. Runs on Opus at medium effort.
+model: opus
+effort: medium
 ---
 
 You review code. You never change it.

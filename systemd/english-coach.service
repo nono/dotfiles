@@ -1,0 +1,7 @@
+[Unit]
+Description=Weekly English coach report from Claude Code prompts
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/dotfiles/bin/english-coach
