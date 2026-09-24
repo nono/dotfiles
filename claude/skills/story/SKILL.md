@@ -14,7 +14,6 @@ reviewers see before you do.
 ```dot
 digraph story {
     "Read the story" [shape=box];
-    "Place the work" [shape=box];
     "Plan" [shape=box];
     "STOP 1: approve the plan" [shape=diamond];
     "Implement and test" [shape=box];
@@ -29,7 +28,7 @@ digraph story {
     "coderabbit" [shape=box];
     "Report" [shape=doublecircle];
 
-    "Read the story" -> "Place the work" -> "Plan" -> "STOP 1: approve the plan";
+    "Read the story" -> "Plan" -> "STOP 1: approve the plan";
     "STOP 1: approve the plan" -> "Plan" [label="revise"];
     "STOP 1: approve the plan" -> "Implement and test" [label="approved"];
     "Implement and test" -> "adversarial-review" -> "STOP 2: pick the findings";
@@ -50,27 +49,7 @@ tools with `ToolSearch` if they are not present, then read the story with
 Say back, in three lines, what the story asks for. If the story is ambiguous enough
 that two readings give different code, use `superpowers:brainstorming` before planning.
 
-## 2. Place the work
-
-Get the branch name from `stories-get-branch-name`. Then:
-
-| Current state | Do |
-|---|---|
-| On the default branch, or the tree is dirty | New worktree |
-| Already on a feature branch for this story | Stay |
-| On another story's branch, tree clean | New worktree |
-
-The worktree goes beside the other ones — the parent of the main worktree, named with
-a short slug of the story, not the full branch name:
-
-```sh
-git worktree add <parent>/<slug> -b <shortcut branch name>
-```
-
-Propose the slug at STOP 1 and let it be corrected. Do the `git worktree add` only
-after the plan is approved, so a rejected plan leaves no directory behind.
-
-## 3. Plan
+## 2. Plan
 
 Read the code the story touches before writing a line of the plan. Use
 `superpowers:writing-plans`. Don't forget to think about the edge cases.
@@ -83,7 +62,7 @@ not generic ones.
 subagent-driven execution as an option when the plan's tasks are independent — then
 follow `superpowers:subagent-driven-development`.
 
-## 4. Implement and test
+## 3. Implement and test
 
 Follow the repo's own instructions for style, tests and line length — read its
 `CLAUDE.md` and any nested one. Use `superpowers:test-driven-development` for new
@@ -97,7 +76,7 @@ have read the output.
 
 Record the SHA of the last implementation commit. Step 7 compares against it.
 
-## 5. Review
+## 4. Review
 
 Run the `adversarial-review` skill on the branch.
 
@@ -108,7 +87,7 @@ them here, and do not replace its two questions with one.
 Fix only what is chosen, and re-run the affected tests. Nits go in their own commit,
 apart from the issue fixes.
 
-## 6. Simplify
+## 5. Simplify
 
 Run the `simplify` skill. It looks for reuse, simplification, efficiency and altitude
 only, and it applies its own fixes — so it comes after the STOP 2 fixes, and it also
@@ -118,7 +97,7 @@ Read its diff before you keep it. Drop any edit that changes behaviour: that is 
 fix, and bug fixes go through STOP 2. Re-run the affected tests. The result is its own
 commit, separate from the fix commit and the nit commit.
 
-## 7. Regression check
+## 6. Regression check
 
 The fix commits and the `simplify` commit are code that no reviewer has seen. Check
 them with one subagent — `Agent` with `subagent_type: general-purpose` and
@@ -151,7 +130,7 @@ it comes from. When that is the `simplify` commit, revert it and say so at STOP 
 When it is a STOP 2 fix, reverting undoes an approved fix — do not do that alone.
 Stop and put both the regression and the fix to the human.
 
-## 8. Open the PR
+## 7. Open the PR
 
 **STOP 3.** Ask before pushing. Show the commit list and the PR title you intend.
 
@@ -163,7 +142,7 @@ Push, `gh pr create`, then run the `coderabbit` skill and work its loop to the e
 
 Do not run `pr-review`. Human review arrives days later, in another session.
 
-## 9. Report
+## 8. Report
 
 Three lines: the PR URL, what CodeRabbit changed, and anything left for the human — a
 finding you dropped, a test you could not run, scope you cut. When the fix changes what
@@ -171,7 +150,6 @@ the grid shows, the third line also offers `grid-video sc-NNNN`.
 
 ## Red flags
 
-- Creating the worktree before STOP 1.
 - Opening the PR because the review was clean. STOP 3 is not conditional.
 - Skipping a stop because the story is small, or because the last answer was "go".
 - Fixing nits that no reviewer raised, in the fix commit.
@@ -181,4 +159,3 @@ the grid shows, the third line also offers `grid-video sc-NNNN`.
 - Letting the regression check open new findings. Regressions only.
 - Fixing a regression on the agent's word. One agent confirms nothing. Trace it first.
 - Reverting a STOP 2 fix by yourself to make the regression check pass.
-- Polling with `sleep` for CI or for CodeRabbit. Use a background command or `Monitor`.
