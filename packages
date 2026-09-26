@@ -55,9 +55,13 @@ https://danklinux.com/docs/dankmaterialshell/installation/#ubuntu
 
 # Incus
 https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/
+virtiofsd
 
 # Mise
 https://mise.jdx.dev/installing-mise.html#apt
+
+# Voxtype
+https://voxtype.io/
 
 # Go
 https://github.com/apriendeau/go-testcolorize

@@ -122,10 +122,6 @@ ln -s ~/dotfiles/zshrc ~/.zshrc
 # Install mise tools (reads from ~/.config/mise/config.toml via symlink)
 mise install
 
-# Install Claude Code (after mise so Node is available)
-curl -fsSL https://claude.ai/install.sh | bash
-USER_EOF
-
 incus file push "$TMPSCRIPT" "$NAME/tmp/user_setup.sh"
 incus exec "$NAME" -- chmod +x /tmp/user_setup.sh
 incus exec "$NAME" -- su -s /bin/bash --login ubuntu -c /tmp/user_setup.sh
