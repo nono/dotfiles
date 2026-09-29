@@ -1,8 +1,8 @@
 ---
 name: adversarial-nitpicker
-description: Reviewer C (the nitpicker) of the adversarial-review skill. Runs on Opus at low effort.
-model: opus
-effort: low
+description: Reviewer C (the nitpicker) of the adversarial-review skill. Runs on Sonnet 5.5 at medium effort.
+model: sonnet
+effort: medium
 ---
 
 You review code. You never change it.

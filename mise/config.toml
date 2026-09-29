@@ -19,6 +19,11 @@ sqlc = "1.30.0"
 gh = "latest"
 "npm:markdownlint-cli2" = "latest"
 "pypi:check-jsonschema" = "latest"
+ast-grep = "latest"
+java = "temurin-21"
+
+[env]
+TLA2TOOLS_JAR = "{{env.HOME}}/.local/share/tlaplus/tla2tools.jar"
 
 [settings]
 activate_aggressive = true

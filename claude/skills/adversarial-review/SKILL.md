@@ -1,13 +1,15 @@
 ---
 name: adversarial-review
-description: Use when asked to review work, a change, a diff, a branch or a PR - dispatches two competing reviewers plus a nitpicker, verifies every finding only one of them reported, then grades what survives as high, medium or low.
+description: Use when asked to review work, a change, a diff, a branch or a PR - dispatches two competing reviewers, a nitpicker and a Quint modeler, verifies every finding only one of them reported, then grades what survives as high, medium or low.
 ---
 
 # Adversarial Review
 
-Three agents review the same code in parallel. Two compete on defects that have a
-failure chain; the third collects what has none. You merge their reports, verify
-anything only one agent saw, grade the survivors on one scale, and present them.
+Four agents review the same code in parallel. Two compete on defects that have a
+failure chain; the third collects what has none; the fourth models the change in Quint
+and runs the model to find the interleavings and edge cases a read misses. You merge
+their reports, verify anything only one agent saw, grade the survivors on one scale,
+and present them.
 
 ## 1. Resolve the target
 
@@ -24,7 +26,7 @@ Do this before dispatching. Every reviewer must see the same bytes.
 3. Else, uncommitted work: `git diff HEAD`, plus `git ls-files --others --exclude-standard`.
 4. Nothing: say so and stop. Do not invent a scope.
 
-Then prove the scope, before three agents find the hole for you:
+Then prove the scope, before four agents find the hole for you:
 
 ```sh
 git rev-parse --verify "$base" >/dev/null   # the ref resolves (cases 1 and 2)
@@ -44,6 +46,12 @@ When the target is a PR, find its author:
 False — someone else opened the PR: skip C, and say so in the report. Run C in all other
 cases: your own PR, or work that is not a PR yet.
 
+Decide if D runs. D needs state that changes over steps: a state machine, a status
+field and its transitions, locks, queues, retries, idempotency, ordering, a cache and
+its invalidation, a workflow of several steps, or two actors that touch the same data.
+The diff changes none of these — pure functions, UI, config, docs, renames: skip D, and
+say so in the report. Also skip D when `command -v quint` fails.
+
 Write down the diff command, the merge base and the file list. All three go to every
 reviewer verbatim.
 
@@ -61,26 +69,29 @@ Look for it in this order, and stop at the first hit:
    the PR body when the target is a PR.
 4. Nothing: say so in the report and dispatch without it. Do not invent requirements.
 
-Quote it into A's and B's prompt: a criterion you paraphrase is one they cannot hold
-you to.
+Quote it into A's, B's and D's prompt: a criterion you paraphrase is one they cannot
+hold you to. For D, each criterion is a candidate invariant.
 
-## 3. Dispatch three reviewers
+## 3. Dispatch four reviewers
 
-One message, three calls, so they run concurrently. All three are read-only: they
-report, they never edit.
+One message, four calls, so they run concurrently. All four are read-only on the
+repository: they report, they never edit it. D writes its model in the scratchpad
+only.
 
 | Agent | How to run | Model |
 | --- | --- | --- |
 | A | `Agent`, `subagent_type: adversarial-reviewer` | Opus, medium effort (set in the agent definition — pass no `model`) |
 | B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-6-sol`, medium reasoning effort |
-| C | `Agent`, `subagent_type: adversarial-nitpicker` | Opus, low effort (set in the agent definition — pass no `model`) — skip on a PR someone else opened (step 1) |
+| C | `Agent`, `subagent_type: adversarial-nitpicker` | Sonnet 5.5, medium effort (set in the agent definition — pass no `model`) — skip on a PR someone else opened (step 1) |
+| D | `Agent`, `subagent_type: adversarial-modeler` | Opus, medium effort (set in the agent definition — pass no `model`) — skip when step 1 says so |
 
 A and B get **identical** prompts, because "only one agent found it" carries
 information only when both had the same job. Their models differ on purpose: three
-models disagree where one model repeats itself.
+models disagree where one model repeats itself. D does a different job, so D gets its
+own prompt: agreement between D and A or B means two methods found the same defect.
 
 No reviewer grades its own findings. Severity is assigned once, in step 5, by you, so
-one scale covers all three reports.
+one scale covers all four reports.
 
 ### How to run B
 
@@ -97,7 +108,7 @@ codex exec --model gpt-6-sol -c model_reasoning_effort=medium \
 the progress log on stdout. If `codex` fails mid-run, say so in the report and
 adjudicate with A and C alone — never silently drop B.
 
-### Provenance, pasted into all three prompts
+### Provenance, pasted into all four prompts
 
 > Tag every finding with one of:
 >
@@ -125,6 +136,16 @@ adjudicate with A and C alone — never silently drop B.
 > have not convinced yourself of.
 >
 > You have a 30 minute budget.
+>
+> Do two searches that a read of the added lines misses:
+>
+> - For each line the diff deletes or replaces, name the behaviour it enforced — a
+>   guard, an error path, a validation, a test case. Then find where the new code
+>   enforces it again. If you find no such place, you have a candidate.
+> - For each type the diff adds or changes that wraps another — cache, proxy,
+>   decorator, adapter — check that every method calls the wrapped instance, not back
+>   through a registry, session or global. Also check that it forwards every method
+>   its callers use.
 >
 > Report any defect you can tie to a concrete failure chain:
 >
@@ -178,17 +199,69 @@ adjudicate with A and C alone — never silently drop B.
 > section at the top: `file:line`, provenance, the defect, **If not addressed** and the
 > chain, and one line for the fix.
 
+### Prompt for D
+
+> Review <scope> by building a Quint model of it. Get the diff with `<command>`. The
+> merge base is `<base>`. Read every changed file in full, and the callers of anything
+> you model.
+>
+> The change is meant to implement this:
+>
+> <spec, quoted in full — or: no spec was found; take the invariants from the code>
+>
+> You have a 30 minute budget. Write every file under `<scratchpad>/quint/`.
+>
+> 1. Find the state machine the change touches: the state, the actions that change it,
+>    and the actors that can run them at the same time. Model the code after the change,
+>    not its intent. Leave out what no invariant needs.
+> 2. Write the invariants the code must keep. Take them from the spec, the docstrings
+>    and comments, the tests, and the behaviour each deleted line enforced. Name the
+>    source of each one.
+> 3. Write a witness for each action, so a green invariant does not come from an action
+>    that never fires.
+> 4. `quint typecheck`, then `quint run` against each invariant, with enough samples and
+>    steps to reach the edge cases: empty, one, the limit, a retry, two actors at once.
+>    Never `quint verify`. Start each quint command with `nice -n 19`, and give
+>    `quint run` the option `--n-threads=$(( $(nproc) / 2 ))`. Run one
+>    `quint run` at a time.
+> 5. For each violation, map every step of the trace to the `file:line` that takes it.
+>    A step the code cannot take is a bug in the model: fix the model and run again.
+>    Only a trace the code can take from start to end is a finding.
+>
+> No state machine in the change: answer `no model` and one sentence why, and stop.
+>
+> Leave naming, style, duplication and dead code to another agent. Do not rank your
+> findings and do not label them high, medium or low.
+>
+> <the provenance block> To decide it, check if the merge-base code can take the same
+> trace.
+>
+> Report each finding as:
+>
+> - `file:line`, and its provenance;
+> - one sentence stating the defect, and the invariant it breaks, with its source;
+> - **If not addressed**: the trace, one line per step, each with its `file:line`. Then
+>   the wrong output or crash at the end, and who pays for it;
+> - the command that replays it: `quint run <file> --invariant=<name> --seed=<seed>`;
+> - one line for the fix.
+>
+> Then, below the findings: the model path, and each invariant that held, with the
+> number of samples and steps it held for.
+
 ## 4. Verify
 
-One pool: A's findings, B's findings, and C's escalated section. C's ranked list is
-not in it. When C was skipped, the pool is A's and B's findings alone.
+One pool: A's findings, B's findings, C's escalated section and D's findings. C's
+ranked list and D's invariants that held are not in it. A skipped agent adds nothing to
+the pool.
 
-Match the findings across the three reports and record, for each one, which agents
+Match the findings across the four reports and record, for each one, which agents
 reported it. Two agents that describe the same defect at the same place are one
 finding, even if the wording differs.
 
 - Two or more agents reported it → accept.
 - C's escalated defects enter the pool as single reports.
+- D's findings enter the pool as single reports, unless A or B reported the same
+  defect.
 - C's ranked list is never verified. Reading one costs less than checking it.
 
 Every singleton gets settled, one way or the other. Do not drop one because it sounds
@@ -213,6 +286,10 @@ Certain, fast, and not a matter of opinion. One pass, before any fan-out:
 - **Nothing handles this** — a missing error check, an unread return, a caller that
   cannot cope. Grep the callers.
 - **The comment contradicts the code** — read the two side by side.
+- **A Quint trace [D]** — the model can be wrong where the code is right. When the
+  suite can express the trace, write it as a test in the throwaway worktree above. Red:
+  the finding holds, and the report names the test. Green: drop it. When the suite
+  cannot express it, fan it out, with the trace quoted.
 
 ### Fan out the rest
 
@@ -220,11 +297,14 @@ What is left is judgement: a claim about what production does, which no command
 answers. One agent per finding, `subagent_type: general-purpose`, `model: "opus"`,
 read-only, all of them in one message so they run at once.
 
-> This finding comes from one reviewer out of three. The other two read the same code
+> This finding comes from one reviewer out of several. The others read the same code
 > and did not report it, so it is more likely wrong than right. Find what makes it
 > wrong.
 >
 > <the finding, quoted in full>
+>
+> <for a finding from D: It comes from a Quint model. Check that the code can take each
+> step of the trace, in that order. A step it cannot take is a reason to drop it.>
 >
 > Get the diff with `<command>`. The merge base is `<base>`. Read the file, its callers,
 > and the tests that cover it. Change nothing.
@@ -242,8 +322,8 @@ reviewers may not be believed on a singleton, and neither may the verifiers.
 
 ## 5. Grade
 
-Grade every finding that survived step 4, in one pass, so one scale covers three
-models:
+Grade every finding that survived step 4, in one pass, so one scale covers four
+reviewers:
 
 - **High** — fires as it stands.
 - **Medium** — has a failure chain, but needs a second event to fire.
@@ -260,13 +340,15 @@ is not this change's to fix. `partly introduced` stays in the levels.
 
 Name the models once, at the top:
 
-> A = Opus medium · B = gpt-6-sol medium · C = Opus low
+> A = Opus medium · B = gpt-6-sol medium · C = Sonnet 5.5 medium · D = Opus medium, Quint
 
-When C was skipped, write `C = skipped (PR by <author>)`.
+When C was skipped, write `C = skipped (PR by <author>)`. When D was skipped, write
+`D = skipped (<reason>)`. When D ran, give its model path, so the human can run it
+again.
 
 Then four sections, worst first. Every line keeps the shape its reviewer reported it
-in, and gains a `[A]`, `[A,B]` or `[A,B,C]` tag, so the human can weigh three agreeing
-agents against one that saw what the others missed.
+in, and gains a `[A]`, `[A,D]` or `[A,B,C]` tag, so the human can weigh agreeing agents
+against one that saw what the others missed.
 
 1. **High**
 2. **Medium**

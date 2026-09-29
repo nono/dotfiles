@@ -9,4 +9,5 @@ https://medium.com/@benoit.leveque/i-built-a-passive-english-coach-into-my-ai-co
 https://slaptijack.com/articles/how-to-use-ai-coding-agents-without-losing-engineering-judgment.html (small diff for bug fix)
 
 https://github.com/obra/superpowers#installation
+https://github.com/quint-co/quint/tree/main/skills
 https://agent-browser.dev/skills

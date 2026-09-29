@@ -12,6 +12,8 @@
 
 - When fixing a bug, make the smallest change that solves the bug. Do not refactor unrelated code. Do not change public behavior outside this path. If you think a broader cleanup is warranted, describe it separately instead of implementing it.
 
+- Before you suggest a follow-up PR, examine if one more commit in the current PR can do it. Each PR costs the team a review. Do it in the current PR when the change is small, related to the PR, and does not delay the merge. Suggest a follow-up only when there is a good reason: the change is large, has a different risk, needs a different reviewer, or must wait for a decision or a deploy. Give that reason.
+
 ## Shortcut
 
 - `sc-NNNN` means the story NNNN in Shortcut (MCP).
@@ -25,5 +27,7 @@
 - Always use absolute paths in Bash commands; do not rely on the current working directory persisting between calls.
 
 - If a tool that is not installed can help, ask me to install it. Give the `apt` or `mise` command. Do not install it yourself.
+
+- For a structural search, or a rewrite across many files, use `ast-grep run -p 'PATTERN' -l go` (add `-r 'REWRITE' -U` to rewrite). Call it `ast-grep`, never `sg`: `/usr/bin/sg` is a different command.
 
 - Do not write a new shell script of more than 100 lines (soft limit). Use a better language, such as Go. More lines of code are acceptable: static typing, tooling and tests make the work easier and faster.
