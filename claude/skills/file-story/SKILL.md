@@ -5,7 +5,8 @@ description: Use when asked to file, create, open or write a Shortcut story, tic
 
 # File a story
 
-Create one Shortcut story with the fields below. Do not ask for them.
+Create one Shortcut story with the fields below. Do not ask for them. A follow-up
+story gets the same fields: it goes in To Do, never in Backlog.
 
 | Field | Value |
 |-------|-------|
@@ -23,6 +24,8 @@ Create one Shortcut story with the fields below. Do not ask for them.
 2. Find the IDs by name: the team, the Standard workflow and its To Do state, the
    current user (Bruno Michel), and the Technical Area custom field and its values.
    A name that does not match: stop and tell the user. Do not pick a near match.
+   In the Standard workflow (500000005), To Do is 500000007. Always pass
+   `workflow_state_id` to `stories-create`: the default state is Backlog.
 3. Pick the Technical Area. Back End is the default. Use another value only when
    the story is about that area (for example Front End for a UI change).
 4. Write the story:

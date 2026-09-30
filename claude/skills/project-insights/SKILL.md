@@ -51,7 +51,7 @@ evidence; a hunch is not.
 ## 4. Report
 
 Publish an artifact. Load `artifact-design` and `dataviz` first, write the HTML to a
-file, then call `Artifact` with a favicon.
+file, then call `Artifact` with an `icon`.
 
 The page has six sections, in this order:
 

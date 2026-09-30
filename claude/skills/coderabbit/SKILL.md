@@ -139,19 +139,55 @@ comment. Do not resolve the threads.
 
 ## 6. Wait for the new review
 
-The bot reviews the new commits on its own. Poll the reviews endpoint for a
-CodeRabbit review submitted after your push:
+The bot reviews the new commits on its own. Poll for a CodeRabbit review submitted
+after your push with one GraphQL request on the last few reviews:
 
 ```sh
-gh api "repos/$REPO/pulls/$PR/reviews" --paginate \
-  | jq --arg since "$PUSH_TIME" '.[] | select(.user.login == "coderabbitai[bot]")
-        | select(.submitted_at > $since) | {id, submitted_at, body}'
+gh api graphql -F owner="${REPO%/*}" -F name="${REPO#*/}" -F pr="$PR" -f query='
+  query($owner: String!, $name: String!, $pr: Int!) {
+    repository(owner: $owner, name: $name) { pullRequest(number: $pr) {
+      reviews(last: 5) { nodes { databaseId author { login } submittedAt body } } } } }' \
+  --jq ".data.repository.pullRequest.reviews.nodes[]
+        | select(.author.login == \"coderabbitai\" and .submittedAt > \"$PUSH_TIME\")"
 ```
+
+Never use `--paginate` in this poll. On a PR with many comments each paginated
+call costs many requests, and a loop of them trips the GitHub rate limits. Use
+`--paginate` only in step 2, once per round.
+
+A review with 0 findings creates no entry in the reviews endpoint. The bot only
+edits its summary comment to "No actionable comments were generated in the recent
+review" and sets its `CodeRabbit` check to "Review completed". So also end the wait
+when `gh pr checks $PR` shows `CodeRabbit pass`, or when the `updated_at` of the
+summary comment is after the push. Read the summary comment by its ID, which you
+got in step 2, with one call:
+
+```sh
+gh api "repos/$REPO/issues/comments/$SUMMARY_ID" --jq '{updated_at, body}'
+```
+
+Then read the summary, including its "Additional comments" `<details>` block.
 
 Wait with the tool your harness gives you for waiting on a condition. Do not block
 the shell with `sleep`. Check about every two minutes, and give up after fifteen.
 
 No review after fifteen minutes: stop the loop and say the bot did not answer.
+
+### Rate limit
+
+When the hourly allowance is used up, the bot posts a "Review limit reached - next
+included review available in N minutes" summary comment and sets its check to
+success. It does not review by itself when the wait ends. The org shares the
+allowance (2 reviews per hour), so the stated wait is not reliable and can grow.
+
+1. Read the wait from the summary comment. Arm a watch until it ends.
+2. Post `@coderabbitai review` on the PR.
+3. Watch the check and the summary comment, as above.
+4. A "Review rate limited" reply means the bot refused the trigger: read the summary
+   comment again for the new wait, and go to 1.
+
+After two refused triggers, stop the loop and tell the user. Do not poll for hours.
+Never enable usage-based billing to skip the wait.
 
 ## 7. Stop
 

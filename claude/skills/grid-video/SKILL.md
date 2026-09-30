@@ -333,8 +333,8 @@ video a human should watch. Post nothing to Shortcut or to a PR.
 - Starting a run without the card, or after "edit" without showing the card again.
 - Reading `<base>..HEAD` only: uncommitted and untracked changes are in the build.
 - A hypothesis without its evidence (manifest or frames).
-- Polling with `sleep` in the foreground, or a background Bash job for the run: the
-  harness caps it at 10 minutes. Only the detached start and the Monitor.
+- Polling with `sleep` in the foreground, or a background Bash job for the run. Only
+  the detached start and the Monitor.
 - Treating exit 0 as a verdict before the manifest checks.
 - A "yes" verdict on a motion observable without a frame that shows it.
 - `gridlab stack reset`, `vm destroy` or `vm create` without the operator's word.

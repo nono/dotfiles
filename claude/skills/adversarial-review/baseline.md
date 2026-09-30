@@ -35,9 +35,6 @@ Each entry reads *what it is* → *what to do*:
 - **Middle man**: a type or function that only delegates onward. → Call the real target.
 - **Dead code**: a branch, field or export this diff leaves unreachable. → Delete it;
   git keeps it.
-- **Comment rot**: a comment that describes what the code used to do, names its own
-  caller, or states an invariant the code no longer holds. → Reword it in the present
-  tense, or delete it.
 - **Out of step with the neighbours**: the change does X where the code around it does
   Y — error wrapping, logging, test naming, table-driven tests. → Follow the
   neighbours, or say why this one differs.

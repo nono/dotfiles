@@ -1,15 +1,21 @@
 ---
 name: adversarial-review
-description: Use when asked to review work, a change, a diff, a branch or a PR - dispatches two competing reviewers, a nitpicker and a Quint modeler, verifies every finding only one of them reported, then grades what survives as high, medium or low.
+description: Use when asked to review work, a change, a diff, a branch or a PR - dispatches two competing reviewers, a nitpicker, a Quint modeler and a claim auditor, mutates each changed line to find what no test pins, verifies every finding only one of them reported, then grades what survives as high, medium or low.
 ---
 
 # Adversarial Review
 
-Four agents review the same code in parallel. Two compete on defects that have a
+Five agents review the same code in parallel. Two compete on defects that have a
 failure chain; the third collects what has none; the fourth models the change in Quint
-and runs the model to find the interleavings and edge cases a read misses. You merge
-their reports, verify anything only one agent saw, grade the survivors on one scale,
-and present them.
+and runs the model to find the interleavings and edge cases a read misses; the fifth
+checks every claim the change makes in prose. At the same time, `hunkmut` mutates the
+changed lines one at a time and runs the tests, to find what no test pins. You
+merge their reports, verify anything only one agent saw, grade the survivors on one
+scale, and present them.
+
+Each agent's instructions live in `prompts/`: `common.md` for all of them, and one file
+per role. You send only the letter, the values of the review and the file names.
+`evals/` holds the test set for a change to these prompts.
 
 ## 1. Resolve the target
 
@@ -26,31 +32,21 @@ Do this before dispatching. Every reviewer must see the same bytes.
 3. Else, uncommitted work: `git diff HEAD`, plus `git ls-files --others --exclude-standard`.
 4. Nothing: say so and stop. Do not invent a scope.
 
-Then prove the scope, before four agents find the hole for you:
+Then prove the scope: `git rev-parse --verify "$base"` resolves, and
+`git diff --name-only "$base...HEAD"` is not empty. Otherwise say so and stop.
 
-```sh
-git rev-parse --verify "$base" >/dev/null   # the ref resolves (cases 1 and 2)
-git diff --name-only "$base...HEAD"         # the file list is not empty
-command -v codex >/dev/null                 # B can run at all
-```
+Decide who runs. Write each skip in the report header as `X = skipped (<reason>)`.
 
-A ref that does not resolve, or an empty file list: say so and stop. No `codex`: decide
-here to run with A and C, and say so in the report.
+| Agent | Skip when |
+| --- | --- |
+| B | `command -v codex` fails |
+| C | the target is a PR someone else opened: `gh pr view <number> --json author -q .author.login` differs from `gh api user -q .login` |
+| D | `command -v quint` fails, or the diff changes no state that changes over steps — a state machine, a status and its transitions, locks, queues, retries, idempotency, ordering, a cache and its invalidation, a workflow of several steps, two actors on the same data |
+| M | the file list holds no non-test `.go` file |
 
-When the target is a PR, find its author:
-
-```sh
-[ "$(gh pr view <number> --json author -q .author.login)" = "$(gh api user -q .login)" ]
-```
-
-False — someone else opened the PR: skip C, and say so in the report. Run C in all other
-cases: your own PR, or work that is not a PR yet.
-
-Decide if D runs. D needs state that changes over steps: a state machine, a status
-field and its transitions, locks, queues, retries, idempotency, ordering, a cache and
-its invalidation, a workflow of several steps, or two actors that touch the same data.
-The diff changes none of these — pure functions, UI, config, docs, renames: skip D, and
-say so in the report. Also skip D when `command -v quint` fails.
+Find the PR body. For a PR, save `gh pr view <number> --json body -q .body` to
+`<scratchpad>/pr-body.md`. For work that is not a PR yet, use the draft body the caller
+passed as a path. None: say so in the report — E then audits the code's prose alone.
 
 Write down the diff command, the merge base and the file list. All three go to every
 reviewer verbatim.
@@ -69,192 +65,120 @@ Look for it in this order, and stop at the first hit:
    the PR body when the target is a PR.
 4. Nothing: say so in the report and dispatch without it. Do not invent requirements.
 
-Quote it into A's, B's and D's prompt: a criterion you paraphrase is one they cannot
+Quote it into A's, B's and D's dispatch: a criterion you paraphrase is one they cannot
 hold you to. For D, each criterion is a candidate invariant.
 
-## 3. Dispatch four reviewers
+## 3. Dispatch five reviewers and M
 
-One message, four calls, so they run concurrently. All four are read-only on the
-repository: they report, they never edit it. D writes its model in the scratchpad
-only.
+One message, six calls, so they run concurrently. No agent edits the user's tree. A, B
+and M each get their own throwaway worktree, where they may edit and run code. C, D and
+E are read-only; D writes its model in the scratchpad only.
 
 | Agent | How to run | Model |
 | --- | --- | --- |
 | A | `Agent`, `subagent_type: adversarial-reviewer` | Opus, medium effort (set in the agent definition — pass no `model`) |
-| B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-6-sol`, medium reasoning effort |
-| C | `Agent`, `subagent_type: adversarial-nitpicker` | Sonnet 5.5, medium effort (set in the agent definition — pass no `model`) — skip on a PR someone else opened (step 1) |
-| D | `Agent`, `subagent_type: adversarial-modeler` | Opus, medium effort (set in the agent definition — pass no `model`) — skip when step 1 says so |
+| B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-6.1-sol`, medium reasoning effort |
+| C | `Agent`, `subagent_type: adversarial-nitpicker` | Sonnet, medium effort (set in the agent definition) |
+| D | `Agent`, `subagent_type: adversarial-modeler` | Opus, medium effort (set in the agent definition) |
+| E | `Agent`, `subagent_type: adversarial-claim-auditor` | Opus, medium effort (set in the agent definition) |
+| M | `Bash`, `hunkmut`, `run_in_background: true` | no model |
 
-A and B get **identical** prompts, because "only one agent found it" carries
+A and B get **identical** dispatches, because "only one agent found it" carries
 information only when both had the same job. Their models differ on purpose: three
-models disagree where one model repeats itself. D does a different job, so D gets its
-own prompt: agreement between D and A or B means two methods found the same defect.
+models disagree where one model repeats itself. D does a different job: agreement
+between D and A or B means two methods found the same defect.
 
 No reviewer grades its own findings. Severity is assigned once, in step 5, by you, so
-one scale covers all four reports.
+one scale covers all the reports.
 
-### How to run B
+### Worktrees
 
-Write the prompt to `<scratchpad>/review-b-prompt.md`, then start this in the
-background, in the same message as the two `Agent` calls:
+Before the dispatch, make one worktree each for A, B and M, all at the head of the
+change:
 
 ```sh
-codex exec --model gpt-6-sol -c model_reasoning_effort=medium \
-  --sandbox read-only -C <repo root> \
-  -o <scratchpad>/review-b.md - < <scratchpad>/review-b-prompt.md
+for w in review-a review-b hunkmut-tree; do git worktree add --detach <scratchpad>/$w <head>; done
 ```
 
-`-o` writes the final report to the file. Read that file when the command ends; ignore
-the progress log on stdout. If `codex` fails mid-run, say so in the report and
-adjudicate with A and C alone — never silently drop B.
+`<head>` is `HEAD` for a branch. For a PR, run `git fetch origin pull/<number>/head`
+first and use `FETCH_HEAD`. For uncommitted work, apply `git diff HEAD --binary` in each
+worktree, copy the untracked files into it, and commit them there with
+`git commit --no-verify`: `hunkmut` diffs commits and refuses a dirty tree. Remove the
+three worktrees when step 4 is done.
 
-### Provenance, pasted into all four prompts
+### The dispatch
 
-> Tag every finding with one of:
+Every agent gets this, with the lines that do not apply to it left out:
+
+> You are reviewer <letter>. Skill directory: `<skill dir>`. Review <scope>. Get the
+> diff with `<command>`. The merge base is `<base>`.
 >
-> - `introduced` — this change created the defect;
-> - `partly introduced` — the defect predates this change, which makes it reachable, or
->   much easier to hit;
-> - `pre-existing` — the change only sits next to it.
+> Your worktree: `<scratchpad>/review-a` (A) or `<scratchpad>/review-b` (B).
+> PR body: `<path>`, or: there is no PR body yet (E).
+> Write your model under `<scratchpad>/quint/` (D).
 >
-> Read the merge-base version of the file to decide. Do not guess from the diff.
-
-### Prompt for A and B
-
-> Review <scope>. Get the diff with `<command>`. The merge base is `<base>`. Read every
-> changed file in full, and the callers of anything you doubt.
->
-> The change is meant to implement this:
+> The change is meant to implement this (A, B, D):
 >
 > <spec, quoted in full — or: no spec was found; judge the code on its own>
 >
-> Read it before you read the code.
->
-> Another agent is reviewing this same code right now. Whichever of you reports the
-> largest number of defects that survive verification gets five points. A false finding
-> costs more than a missed one: it is scored against you. Do not submit anything you
-> have not convinced yourself of.
->
-> You have a 30 minute budget.
->
-> Do two searches that a read of the added lines misses:
->
-> - For each line the diff deletes or replaces, name the behaviour it enforced — a
->   guard, an error path, a validation, a test case. Then find where the new code
->   enforces it again. If you find no such place, you have a candidate.
-> - For each type the diff adds or changes that wraps another — cache, proxy,
->   decorator, adapter — check that every method calls the wrapped instance, not back
->   through a registry, session or global. Also check that it forwards every method
->   its callers use.
->
-> Report any defect you can tie to a concrete failure chain:
->
-> - wrong behaviour, data loss, security holes, broken contracts, unhandled failures,
->   race conditions;
-> - a path this diff adds that no test pins — name the edit that guts it and the suite
->   that should go red. Do not run it: you cannot, and the verify step does it for you;
-> - a docstring, comment, design document or PR body that contradicts the code it
->   describes;
-> - a failure that is silent: no log, no metric, nothing returned to the caller;
-> - a requirement the spec asks for that the change does not meet, or behaviour the
->   change adds that no requirement asks for. Quote the line of the spec you judge it
->   against.
->
-> Leave naming, style, duplication and dead code to another agent.
->
-> Do not rank your findings and do not label them high, medium or low. A third agent
-> grades them all on one scale after you report.
->
-> <the provenance block>
->
-> Report each finding as:
->
-> - `file:line`, and its provenance;
-> - one sentence stating the defect;
-> - **If not addressed**: the failure chain. Specific inputs or state, the wrong output
->   or crash that follows, and who pays for it. For an unmet requirement, the chain is
->   what the user asked for and does not get, and the story that closes unmet;
-> - one line for the fix.
->
-> A finding you cannot give a failure chain for is not a finding. Drop it.
+> Read `<skill dir>/prompts/common.md`, then `<skill dir>/prompts/<role file>`, in full
+> before you start, and follow them.
 
-### Prompt for C
+The role files: `reviewer.md` for A and B, `nitpicker.md` for C, `modeler.md` for D,
+`claims.md` for E.
 
-> Review <scope> for everything the other reviewers are told to leave you. Get the diff
-> with `<command>`. The merge base is `<base>`.
->
-> Work through the baseline in `<skill dir>/baseline.md`, in order, against the diff.
-> The same list every run makes a smell that keeps coming back visible.
->
-> Judge against this repository — its CLAUDE.md, and the code next to the change — not
-> against general style preferences. "The three neighbouring functions all do X" is a
-> finding. "I prefer early returns" is not.
->
-> <the provenance block>
->
-> Report at most 30, ranked, best first: `file:line`, provenance, the baseline entry it
-> falls under, one sentence.
->
-> A defect with a concrete failure chain is not yours to rank. Put it in a separate
-> section at the top: `file:line`, provenance, the defect, **If not addressed** and the
-> chain, and one line for the fix.
+For B, write the dispatch to `<scratchpad>/review-b-prompt.md` and start this, in the
+same message as the `Agent` calls:
 
-### Prompt for D
+```sh
+nice -n 19 systemd-run --user --scope --quiet --collect -p MemoryMax=8G -p MemorySwapMax=0 \
+  -p OOMPolicy=continue -- \
+  codex exec --model gpt-6.1-sol -c model_reasoning_effort=medium \
+  --sandbox workspace-write --add-dir "$(go env GOCACHE)" -C <scratchpad>/review-b \
+  -o <scratchpad>/review-b.md - < <scratchpad>/review-b-prompt.md
+```
 
-> Review <scope> by building a Quint model of it. Get the diff with `<command>`. The
-> merge base is `<base>`. Read every changed file in full, and the callers of anything
-> you model.
->
-> The change is meant to implement this:
->
-> <spec, quoted in full — or: no spec was found; take the invariants from the code>
->
-> You have a 30 minute budget. Write every file under `<scratchpad>/quint/`.
->
-> 1. Find the state machine the change touches: the state, the actions that change it,
->    and the actors that can run them at the same time. Model the code after the change,
->    not its intent. Leave out what no invariant needs.
-> 2. Write the invariants the code must keep. Take them from the spec, the docstrings
->    and comments, the tests, and the behaviour each deleted line enforced. Name the
->    source of each one.
-> 3. Write a witness for each action, so a green invariant does not come from an action
->    that never fires.
-> 4. `quint typecheck`, then `quint run` against each invariant, with enough samples and
->    steps to reach the edge cases: empty, one, the limit, a retry, two actors at once.
->    Never `quint verify`. Start each quint command with `nice -n 19`, and give
->    `quint run` the option `--n-threads=$(( $(nproc) / 2 ))`. Run one
->    `quint run` at a time.
-> 5. For each violation, map every step of the trace to the `file:line` that takes it.
->    A step the code cannot take is a bug in the model: fix the model and run again.
->    Only a trace the code can take from start to end is a finding.
->
-> No state machine in the change: answer `no model` and one sentence why, and stop.
->
-> Leave naming, style, duplication and dead code to another agent. Do not rank your
-> findings and do not label them high, medium or low.
->
-> <the provenance block> To decide it, check if the merge-base code can take the same
-> trace.
->
-> Report each finding as:
->
-> - `file:line`, and its provenance;
-> - one sentence stating the defect, and the invariant it breaks, with its source;
-> - **If not addressed**: the trace, one line per step, each with its `file:line`. Then
->   the wrong output or crash at the end, and who pays for it;
-> - the command that replays it: `quint run <file> --invariant=<name> --seed=<seed>`;
-> - one line for the fix.
->
-> Then, below the findings: the model path, and each invariant that held, with the
-> number of samples and steps it held for.
+The codex sandbox cannot reach `systemd-run`, so the cap goes around the whole run.
+Read `review-b.md` when the command ends. If `codex` fails mid-run, say so in the
+report and adjudicate without B — never silently drop it.
+
+### M
+
+```sh
+go -C <skill dir>/hunkmut build -o <scratchpad>/hunkmut .
+nice -n 19 <scratchpad>/hunkmut -dir <scratchpad>/hunkmut-tree -base <base> -budget 10m \
+  > <scratchpad>/hunkmut.md 2> <scratchpad>/hunkmut.log
+```
+
+`hunkmut -help` gives the options: `-pkgs` adds a package whose tests cover the change,
+`-tags` and `-run` go to `go test`. Never pass `-mem 0`: a mutant can make a test
+allocate without bound. It exits non-zero when the tests fail at the head: say so in
+the report and go on without it.
 
 ## 4. Verify
 
-One pool: A's findings, B's findings, C's escalated section and D's findings. C's
-ranked list and D's invariants that held are not in it. A skipped agent adds nothing to
-the pool.
+One pool: A's findings, B's findings, C's escalated section, D's findings and E's
+findings. C's ranked list and D's invariants that held are not in it. A skipped agent
+adds nothing to the pool.
 
-Match the findings across the four reports and record, for each one, which agents
+Do not wait for M to start this step. Settle the pool while M runs, and read M's report
+when it ends — its budget sets the latest time. When the pool is settled before M ends,
+wait for M before step 5.
+
+M's report is not in the pool: a command produced it, so it needs no second reader.
+Read it yourself:
+
+- **A mutant no test kills** is a finding, `introduced`, tagged `[M]`. Read the
+  mutated code, and drop the mutant only when it is equivalent — a log text, a rename,
+  a refactor whose revert gives the same result, a statement the next line repeats.
+  Merge it with an A or B finding on the same lines, which then counts as confirmed.
+  Several mutants of one function are one finding.
+- **No test fails on the base code** is a finding: nothing pins the change. When the
+  tests do not compile on the base code, the check shows nothing; say so.
+- **A mutant that breaks the build** gives no verdict. Leave it out.
+- **Mutants not run** when the budget ran out: give their number in the report header.
+
+Match the findings across the reports and record, for each one, which agents
 reported it. Two agents that describe the same defect at the same place are one
 finding, even if the wording differs.
 
@@ -272,9 +196,12 @@ second reader.
 
 Certain, fast, and not a matter of opinion. One pass, before any fan-out:
 
-- **A test pins nothing** — the finding names an edit that should turn a suite red. The
-  reviewers are sandboxed and you are not, so this one is yours. Work in a throwaway
-  worktree, never in the user's tree:
+- **A finding that carries its experiment** [A or B] — run its command again, in
+  that reviewer's worktree once the reviewer is done. The same output settles it,
+  either way; it needs no second reader.
+- **A test pins nothing** — the finding names an edit that should turn a suite red.
+  When M or the reviewer already ran that edit, their output settles it. Otherwise work
+  in a throwaway worktree, never in the user's tree:
   ```sh
   git worktree add <scratchpad>/mutate HEAD   # apply the edit here, run the suite
   git worktree remove --force <scratchpad>/mutate
@@ -285,7 +212,8 @@ Certain, fast, and not a matter of opinion. One pass, before any fan-out:
   in. Read the merge-base version of the file.
 - **Nothing handles this** — a missing error check, an unread return, a caller that
   cannot cope. Grep the callers.
-- **The comment contradicts the code** — read the two side by side.
+- **The comment contradicts the code** — read the two side by side. Most of E's
+  findings are settled here: read the claim and the `file:line` E gives against it.
 - **A Quint trace [D]** — the model can be wrong where the code is right. When the
   suite can express the trace, write it as a test in the throwaway worktree above. Red:
   the finding holds, and the report names the test. Green: drop it. When the suite
@@ -322,15 +250,19 @@ reviewers may not be believed on a singleton, and neither may the verifiers.
 
 ## 5. Grade
 
-Grade every finding that survived step 4, in one pass, so one scale covers four
-reviewers:
+Grade every finding that survived step 4, in one pass, so one scale covers every
+reviewer and M:
 
 - **High** — fires as it stands.
 - **Medium** — has a failure chain, but needs a second event to fire.
 - **Low** — no failure chain.
 
 Grade on the chain, not on how much the code annoys you. C's ranked list is low by
-construction; grade only what came through the pool.
+construction; grade only what came through the pool and M's report.
+
+A mutant no test kills is medium: the second event is the change that breaks it unseen. A
+false claim in prose is low, unless a reader who trusts it writes a defect — then grade
+that chain.
 
 A `pre-existing` finding is not graded. It leaves the levels for the follow-ups
 section, whatever its chain: the levels decide what to fix before merge, and an old bug
@@ -340,11 +272,12 @@ is not this change's to fix. `partly introduced` stays in the levels.
 
 Name the models once, at the top:
 
-> A = Opus medium · B = gpt-6-sol medium · C = Sonnet 5.5 medium · D = Opus medium, Quint
+> A = Opus medium · B = gpt-6.1-sol medium · C = Sonnet medium · D = Opus medium, Quint ·
+> E = Opus medium, claims · M = hunkmut
 
-When C was skipped, write `C = skipped (PR by <author>)`. When D was skipped, write
-`D = skipped (<reason>)`. When D ran, give its model path, so the human can run it
-again.
+Replace a skipped agent with its `X = skipped (<reason>)`. When D ran, give its model
+path, so the human can run it again. When M ran, give the number of mutants it ran and
+how many survived.
 
 Then four sections, worst first. Every line keeps the shape its reviewer reported it
 in, and gains a `[A]`, `[A,D]` or `[A,B,C]` tag, so the human can weigh agreeing agents
@@ -372,15 +305,18 @@ what was confirmed; do not repair things no reviewer raised.
 
 The fixes are code written fast, against a list of complaints, and no reviewer has seen
 them. When they land, dispatch **one** agent — `adversarial-reviewer`, same terms as
-step 3 — on the fix commits alone:
+step 3, with a fresh worktree at the head of the fixes — on the fix commits alone. Add
+to its dispatch:
 
-> Review <the fix commits>. Get the diff with `<command>`. These are the findings they
-> are meant to close:
+> These are the findings the fix commits are meant to close:
 >
 > <the confirmed findings, quoted>
 >
 > Answer two questions for each: does the fix close the finding, or only its symptom?
-> Does the fix introduce a defect of its own? Same reporting rules as before.
+> Does the fix introduce a defect of its own?
+
+When M found mutants that no test kills, run it again on the fix commits' head, with the
+same base: each mutant the fixes meant to kill must now be killed.
 
 There is no second reviewer, so every finding it returns is a singleton: trace each one
 yourself under the step 4 rules. Then stop. Do not open a third round — a fix that

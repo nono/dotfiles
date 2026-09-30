@@ -52,11 +52,11 @@ that two readings give different code, use `superpowers:brainstorming` before pl
 ## 2. Plan
 
 Read the code the story touches before writing a line of the plan. Use
-`superpowers:writing-plans`. Don't forget to think about the edge cases.
+`superpowers:writing-plans`.
 
-The plan states: the change, file by file; what proves it works (which tests, new or
-existing); and what you deliberately leave out. Name the risks you found in the code,
-not generic ones.
+The plan states: the change, file by file; the edge cases it handles; what proves it
+works (which tests, new or existing); and what you deliberately leave out. Name the
+risks you found in the code, not generic ones.
 
 **STOP 1.** Ask with `AskUserQuestion`: approve, revise, or change the approach. Offer
 subagent-driven execution as an option when the plan's tasks are independent — then
@@ -78,11 +78,13 @@ Record the SHA of the last implementation commit. Step 7 compares against it.
 
 ## 4. Review
 
-Run the `adversarial-review` skill on the branch.
+Draft the PR body first, to `<scratchpad>/pr-body.md`: the problem, the change, and how
+it was verified. Run the `adversarial-review` skill on the branch, and pass it that
+path, so its claim auditor checks the body too.
 
-**STOP 2 is that skill's own ending** — it separates confirmed issues from nits and
-asks about each in its own question. Answer both. It owns the rules; do not restate
-them here, and do not replace its two questions with one.
+**STOP 2 is that skill's own ending** — it asks a separate question for each kind of
+finding. Answer each. It owns the rules; do not restate them here, and do not merge
+its questions into one.
 
 Fix only what is chosen, and re-run the affected tests. Nits go in their own commit,
 apart from the issue fixes.
@@ -136,7 +138,7 @@ Stop and put both the regression and the fix to the human.
 
 Commit and title follow the repo's conventions — for a Shortcut story that is
 `[sc-NNNN] Description`, capitalised, no final period, never Conventional Commits. The
-PR body states the problem, the change, and how it was verified.
+PR body is the draft of step 4, updated for the fixes since.
 
 Push, `gh pr create`, then run the `coderabbit` skill and work its loop to the end.
 
