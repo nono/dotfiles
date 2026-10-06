@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# reviewrun runs a command of an adversarial review under nice and a memory cap, and appends its wall time, CPU time,
+# memory peak and exit status to a resource log as one JSON line.
+#
+#   reviewrun [-log <file>] [-label <agent>] [-mem <size>] -- <command>...
+#
+# Without -log it records nothing. When systemd-run fails, as in the codex sandbox, the command runs without the cap,
+# and the log has no CPU time or memory peak.
+set -uo pipefail
+
+log="" label="" mem="8G"
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	-log) log="$2"; shift 2 ;;
+	-label) label="$2"; shift 2 ;;
+	-mem) mem="$2"; shift 2 ;;
+	--inner) inner=1; shift ;;
+	--) shift; break ;;
+	*) echo "reviewrun: unknown option $1" >&2; exit 2 ;;
+	esac
+done
+[[ $# -gt 0 ]] || { echo "usage: reviewrun [-log <file>] [-label <agent>] [-mem <size>] -- <command>..." >&2; exit 2; }
+
+if [[ -z "${inner:-}" ]]; then
+	if systemd-run --user --scope --quiet --collect true 2>/dev/null; then
+		exec nice -n 19 systemd-run --user --scope --quiet --collect -p "MemoryMax=$mem" -p MemorySwapMax=0 \
+			-p OOMPolicy=continue -- "$0" -log "$log" -label "$label" --inner -- "$@"
+	fi
+fi
+
+start=$(date +%s.%N)
+if [[ -n "${inner:-}" ]]; then "$@"; else nice -n 19 "$@"; fi
+status=$?
+end=$(date +%s.%N)
+[[ -n "$log" ]] || exit "$status"
+
+cpu=null peak=null
+if [[ -n "${inner:-}" ]]; then
+	cg=/sys/fs/cgroup$(sed -n 's/^0:://p' /proc/self/cgroup)
+	usec=$(sed -n 's/^usage_usec //p' "$cg/cpu.stat" 2>/dev/null) && [[ -n "$usec" ]] && cpu=$(jq -n "$usec / 1e6")
+	peak=$(cat "$cg/memory.peak" 2>/dev/null) || peak=null
+fi
+jq -cn --arg label "$label" --argjson start "$start" --argjson end "$end" --argjson cpu "$cpu" \
+	--argjson peak "$peak" --argjson status "$status" \
+	'{label: $label, command: $ARGS.positional | join(" "), start: ($start | floor | todate), wall_s: ($end - $start),
+	cpu_s: $cpu, mem_peak_bytes: $peak, exit: $status}' --args -- "$@" >>"$log"
+exit "$status"

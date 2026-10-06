@@ -21,6 +21,8 @@ gh = "latest"
 "pypi:check-jsonschema" = "latest"
 ast-grep = "latest"
 java = "temurin-21"
+actionlint = "latest"
+loki-logcli = "latest"
 
 [env]
 TLA2TOOLS_JAR = "{{env.HOME}}/.local/share/tlaplus/tla2tools.jar"

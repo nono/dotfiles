@@ -57,27 +57,37 @@ round without asking, in this round and in every later one.
 CodeRabbit writes in three places.
 
 In round 1, read everything. In a later round, read only what is newer than the
-watermark - the UTC time you started the collection of the round before:
+watermark - the UTC time you started the collection of the round before.
+
+One GraphQL request reads the three places. Do not use the REST endpoints with
+`--paginate`: they cost one request per page, and a loop of them trips the GitHub
+rate limits. In GraphQL the bot login is `coderabbitai`, not `coderabbitai[bot]`.
 
 ```sh
-SINCE=1970-01-01T00:00:00Z   # round 1; later rounds: start time of the last round
-
-# inline comments on lines of the diff
-gh api "repos/$REPO/pulls/$PR/comments" --paginate \
-  | jq --arg since "$SINCE" '.[] | select(.user.login == "coderabbitai[bot]")
-        | select(.created_at > $since)
-        | {id, path, line, body, in_reply_to_id, url: .html_url}'
-
-# review summaries - the body holds "Actionable comments posted: N"
-gh api "repos/$REPO/pulls/$PR/reviews" --paginate \
-  | jq --arg since "$SINCE" '.[] | select(.user.login == "coderabbitai[bot]")
-        | select(.submitted_at > $since) | {id, state, submitted_at, body}'
-
-# top level comments on the PR
-gh api "repos/$REPO/issues/$PR/comments" --paginate \
-  | jq --arg since "$SINCE" '.[] | select(.user.login == "coderabbitai[bot]")
-        | select(.created_at > $since) | {id, body}'
+gh api graphql -F owner="${REPO%/*}" -F name="${REPO#*/}" -F pr="$PR" -f query='
+  query($owner: String!, $name: String!, $pr: Int!) {
+    repository(owner: $owner, name: $name) { pullRequest(number: $pr) {
+      reviewThreads(first: 100) {
+        pageInfo { hasNextPage }
+        nodes { isResolved isOutdated path line
+          comments(first: 50) { nodes { databaseId author { login } createdAt body } } } }
+      reviews(last: 50) { nodes { databaseId author { login } submittedAt body } }
+      comments(last: 50) { nodes { databaseId author { login } createdAt updatedAt body } }
+    } } }' > "$SCRATCH/coderabbit-$PR-round-$ROUND.json"
 ```
+
+`$SCRATCH` is your scratchpad directory, and `$ROUND` is the round number.
+
+- `reviewThreads`: the inline comments. A thread is the bot's when its first comment
+  is. The `databaseId` of that first comment is the ID for the reply in step 5. Keep
+  every comment of the thread: step 2 and step 5 read the replies.
+- `reviews`: the review bodies. They hold "Actionable comments posted: N" and the
+  findings with no thread.
+- `comments`: the top level comments. The bot's summary comment is one of them. Keep
+  its `databaseId` for step 6.
+
+If `hasNextPage` is true, ask again with `after:` on the cursor. Filter on the
+watermark with `jq` on `createdAt` and `submittedAt`.
 
 Write down the new watermark before you read anything.
 
@@ -89,7 +99,10 @@ block counts the same as one in the visible text.
 Skip a thread when it is already settled:
 
 - a reply from the human author is after the last bot message, or
-- the comment is on an outdated diff and the code no longer matches, or
+- you rejected the claim, the bot answered, and its answer gives no new evidence
+  (a new input, a new code path, a test). The bot auto-replies to each rejection,
+  so a bot message after your reply alone does not open the thread again, or
+- the thread `isOutdated` and the code no longer matches, or
 - you rejected the same claim in an earlier round.
 
 Say the round number, how many comments you found, and how many you skipped.
@@ -105,6 +118,23 @@ claim is about an interface. Then give each comment one verdict:
 
 Use `superpowers:receiving-code-review` for the discipline of this step. A bot that
 sounds sure is still only a reviewer.
+
+A valid claim does not make the suggested fix valid. Check the committable
+suggestion, or the fix that the comment describes, on its own. It can create a
+worse defect: it can make a case fatal that the code handled, or bring back the
+behaviour that the PR removes. When the fix is wrong and the claim is right, fix the
+cause in your own way, and say why in the reply.
+
+Known false patterns of this bot. Check them before you accept:
+
+- **Line length.** Measure the line (`awk 'NR==N {print length}' FILE`) - the bot
+  miscounts. Read the exemptions of the project before you accept: a linter config
+  can exempt Markdown tables, and a linter can already enforce the limit in CI.
+- **"Addressed in commit X".** The bot puts this marker on threads where the code
+  did not change. It is not proof of a fix. Read the commit.
+- **A guard for a case that cannot happen.** When the bot asks for a check of an
+  input, find who produces that input. If no caller can produce it, the comment is
+  wrong.
 
 ## 4. Fix and push
 
@@ -137,6 +167,11 @@ gh pr comment "$PR" --body "..."
 One or two sentences. What changed and the commit sha, or why you rejected the
 comment. Do not resolve the threads.
 
+Make a rejection final in one reply: give the evidence, not an opinion. Give the
+line that refutes the claim, the test that covers the case, or the rule (with its
+file) that allows the code. A rejection without evidence makes the bot argue again
+in the next round.
+
 ## 6. Wait for the new review
 
 The bot reviews the new commits on its own. Poll for a CodeRabbit review submitted
@@ -152,8 +187,7 @@ gh api graphql -F owner="${REPO%/*}" -F name="${REPO#*/}" -F pr="$PR" -f query='
 ```
 
 Never use `--paginate` in this poll. On a PR with many comments each paginated
-call costs many requests, and a loop of them trips the GitHub rate limits. Use
-`--paginate` only in step 2, once per round.
+call costs many requests, and a loop of them trips the GitHub rate limits.
 
 A review with 0 findings creates no entry in the reviews endpoint. The bot only
 edits its summary comment to "No actionable comments were generated in the recent

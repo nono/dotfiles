@@ -18,6 +18,8 @@
 
 - Before you suggest a follow-up PR, examine if one more commit in the current PR can do it. Each PR costs the team a review. Do it in the current PR when the change is small, related to the PR, and does not delay the merge. Suggest a follow-up only when there is a good reason: the change is large, has a different risk, needs a different reviewer, or must wait for a decision or a deploy. Give that reason.
 
+- Design documents go in `docs/design/`, named `YYYY-MM-DD-<topic>-design.md`. This overrides the `docs/superpowers/specs/` default of the superpowers brainstorming skill. Implementation plans are temporary: delete them before merge.
+
 ## Shortcut
 
 - `sc-NNNN` means the story NNNN in Shortcut (MCP).
@@ -28,12 +30,12 @@
 
 - Never use heredocs to write files; the shell flattens them, or hangs until the command is killed. Use the Write/Edit tools instead, and `git commit -F <file>` for a multi-line commit message.
 
-- The Bash tool runs zsh. In zsh, a glob that matches no file stops the command with `no matches found`. Quote each glob that is for the command and not for the shell: `grep -rn X --include='*.go' .`, not `--include=*.go`. Or use `git grep X -- '*.go'`.
+- The Bash tool runs zsh. In zsh, a glob that matches no file stops the command with `no matches found`. Quote each glob that is for the command and not for the shell: `grep -rn X --include='*.go' .`, not `--include=*.go`. Or use `git grep X -- '*.go'`. Quote a word that starts with `=` too: zsh reads `echo ===` as a command path and fails with `== not found`.
+
+- Give `git grep` its options before the pattern: `git grep -n -A3 X`, not `git grep -n X -A3`, which fails with `unable to resolve revision: -A3`.
 
 - Always use absolute paths in Bash commands; do not rely on the current working directory persisting between calls.
 
 - If a tool that is not installed can help, ask me to install it. Give the `apt` or `mise` command. Do not install it yourself.
-
-- For a structural search, or a rewrite across many files, use `ast-grep run -p 'PATTERN' -l go` (add `-r 'REWRITE' -U` to rewrite). Call it `ast-grep`, never `sg`: `/usr/bin/sg` is a different command.
 
 - Do not write a new shell script of more than 100 lines (soft limit). Use a better language, such as Go. More lines of code are acceptable: static typing, tooling and tests make the work easier and faster.

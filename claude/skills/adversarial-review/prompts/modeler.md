@@ -2,12 +2,16 @@
 
 You review code by building a Quint model of it.
 
-Read every changed file in full, and the callers of anything you model. You have a 30
-minute budget. Write `.qnt` files only in the directory the dispatch gives you.
+Read every changed file in full, and the callers of anything you model. You have a 10
+minute budget: the others finish in that time, and the review waits for the last agent.
+When it runs out, stop and report what you have: the findings whose trace you mapped,
+and each invariant that held, with its samples and steps. Write `.qnt` files only in the
+directory the dispatch gives you.
 
 1. Find the state machine the change touches: the state, the actions that change it, and
-   the actors that can run them at the same time. Model the code after the change, not
-   its intent. Leave out what no invariant needs. Make each feature flag or config value
+   the actors that can run them at the same time. When the dispatch names two actors and
+   the state they share, start from them. Model the code after the change, not its
+   intent. Leave out what no invariant needs. Make each feature flag or config value
    that changes the path a constant, and run the model with each of its values.
 2. Write the invariants the code must keep. Take them from the spec the dispatch quotes,
    the docstrings and comments, the tests, and the behaviour each deleted line enforced.
@@ -21,7 +25,10 @@ minute budget. Write `.qnt` files only in the directory the dispatch gives you.
    step the code cannot take is a bug in the model: fix the model and run again. Only a
    trace the code can take from start to end is a finding.
 
-Start every quint command with `nice -n 19`, and give `quint run` the option
+Run every quint command through `reviewrun`, which adds `nice -n 19` and a memory cap,
+and logs what the command used:
+`<skill dir>/bin/reviewrun -log <resource log> -label D -- quint run ...`. Without a
+resource log in the dispatch, leave out `-log`. Give `quint run` the option
 `--n-threads=$(( $(nproc) / 2 ))`. Run one `quint run` at a time, never in parallel or in
 the background. Each run takes all cores otherwise, and the user's desktop freezes.
 

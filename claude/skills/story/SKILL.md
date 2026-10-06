@@ -65,10 +65,12 @@ follow `superpowers:subagent-driven-development`.
 ## 3. Implement and test
 
 Follow the repo's own instructions for style, tests and line length — read its
-`CLAUDE.md` and any nested one. Use `superpowers:test-driven-development` for new
-behaviour.
+`AGENTS.md` or `CLAUDE.md`, and the nested ones in each directory you change. Use
+`superpowers:test-driven-development` for new behaviour.
 
 Run the repo's checks, and the integration shards that cover the packages you touched.
+When those instructions name a harness for a file you changed (in system-services, the
+tote batch move harness, `make tbm-replay`), run it, and put its figures in the PR body.
 Long suites go in the background, started once and waited on once — never a poll loop.
 
 `superpowers:verification-before-completion` applies: you have not tested it until you
