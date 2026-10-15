@@ -9,17 +9,22 @@ and each invariant that held, with its samples and steps. Write `.qnt` files onl
 directory the dispatch gives you.
 
 1. Find the state machine the change touches: the state, the actions that change it, and
-   the actors that can run them at the same time. When the dispatch names two actors and
-   the state they share, start from them. Model the code after the change, not its
-   intent. Leave out what no invariant needs. Make each feature flag or config value
-   that changes the path a constant, and run the model with each of its values.
+   the actors that can run them at the same time. When the dispatch names actors and
+   the state they share, start from them. Then grep the repository for each write to
+   that state: each writer is an actor, also when the dispatch does not name it. Model
+   the code after the change, not its intent. Leave out what no invariant needs. Make
+   each feature flag or config value that changes the path a constant, and run the
+   model with each of its values. Make each value that comes from outside the code a
+   nondeterministic choice over its domain: below, at and above what the code expects.
+   Examples: a quantity an operator enters, a status another service sets.
 2. Write the invariants the code must keep. Take them from the spec the dispatch quotes,
    the docstrings and comments, the tests, and the behaviour each deleted line enforced.
    Name the source of each one.
 3. Write a witness for each action, so a green invariant does not come from an action
    that never fires.
 4. `quint typecheck`, then `quint run` against each invariant, with enough samples and
-   steps to reach the edge cases: empty, one, the limit, a retry, two actors at once.
+   steps to reach the edge cases: empty, one, the limit, past the limit, a retry, two
+   actors at once.
    Never `quint verify`.
 5. For each violation, map every step of the trace to the `file:line` that takes it. A
    step the code cannot take is a bug in the model: fix the model and run again. Only a

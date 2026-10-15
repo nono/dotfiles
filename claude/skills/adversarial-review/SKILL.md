@@ -40,7 +40,7 @@ Decide who runs. Write each skip in the report header as `X = skipped (<reason>)
 | --- | --- |
 | B | `command -v codex` fails |
 | C | the target is a PR someone else opened: `gh pr view <number> --json author -q .author.login` differs from `gh api user -q .login` |
-| D | `command -v quint` fails, or you cannot name two actors that change the same state in the diff — two goroutines, handlers, services, plans or retries — and the state they share. Write the two actors and the state in D's dispatch |
+| D | `command -v quint` fails, or you cannot name two actors that change the same state in the diff — two goroutines, handlers, services, plans or retries — and the state they share. Then grep the whole repository, not only the diff, for each write to that state: every writer is an actor. Write all the actors and the state in D's dispatch |
 | F | `command -v ocr` fails, or `ocr delegate preview --from <base> --to <head>` lists no reviewable file |
 
 Find the PR body. For a PR, save `gh pr view <number> --json body -q .body` to
@@ -81,7 +81,7 @@ For D, each criterion is a candidate invariant.
 
 ## 3. Dispatch six reviewers
 
-One message, six calls, so they run concurrently. No agent edits the user's tree. A, B,
+One message, six calls (seven when E is split), so they run concurrently. No agent edits the user's tree. A, B,
 C, E and F each get their own throwaway worktree, where they may edit and run code. D is
 read-only, and writes its model in the scratchpad only.
 
@@ -89,9 +89,9 @@ read-only, and writes its model in the scratchpad only.
 | --- | --- | --- |
 | A | `Agent`, `subagent_type: adversarial-reviewer` | Opus, medium effort (set in the agent definition — pass no `model`) |
 | B | `Bash`, `codex` CLI, `run_in_background: true` | `gpt-6.1-sol`, medium reasoning effort |
-| C | `Agent`, `subagent_type: adversarial-nitpicker` | Sonnet, medium effort (set in the agent definition) |
+| C | `Agent`, `subagent_type: adversarial-nitpicker` | Opus, medium effort (set in the agent definition) |
 | D | `Agent`, `subagent_type: adversarial-modeler` | Opus, medium effort (set in the agent definition) |
-| E | `Agent`, `subagent_type: adversarial-claim-auditor` | Opus, medium effort (set in the agent definition) |
+| E | `Agent`, `subagent_type: adversarial-claim-auditor` | Opus, medium effort (set in the agent definition); two agents on a large diff |
 | F | `Agent`, `subagent_type: adversarial-ocr` | Opus, medium effort (set in the agent definition) |
 
 A and B get **identical** dispatches, because "only one agent found it" carries
@@ -104,10 +104,19 @@ and A, B or F means two methods found the same defect.
 No reviewer grades its own findings. Severity is assigned once, in step 5, by you, so
 one scale covers all the reports.
 
+### E on a large diff
+
+E's misses grow with the size of the diff. When the diff adds more than 1,000 lines
+(the first column of `git diff --numstat <base> <head>`, summed), dispatch two E agents,
+E1 and E2, in the same message. Split the file list in two parts with about the same
+added lines, and keep each directory, with its tests, in one part. E1 gets the first
+part and the PR body. E2 gets the second part and no PR body. In the pool, the tags and
+the ledger, both are E.
+
 ### Worktrees
 
 Before the dispatch, make one worktree each for A, B, C, E and F, all at the head of the
-change:
+change, and `review-e2` too when E is split:
 
 ```sh
 for w in review-a review-b review-c review-e review-f; do git worktree add --detach <scratchpad>/$w <head>; done
@@ -115,7 +124,7 @@ for w in review-a review-b review-c review-e review-f; do git worktree add --det
 
 `<head>` is `HEAD` for a branch. For a PR, run `git fetch origin pull/<number>/head`
 first and use `FETCH_HEAD`. For uncommitted work, apply `git diff HEAD --binary` in each
-worktree, and copy the untracked files into it. Remove the five worktrees when step 4 is
+worktree, and copy the untracked files into it. Remove the worktrees when step 4 is
 done.
 
 ### The dispatch
@@ -126,12 +135,14 @@ Every agent gets this, with the lines that do not apply to it left out:
 > diff with `<command>`. The merge base is `<base>`.
 >
 > Your worktree: `<scratchpad>/review-a` (A), `<scratchpad>/review-b` (B),
-> `<scratchpad>/review-c` (C), `<scratchpad>/review-e` (E) or `<scratchpad>/review-f` (F).
+> `<scratchpad>/review-c` (C), `<scratchpad>/review-e` (E, E1), `<scratchpad>/review-e2` (E2)
+> or `<scratchpad>/review-f` (F).
+> Your files, audit the claims in these only: <the part of the file list> (E1, E2).
 > Spec file: `<scratchpad>/spec.md` (F, when a spec was found).
-> PR body: `<path>`, or: there is no PR body yet (E).
+> PR body: `<path>`, or: there is no PR body yet (E, E1).
 > Open PRs that can use this change: <#number title, one per line> (C, when there are).
 > Resource log: `<review dir>/resources.jsonl` (A, C, D, E, F).
-> The actors and the state they share: <the two actors and the state, from the skip check> (D).
+> The actors and the state they share: <every actor and the state, from the skip check> (D).
 > Write your model under `<scratchpad>/quint/` (D).
 >
 > The change is meant to implement this (A, B, C, D, F):
@@ -148,7 +159,7 @@ For B, write the dispatch to `<scratchpad>/review-b-prompt.md` and start this, i
 same message as the `Agent` calls:
 
 ```sh
-<skill dir>/bin/reviewrun -log <review dir>/resources.jsonl -label B -- \
+<skill dir>/bin/reviewrun -log <review dir>/resources.jsonl -label B -- timeout 15m \
   codex exec --model gpt-6.1-sol -c model_reasoning_effort=medium \
   --sandbox workspace-write -c sandbox_workspace_write.network_access=true \
   --add-dir "$(go env GOCACHE)" -C <scratchpad>/review-b \
@@ -159,8 +170,13 @@ The codex sandbox cannot reach `systemd-run`, so the cap and the log go around t
 run. Without `network_access`, the sandbox refuses every socket: each test that starts an
 `httptest` server fails with `socket: operation not permitted`, and B reviews without the
 tests. The setting opens all the network, not only loopback.
-Read `review-b.md` when the command ends. If `codex` fails mid-run, say so in the
-report and adjudicate without B — never silently drop it.
+Read `review-b.md` when the command ends. If `codex` fails mid-run or times out, say so
+in the report and adjudicate without B — never silently drop it.
+
+B usually ends last. Do not wait for it to start step 4: when the other reports are in,
+match them and settle their singletons with commands. Hold the fan-out until B is in,
+since a singleton B also reports is accepted without one. When B is in, add its findings
+to the pool and settle the rest.
 
 ## 4. Verify
 
@@ -253,9 +269,10 @@ reviewer:
 Grade on the chain, not on how much the code annoys you. C's ranked list is low by
 construction; grade only what came through the pool.
 
-A change no test pins is medium: the second event is the change that breaks it unseen. A
-false claim in prose is low, unless a reader who trusts it writes a defect — then grade
-that chain.
+A change no test pins is medium when the unpinned path changes stored state, an output,
+an API response or a published message, or carries a spec criterion: the second event is
+the change that breaks it unseen. Otherwise it is low. A false claim in prose is low,
+unless a reader who trusts it writes a defect — then grade that chain.
 
 A `pre-existing` finding is not graded. It leaves the levels for the follow-ups
 section, whatever its chain: the levels decide what to fix before merge, and an old bug
@@ -265,7 +282,7 @@ is not this change's to fix. `partly introduced` stays in the levels.
 
 Name the models once, at the top:
 
-> A = Opus medium · B = gpt-6.1-sol medium · C = Sonnet medium · D = Opus medium, Quint ·
+> A = Opus medium · B = gpt-6.1-sol medium · C = Opus medium · D = Opus medium, Quint ·
 > E = Opus medium, claims · F = Opus medium, ocr
 
 Replace a skipped agent with its `X = skipped (<reason>)`. When D ran, give its model
@@ -325,7 +342,7 @@ dropped ones too.
 ```
 
 - `status`: `ran`, `skipped` or `failed`; `findings` counts what the agent reported,
-  before any merge.
+  before any merge. A split E adds `"runs": 2`, and `findings` is the sum.
 - `agents` of a finding: every agent that reported it, and `C-list` for an
   item of C's ranked list. Each item of C's list is one finding, dropped ones too.
 - `confidence`: as the reviewer gave it (`proved`, `traced`, `suspected`), or null.

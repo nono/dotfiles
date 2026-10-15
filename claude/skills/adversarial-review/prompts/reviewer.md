@@ -27,7 +27,7 @@ run at the same time.
 
 ## Searches
 
-Seven searches that a read of the added lines misses:
+Eight searches that a read of the added lines misses:
 
 - For each line the diff deletes or replaces, name the behaviour it enforced — a guard,
   an error path, a validation, a test case. Then find where the new code enforces it
@@ -55,6 +55,13 @@ Seven searches that a read of the added lines misses:
   Follow each one to its effect. A value the code accepts and then mishandles is a
   candidate. For each switch on a closed set — a verb, a status, a step kind — check what
   a value the switch does not name does. A silent no-op or a success is a candidate.
+- For each condition the diff adds or changes — an `if`, a `case`, a filter, a `WHERE`
+  clause, a bound — read the tests that reach it and name the clause no test makes
+  decide. Remove that clause alone, or move the bound by one, and run the tests of its
+  package. For each test the diff adds, name the dimension its fixtures never vary that
+  the changed code branches on — a status, zero or one item, a second entity, a nil
+  field. Run at most five such edits in all, the ones the tests seem least to vary. A
+  suite that stays green is a candidate.
 
 ## What to report
 

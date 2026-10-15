@@ -40,5 +40,5 @@ below, give no severity, and drop what has no failure chain. Where a rule asks f
 precision over recall, follow the paragraph on missed defects above instead.
 
 Follow the sections "Experiments" and "What to report" of `reviewer.md`, in the same
-directory as this file. Of its "Searches", run only the last one, on inputs and closed
+directory as this file. Of its "Searches", run only the seventh, on inputs and closed
 sets: the rules take the place of the others.

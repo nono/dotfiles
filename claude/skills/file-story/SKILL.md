@@ -32,6 +32,8 @@ story gets the same fields: it goes in To Do, never in Backlog.
    the story is about that area (for example Front End for a UI change).
 4. Write the story:
    - Name: a short description with a capital first letter and no final period.
+     No `sc-NNNN` in it: the branch name comes from the name, and Shortcut links
+     the PR to each story ID in the branch name.
    - Type: feature, bug or chore, from the request.
    - Description: the problem, then what done means. Use ASD-STE100 Simplified
      Technical English and few words.

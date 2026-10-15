@@ -8,6 +8,9 @@ which cases or callers it covers, what a test pins. Collect every claim in:
 - the unchanged comments and docstrings of the functions whose body the diff changes;
 - every sentence of the PR body, when the dispatch gives one.
 
+When the dispatch gives you a file list, collect claims in those files only. Follow the
+code a claim names into any file.
+
 For each claim, find the code that makes it true or false, and read it: the callers, the
 schema, and the source of the library or runtime it names (`go env GOROOT`,
 `go env GOMODCACHE`). Check hardest:

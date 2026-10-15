@@ -26,9 +26,13 @@
 
 - When the work has a Shortcut story, start the commit message and the PR title with `[sc-NNNN] `, then a short description that begins with a capital letter and has no final period. Example: `[sc-4676] Feed each pick station with the soonest-presentable tote`. Never use Conventional Commits (`feat:`, `fix(scope):`, `chore!:`). Without a story ID, write the description alone, with no prefix.
 
+- To name another story in a PR title, body or comment, or in a commit message, write `sc-NNNN` with no brackets and no link. Shortcut links the PR to each story named as `[sc-NNNN]` or by its URL, and moves that story to Done when the PR merges. A branch name holds the ID of its own story only.
+
 ## Shell and File Writing
 
-- Never use heredocs to write files; the shell flattens them, or hangs until the command is killed. Use the Write/Edit tools instead, and `git commit -F <file>` for a multi-line commit message.
+- Do not write a whole file with a heredoc (`cat > f <<EOF`): use the Write tool, and `git commit -F <file>` for a multi-line commit message. A `python3 - <<'EOF'` edit is allowed when it asserts each match count (`assert s.count(a) == 1`) before it writes.
+
+- Read a file with the Read tool before you Edit it. `cat` or `head` does not count, and Edit fails with "File has not been read yet".
 
 - The Bash tool runs zsh. In zsh, a glob that matches no file stops the command with `no matches found`. Quote each glob that is for the command and not for the shell: `grep -rn X --include='*.go' .`, not `--include=*.go`. Or use `git grep X -- '*.go'`. Quote a word that starts with `=` too: zsh reads `echo ===` as a command path and fails with `== not found`.
 
