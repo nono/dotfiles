@@ -24,6 +24,11 @@ Tag every finding with one of:
 
 Decide the tag from the merge-base code. Do not guess from the diff.
 
+A spec, story or PR body that moves work to another story does not put a defect out of
+scope: judge the merge of this change alone, since the other story may ship later or
+never. When this change breaks a reader that the deferred work was to fix, report it,
+with its failure chain at the deploy of this change, and quote the deferral.
+
 Do not rank your findings and do not label them high, medium or low: another agent
 grades every report on one scale.
 

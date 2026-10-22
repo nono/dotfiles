@@ -136,6 +136,8 @@ Stop and put both the regression and the fix to the human.
 
 ## 7. Open the PR
 
+Give me irrefutable proof that it works.
+
 **STOP 3.** Ask before pushing. Show the commit list and the PR title you intend.
 
 Commit and title follow the repo's conventions — for a Shortcut story that is

@@ -8,6 +8,22 @@ When it runs out, stop and report what you have: the findings whose trace you ma
 and each invariant that held, with its samples and steps. Write `.qnt` files only in the
 directory the dispatch gives you.
 
+When the change holds a model under `docs/design/*-model/`, start from it, not from a new
+model:
+
+- Copy its directory into the directory the dispatch gives you. Run the copy first, with
+  the commands of the "Model" section of its design: `quint test`, then `quint run`. A
+  test or an invariant that fails is a finding: map its trace as in step 5.
+- Extend the copy in place of a new model. Add only the state and the actions that the
+  change touches and the model does not have. Keep its invariants, its fault model and
+  its mechanism constants.
+- Report each finding as a scripted test to add to its tests file: a `run` that replays
+  the trace from `init`, and expects the broken invariant to hold. Give the test in full
+  in the report. When the finding comes from a missing mechanism, also give the
+  mechanism constant and the module that removes it.
+
+Then do the steps below on the copy. Without such a model, do them on a new model.
+
 1. Find the state machine the change touches: the state, the actions that change it, and
    the actors that can run them at the same time. When the dispatch names actors and
    the state they share, start from them. Then grep the repository for each write to
@@ -49,7 +65,9 @@ Report each finding as:
 - **If not addressed**: the trace, one line per step, each with its `file:line`. Then the
   wrong output or crash at the end, and who pays for it;
 - the command that replays it: `quint run <file> --invariant=<name> --seed=<seed>`;
+- with a checked-in model: the scripted test to add to it;
 - one line for the fix.
 
 Then, below the findings: the model path, and each invariant that held, with the number
-of samples and steps it held for.
+of samples and steps it held for. With a checked-in model, also say what you added to the
+copy, and whether its own tests passed before you changed it.

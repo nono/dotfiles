@@ -40,7 +40,7 @@ Decide who runs. Write each skip in the report header as `X = skipped (<reason>)
 | --- | --- |
 | B | `command -v codex` fails |
 | C | the target is a PR someone else opened: `gh pr view <number> --json author -q .author.login` differs from `gh api user -q .login` |
-| D | `command -v quint` fails, or you cannot name two actors that change the same state in the diff — two goroutines, handlers, services, plans or retries — and the state they share. Then grep the whole repository, not only the diff, for each write to that state: every writer is an actor. Write all the actors and the state in D's dispatch |
+| D | `command -v quint` fails, or you cannot name two actors that change the same state in the diff — two goroutines, handlers, services, plans or retries — and the state they share. Then grep the whole repository, not only the diff, for each write to that state: every writer is an actor. Goroutines that publish to one consumer — a topic, a channel, a client — are actors too, and the order in which the consumer gets their messages is shared state. Write all the actors and the state in D's dispatch |
 | F | `command -v ocr` fails, or `ocr delegate preview --from <base> --to <head>` lists no reviewable file |
 
 Find the PR body. For a PR, save `gh pr view <number> --json body -q .body` to
@@ -108,10 +108,15 @@ one scale covers all the reports.
 
 E's misses grow with the size of the diff. When the diff adds more than 1,000 lines
 (the first column of `git diff --numstat <base> <head>`, summed), dispatch two E agents,
-E1 and E2, in the same message. Split the file list in two parts with about the same
-added lines, and keep each directory, with its tests, in one part. E1 gets the first
-part and the PR body. E2 gets the second part and no PR body. In the pool, the tags and
-the ledger, both are E.
+E1 and E2, in the same message. Do not count a generated or copied file: a file under
+`generated/` or `testdata/`, a lock file, a copy of a spec or a snapshot.
+
+E's work is the prose, so split by prose. For each file, count its added lines of prose:
+every added line of a Markdown file, and the added comment and docstring lines of a code
+file. E1 gets the PR body, so count its lines in E1's part. Split the file list in two
+parts with about the same prose, and keep each directory, with its tests, in one part.
+E1 gets the first part and the PR body. E2 gets the second part and no PR body. In the
+pool, the tags and the ledger, both are E.
 
 ### Worktrees
 
@@ -126,6 +131,19 @@ for w in review-a review-b review-c review-e review-f; do git worktree add --det
 first and use `FETCH_HEAD`. For uncommitted work, apply `git diff HEAD --binary` in each
 worktree, and copy the untracked files into it. Remove the worktrees when step 4 is
 done.
+
+### Migrations against the base tip
+
+The reviewers read the diff from the merge base, so they do not see a migration that the
+base got after it. When `tools/migrations/base_test.go` exists in `<scratchpad>/review-a`,
+run there, in the same message as the dispatch:
+
+```sh
+git fetch origin <base>
+MIGRATIONS_BASE=origin/<base> go test -count=1 -run '^TestMigrationsAfterBase$' ./tools/migrations
+```
+
+A failure is a finding: tag `[check]`, accepted, `settled_by: command`, graded high.
 
 ### The dispatch
 
@@ -274,6 +292,12 @@ an API response or a published message, or carries a spec criterion: the second 
 the change that breaks it unseen. Otherwise it is low. A false claim in prose is low,
 unless a reader who trusts it writes a defect — then grade that chain.
 
+A reader that breaks at the deploy of this change — in another repository, or a service
+on an older image — is high: the deploy is not a second event. It is lower only when a
+linked PR in that repository ships with the change, or the change still writes the old
+form. A note in the PR body, a deploy order or a planned story does not lower it, and
+does not fix it.
+
 A `pre-existing` finding is not graded. It leaves the levels for the follow-ups
 section, whatever its chain: the levels decide what to fix before merge, and an old bug
 is not this change's to fix. `partly introduced` stays in the levels.
@@ -326,7 +350,8 @@ dropped ones too.
 ```json
 {
   "repo": "system-services", "pr": 815, "branch": "sc-5028-hb", "base": "<sha>", "head": "<sha>",
-  "started": "<UTC>", "reported": "<UTC>", "session": "<Claude Code session id>",
+  "started": "<UTC>", "step4_started": "<UTC>", "reported": "<UTC>",
+  "session": "<Claude Code session id>",
   "agents": {
     "A": {"status": "ran", "findings": 3},
     "B": {"status": "failed", "reason": "codex exited 1"},
@@ -341,9 +366,10 @@ dropped ones too.
 }
 ```
 
+- `step4_started`: when you ran the first command or verifier of step 4.
 - `status`: `ran`, `skipped` or `failed`; `findings` counts what the agent reported,
   before any merge. A split E adds `"runs": 2`, and `findings` is the sum.
-- `agents` of a finding: every agent that reported it, and `C-list` for an
+- `agents` of a finding: every agent that reported it, `check` for the migration check, and `C-list` for an
   item of C's ranked list. Each item of C's list is one finding, dropped ones too.
 - `confidence`: as the reviewer gave it (`proved`, `traced`, `suspected`), or null.
 - `settled_by`: `agreement`, `command`, `fan-out`, or `none` for C's ranked list.

@@ -27,7 +27,7 @@ run at the same time.
 
 ## Searches
 
-Eight searches that a read of the added lines misses:
+Nine searches that a read of the added lines misses:
 
 - For each line the diff deletes or replaces, name the behaviour it enforced — a guard,
   an error path, a validation, a test case. Then find where the new code enforces it
@@ -49,19 +49,38 @@ Eight searches that a read of the added lines misses:
   caller to the final effect: a system stop, a dropped message, a stored record, a
   published payload, a log line. Find the callers with ast-grep. Compare it with the
   final effect at the merge base. A caller whose final effect changes is a candidate.
+  For each migration the diff adds that can fail or refuse, follow what the migration
+  runner does with the version it leaves dirty, at the next start of the service. A
+  service that cannot start again is a candidate.
 - For each input the change adds or reads anew — a parameter, a flag, an environment
-  value, a payload field, a URL — list the values a caller can send: empty, malformed,
-  out of range, with surrounding whitespace, another scheme, a placeholder such as `-`.
+  value, a payload field, a URL, the output of a command the code parses — list the
+  values a caller can send: empty, malformed, out of range, with surrounding whitespace,
+  with a space or a non-ASCII character, another scheme, a placeholder such as `-`.
   Follow each one to its effect. A value the code accepts and then mishandles is a
   candidate. For each switch on a closed set — a verb, a status, a step kind — check what
   a value the switch does not name does. A silent no-op or a success is a candidate.
 - For each condition the diff adds or changes — an `if`, a `case`, a filter, a `WHERE`
   clause, a bound — read the tests that reach it and name the clause no test makes
   decide. Remove that clause alone, or move the bound by one, and run the tests of its
-  package. For each test the diff adds, name the dimension its fixtures never vary that
-  the changed code branches on — a status, zero or one item, a second entity, a nil
-  field. Run at most five such edits in all, the ones the tests seem least to vary. A
-  suite that stays green is a candidate.
+  package. Run at most five such edits in all, the ones the tests seem least to vary. A
+  suite that stays green is a candidate. For each test the diff adds, list each
+  dimension the changed code branches on — a status, zero or one item, a second entity,
+  a nil field — and the values its fixtures take. A dimension that has one value in
+  every fixture is a candidate, with no edit needed: name the value no fixture takes.
+- For each key the diff renames, removes or makes optional in a JSON body, an HTTP
+  response or an MQTT payload, find each reader that does not deploy with this change: a
+  service on an older image, `~/ts/tgx-ui` (its types are generated from the OpenAPI
+  specs, under `src/app/generated/`) and `~/ts/lifty-firmware`. grep each for the old
+  key. A reader that still needs it after the deploy is a candidate, unless the change
+  still writes the old key.
+
+When the diff adds or changes a design under `docs/design/`, its rules are the code.
+Run the sixth and seventh searches on them: for each closed set the design names — a
+status, a code, a reason — what a value it does not class does; for each actor, what
+happens when it runs at the same time as another, or after a stop or a disable; for each
+call or wait, the outcome when no answer comes. A rule that gives no outcome, or a wrong
+one, is a candidate. Its failure chain is the one the code will have when it follows the
+design.
 
 ## What to report
 

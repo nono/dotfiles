@@ -143,8 +143,9 @@ unrelated work.
 
 Then run the tests of the project. No test suite: say so.
 
-Commit and push. One commit per round is enough. Keep the sha; you need it for the
-replies.
+Commit and push. Push once per round: each push spends one review of the PR author's
+allowance. Do not merge the base branch into the PR unless it conflicts. Keep the sha;
+you need it for the replies.
 
 No valid comment in this round: push nothing, and go to the report. A round with no
 push gets no new review.
@@ -174,8 +175,13 @@ in the next round.
 
 ## 6. Wait for the new review
 
-The bot reviews the new commits on its own. Poll for a CodeRabbit review submitted
-after your push with one GraphQL request on the last few reviews:
+The repo config pauses automatic reviews after the first one
+(`auto_pause_after_reviewed_commits` in `.coderabbit.yaml`). So after your push, post
+`@coderabbitai review` on the PR once. If the summary comment says the reviews are not
+paused, the bot reviews the push on its own: do not post the command.
+
+Poll for a CodeRabbit review submitted after your push with one GraphQL request on the
+last few reviews:
 
 ```sh
 gh api graphql -F owner="${REPO%/*}" -F name="${REPO#*/}" -F pr="$PR" -f query='
@@ -211,14 +217,17 @@ No review after fifteen minutes: stop the loop and say the bot did not answer.
 
 When the hourly allowance is used up, the bot posts a "Review limit reached - next
 included review available in N minutes" summary comment and sets its check to
-success. It does not review by itself when the wait ends. The org shares the
-allowance (2 reviews per hour), so the stated wait is not reliable and can grow.
+success. It does not review by itself when the wait ends. The allowance belongs to
+the PR author, and it falls from 5 to 1 per hour as the author spends reviews over 7
+days. The author's other PRs spend it too, so the stated wait can grow.
 
 1. Read the wait from the summary comment. Arm a watch until it ends.
 2. Post `@coderabbitai review` on the PR.
 3. Watch the check and the summary comment, as above.
-4. A "Review rate limited" reply means the bot refused the trigger: read the summary
-   comment again for the new wait, and go to 1.
+4. A "Review rate limited" reply means the bot refused the trigger. If the reply says
+   the command "is applicable only when automatic reviews are paused", the bot
+   reviews the next push on its own: stop the loop and tell the user. Otherwise read
+   the summary comment again for the new wait, and go to 1.
 
 After two refused triggers, stop the loop and tell the user. Do not poll for hours.
 Never enable usage-based billing to skip the wait.

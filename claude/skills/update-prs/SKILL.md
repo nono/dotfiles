@@ -39,11 +39,16 @@ Give each subagent these steps:
    both sides that touch the conflicting lines. When the right resolution is not clear, run `git merge --abort`
    and report the files and the question.
 4. Commit the merge with the default message and the attribution trailer.
-5. Run `make check`. On a failure caused by the merge, fix it in a new commit and run it again. On a failure that
+5. When the PR adds a migration (`*/db/migrations/*.up.sql`) whose version is not above the newest one of its
+   directory on `origin/<base>`, `git mv` its up and down files to a version above it, with today's date, in a new
+   commit. golang-migrate skips an older version on a database already past it, and reports success. Grep the old
+   version and update each reference: code, docs, the PR body. Report the rename: a database that applied the old
+   version must be forced back before it can migrate.
+6. Run `make check`. On a failure caused by the merge, fix it in a new commit and run it again. On a failure that
    `origin/<base>` has too, report it and do not push.
-6. Do not push when a resolved conflict is in a file that triggers the tote batch move harness (the list is in
+7. Do not push when a resolved conflict is in a file that triggers the tote batch move harness (the list is in
    the root `AGENTS.md`): report it, because the harness must run before a push.
-7. Push with `git push`. Never force push.
+8. Push with `git push`. Never force push.
 
 ## 4. Report
 
