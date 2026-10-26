@@ -143,8 +143,8 @@ unrelated work.
 
 Then run the tests of the project. No test suite: say so.
 
-Commit and push. Push once per round: each push spends one review of the PR author's
-allowance. Do not merge the base branch into the PR unless it conflicts. Keep the sha;
+Commit and push. Push once per round: each review, automatic or requested, spends one
+of the PR author's allowance. Do not merge the base branch into the PR unless it conflicts. Keep the sha;
 you need it for the replies.
 
 No valid comment in this round: push nothing, and go to the report. A round with no
@@ -224,10 +224,10 @@ days. The author's other PRs spend it too, so the stated wait can grow.
 1. Read the wait from the summary comment. Arm a watch until it ends.
 2. Post `@coderabbitai review` on the PR.
 3. Watch the check and the summary comment, as above.
-4. A "Review rate limited" reply means the bot refused the trigger. If the reply says
-   the command "is applicable only when automatic reviews are paused", the bot
-   reviews the next push on its own: stop the loop and tell the user. Otherwise read
-   the summary comment again for the new wait, and go to 1.
+4. A "Review rate limited" reply means the bot refused the trigger: read the summary
+   comment again for the new wait, and go to 1. Every reply to the command, a
+   successful one too, ends with "applicable only when automatic reviews are paused".
+   That footer is not the reason for a refusal.
 
 After two refused triggers, stop the loop and tell the user. Do not poll for hours.
 Never enable usage-based billing to skip the wait.
