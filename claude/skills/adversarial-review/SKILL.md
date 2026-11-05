@@ -325,7 +325,11 @@ against one that saw what the others missed.
 Then, below, the singletons you dropped and why — `[agent]` and one line each, so the
 human can overrule you.
 
-Offer the work as **three separate questions**, in this order:
+When the target is a PR someone else opened (the author check of step 1), the report
+ends the review: ask no question, and close with one line that offers to post the high
+and medium findings as review comments on the PR.
+
+Otherwise, offer the work as **three separate questions**, in this order:
 
 1. Fix the high and medium findings.
 2. Sweep the low ones.

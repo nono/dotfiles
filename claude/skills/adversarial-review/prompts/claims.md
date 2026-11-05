@@ -6,10 +6,14 @@ which cases or callers it covers, what a test pins. Collect every claim in:
 - the lines the diff adds or changes: comments, docstrings, SQL comments, log and error
   messages, test names and assertion messages, Markdown, CLAUDE.md;
 - the unchanged comments and docstrings of the functions whose body the diff changes;
-- every sentence of the PR body, when the dispatch gives one.
+- every sentence of the PR body, when the dispatch gives one;
+- text elsewhere that the diff makes false: for each rule, name, error, default or limit
+  the diff changes, `git grep` its old name and old wording across the repository, docs
+  included, and audit each hit.
 
-When the dispatch gives you a file list, collect claims in those files only. Follow the
-code a claim names into any file.
+When the dispatch gives you a file list, collect claims in those files only, except for
+the last bullet: it searches the whole repository. Follow the code a claim names into
+any file.
 
 For each claim, find the code that makes it true or false, and read it: the callers, the
 schema, and the source of the library or runtime it names (`go env GOROOT`,
@@ -31,7 +35,10 @@ schema, and the source of the library or runtime it names (`go env GOROOT`,
 Also report, against the repository's CLAUDE.md and `docs/glossary.md`: a docstring that
 says how callers use the function or lists its callers; text that tells history — "used
 to", "now", "after the fix", the incident that led to the change; a domain word the
-glossary does not use for that meaning.
+glossary does not use for that meaning, in the prose and in the names the diff adds:
+types, functions, fields, test names. First read the sections "Confusable pairs", when
+the glossary has one, and "Do not write"; then the entry of each domain word you check,
+and the entries next to it.
 
 Also report a document a reader cannot act on: it lists two fields, modes or values for
 one purpose and never says which one to use. Quote both names; the replacement is the

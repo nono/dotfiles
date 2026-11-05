@@ -27,7 +27,7 @@ story gets the same fields: it goes in To Do, never in Backlog.
    Technical Area custom field and its values. A name that does not match: stop and
    tell the user. Do not pick a near match.
    In the Standard workflow (500000005), To Do is 500000007. Always pass
-   `workflow_state_id` to `stories-create`: the default state is Backlog.
+   `workflow_state_id` to `create_story`: the default state is Backlog.
 3. Pick the Technical Area. Back End is the default. Use another value only when
    the story is about that area (for example Front End for a UI change).
 4. Write the story:
@@ -36,10 +36,11 @@ story gets the same fields: it goes in To Do, never in Backlog.
      the PR to each story ID in the branch name.
    - Type: feature, bug or chore, from the request.
    - Description: the problem, then what done means. Use ASD-STE100 Simplified
-     Technical English and few words.
-5. Create the story with `stories-create`. It takes no custom field and no requester,
-   so then call `stories-update` on the new story with `requested_by_id`, `owner_ids`
-   and `custom_fields: [{field_id: <Technical Area>, value_id: <value>}]`. Reply with
+     Technical English and few words. A cause names the file and line that show
+     it; else write "Cause: not known" and give the evidence.
+5. Create the story with one `create_story` call: `name`, `story_type`, `description`,
+   `team_id`, `workflow_state_id`, `requester_id`, `owner_ids` and
+   `custom_field_values: [{field_id: <Technical Area>, value_id: <value>}]`. Reply with
    its `sc-NNNN` ID, URL and the Technical Area you picked, with the reason if it is not
    Back End.
 

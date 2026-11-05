@@ -34,10 +34,6 @@
 
 - Read a file with the Read tool before you Edit it. `cat` or `head` does not count, and Edit fails with "File has not been read yet".
 
-- The Bash tool runs zsh. In zsh, a glob that matches no file stops the command with `no matches found`. Quote each glob that is for the command and not for the shell: `grep -rn X --include='*.go' .`, not `--include=*.go`. Or use `git grep X -- '*.go'`. Quote a word that starts with `=` too: zsh reads `echo ===` as a command path and fails with `== not found`.
-
-- Give `git grep` its options before the pattern: `git grep -n -A3 X`, not `git grep -n X -A3`, which fails with `unable to resolve revision: -A3`.
-
 - Always use absolute paths in Bash commands; do not rely on the current working directory persisting between calls.
 
 - If a tool that is not installed can help, ask me to install it. Give the `apt` or `mise` command. Do not install it yourself.

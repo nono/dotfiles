@@ -29,23 +29,27 @@ most. Do not update a PR that the user did not name.
 Use one subagent per PR, in parallel. When the user names a stacked PR and the PR below it, update and push the
 lower PR first, then start the stacked one.
 
-Give each subagent these steps:
+Give each subagent these steps, and tell it to write each log and message file in its own worktree: the subagents
+share the scratchpad, and a shared file name mixes their output.
 
 1. Find the worktree whose branch is the PR's head branch (`git worktree list --porcelain`). If there is none,
    add one at `~/ts/<sc-NNNN number or branch slug>`.
 2. Stop, and report why, when the worktree has uncommitted changes, or when the local branch differs from
    `origin/<head>` (`git fetch origin`, then compare `git rev-parse HEAD origin/<head>`).
-3. `git merge origin/<base>`. Resolve each conflict so that the intent of both sides stays: read the commits of
-   both sides that touch the conflicting lines. When the right resolution is not clear, run `git merge --abort`
-   and report the files and the question.
-4. Commit the merge with the default message and the attribution trailer.
+3. `git merge --no-commit origin/<base>`: without `--no-commit`, a merge with no conflict commits at once, with no
+   trailer. Resolve each conflict so that the intent of both sides stays: read the commits of both sides that touch
+   the conflicting lines. When the right resolution is not clear, run `git merge --abort` and report the files and
+   the question.
+4. `git commit --no-edit --trailer "<the attribution trailer>"`: the default message with the trailer.
 5. When the PR adds a migration (`*/db/migrations/*.up.sql`) whose version is not above the newest one of its
    directory on `origin/<base>`, `git mv` its up and down files to a version above it, with today's date, in a new
    commit. golang-migrate skips an older version on a database already past it, and reports success. Grep the old
    version and update each reference: code, docs, the PR body. Report the rename: a database that applied the old
    version must be forced back before it can migrate.
-6. Run `make check`. On a failure caused by the merge, fix it in a new commit and run it again. On a failure that
-   `origin/<base>` has too, report it and do not push.
+6. Run `flock ~/.cache/update-prs-check.lock make check > <worktree>/check.log 2>&1`. The lock runs one
+   `make check` at a time: each runs its gates in parallel, and several at once exhaust the memory (OOM kills) and
+   make timing tests fail. Take the result from the exit code, not from the log. On a failure caused by the merge,
+   fix it in a new commit and run it again. On a failure that `origin/<base>` has too, report it and do not push.
 7. Do not push when a resolved conflict is in a file that triggers the tote batch move harness (the list is in
    the root `AGENTS.md`): report it, because the harness must run before a push.
 8. Push with `git push`. Never force push.

@@ -57,8 +57,9 @@ digraph grid_video {
 
 `sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Load the Shortcut
 tools with `ToolSearch`. Absent: stop with "open a session in ~/ts/main; the Shortcut
-tools live there". Read the story with `stories-get-by-id`: title, description,
-comments, linked stories. Get the branch with `stories-get-branch-name`.
+tools live there". Read the story with `get_story`,
+`fields: ["name","description","comments","story_links","formatted_vcs_branch_name"]`.
+The branch is `formatted_vcs_branch_name`.
 
 Say back the bug in three lines.
 

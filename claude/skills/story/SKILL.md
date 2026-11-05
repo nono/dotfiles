@@ -44,7 +44,8 @@ digraph story {
 
 `sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Load the Shortcut
 tools with `ToolSearch` if they are not present, then read the story with
-`stories-get-by-id`: description, comments, state, and any linked story or epic.
+`get_story`, `fields: ["name","description","comments","workflow_state","story_links","epic"]`:
+description, comments, state, and any linked story or epic.
 
 Say back, in three lines, what the story asks for. If the story is ambiguous enough
 that two readings give different code, use `superpowers:brainstorming` before planning.
