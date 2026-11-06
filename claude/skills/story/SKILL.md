@@ -1,6 +1,7 @@
 ---
 name: story
 description: Use when asked to work a Shortcut story end to end - given sc-NNNN or a story ID, to look at it and implement it, or to take a ticket from plan through review to an open pull request.
+allowed-tools: "Bash(scut story view:*)"
 ---
 
 # Story
@@ -42,10 +43,14 @@ digraph story {
 
 ## 1. Read the story
 
-`sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Load the Shortcut
-tools with `ToolSearch` if they are not present, then read the story with
-`get_story`, `fields: ["name","description","comments","workflow_state","story_links","epic"]`:
-description, comments, state, and any linked story or epic.
+`sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Read it with this
+one command; the `scut` skill is for other Shortcut actions:
+
+```sh
+scut story view NNNN --fields name,description,comments,state,links,epic --comments all
+```
+
+`links` gives story IDs. Name them with `scut story view <id>… --fields id,name`.
 
 Say back, in three lines, what the story asks for. If the story is ambiguous enough
 that two readings give different code, use `superpowers:brainstorming` before planning.

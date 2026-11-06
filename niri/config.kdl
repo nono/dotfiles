@@ -19,6 +19,7 @@ input {
     mouse {
         // off
     }
+	focus-follows-mouse max-scroll-amount="0%"
 }
 
 output "eDP-1" {
@@ -34,7 +35,7 @@ output "DP-1" {
 
 layout {
     center-focused-column "never"
-    default-column-width { proportion 0.4; }
+    default-column-width { proportion 0.5; }
     preset-column-widths {
         proportion 0.33333
         proportion 0.5

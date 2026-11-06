@@ -1,6 +1,7 @@
 ---
 name: grid-video
 description: Use when asked for a before/after grid video of a bugfix - "grid video", "video of sc-NNNN", "before/after video", "show the fix on the grid" - given a Shortcut story id whose fix sits in a worktree under ~/ts.
+allowed-tools: "Bash(scut story view:*)"
 ---
 
 # Grid video
@@ -43,7 +44,6 @@ digraph grid_video {
 
 ## Rules that stand
 
-- Run from a session opened in `~/ts/main`: the Shortcut tools exist only there.
 - Never destroy or recreate the VM. Never run `gridlab stack reset` without asking first.
 - Never write in a worktree. Write only under `~/ts/videos/<branch dir>/`.
 - `GHCR_TOKEN` stays in the environment: never print it, never pass it as a flag.
@@ -55,11 +55,15 @@ digraph grid_video {
 
 ## 1. Read the story
 
-`sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Load the Shortcut
-tools with `ToolSearch`. Absent: stop with "open a session in ~/ts/main; the Shortcut
-tools live there". Read the story with `get_story`,
-`fields: ["name","description","comments","story_links","formatted_vcs_branch_name"]`.
-The branch is `formatted_vcs_branch_name`.
+`sc-NNNN`, a bare number, or a Shortcut URL all mean story NNNN. Read it with this
+one command; the `scut` skill is for other Shortcut actions:
+
+```sh
+scut story view NNNN --fields name,description,comments,links,formatted_vcs_branch_name --comments all
+```
+
+The branch is `formatted_vcs_branch_name`. `links` gives story IDs. Name them with
+`scut story view <id>… --fields id,name`.
 
 Say back the bug in three lines.
 
